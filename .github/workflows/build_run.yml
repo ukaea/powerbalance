@@ -20,4 +20,21 @@ jobs:
           for i in $(ls ${GITHUB_WORKSPACE}/power_balance/models/*.mo); do omc -s $i; done
           for i in $(ls *.makefile); do make -f $i; done
         shell: bash
-
+  test_module_build:
+    name: Test Module Build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [ '3.8', '3.9', '3.10' ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+      - uses: Gr1N/setup-poetry@v7
+      - name: Build Module
+        run: poetry build
