@@ -1,0 +1,13 @@
+__pycache__
+*.pyc
+pbm_results*/*
+power_balance/cache
+*.makefile
+*.h
+*.o
+*.xml
+*.json
+*.log
+*.libs
+power_balance/profiles/mat_profile_files/
+dist/

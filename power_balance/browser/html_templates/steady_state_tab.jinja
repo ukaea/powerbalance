@@ -1,0 +1,30 @@
+<!-- Additional Information Tab -->
+<div class="container">
+    <center>
+    <p>
+        <h2>Steady-State (Plasma Flat-Top) Outputs</h2>
+    </p>
+    {% for model, efficiencies in effs_dict.items() %}
+    <p>
+        <h3>{{model}}</h3>
+    {% for eff_title, eff_object in efficiencies.items() %}
+        <p>
+            <h3>{{eff_title}}</h3>
+        </p>
+    {{eff_object.construct_html_form()}}
+    {% endfor %}
+    </p>
+    {% endfor %}
+    <br><br>
+    <table class="table table-striped">
+    <tbody>
+    {% for name in steady_state_dict.keys() %}
+        <tr>
+            <td><b>{{name}}</b></td>
+            <td><code>{{'%.3f'%steady_state_dict[name]}}</code></td>
+        <tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </center>
+</div>

@@ -1,0 +1,47 @@
+<!-- Sweep plot scroller -->
+
+{% for model, plot_set in out.get_plots().items() %}
+<center><h1>{{model.replace("_", " ").title()}}</h1></center>
+    {% if out.has_sweep() %}
+<center>
+    <div id="plot-page-carousel" class="carousel carousel-dark slide" data-bs-interval=false data-bs-wrap=false>
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            {% for cut_id in plot_set %}
+            <button type="button" data-bs-target="#plot-page-carousel" data-bs-slide-to="{{cut_id}}" {{"class=\"active\" aria-current=\"true\"" if cut_id == 0 else ""}} aria-label="Slide {{cut_id}}"></button>
+            {% endfor %}
+        </div>
+        <!-- Slides -->
+        <div class="carousel-inner">
+        {% for cut_id in plot_set %}
+            <div class="carousel-item{{" active" if cut_id == 0 else ""}}">
+                    <h3>Sweep Iteration {{cut_id}} Parameters</h3>
+                        <table class="table">
+                            {% for name, value in out.get_cuts()[model][cut_id].items() %}
+                            <tr><td>{{name}}<td><td>{{value}}</td></tr>
+                            {% endfor %}
+                        </table><br><br>
+                    <h3>Power Plots</h3>
+                {{plot_set[cut_id]}}
+            </div>
+        {% endfor %}
+        </div>
+        <!--Controls-->
+        <button class="carousel-control-prev" type="button" data-bs-target="#plot-page-carousel"  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#plot-page-carousel"  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</center>
+    {% else %}
+<center>
+    <div class="container">
+        {{plot_set}}
+    </div>
+</center>
+    {% endif %}
+{% endfor %}
