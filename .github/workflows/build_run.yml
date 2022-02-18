@@ -21,7 +21,7 @@ jobs:
           for i in $(ls *.makefile); do make -f $i; done
         shell: bash
   test_module_build:
-    name: Test Module Build (${{ matrix.os }})
+    name: Test Module Build (Python${{ matrix.python-version }} ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
