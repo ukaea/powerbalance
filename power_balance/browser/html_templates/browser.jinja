@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- MathJax 3 -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    {{bokeh_headers}}
+
+    <title>Power Balance Models</title>
+  </head>
+  <body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+      <a class="navbar-brand" href="./viewer.html"></a>
+      <ul class="navbar-nav">
+          <li class="nav-item">
+            <!-- TODO: Add link to new page -->
+            <a class="nav-link" href="">
+            API Reference
+            </a>
+          </li>
+      </ul>
+    </nav>
+  
+  <center>
+    <h1>Power Balance Models</h1>
+    <div class="container max-width 300px">
+      <table class="table">
+        <tr>
+          <td><b>Version</b></td>
+          <td>{{version}}</td>
+        </tr>
+        <tr>
+          <td><b>Execution Time</b></td>
+          <td>{{time_stamp}}</td>
+        </tr>
+      </table>
+    </div>
+  </center>
+    <div class="container-fluid">
+      <ul class="nav nav-tabs nav-fill">
+        <li class="nav-item">
+          <a class="nav-link active" data-bs-toggle="tab" href="#plots">Plots</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#config">Configuration</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#params">Parameters</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#profiles">Profiles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#steady-state">Steady-State</a>
+        </li>
+        {% for disp in plugin_tabs %}
+        <li class="nav-item">
+          <a class="nav-link" data-bs-toggle="tab" href="#plugin-{{disp.lower().strip()}}">Plugin: {{disp}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      <div id='content' class="tab-content">
+        <div class="container-fluid tab-pane active" id="plots" role="tabpanel" aria-labelledby="plots-tab">
+            <br><center><h3>The following plots have been automatically generated using the results from the given run.</h3></center><br><br>
+            {{"\n".join(out.get_scripts())}}
+            {{outvar_plots}}
+        </div>
+        <div class="container-fluid tab-pane fade" id="config" role="tabpanel" aria-labelledby="config-tab">
+            <center>
+            <h1>Configuration</h1><br>
+            </center>
+            {{config}}
+        </div>
+        <div class="container-fluid tab-pane fade" id="params" role="tabpanel" aria-labelledby="params-tab">
+            <center>
+            <h1>Parameters</h1><br>
+           </center>
+            {{params}}
+        </div>
+        <div class="container-fluid tab-pane fade" id="profiles" role="tabpanel" aria-labelledby="profiles-tab">
+            <br><center><h3>The following plots have been automatically generated from the input profiles.</h3></center><br><br>
+            <center>
+            {{profile.get_scripts()}}
+            {{profile.get_plots()}}
+            </center>
+        </div>
+        <div class="container-fluid tab-pane fade" id="steady-state" role="tabpanel" aria-labelledby="steady-state-tab">
+        {{eff_tab_content}}
+        </div>
+        {% for disp in plugin_tabs %}
+          <div class="container-fluid tab-pane fade" id="plugin-{{disp.lower().strip()}}" role="tabpanel" aria-labelledby="plugin-{{disp.lower().strip()}}-tab">
+          {{plugin_tabs[disp]}}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

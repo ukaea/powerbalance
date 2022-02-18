@@ -1,0 +1,45 @@
+<!-- Parameter Table -->
+
+{% for model in parameter_set %}
+<h2>{{model.replace("_", " ").title()}}</h2>
+<table class="table table-striped">
+<tbody>
+{% for group in parameter_set[model] %}
+{% if not is_dict(parameter_set[model][group]) %}
+    <tr>
+        <td><b>{{group.replace("_", " ").title()}}</b></td>
+        <td><code>{{parameter_set[model][group]}}</code></td>
+    <tr>
+{% endif %}
+{% endfor %}
+</tbody>
+</table><br><br>
+{% for group in parameter_set[model] %}
+{% if is_dict(parameter_set[model][group]) %}
+<h3>{{header(group)}}</h3>
+<table class="table table-striped">
+<tbody>
+{% for param, data in parameter_set[model][group].items() %}
+    <tr>
+        <td><b>{{param}}</b></td>
+    {% if is_dict(data) %}
+        <td colspan="3">
+            <table class="table mb-0">
+        {% for key, value in data.items() %}
+                <tr>
+                    <td>{{key}}</td>
+                    <td><code>{{value}}</code></td>
+                </tr>
+        {% endfor %}
+            </table>
+        </td>
+    {% else %}
+        <td><code>{{data}}</code></td>
+    {% endif %}
+    </tr>
+{% endfor %}
+</tbody>
+</table><br><br>
+{% endif %}
+{% endfor %}
+{% endfor %}
