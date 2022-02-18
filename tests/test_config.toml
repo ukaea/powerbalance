@@ -1,0 +1,7 @@
+models = [ "Tokamak.Interdependencies" ]
+parameters_directory  = "Default"
+simulation_options_file = "simulation_options.toml"
+plasma_scenario_file = "plasma_scenario.toml"
+structural_params_file = "structural_parameters.toml"
+profiles_directory = "Default"
+modelica_file_directory = "Default"
