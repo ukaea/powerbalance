@@ -20,6 +20,11 @@ jobs:
           for i in $(ls ${GITHUB_WORKSPACE}/power_balance/models/*.mo); do omc -s $i; done
           for i in $(ls *.makefile); do make -f $i; done
         shell: bash
+      - name: Archive Modelica Binaries
+        uses: actions/upload-artifact@v2
+        with:
+          name: om-binaries
+          path: build/
   test_module_build:
     name: Test Module Build (Python${{ matrix.python-version }} ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
@@ -37,4 +42,33 @@ jobs:
           architecture: x64
       - uses: Gr1N/setup-poetry@v7
       - name: Build Module
-        run: poetry build
+        run: |
+          poetry build
+          poetry run powerbalance generate-profiles
+      - name: Archive Plasma Profiles
+        uses: actions/upload-artifact@v2
+        with:
+          name: om-plasma-profiles
+          path: power_balance/profiles/mat_profile_files/*.mat
+  model_run_om:
+    name: Model Run Open Modelica (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+    needs: [test_module_build, test_modelica_build]
+    steps:
+      - name: Retrieve Open Modelica model binaries
+        uses: actions/download-artifact@v2
+        with:
+          name: om-binaries
+      - name: Retrieve Plasma profiles
+        uses: actions/download-artifact@v2
+        with:
+          name: om-plasma-profiles
+      - name: Run Models
+        run: |
+          cd build
+          for i in $(ls -I "*.h" -I "*.c" -I "*.o" -I "*.json" -I "*.xml" -I "*.makefile" -I "*.mat"); do echo "Running model $i"; ./$i; done
+
