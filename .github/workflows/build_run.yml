@@ -17,7 +17,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          for i in $(ls power_balance/models/*.mo); do omc -s $i; done
+          for i in $(ls ${GITHUB_WORKSPACE}/power_balance/models/*.mo); do omc -s $i; done
           for i in $(ls *.makefile); do make -f $i; done
         shell: bash
 
