@@ -43,6 +43,7 @@ jobs:
       - uses: Gr1N/setup-poetry@v7
       - name: Build Module
         run: |
+          poetry install
           poetry build
           poetry run powerbalance generate-profiles
       - name: Archive Plasma Profiles
