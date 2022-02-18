@@ -1,0 +1,42 @@
+# ========================== MAGNETS =================================== #
+[Magnets]
+isMagnetTFSuperconCoil = false
+isMagnetTFSuperconFeeder = false
+
+isMagnetPF1SuperconCoil = false
+isMagnetPF1SuperconFeeder = false
+
+isMagnetPF2SuperconCoil = false
+isMagnetPF2SuperconFeeder = false
+
+isMagnetPF3SuperconCoil = false
+isMagnetPF3SuperconFeeder = false
+
+isMagnetPF4SuperconCoil = false
+isMagnetPF4SuperconFeeder = false
+
+isMagnetPF5SuperconCoil = false
+isMagnetPF5SuperconFeeder = false
+
+isMagnetPF6SuperconCoil = false
+isMagnetPF6SuperconFeeder = false
+
+useSuperconModel = true
+isPSUeffValue = false
+
+[CryogenicPlant]
+FOM4K = 30 # Figure of merit for the cryoplant at 4 K
+FOM20K = 30 # Figure of merit for the cryoplant at 20 K
+FOM80K = 30 # Figure of merit for the cryoplant at 80 K
+
+# ========================== Tokamak ====================================== #
+[Tokamak]
+PrimaryCoolantType = "CO2_NC" # Can be CO2_C, CO2_NC, He_C, He_NC, H2O, FLiBe, LiPb
+SecondaryCoolantType = "H2O" # Can be CO2, H2O
+RatioType = "1.5" # Can be 1.5, 2, 2.5
+SystemPressure = "90" # Can be 50, 90, 200
+VacuumType = "cryo" # 'cryo' or 'turbo'
+
+# ========================== PowerGenCaseByCase========================== #
+[PowerGenEquations]
+powergenOutletTemp = 500 # temperature related to the exchange of heat between the tokamak and the power generation system (Celsius)

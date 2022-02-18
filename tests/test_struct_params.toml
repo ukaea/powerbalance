@@ -1,0 +1,6 @@
+# ========================== StructParamTestModel =================================== #
+[StructParamTestModel]
+struct_bool = false
+struct_str = "deuterium"
+struct_int = 1
+struct_float = 1.5
