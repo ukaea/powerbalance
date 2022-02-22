@@ -7,13 +7,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Mypy
-        uses: tsuyoshicho/action-mypy@v3.4.0
+        uses: jpetrucciani/mypy-check@master
         with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          level: error
-          workdir: power_balance
-          fail_on_error: true # capture typing issues before they become part of main code
+          mypy_flags: '--config-file mypy.ini'
+          path: power_balance
   modelica_syntax_validation:
     name: Modelica Syntax Checking
     runs-on: ubuntu-latest
