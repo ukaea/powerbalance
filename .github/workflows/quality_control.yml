@@ -6,11 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Mypy
-        uses: jpetrucciani/mypy-check@master
-        with:
-          mypy_flags: '--config-file mypy.ini'
-          path: power_balance
+      - name: Run Mypy
+        run: |
+          poetry install 
+          poetry run mypy power_balance/
   modelica_syntax_validation:
     name: Modelica Syntax Checking
     runs-on: ubuntu-latest
