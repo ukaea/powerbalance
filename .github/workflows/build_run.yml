@@ -103,6 +103,7 @@ jobs:
           poetry run coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios -k test_run_vanilla
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: coverage-run
           path: coverage_default
@@ -132,6 +133,7 @@ jobs:
           poetry run coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: coverage-regression
           path: coverage_regression
@@ -155,12 +157,13 @@ jobs:
       - uses: artemis-beta/setup-openmodelica@v2
         with:
           msl-version: '3.2.3'
-      - name: Run Regression Tests
+      - name: Run Unit Tests
         run: |
           poetry install
           poetry run coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: coverage-unit
           path: coverage_unit
