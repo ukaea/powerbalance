@@ -1,0 +1,39 @@
+name: PBM Code Quality
+on:
+  push:
+    branches:
+    - main
+jobs:
+  type_validation:
+    name: Mypy Type Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - uses: Gr1N/setup-poetry@v7
+      - name: Run Type Checking
+        run: |
+          poetry install
+          poetry run mypy --ignore-missing-imports power_balance/
+  modelica_syntax_validation:
+    name: Modelica Syntax Checking
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Modelica Code Check
+        run: |
+          git clone https://github.com/modelica-tools/ModelicaSyntaxChecker.git
+          ${GITHUB_WORKSPACE}/ModelicaSyntaxChecker/Linux64/moparser -c -l -r power_balance/
+  bandit_security_check:
+    name: Bandit Security Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - uses: Gr1N/setup-poetry@v7
+      - name: Run Security Check
+        run: |
+          poetry install
+          poetry run bandit -r power_balance -c bandit.yml
