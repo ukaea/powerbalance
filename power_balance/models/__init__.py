@@ -53,7 +53,8 @@ binary_folder:  str
     location of compiled binary (may be temporary)
 """
 
-MODEL_FILES = glob.glob(os.path.join(os.path.dirname(__file__), "*.mo"))
+MODEL_DIR = os.path.dirname(__file__)
+MODEL_FILES = glob.glob(os.path.join(MODEL_DIR, "*.mo"))
 
 
 def extract_models_from_file(
