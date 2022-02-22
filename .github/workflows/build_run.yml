@@ -73,5 +73,5 @@ jobs:
       - name: Run Models
         run: |
           cd build
-          for i in $(ls -I "*.h" -I "*.c" -I "*.o" -I "*.json" -I "*.xml" -I "*.makefile" -I "*.mat"); do echo "Running model $i"; ./$i; done
+          for i in $(ls -I "*.h" -I "*.c" -I "*.o" -I "*.json" -I "*.xml" -I "*.makefile" -I "*.mat"); do echo "Running model $i"; chmod +x ./$i; ./$i; done
 
