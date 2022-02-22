@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Mypy
-        uses: tsuyoshicho/action-mypy@v3
+        uses: tsuyoshicho/action-mypy@v3.4.0
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
