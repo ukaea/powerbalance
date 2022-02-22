@@ -84,6 +84,7 @@ class ModelParser:
             self._current_model_cache["package_name"] or None,
             self._current_model_cache["submodels"] or None,
             self._current_model_cache["binary_folder"] or None,
+            self._current_model_cache["compiled"]
         )
 
     def _get_submodel(self, line: str, submodel_search: typing.List[str]) -> None:
