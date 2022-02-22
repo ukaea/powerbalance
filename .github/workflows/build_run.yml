@@ -100,7 +100,7 @@ jobs:
       - name: Run Models
         run: |
           poetry install
-          poetry run coverage run --source=power_balance -m pytest tests/scenarios -k test_run_vanilla --data-file=coverage_default
+          poetry run coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios -k test_run_vanilla
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
         with:
@@ -129,7 +129,7 @@ jobs:
       - name: Run Regression Tests
         run: |
           poetry install
-          poetry run coverage run --source=power_balance -m pytest tests/regression_tests --data-file=coverage_regression
+          poetry run coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
         with:
@@ -158,7 +158,7 @@ jobs:
       - name: Run Regression Tests
         run: |
           poetry install
-          poetry run coverage run --source=power_balance -m pytest tests/unit_tests --data-file=coverage_unit
+          poetry run coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
         with:
