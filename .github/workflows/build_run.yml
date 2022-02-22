@@ -167,6 +167,7 @@ jobs:
   collate_coverage:
     name: Collate Coverage
     runs-on: ubuntu-latest
+    if: ${{ always() }}
     needs: [unit_tests, regression_tests, model_run_api]
     steps:
       - name: Set up Python
