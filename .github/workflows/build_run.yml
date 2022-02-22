@@ -70,6 +70,9 @@ jobs:
         with:
           name: om-plasma-profiles
           path: power_balance/profiles/mat_profile_files
+      - uses: artemis-beta/setup-openmodelica@v2
+        with:
+          msl-version: '3.2.3'
       - name: Run Models
         run: |
           cd build
