@@ -77,4 +77,87 @@ jobs:
         run: |
           cd build
           for i in $(ls -I "*.h" -I "*.c" -I "*.o" -I "*.json" -I "*.xml" -I "*.makefile" -I "*.mat"); do echo "Running model $i"; chmod +x ./$i; ./$i; done
+  model_run_api:
+    name: Model Run API (${{ matrix.os }} Python${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [ '3.8', '3.9', '3.10' ]
+    needs: [test_module_build, test_modelica_build]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+      - uses: Gr1N/setup-poetry@v7
+      - uses: artemis-beta/setup-openmodelica@v2
+        with:
+          msl-version: '3.2.3'
+      - name: Run Models
+        run: poetry run coverage run --source=power_balance -m pytest tests/scenarios -k test_run_vanilla --data-file=coverage_default
+      - name: Archive Run Coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-run
+          path: coverage_default
+  regression_tests:
+    name: Regression Tests (${{ matrix.os }} Python${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [ '3.8', '3.9', '3.10' ]
+    needs: [model_run_api]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+      - uses: Gr1N/setup-poetry@v7
+      - uses: artemis-beta/setup-openmodelica@v2
+        with:
+          msl-version: '3.2.3'
+      - name: Run Regression Tests
+        run: poetry run coverage run --source=power_balance -m pytest tests/regression_tests --data-file=coverage_regression
+      - name: Archive Run Coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-regression
+          path: coverage_regression
+  unit_tests:
+    name: Unit Tests (${{ matrix.os }} Python${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [ '3.8', '3.9', '3.10' ]
+    needs: [model_run_api]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+      - uses: Gr1N/setup-poetry@v7
+      - uses: artemis-beta/setup-openmodelica@v2
+        with:
+          msl-version: '3.2.3'
+      - name: Run Regression Tests
+        run: poetry run coverage run --source=power_balance -m pytest tests/unit_tests --data-file=coverage_unit
+      - name: Archive Run Coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-unit
+          path: coverage_unit
+    
+      
 
