@@ -98,7 +98,9 @@ jobs:
         with:
           msl-version: '3.2.3'
       - name: Run Models
-        run: poetry run coverage run --source=power_balance -m pytest tests/scenarios -k test_run_vanilla --data-file=coverage_default
+        run: |
+          poetry install
+          poetry run coverage run --source=power_balance -m pytest tests/scenarios -k test_run_vanilla --data-file=coverage_default
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
         with:
@@ -125,7 +127,9 @@ jobs:
         with:
           msl-version: '3.2.3'
       - name: Run Regression Tests
-        run: poetry run coverage run --source=power_balance -m pytest tests/regression_tests --data-file=coverage_regression
+        run: |
+          poetry install
+          poetry run coverage run --source=power_balance -m pytest tests/regression_tests --data-file=coverage_regression
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
         with:
@@ -152,7 +156,9 @@ jobs:
         with:
           msl-version: '3.2.3'
       - name: Run Regression Tests
-        run: poetry run coverage run --source=power_balance -m pytest tests/unit_tests --data-file=coverage_unit
+        run: |
+          poetry install
+          poetry run coverage run --source=power_balance -m pytest tests/unit_tests --data-file=coverage_unit
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
         with:
