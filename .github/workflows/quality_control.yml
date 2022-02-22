@@ -1,8 +1,5 @@
 name: PBM Code Quality
-on:
-  push:
-    branches:
-    - main
+on: [pull_request]
 jobs:
   type_validation:
     name: Mypy Type Validation
@@ -12,10 +9,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
       - uses: Gr1N/setup-poetry@v7
-      - name: Run Type Checking
+      - name: Run Mypy
         run: |
-          poetry install
-          poetry run mypy --ignore-missing-imports power_balance/
+          poetry install 
+          poetry run mypy power_balance/
   modelica_syntax_validation:
     name: Modelica Syntax Checking
     runs-on: ubuntu-latest
@@ -30,10 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-      - uses: Gr1N/setup-poetry@v7
-      - name: Run Security Check
-        run: |
-          poetry install
-          poetry run bandit -r power_balance -c bandit.yml
+      - uses: mdegis/bandit-action@v1.0
+        with: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ini_path: bandit.yml
+          exit_zero: false
+          path: power_balance
