@@ -1,0 +1,98 @@
+extra_javascript:
+  - javascript/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid@8.6.4/dist/mermaid.min.js
+markdown_extensions:
+  - admonition
+  - mkdocs-click
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - class: mermaid
+          format: !!python/name:mermaid2.fence.fence_mermaid ""
+          name: mermaid
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: "#"
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg ""
+      emoji_index: !!python/name:materialx.emoji.twemoji ""
+nav:
+  - Home: index.md
+  - Installation: API/installation.md
+  - Getting Started: API/getting_started.md
+  - Usage:
+      - Command Line Interface: API/cli.md
+      - Configuration:
+          - Overview: API/setup_overview.md
+          - Global: API/configuration.md
+          - Simulation: API/simulation_opts.md
+          - Parameters: API/parameters.md
+          - Plasma: API/plasma.md
+      - Model Outputs:
+          - Output Data Directory: API/data_out.md
+          - Power Data: API/result_output.md
+  - API:
+      - Overview: API/api_overview.md
+      - Input Validation: API/validation.md
+      - Interactive Session: API/advanced_api.md
+  - Models:
+      - Magnets:
+          - Base Magnet: modelica/magnet/basemagnet.md
+          - Toroidal Field Coil: modelica/magnet/tfcoil.md
+          - Poloidal Field Coil: modelica/magnet/pfcoil.md
+          - Magnet Power: modelica/magnet/magnetpower.md
+          - Superconductor:
+              - Superonducting Layer: modelica/magnet/supercon_layer.md
+              - Mutual Inductor: modelica/magnet/mutual_inductor.md
+              - Power Law Resistance: modelica/magnet/supercon_resistive.md
+              - Hysteresis: modelica/magnet/preisach_everett.md
+      - Heating and Current Drive:
+          - H&CD Power: modelica/hcd/hcd_system.md
+          - Neutral Beam Injection (NINI-type): modelica/hcd/nini.md
+          - RF Gyrotron: modelica/hcd/rf_gyrotron.md
+          - RF Waveguide: modelica/hcd/rf_waveguide.md
+      - Cryogenics:
+          - Cryo Power: modelica/cryo/cryogenic_power.md
+          - Cryogenic Power Conversion: modelica/cryo/convertflowelec.md
+          - Cryopump: modelica/cryo/turbopump_cryo.md
+      - Waste Heat:
+          - Waste Package: modelica/wasteheat/wasteheat_package.md
+          - Waste System: modelica/wasteheat/wasteheat_system.md
+      - Water Detritiation: modelica/waterdetrit/waterdetrit_package.md
+      - Air Gas Detritiation: modelica/airgasdetrit/airgasdetrit_package.md
+      - Coolant Detritiation:
+          - Package: modelica/coolantdetrit/coolantdetrit_package.md
+          - Water Detritiation: modelica/coolantdetrit/watercoolant.md
+          - Gas Detritiation: modelica/coolantdetrit/gascoolant.md
+      - Blanket Detritiation: modelica/blanketdetrit/power.md
+      - Turbopump: modelica/turbopump/pumps.md
+      - Power Generation: modelica/powergen/equations.md
+  - Development:
+      - Overview: API/development.md
+      - Poetry: API/poetry.md
+      - Code Coverage: coverage.md
+      - Plugin Creation: API/plugins.md
+plugins:
+  - search
+  - coverage
+  - git-revision-date-localized:
+      fallback_to_build_date: true
+      type: date
+  - mermaid2
+repo_name: GitHub
+repo_url: https://github.com/ukaea/powerbalance
+site_description: Documentation for the Power Balance Models API
+site_name: Power Balance Models
+site_url: http://step.gitpages.ccfe.ac.uk/powerinfrastructure/powerbalance
+theme:
+  favicon: images/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+  logo: images/pbm_logo.png
+  name: material
+  palette:
+    primary: black
