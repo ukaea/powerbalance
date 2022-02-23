@@ -10,9 +10,12 @@ constructed using Modelica for power generation and consumption systems.
 """
 
 import pkg_resources
+import toml
+import pathlib
+import os.path
 
 __author__ = "UKAEA"
-__copyright__ = "UKAEA 2021, Power Balance Models"
+__copyright__ = "UKAEA 2022, Power Balance Models"
 __credits__ = [
     "Alexander Petrov",
     "Samuel Stewart",
@@ -25,5 +28,16 @@ __credits__ = [
 ]
 __maintainer__ = "Alexander Petrov"
 __contact__ = "alexander.petrov@ukaea.uk"
-__status__ = "Production"
-__version__ = pkg_resources.get_distribution("power_balance").version
+__status__ = "Release"
+
+try:
+    __version__ = pkg_resources.get_distribution("power_balance").version
+except pkg_resources.DistributionNotFound:
+    _metadata = os.path.join(
+        pathlib.Path(os.path.dirname(__file__)).parents[1],
+        "pyproject.toml"
+    )
+    if os.path.exists(_metadata):
+        __version__ = toml.load(_metadata)["tool"]["poetry"]["version"]
+    else:
+        __version__ = "Undefined"

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "power_balance"
-version = "0.16.0"
+version = "1.0.1"
 description = "Python interface for the tokamak power balance model"
 authors = ["UKAEA"]
 
