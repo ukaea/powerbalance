@@ -8,6 +8,7 @@
     alt="Power Balance Models logo">
 </img>
 </p>
+
 # Power Balance Models
 
 [![Power Balance Models](https://github.com/ukaea/powerbalance/actions/workflows/build_run.yml/badge.svg)](https://github.com/ukaea/powerbalance/actions/workflows/build_run.yml) [![codecov](https://codecov.io/gh/ukaea/powerbalance/branch/main/graph/badge.svg?token=F0YNULL1U7)](https://codecov.io/gh/ukaea/powerbalance)
