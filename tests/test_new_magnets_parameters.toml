@@ -1,0 +1,244 @@
+ThermalPower = 1000 # Unit in MW. Used for profile generation when available.
+                    # Keyword, do not change or remove
+# ============================= HCD SYSTEM ================================= #
+[hcdsystem]
+HeatToAir = 0.20 # fraction of HCD power loss that ends up in
+                 # the waste heat system
+useEffValue = false
+effNINI = 0.4
+effRF = 0.5
+
+[hcdsystem.negativeIonNeutralInjector]
+beamEnergy = 1
+efficiencyNeutralization = 0.58
+NBIThermalPowerMaxMW = 109
+
+# ========================== CRYOGENIC POWER =============================== #
+[cryogenicpower]
+HeatToAir = 0.20 # fraction of HCD power loss that ends up in the waste heat system
+cryoFlow_HydrogenFreezing = 3.5 # cryogenic mass flow rate for freezing hydrogen for fuel matter injection (g/s)
+cryoTemp_TF = 4 # temperature of the TF coolant (K)
+cryoTemp_PF = 4 # temperature of the PF coolant (K) (might have to be split)
+PFcrMW = 0.00071 # PF conduction and radiation losses (MW)
+
+#Cryodistillation (CD) Model
+[cryogenicpower.CD]
+FBCol_2 = 0.0003902222222222223 # Flowrate of column 1 bottoms to column 2 top (kg/s)
+FBCol_3 = 0.0001944444444444444 # Flowrate of column 1 sidedraw to column 3 feed (kg/s)
+InputFlowRateCol_1 = 0.0002737777777777778 # Inlet flowrate to column 1 (kg/s)
+InputFlowRateCol_2 = 0.0002755555555555556 # Inlet flowrate to column 2 (kg/s)
+OutputStreamRateCol_1 = 8.638888888888889e-05 # Outlet flowrate from column 1 (kg/s)
+OutputStreamRateCol_2 = 0.0001803333333333333 # Outlet flowrate from column 2 (kg/s)
+OutputStreamRateCol_3 = 5.555555555555556e-05 # Outlet flowrate from column 3 (kg/s)
+OutputStreamRateCol_4 = 0.0001411944444444444 # Outlet flowrate from column 4 (kg/s)
+
+# ====================== WASTE HEAT POWER ============================== #
+[wasteheatpower.wasteHeatCryo]
+# dimensions of the cryogenic plant room, metres
+Height = 3.0
+Length = 120.0
+SystemEfficiency = 0.8
+Width = 45.0
+
+[wasteheatpower.wasteHeatHCD]
+# dimensions of the HCD plant room, metres
+Height = 70.0
+Length = 120.0
+SystemEfficiency = 0.8
+Width = 100.0
+
+[wasteheatpower.WasteHeatMagnets]
+# dimensions of the magnet power converters room, metres
+Height = 3.0
+Length = 150.0
+SystemEfficiency = 0.8
+Width = 30.0
+
+# ========================== MAGNET POWER ================================== #
+#                                                                            #
+#   Parameters                                                               #
+#   ----------                                                               #
+#   numCoils: int                                                            #
+#       the number of coils of this particular configuration                 #
+#   Vdrop: float                                                             #
+#       voltage drop across the power converter that drives                  #
+#       the I*V power loss, assumed constant (V)                             #
+#   Rfeeder: float                                                           #
+#       resistance of the feeders for the particular magnet (Ohm)            #
+#   nTurn: int                                                               #
+#       number of current turns                                              #
+#   coilLength: float                                                        #
+#       the circumference of the coil (one turn only) (m)                    #
+#   maxCurrent: float                                                        #
+#       the peak rated current per turn.                                     #
+#       Used for profile generation when available.                          #
+#   Feeder_Qk: float                                                         #
+#       heat conduction loss through feeder divided by                       #
+#       the maximum current through coil (W/kA/lead)                         #
+#   Feeder_m: float                                                          #
+#       coolant mass flow rate in feeders' heat exchanger                    #
+#       divided by the maximum current through coil (g/s/kA/lead)            #
+#   L: float                                                                 #
+#       coil inductance (H)                                                  #
+#   PSUefficiency: float                                                     #
+#       the efficiency from 0 to 1 of the magnet's power supply unit         #
+#       (does not have an effect unless useSuperconModel = false)            #
+#   Rcoil: float                                                             #
+#       resistance of the coil (no joints)                                   #
+#   Rjoint: float                                                            #
+#       resistance of an individual joint                                    #
+#   JpTurn: int                                                              #
+#       number of joints per turn                                            #
+#                                                                            #
+# ========================================================================== #
+
+[magnetpower.magnetPF1]
+numCoils = 1
+Vdrop = 1.45
+Rfeeder = 1e-9
+nTurn = 200.0
+maxCurrent = 10e3 # keyword, do not change name or remove
+coilLength = 10
+Feeder_Qk = 0.198
+Feeder_m = 0.069
+Lself = 0.02
+neutronicsPower = 1000
+PSUefficiency = 0.95
+Rcoil = 1e-32
+Rjoint = 1e-9
+JpTurn = 0
+
+[magnetpower.magnetPF2]
+numCoils = 1
+Vdrop = 1.45
+Rfeeder = 1e-9
+nTurn = 200.0
+maxCurrent = 10e3 # keyword, do not change name or remove
+coilLength = 10
+Feeder_Qk = 0.198
+Feeder_m = 0.069
+Lself = 0.02
+neutronicsPower = 1000
+PSUefficiency = 0.95
+Rcoil = 1e-32
+Rjoint = 1e-9
+JpTurn = 0
+
+[magnetpower.magnetPF3]
+numCoils = 1
+Vdrop = 1.45
+Rfeeder = 1e-9
+nTurn = 200.0
+maxCurrent = 10e3 # keyword, do not change name or remove
+coilLength = 10
+Feeder_Qk = 0.198
+Feeder_m = 0.069
+Lself = 0.02
+neutronicsPower = 1000
+PSUefficiency = 0.95
+Rcoil = 1e-32
+Rjoint = 1e-9
+JpTurn = 0
+
+[magnetpower.magnetPF4]
+numCoils = 1
+Vdrop = 1.45
+Rfeeder = 1e-9
+nTurn = 200.0
+maxCurrent = 10e3 # keyword, do not change name or remove
+coilLength = 10
+Feeder_Qk = 0.198
+Feeder_m = 0.069
+Lself = 0.02
+neutronicsPower = 1000
+PSUefficiency = 0.95
+Rcoil = 1e-32
+Rjoint = 1e-9
+JpTurn = 0
+
+[magnetpower.magnetPF5]
+numCoils = 1
+Vdrop = 1.45
+Rfeeder = 1e-9
+nTurn = 200.0
+maxCurrent = 10e3 # keyword, do not change name or remove
+coilLength = 10
+Feeder_Qk = 0.198
+Feeder_m = 0.069
+Lself = 0.02
+neutronicsPower = 1000
+PSUefficiency = 0.95
+Rcoil = 1e-32
+Rjoint = 1e-9
+JpTurn = 0
+
+[magnetpower.magnetPF6]
+numCoils = 1
+Vdrop = 1.45
+Rfeeder = 1e-9
+nTurn = 200.0
+maxCurrent = 10e3 # keyword, do not change name or remove
+coilLength = 10
+Feeder_Qk = 0.198
+Feeder_m = 0.069
+Lself = 0.02
+neutronicsPower = 1000
+PSUefficiency = 0.95
+Rcoil = 1e-32
+Rjoint = 1e-9
+JpTurn = 0
+
+[magnetpower.magnetPF7]
+numCoils = 1
+Vdrop = 1.45
+Rfeeder = 1e-9
+nTurn = 200.0
+maxCurrent = 10e3 # keyword, do not change name or remove
+coilLength = 10
+Feeder_Qk = 0.198
+Feeder_m = 0.069
+Lself = 0.02
+neutronicsPower = 1000
+PSUefficiency = 0.95
+Rcoil = 1e-32
+Rjoint = 1e-9
+JpTurn = 0
+
+[magnetpower.magnetPF8]
+numCoils = 1
+Vdrop = 1.45
+Rfeeder = 1e-9
+nTurn = 200.0
+maxCurrent = 10e3 # keyword, do not change name or remove
+coilLength = 10
+Feeder_Qk = 0.198
+Feeder_m = 0.069
+Lself = 0.02
+neutronicsPower = 1000
+PSUefficiency = 0.95
+Rcoil = 1e-32
+Rjoint = 1e-9
+JpTurn = 0
+
+[magnetpower.magnetTF]
+numCoils = 18
+Vdrop = 1.45
+Rfeeder = 1.9e-7
+nTurn = 5.0
+maxCurrent = 10e3 # keyword, do not change name or remove
+coilLength = 10
+Feeder_Qk = 0.198
+Feeder_m = 0.069
+Lself = 1
+neutronicsPower = 10e3
+PSUefficiency = 0.95
+Rcoil = 1
+JpTurn = 4
+Rjoint_Supercon = 200e-9
+Rjoint_Resistive = 20e-9
+
+# ========================== POWER GENERATION ============================== #
+[powergenerated]
+usePowergenEffValue = false
+powergenEff = 0.45
+
