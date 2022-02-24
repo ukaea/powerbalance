@@ -68,14 +68,12 @@ def test_parameter_set(pbm_run: PowerBalance):
     _TEST_VAL = 2
 
     _out_name = _param_name.split(".")[2:]
-    _out_name[-1] = f'__{_out_name[-1]}'
+    _out_name[-1] = f"__{_out_name[-1]}"
     _out_name = ".".join(_out_name)
 
     _xml_file = glob.glob(
         os.path.join(
-            os.path.dirname(
-                pbm_run.pydelica_session._binaries[pbm_run.model_example]
-            ),
+            os.path.dirname(pbm_run.pydelica_session._binaries[pbm_run.model_example]),
             "*_init.xml",
         )
     )[0]
@@ -85,9 +83,7 @@ def test_parameter_set(pbm_run: PowerBalance):
 
     # Need to manually write the parameters as this usually only happens when
     # the PyDelica method 'simulate' is called
-    pbm_run.pydelica_session._model_parameters[
-        pbm_run.model_example
-    ].write_params()
+    pbm_run.pydelica_session._model_parameters[pbm_run.model_example].write_params()
 
     with open(_xml_file) as xml_f:
         _lines = xml_f.readlines()
@@ -168,7 +164,7 @@ def test_sweep_assembly():
     _test_sweep_dict = {
         "var_A": [10, 23, 34, 45],
         "var_B": [34, 23],
-        "var_C": [54, 123, 65, 23]
+        "var_C": [54, 123, 65, 23],
     }
     pbm = PowerBalance()
     with pytest.raises(AssertionError):

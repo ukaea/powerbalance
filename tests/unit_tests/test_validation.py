@@ -7,7 +7,9 @@ import toml
 
 from power_balance.validation.config import ConfigModel
 from power_balance.validation.modelica_simulation_options import (
-    PlasmaScenario, SimOptsModel)
+    PlasmaScenario,
+    SimOptsModel,
+)
 
 _BAD_CONFIG = os.path.join(
     pathlib.Path(os.path.join(os.path.dirname(__file__))).parent, "bad_config.toml"
