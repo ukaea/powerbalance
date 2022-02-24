@@ -51,3 +51,14 @@ jobs:
       - uses: actions/checkout@v2
       - name: Check Code with Black
         uses: psf/black@stable
+
+  unused_imports:
+    name: Run Unused Python Import Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - name: Install Unimport
+        run: python -m pip install unimport
+      - name: Check Imports
+        run: unimport --check --diff
