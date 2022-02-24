@@ -129,3 +129,10 @@ PBM where possible keeps to a strict following of the semantic versioning standa
 
 !!! note "Pre-Release"
     Note versions prior to `v1.0.0` may follow a looser standard.
+
+## Using Git Prehooks
+It is strongly recommended that the pre-commit git hooks be installed to catch any issues with code quality, file size and merge conflict remnants. In order to install the git hooks within the repository install `pre-commit` via pip (this is already present if using `poetry` to develop), and run:
+```sh
+pre-commit install
+```
+to update your local `.git/hooks/pre-commit` file. Whenever you create a commit if there are any issues with it these will be flagged before you are allowed to continue.

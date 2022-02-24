@@ -149,16 +149,15 @@ def extract_models_from_file(
             else:
                 _existing_models.append(model.name)
         _find_submodel = [
-            i.strip() for i in _existing_models
+            i.strip()
+            for i in _existing_models
             if re.findall(f"^\\s*{i}", line, re.IGNORECASE)
         ]
         if _find_package:
             _current_package += [_find_package[0]]
         elif _find_submodel:
             _var_name = re.findall(
-                f"^\\s*{_find_submodel[0]}\\s([a-z0-9]+)\\s*",
-                line,
-                re.IGNORECASE
+                f"^\\s*{_find_submodel[0]}\\s([a-z0-9]+)\\s*", line, re.IGNORECASE
             )
             _current_submodels[_find_submodel[0].strip()] = _var_name[0].strip()
         elif _find_model:

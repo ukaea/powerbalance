@@ -20,7 +20,7 @@ __date__ = "2021-06-10"
 
 import glob
 import os
-from typing import Dict, Any, Tuple
+from typing import Any, Dict, Tuple
 
 import numpy as np
 import scipy.io as sio

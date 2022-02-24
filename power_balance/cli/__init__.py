@@ -9,20 +9,20 @@ and viewing profile files used as inputs.
 
 __date__ = "2021-06-08"
 
+import glob
 import os
 import pathlib
 import shutil
-import glob
 
 import click
 
 import power_balance.cli.session as pbm_session
 import power_balance.configs as pbm_conf
 import power_balance.core
+import power_balance.parameters as pbm_param
 import power_balance.plotting as pbm_plot
 import power_balance.plugins as pbm_plugin
 import power_balance.profiles as pbm_prof
-import power_balance.parameters as pbm_param
 
 
 @click.group()
@@ -84,17 +84,15 @@ def generate_profiles(outdir: str = "") -> None:
 def new(output_dir: str) -> None:
     """Create a new project folder with modifiable a parameter set"""
     os.makedirs(output_dir)
-    _params = glob.glob(os.path.join(
-        pathlib.Path(__file__).parents[1],
-        "parameters",
-        "*.toml"
-    ))
+    _params = glob.glob(
+        os.path.join(pathlib.Path(__file__).parents[1], "parameters", "*.toml")
+    )
 
     # Need to remove the "DO NOT EDIT" lines
     for param_file in _params:
         _out_file = os.path.join(output_dir, os.path.basename(param_file))
         pbm_param.remove_do_not_edit_header(param_file, _out_file)
-    
+
     click.echo(f"Created new parameter set directory '{os.path.abspath(output_dir)}'")
 
 

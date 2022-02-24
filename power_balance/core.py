@@ -244,14 +244,17 @@ class PowerBalance:
             {prefix: f"{prefix}.maxcurrent" for prefix in _max_current_prefixes}
         )
 
-        return {key: next(
+        return {
+            key: next(
                 (
                     self._parameter_set.get_parameter(k)
                     for k in self._parameter_set
                     if max_val_search_str in k
                 ),
                 None,  # type: ignore
-            ) for key, max_val_search_str in _max_val_mappings.items()}
+            )
+            for key, max_val_search_str in _max_val_mappings.items()
+        }
 
     def _check_profiles(self) -> None:
         """Check if profiles exist within the directory, else generate them
@@ -824,9 +827,11 @@ class PowerBalance:
             if include_undefined or value["value"]
         }
 
-    def _fuzzy_param_search(self, parameter_search_str: str) -> typing.Optional[typing.Any]:
+    def _fuzzy_param_search(
+        self, parameter_search_str: str
+    ) -> typing.Optional[typing.Any]:
         """Loosest form of parameter search for when parameter not directly recognised
-        
+
         Parameters
         ----------
         parameter_search_str : str
@@ -1334,7 +1339,7 @@ class PowerBalance:
                 )
             else:
                 self.power_data[model] = _result_dict[model]
-    
+
     def _assemble_sweep_combos(self, sweep_dict: typing.Dict, var_len: int):
         for var_val_list in sweep_dict.values():
             if len(var_val_list) != var_len:
@@ -1344,10 +1349,7 @@ class PowerBalance:
                     "{} != {}".format(len(var_val_list), var_len)
                 )
 
-        return [
-            (value[i] for value in sweep_dict.values()) for i in range(var_len)
-        ]
-
+        return [(value[i] for value in sweep_dict.values()) for i in range(var_len)]
 
     def _perform_sweeps(self, sweep_dict):
         # If a sweep dict is not specified by argument, retrieve it from
@@ -1390,7 +1392,7 @@ class PowerBalance:
                     continue
 
                 self.set_model_parameters(model_name=model)
-            
+
             self._collate_sweep_run_dfs(i, _dict_combo)
 
     def _write_outputs(self, output_directory: str):

@@ -2,9 +2,9 @@ import deepdiff
 import pytest
 
 from power_balance.utilities import (
-    flatten_dictionary,
-    expand_dictionary,
     convert_to_value,
+    expand_dictionary,
+    flatten_dictionary,
 )
 
 
