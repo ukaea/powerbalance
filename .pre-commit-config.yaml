@@ -1,10 +1,10 @@
 repos:
   - repo: https://github.com/hakancelik96/unimport
-    rev: stable
+    rev: 0.9.4
     hooks:
       - id: unimport
         args:
-          ['--remove', '--check', '--include-start-import']
+          ['--remove', '--check', '--include-star-import']
   - repo: https://github.com/pycqa/isort
     rev: 5.10.1
     hooks:
