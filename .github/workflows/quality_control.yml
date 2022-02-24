@@ -22,14 +22,27 @@ jobs:
         run: |
           git clone https://github.com/modelica-tools/ModelicaSyntaxChecker.git
           ${GITHUB_WORKSPACE}/ModelicaSyntaxChecker/Linux64/moparser -c -l -r power_balance/
+  
   bandit_security_check:
     name: Bandit Security Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: mdegis/bandit-action@v1.0
+      - uses: jpetrucciani/bandit-check@master
         with: 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ini_path: bandit.yml
-          exit_zero: false
+          bandit_flags: '-c bandit.yml'
           path: power_balance
+
+  reformatting:
+    name: Reformat Python Code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v2
+      - name: Sort Imports
+        uses: isort/isort-action@master
+      - name: Reformat Code with Black
+        uses: psf/black@stable
+

@@ -11,6 +11,7 @@ __date__ = "2021-12-01"
 import typing
 
 import jinja2
+
 import power_balance.exceptions as pbm_exc
 from power_balance.models import MODEL_FILES
 

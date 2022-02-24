@@ -23,13 +23,16 @@ __date__ = "2021-06-08"
 import os
 import typing
 
-import power_balance.utilities as pbm_utils
 import toml
+
+import power_balance.utilities as pbm_utils
 
 config_default = os.path.join(os.path.dirname(__file__), "default_config.toml")
 
 
-def read_options_from_config(config_file: str) -> typing.MutableMapping[str, typing.Any]:
+def read_options_from_config(
+    config_file: str,
+) -> typing.MutableMapping[str, typing.Any]:
     """Read in options for this PBM instance from config file
 
     Parameters

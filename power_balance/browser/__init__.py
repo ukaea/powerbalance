@@ -21,8 +21,8 @@ __date__ = "2021-06-10"
 import glob
 import logging
 import os
-import webbrowser
 import typing
+import webbrowser
 
 import numpy as np
 import pandas as pd

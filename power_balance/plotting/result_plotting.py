@@ -19,7 +19,7 @@ Classes
 __date__ = "2021-06-10"
 
 import itertools
-from typing import List, Dict, Any, MutableMapping, Tuple
+from typing import Any, Dict, List, MutableMapping, Tuple
 
 import numpy as np
 from bokeh.embed import components

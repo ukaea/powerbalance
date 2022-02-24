@@ -19,7 +19,9 @@ import power_balance.parameters as pbm_params
 logger = logging.getLogger("PowerBalance.PFMagnetExtension")
 
 
-def get_pfmagnet_ids_from_params(parameter_set: pbm_params.PBMParameterSet) -> typing.List[int]:
+def get_pfmagnet_ids_from_params(
+    parameter_set: pbm_params.PBMParameterSet,
+) -> typing.List[int]:
     """Extracts the IDs of PF magnets within the current parameter set
 
     Parameters
@@ -91,9 +93,7 @@ def generate_pfmagnets(parameter_set: pbm_params.PBMParameterSet) -> str:
         _combi_table_selections.append((i, _selection))
 
     # Only add extra magnets for values above the default 6
-    _magnet_models = [
-        pbm_mo_struct.PFMagModel(*ctt) for ctt in _combi_table_selections
-    ]
+    _magnet_models = [pbm_mo_struct.PFMagModel(*ctt) for ctt in _combi_table_selections]
 
     logger.debug(_magnet_models)
 

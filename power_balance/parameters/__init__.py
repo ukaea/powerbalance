@@ -49,7 +49,7 @@ def remove_do_not_edit_header(parameter_file: str, output_file: str) -> None:
     # Do not edit header covers two lines so need index of the actual statement
     # line and the next
     _dne_line = [i for i, line in enumerate(_file_lines) if "DO NOT EDIT" in line]
-    _dne_line.extend(line_index+1 for line_index in _dne_line.copy())
+    _dne_line.extend(line_index + 1 for line_index in _dne_line.copy())
     _out_lines = _file_lines.copy()
     for line_i in _dne_line:
         _out_lines.remove(_file_lines[line_i])
@@ -385,7 +385,7 @@ class PBMParameterSet(MutableMapping):
 
             _dict = {k.lower(): v for k, v in _dict.items()}
 
-            _dict = {f'{_name}.{k}': v for k, v in _dict.items()}
+            _dict = {f"{_name}.{k}": v for k, v in _dict.items()}
 
             _params.update(_dict)
 
@@ -588,7 +588,7 @@ class PBMParameterSet(MutableMapping):
                 _file_in_param = os.path.splitext(_filename)[0]
                 _file_in_param = _file_in_param.replace("_", ".")
                 if _file_in_param in param:
-                    _new_param_name = param.replace(f'{_file_in_param}.', "")
+                    _new_param_name = param.replace(f"{_file_in_param}.", "")
                     _out_files[_filename][_new_param_name] = pbm_util.convert_to_value(
                         value
                     )
