@@ -12,13 +12,12 @@ __date__ = "2021-06-08"
 import glob
 import os
 import pathlib
-import shutil
 
 import click
 
+import power_balance
 import power_balance.cli.session as pbm_session
 import power_balance.configs as pbm_conf
-import power_balance.core
 import power_balance.parameters as pbm_param
 import power_balance.plotting as pbm_plot
 import power_balance.plugins as pbm_plugin

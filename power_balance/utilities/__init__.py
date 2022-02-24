@@ -8,7 +8,7 @@ Contains assorted utility functions used within the Power Balance API
 
 __date__ = "2021-06-08"
 
-from typing import Any, Dict, MutableMapping
+from typing import Any, Dict
 
 
 def convert_to_value(value_str: Any) -> Any:
