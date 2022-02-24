@@ -11,7 +11,7 @@
 
 # Power Balance Models
 
-[![Power Balance Models](https://github.com/ukaea/powerbalance/actions/workflows/build_run.yml/badge.svg)](https://github.com/ukaea/powerbalance/actions/workflows/build_run.yml) [![codecov](https://codecov.io/gh/ukaea/powerbalance/branch/main/graph/badge.svg?token=F0YNULL1U7)](https://codecov.io/gh/ukaea/powerbalance)
+[![Power Balance Models](https://github.com/ukaea/powerbalance/actions/workflows/build_run.yml/badge.svg)](https://github.com/ukaea/powerbalance/actions/workflows/build_run.yml) [![codecov](https://codecov.io/gh/ukaea/powerbalance/branch/main/graph/badge.svg?token=F0YNULL1U7)](https://codecov.io/gh/ukaea/powerbalance) [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 A power balance model which combines power consumption and power generation data to assess the net power production of different designs for a tokamak power plant.
 
