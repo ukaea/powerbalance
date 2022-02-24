@@ -13,10 +13,8 @@ import pytest
 import toml
 
 import power_balance.core
-from power_balance.calc.efficiencies import (
-    calc_heating_to_elec_eff,
-    calc_thermal_to_elec_eff,
-)
+from power_balance.calc.efficiencies import (calc_heating_to_elec_eff,
+                                             calc_thermal_to_elec_eff)
 from power_balance.profiles import generate_all
 
 

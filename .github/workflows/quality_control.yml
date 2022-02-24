@@ -33,16 +33,20 @@ jobs:
           bandit_flags: '-c bandit.yml'
           path: power_balance
 
-  reformatting:
-    name: Reformat Python Code
+  import_sort:
+    name: Run Python Import Order Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v2
-      - name: Sort Imports
+      - name: Check Imports
         uses: isort/isort-action@master
-      - name: Reformat Code with Black
+
+  black_linter:
+    name: Run Black Python Linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check Code with Black
         uses: psf/black@stable
 
