@@ -289,8 +289,28 @@ jobs:
       - uses: Gr1N/setup-poetry@v7
       - name: Install virtual environment
         run: poetry install
+      - name: Configure Git credentials
+        uses: OleksiyRudenko/gha-git-credentials@v2
+        with:
+          email: action@github.com
+          token: '${{ secrets.GITHUB_TOKEN }}'
       - name: Deploy Docs
-        run: poetry run mkdocs gh-deploy
+        run: |
+          poetry run mkdocs build
+          git checkout gh-pages
+          mv site/* .
+          rm -rf site
+          git config advice.addIgnoredFile false
+          git add -f *
+          git commit -m "Updated Documentation site, $(date)" || echo "No changes to commit"
+      - name: Push Website
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          branch: gh-pages
+          force: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
+    
       
 
 
