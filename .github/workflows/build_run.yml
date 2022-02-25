@@ -246,7 +246,7 @@ jobs:
         force: true
         github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Create Webpage
-      run: asv publish --config benchmarks/asv_config.json --html-dir benchmarks_site
+      run: asv publish --config benchmarks/asv_config.json --html-dir site
     - name: Add Website
       run: |
         if [[ `git ls-remote --heads origin gh-pages` ]]
@@ -255,7 +255,9 @@ jobs:
         else
           git checkout -b gh-pages
         fi
-        mv benchmarks_site benchmarks
+        mv benchmarks/site site
+        rm -rf benchmarks
+        mv site benchmarks
         git add -f benchmarks/*
         git commit -m "Updated ASV site, $(date)" || echo "No changes to commit"
     - name: Push Website
