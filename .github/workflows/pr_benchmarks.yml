@@ -1,14 +1,10 @@
 on:
-  pull_request:
-    types:
-      - labeled
-      - edited
-      - opened
+  pull_request
 
 jobs:
   benchmark_diff:
     name: Benchmark Tests
-    if: ${{ github.event.label.name == 'benchmark' && github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' || contains( github.event.pull_request.labels.*.name, 'benchmark') }}
+    if: ${{ contains( github.event.pull_request.labels.*.name, 'benchmark') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,7 +15,7 @@ jobs:
         run: |
           python -m pip install asv virtualenv click
           python benchmarks/generate_asv_config.py --results-output-dir asv_benchmarks/results
-          asv machine --yes
+          asv machine --yes --config benchmarks/asv_config.json
       - name: Run Benchmarks
         run: |
           # Run benchmarks for current commit against base
