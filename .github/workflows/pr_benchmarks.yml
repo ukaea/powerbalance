@@ -1,4 +1,4 @@
-name: ASV Benchmark Tests
+name: ASV Benchmark Tests (PR)
 on:
   pull_request
 
