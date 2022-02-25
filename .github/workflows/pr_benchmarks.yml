@@ -1,9 +1,10 @@
+name: ASV Benchmark Tests
 on:
   pull_request
 
 jobs:
   benchmark_diff:
-    name: Benchmark Tests
+    name: Run Benchmark Diff
     if: ${{ contains( github.event.pull_request.labels.*.name, 'benchmark') }}
     runs-on: ubuntu-latest
     steps:
@@ -17,8 +18,13 @@ jobs:
           python benchmarks/generate_asv_config.py --results-output-dir asv_benchmarks/results
           asv machine --yes --config benchmarks/asv_config.json
       - name: Run Benchmarks
+        shell: bash -l {0}
         run: |
-          # Run benchmarks for current commit against base
+          set -x
+          mkdir asv_benchmarks
+          # Run benchmarks for current commit against base (based on similar pipeline in Scikit-Image GH repo)
+          echo "Baseline:  ${{ github.event.pull_request.base.sha }} (${{ github.event.pull_request.base.label }})"
+          echo "Contender: ${GITHUB_SHA} (${{ github.event.pull_request.head.label }})"
           ASV_OPTIONS="--split --show-stderr --config benchmarks/asv_config.json"
           asv continuous $ASV_OPTIONS ${{ github.event.pull_request.base.sha }} ${GITHUB_SHA} \
               | sed "/Traceback \|failed$\|PERFORMANCE DECREASED/ s/^/::error::/" \
