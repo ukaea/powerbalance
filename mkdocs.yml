@@ -76,6 +76,7 @@ nav:
       - Poetry: API/poetry.md
       - Code Coverage: coverage.md
       - Plugin Creation: API/plugins.md
+      - Benchmarks: '/benchmarks/'
 plugins:
   - search
   - coverage
@@ -87,7 +88,7 @@ repo_name: GitHub
 repo_url: https://github.com/ukaea/powerbalance
 site_description: Documentation for the Power Balance Models API
 site_name: Power Balance Models
-site_url: http://step.gitpages.ccfe.ac.uk/powerinfrastructure/powerbalance
+site_url: https://ukaea.github.io/powerbalance/docs
 theme:
   favicon: images/favicon.png
   icon:
