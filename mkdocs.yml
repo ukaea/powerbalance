@@ -76,7 +76,7 @@ nav:
       - Poetry: API/poetry.md
       - Code Coverage: coverage.md
       - Plugin Creation: API/plugins.md
-      - Benchmarks: '/benchmarks/'
+      - Benchmarks: '/powerbalance/benchmarks/'
 plugins:
   - search
   - coverage
