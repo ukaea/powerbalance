@@ -57,7 +57,7 @@ import click
     "-n",
     "--name",
     help="project name, defaults to parent directory",
-    default="powerbalance",
+    default="power_balance",
 )
 @click.option(
     "--url", help="Repository URL", default="https://github.com/ukaea/powerbalance"
@@ -149,9 +149,9 @@ shutil.move('dist', os.path.join('{build_dir}', 'dist'))"""
         f'python -c "{_py_script}"',
     ]
 
-    _uninstall_cmds = ["return-code=any python -mpip uninstall -y powerbalance"]
+    _uninstall_cmds = ["return-code=any python -mpip uninstall -y {project}"]
     _install_cmds = [
-        "in-dir={build_dir} python -mpip install --find-links=dist/ powerbalance"
+        "in-dir={build_dir} python -mpip install --find-links=dist/ {project}"
     ]
 
     _req_file_candidate = os.path.join(repo_dir, "requirements.txt")

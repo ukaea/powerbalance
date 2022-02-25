@@ -22,7 +22,7 @@ jobs:
       - name: Run Benchmarks
         shell: bash -l {0}
         run: |
-          set -x
+          set -ex
           mkdir asv_benchmarks
           # Run benchmarks for current commit against base (based on similar pipeline in Scikit-Image GH repo)
           echo "Baseline:  ${{ github.event.pull_request.base.sha }} (${{ github.event.pull_request.base.label }})"
