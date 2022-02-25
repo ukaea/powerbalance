@@ -8,5 +8,5 @@ class ImportPowerBalance:
 
     def timeraw_import_powerbalance(self):
         return """
-        import powerbalance
+        import power_balance
         """
