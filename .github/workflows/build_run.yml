@@ -249,7 +249,7 @@ jobs:
       run: |
         if [[ `git ls-remote --heads origin gh-pages` ]]
         then
-          git checkout origin/benchmarks -b gh-pages
+          git checkout origin/gh-pages -b gh-pages
           git checkout ${GITHUB_REF_NAME}
           git checkout gh-pages
           git branch -D gh-pages
@@ -261,7 +261,7 @@ jobs:
       run: |
         git add -f benchmarks/*
         git commit -m "Updated ASV site, $(date)" || echo "No changes to commit"
-    - name: Push Results
+    - name: Push Website
       uses: ad-m/github-push-action@v0.6.0
       with:
         branch: gh-pages
