@@ -220,7 +220,7 @@ jobs:
     - name: Setup ASV
       run: |
         python -m pip install asv virtualenv click
-        python benchmarks/generate_asv_config.py --results-output-dir asv_benchmarks/results
+        python benchmarks/generate_asv_config.py --results-output-dir results
         asv machine --yes --config benchmarks/asv_config.json
     - name: Retrieve Previous Data
       run: |
@@ -234,7 +234,7 @@ jobs:
         git checkout -b benchmarks
         mkdir -p benchmarks/results
     - name: Run ASV
-      run: asv --config benchmarks/asv_config.json run --show-stderr --record-samples --profile --verbose
+      run: asv --config benchmarks/asv_config.json run --show-stderr --append-samples --verbose
     - name: Add Results
       run: |
         git add -f benchmarks/results/*
@@ -298,7 +298,7 @@ jobs:
         run: |
           poetry run mkdocs build
           git checkout gh-pages
-          mv site/* .
+          rsync -r site/* .
           rm -rf site
           git config advice.addIgnoredFile false
           git add -f *
