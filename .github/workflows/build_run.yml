@@ -245,20 +245,17 @@ jobs:
         branch: benchmarks
         force: true
         github_token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Retrieve Previous Site
+    - name: Create Webpage
+      run: asv publish --config benchmarks/asv_config.json --html-dir benchmarks_site
+    - name: Add Website
       run: |
         if [[ `git ls-remote --heads origin gh-pages` ]]
         then
           git checkout origin/gh-pages -b gh-pages
-          git checkout ${GITHUB_REF_NAME}
-          git checkout gh-pages
-          git branch -D gh-pages
+        else
+          git checkout -b gh-pages
         fi
-        git checkout -b gh-pages
-    - name: Create Webpage
-      run: asv publish --config benchmarks/asv_config.json --html-dir benchmarks
-    - name: Add Website
-      run: |
+        mv benchmarks_site benchmarks
         git add -f benchmarks/*
         git commit -m "Updated ASV site, $(date)" || echo "No changes to commit"
     - name: Push Website
@@ -281,7 +278,7 @@ jobs:
       - name: Install virtual environment
         run: poetry install
       - name: Deploy Docs
-        run: poetry run gh-deploy
+        run: poetry run mkdocs gh-deploy
       
 
 
