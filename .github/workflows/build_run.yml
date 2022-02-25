@@ -214,6 +214,7 @@ jobs:
       uses: OleksiyRudenko/gha-git-credentials@v2
       with:
         email: action@github.com
+        token: '${{ secrets.GITHUB_TOKEN }}'
     - name: Set up Python
       uses: actions/setup-python@v2
     - name: Setup ASV
@@ -243,6 +244,7 @@ jobs:
       with:
         branch: benchmarks
         force: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
     - name: Retrieve Previous Site
       run: |
         if [[ `git ls-remote --heads origin gh-pages` ]]
@@ -264,6 +266,7 @@ jobs:
       with:
         branch: gh-pages
         force: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
   build_pages:
     runs-on: ubuntu-latest
     name: Build Documentation Site
