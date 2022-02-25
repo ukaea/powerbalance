@@ -149,9 +149,9 @@ shutil.move('dist', os.path.join('{build_dir}', 'dist'))"""
         f'python -c "{_py_script}"',
     ]
 
-    _uninstall_cmds = ["return-code=any python -mpip uninstall -y power_balance"]
+    _uninstall_cmds = ["return-code=any python -mpip uninstall -y powerbalance"]
     _install_cmds = [
-        "in-dir={build_dir} python -mpip install --find-links=dist/ power_balance"
+        "in-dir={build_dir} python -mpip install --find-links=dist/ powerbalance"
     ]
 
     _req_file_candidate = os.path.join(repo_dir, "requirements.txt")
