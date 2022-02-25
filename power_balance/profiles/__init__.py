@@ -1207,13 +1207,11 @@ def generate_all(
         a dictionary containing information about the maximum currents and powers
         for each profile in the format {'system name': value}
     """
-    _dir = os.path.join(output_directory)
-
     if not max_values:
         max_values = {}
 
     gen_pf1coil_current_profile(
-        output_directory=_dir,
+        output_directory=output_directory,
         time_range=time_range,
         stop_time=stop_time,
         time_step=time_step,
@@ -1221,7 +1219,7 @@ def generate_all(
     )
 
     gen_pf2coil_current_profile(
-        output_directory=_dir,
+        output_directory=output_directory,
         time_range=time_range,
         stop_time=stop_time,
         time_step=time_step,
@@ -1229,7 +1227,7 @@ def generate_all(
     )
 
     gen_pf3coil_current_profile(
-        output_directory=_dir,
+        output_directory=output_directory,
         time_range=time_range,
         stop_time=stop_time,
         time_step=time_step,
@@ -1237,7 +1235,7 @@ def generate_all(
     )
 
     gen_pf4coil_current_profile(
-        output_directory=_dir,
+        output_directory=output_directory,
         time_range=time_range,
         stop_time=stop_time,
         time_step=time_step,
@@ -1245,7 +1243,7 @@ def generate_all(
     )
 
     gen_pf5coil_current_profile(
-        output_directory=_dir,
+        output_directory=output_directory,
         time_range=time_range,
         stop_time=stop_time,
         time_step=time_step,
@@ -1253,7 +1251,7 @@ def generate_all(
     )
 
     gen_pf6coil_current_profile(
-        output_directory=_dir,
+        output_directory=output_directory,
         time_range=time_range,
         stop_time=stop_time,
         time_step=time_step,
@@ -1261,7 +1259,7 @@ def generate_all(
     )
 
     gen_tfcoil_current_profile(
-        output_directory=_dir,
+        output_directory=output_directory,
         time_range=time_range,
         stop_time=stop_time,
         time_step=time_step,
@@ -1269,7 +1267,7 @@ def generate_all(
     )
 
     gen_cscoil_current_profile(
-        output_directory=_dir,
+        output_directory=output_directory,
         time_range=time_range,
         stop_time=stop_time,
         time_step=time_step,
@@ -1277,7 +1275,7 @@ def generate_all(
     )
 
     gen_rfheat_profile(
-        output_directory=_dir,
+        output_directory=output_directory,
         time_range=time_range,
         stop_time=stop_time,
         time_step=time_step,
@@ -1285,7 +1283,7 @@ def generate_all(
     )
 
     gen_nbiheat_profile(
-        output_directory=_dir,
+        output_directory=output_directory,
         time_range=time_range,
         stop_time=stop_time,
         time_step=time_step,
@@ -1293,7 +1291,7 @@ def generate_all(
     )
 
     gen_thermalpowerout_profile(
-        output_directory=_dir,
+        output_directory=output_directory,
         time_range=time_range,
         stop_time=stop_time,
         time_step=time_step,
@@ -1322,8 +1320,7 @@ def read_profile_to_df(filename: str) -> pd.DataFrame:
     """
     if not os.path.exists(filename):
         raise FileNotFoundError(
-            "Could not load profile from '{}' no such file"
-            "or directory".format(filename)
+            f"Could not load profile from '{filename}' no such file or directory"
         )
 
     _contents_array = sio.loadmat(filename)["data"]
