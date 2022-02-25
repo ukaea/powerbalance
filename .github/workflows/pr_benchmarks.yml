@@ -1,0 +1,36 @@
+on:
+  pull_request:
+    types:
+      - labeled
+
+jobs:
+  benchmark_diff:
+    name: Benchmark Tests
+    if: ${{ github.event.label.name == 'benchmark' && github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - name: Setup ASV
+        run: |
+          python -m pip install asv virtualenv
+          python benchmarks/generate_asv_config.py --results-output-dir asv_benchmarks/results
+          asv machine --yes
+      - name: Run Benchmarks
+        run: |
+          # Run benchmarks for current commit against base
+          ASV_OPTIONS="--split --show-stderr --config benchmarks/asv_config.json"
+          asv continuous $ASV_OPTIONS ${{ github.event.pull_request.base.sha }} ${GITHUB_SHA} \
+              | sed "/Traceback \|failed$\|PERFORMANCE DECREASED/ s/^/::error::/" \
+              | tee asv_benchmarks/benchmarks.log
+          # Report and export results for subsequent steps
+          if grep "Traceback \|failed\|PERFORMANCE DECREASED" asv_benchmarks/benchmarks.log > /dev/null ; then
+              exit 1
+          fi
+      - name: Archive ASV Run
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: asv-results-${{ runner.os }}
+          path: asv_benchmarks
