@@ -133,6 +133,7 @@ jobs:
       - name: Deploy Docs
         run: |
           poetry run mkdocs build
+          git reset --hard
           git checkout gh-pages
           rsync -r site/* .
           rm -rf site
