@@ -2,7 +2,10 @@
 name = "power_balance"
 version = "1.0.1"
 description = "Python interface for the tokamak power balance model"
-authors = ["UKAEA"]
+authors = [
+    "Alexander Petrov <alexander.petrov@ukaea.uk>",
+    "Kristian Zarebski <kristian.zarebski@ukaea.uk>",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8,<3.11"
