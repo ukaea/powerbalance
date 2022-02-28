@@ -95,7 +95,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Documentation Site
     if: ${{ github.ref_name == 'main' }}
-    needs: [run_benchmarks]
+    needs: [run_benchmarks, mkapi_docs]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
