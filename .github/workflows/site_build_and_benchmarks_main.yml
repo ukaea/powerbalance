@@ -126,7 +126,8 @@ jobs:
           path: reference
       - name: Append Reference API
         run: |
-          rsync -r reference/docs docs
+          mkdir -p docs/Reference
+          rsync -r reference/ docs/Reference
           rm -rf reference
           poetry run python docs/append_reference.py
       - name: Deploy Docs
