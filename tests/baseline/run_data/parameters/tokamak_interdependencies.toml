@@ -1,0 +1,185 @@
+thermalpower = 1000
+primarycoolanttype = "FLiBe"
+ratiotype = 2.5
+secondarycoolanttype = "CO2"
+systempressure = 200
+thermalpowerdatapath = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/ThermalPowerOut.mat"
+vacuumtype = "turbo"
+
+[hcdsystem]
+heattoair = 0.2
+useeffvalue = false
+effnini = 0.4
+effrf = 0.5
+nbipowerdatapath = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/NBI_Heat.mat"
+rfpowerdatapath = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/RF_Heat.mat"
+
+[cryogenicpower]
+heattoair = 0.2
+cryoflow_hydrogenfreezing = 3.5
+cryotemp_tf = 4
+cryotemp_pf = 4
+pfcrmw = 0.00071
+
+[magnetpower]
+currentdatapathcs = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentCS.mat"
+currentdatapathpf1 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF1.mat"
+currentdatapathpf2 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF2.mat"
+currentdatapathpf3 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF3.mat"
+currentdatapathpf4 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF4.mat"
+currentdatapathpf5 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF5.mat"
+currentdatapathpf6 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF6.mat"
+currentdatapathtf = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentTF.mat"
+
+[powergenerated]
+usepowergeneffvalue = false
+powergeneff = 0.45
+
+[hcdsystem.negativeionneutralinjector]
+beamenergy = 1
+efficiencyneutralization = 0.58
+nbithermalpowermaxmw = 109
+
+[cryogenicpower.cd]
+fbcol_2 = 0.0003902222222222223
+fbcol_3 = 0.0001944444444444444
+inputflowratecol_1 = 0.0002737777777777778
+inputflowratecol_2 = 0.0002755555555555556
+outputstreamratecol_1 = 8.638888888888889e-5
+outputstreamratecol_2 = 0.0001803333333333333
+outputstreamratecol_3 = 5.555555555555556e-5
+outputstreamratecol_4 = 0.0001411944444444444
+
+[wasteheatpower.wasteheatcryo]
+height = 3.0
+length = 120.0
+systemefficiency = 0.8
+width = 45.0
+stoptime = 60.0
+
+[wasteheatpower.wasteheathcd]
+height = 70.0
+length = 120.0
+systemefficiency = 0.8
+width = 100.0
+stoptime = 60.0
+
+[wasteheatpower.wasteheatmagnets]
+height = 3.0
+length = 150.0
+systemefficiency = 0.8
+width = 30.0
+stoptime = 60.0
+
+[magnetpower.magnetpf1]
+numcoils = 1
+vdrop = 1.45
+rfeeder = 1e-9
+nturn = 200.0
+maxcurrent = 10000.0
+coillength = 10
+feeder_qk = 0.198
+feeder_m = 0.069
+lself = 0.02
+neutronicspower = 1000
+psuefficiency = 0.95
+rcoil = 1e-32
+rjoint = 1e-9
+jpturn = 0
+
+[magnetpower.magnetpf2]
+numcoils = 1
+vdrop = 1.45
+rfeeder = 1e-9
+nturn = 200.0
+maxcurrent = 10000.0
+coillength = 10
+feeder_qk = 0.198
+feeder_m = 0.069
+lself = 0.02
+neutronicspower = 1000
+psuefficiency = 0.95
+rcoil = 1e-32
+rjoint = 1e-9
+jpturn = 0
+
+[magnetpower.magnetpf3]
+numcoils = 1
+vdrop = 1.45
+rfeeder = 1e-9
+nturn = 200.0
+maxcurrent = 10000.0
+coillength = 10
+feeder_qk = 0.198
+feeder_m = 0.069
+lself = 0.02
+neutronicspower = 1000
+psuefficiency = 0.95
+rcoil = 1e-32
+rjoint = 1e-9
+jpturn = 0
+
+[magnetpower.magnetpf4]
+numcoils = 1
+vdrop = 1.45
+rfeeder = 1e-9
+nturn = 200.0
+maxcurrent = 10000.0
+coillength = 10
+feeder_qk = 0.198
+feeder_m = 0.069
+lself = 0.02
+neutronicspower = 1000
+psuefficiency = 0.95
+rcoil = 1e-32
+rjoint = 1e-9
+jpturn = 0
+
+[magnetpower.magnetpf5]
+numcoils = 1
+vdrop = 1.45
+rfeeder = 1e-9
+nturn = 200.0
+maxcurrent = 10000.0
+coillength = 10
+feeder_qk = 0.198
+feeder_m = 0.069
+lself = 0.02
+neutronicspower = 1000
+psuefficiency = 0.95
+rcoil = 1e-32
+rjoint = 1e-9
+jpturn = 0
+
+[magnetpower.magnetpf6]
+numcoils = 1
+vdrop = 1.45
+rfeeder = 1e-9
+nturn = 200.0
+maxcurrent = 10000.0
+coillength = 10
+feeder_qk = 0.198
+feeder_m = 0.069
+lself = 0.02
+neutronicspower = 1000
+psuefficiency = 0.95
+rcoil = 1e-32
+rjoint = 1e-9
+jpturn = 0
+
+[magnetpower.magnettf]
+numcoils = 18
+vdrop = 1.45
+rfeeder = 1.9e-7
+nturn = 5.0
+maxcurrent = 10000.0
+coillength = 10
+feeder_qk = 0.198
+feeder_m = 0.069
+lself = 1
+neutronicspower = 10000.0
+psuefficiency = 0.95
+rcoil = 1
+jpturn = 4
+rjoint_supercon = 2e-7
+rjoint_resistive = 2e-8

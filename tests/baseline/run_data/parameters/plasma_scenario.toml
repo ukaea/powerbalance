@@ -1,15 +1,4 @@
-# To receive appropriate results, ensure that all values are smaller than the simulation length set inside 'simulation_options.toml'
-#
-#
-
-# End of premagnetization, start of plasma ramp-up
-"plasma_ramp_up_start" = 10
-
-# End of plasma ramp-up, start of plasma flat-top (steady-state)
-"plasma_flat_top_start" = 20
-
-# End of plasma burn, start of plasma ramp-down
-"plasma_flat_top_end" = 40
-
-# End of plasma ramp-down, start of demagnetization
-"plasma_ramp_down_end" = 50
+plasma_ramp_up_start = 10
+plasma_flat_top_start = 20
+plasma_flat_top_end = 40
+plasma_ramp_down_end = 50
