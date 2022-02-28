@@ -41,7 +41,7 @@ def test_gen_nbiheat_profile(baseline_data):
         assert np.array_equal(_test, _baseline)
     except AssertionError as e:
         print_failed_values(_test, _baseline)
-        raise e
+        raise e from e
 
 
 @pytest.mark.profile_gen
@@ -52,7 +52,7 @@ def test_gen_rfheat_profile(baseline_data):
         assert np.array_equal(_test, _baseline)
     except AssertionError as e:
         print_failed_values(_test, _baseline)
-        raise e
+        raise e from e
 
 
 @pytest.mark.profile_gen
@@ -63,7 +63,7 @@ def test_gen_tfcoil_current_profile(baseline_data):
         assert np.array_equal(_test, _baseline)
     except AssertionError as e:
         print_failed_values(_test, _baseline)
-        raise e
+        raise e from e
 
 
 @pytest.mark.profile_gen
@@ -74,7 +74,7 @@ def test_gen_cscoil_current_profile(baseline_data):
         assert np.array_equal(_test, _baseline)
     except AssertionError as e:
         print_failed_values(_test, _baseline)
-        raise e
+        raise e from e
 
 
 @pytest.mark.profile_gen
@@ -85,7 +85,7 @@ def test_gen_pf1coil_current_profile(baseline_data):
         assert np.array_equal(_test, _baseline)
     except AssertionError as e:
         print_failed_values(_test, _baseline)
-        raise e
+        raise e from e
 
 
 @pytest.mark.profile_gen
@@ -96,7 +96,7 @@ def test_gen_pf2coil_current_profile(baseline_data):
         assert np.array_equal(_test, _baseline)
     except AssertionError as e:
         print_failed_values(_test, _baseline)
-        raise e
+        raise e from e
 
 
 @pytest.mark.profile_gen
@@ -107,7 +107,7 @@ def test_gen_pf3coil_current_profile(baseline_data):
         assert np.array_equal(_test, _baseline)
     except AssertionError as e:
         print_failed_values(_test, _baseline)
-        raise e
+        raise e from e
 
 
 @pytest.mark.profile_gen
@@ -118,7 +118,7 @@ def test_gen_pf4coil_current_profile(baseline_data):
         assert np.array_equal(_test, _baseline)
     except AssertionError as e:
         print_failed_values(_test, _baseline)
-        raise e
+        raise e from e
 
 
 @pytest.mark.profile_gen
@@ -129,7 +129,7 @@ def test_gen_pf5coil_current_profile(baseline_data):
         assert np.array_equal(_test, _baseline)
     except AssertionError as e:
         print_failed_values(_test, _baseline)
-        raise e
+        raise e from e
 
 
 @pytest.mark.profile_gen
@@ -140,4 +140,4 @@ def test_gen_pf6coil_current_profile(baseline_data):
         assert np.array_equal(_test, _baseline)
     except AssertionError as e:
         print_failed_values(_test, _baseline)
-        raise e
+        raise e from e
