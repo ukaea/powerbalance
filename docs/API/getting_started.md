@@ -13,10 +13,10 @@ after the run is completed a new timestamped directory will be produced containi
 In addition your chosen browser should be launched to show a webpage displaying the power data plots as dynamic widgets which can be interacted with.
 
 ## Viewing existing plots
-A new plot browser window can be opened on any results directory using the `pbm-view-results` command:
+A new plot browser window can be opened on any results directory using the `view-results` command:
 
-```bash
-pbm-view-results <pbm_results_dir>
+```sh
+powerbalance view-results <pbm_results_dir>
 ```
 
 ## Viewing the data
