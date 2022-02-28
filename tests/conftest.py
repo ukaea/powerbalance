@@ -17,6 +17,43 @@ PROFILES_DIR = os.path.join(
     "mat_profile_files",
 )
 
+MODELS_DIR = os.path.join(
+    pathlib.Path(os.path.dirname(__file__)).parents[1], "power_balance", "models"
+)
+
+
+def _model_list():
+    # Loads input_parameter_ranges.json
+    param_dict = toml.load(
+        os.path.join(
+            pathlib.Path(os.path.dirname(__file__)).parent,
+            "input_parameter_ranges.toml",
+        )
+    )
+
+    _model_list = (
+        ("WasteHeat", "WasteHeatPower"),
+        ("CryogenicPlant", "CryogenicPower"),
+        ("HCDSystemPkg", "HCDSystem"),
+        ("Magnets", "MagnetPower"),
+    )
+
+    _range_list = []
+
+    for model_package, model_name in _model_list:
+        _model_dict = param_dict[model_name]
+        _range_list.extend(
+            (model_package, model_name, param, *range)
+            for param, range in _model_dict.items()
+        )
+
+        return tuple(*_range_list)
+
+    return tuple(*_range_list)
+
+
+MODELS = _model_list()
+
 
 @pytest.fixture
 def test_directory():

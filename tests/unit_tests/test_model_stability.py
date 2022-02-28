@@ -12,41 +12,8 @@ from typing import List, Tuple
 import pydelica
 import pytest
 import toml
+from conftest import MODELS, MODELS_DIR
 from pydelica import Session, exception
-
-MODELS_DIR = os.path.join(
-    pathlib.Path(os.path.dirname(__file__)).parents[1], "power_balance", "models"
-)
-
-
-def _model_list() -> Tuple[Tuple[str, str, str, List[float]]]:
-    # Loads input_parameter_ranges.json
-    param_dict = toml.load(
-        os.path.join(
-            pathlib.Path(os.path.dirname(__file__)).parent,
-            "input_parameter_ranges.toml",
-        )
-    )
-
-    _model_list = (
-        ("WasteHeat", "WasteHeatPower"),
-        ("CryogenicPlant", "CryogenicPower"),
-        ("HCDSystemPkg", "HCDSystem"),
-        ("Magnets", "MagnetPower"),
-    )
-
-    _range_list: List[Tuple[str, str, str, List[float]]] = []
-
-    for model_package, model_name in _model_list:
-        _model_dict = param_dict[model_name]
-        for param, range in _model_dict.items():
-            _range_list.append((model_package, model_name, param, *range))
-        return tuple(_range_list)
-
-    return tuple(_range_list)
-
-
-MODELS = _model_list()
 
 
 def param_sets(model_name) -> Tuple[Tuple[float, float]]:
@@ -59,8 +26,7 @@ def param_sets(model_name) -> Tuple[Tuple[float, float]]:
         )
     )
 
-    for key, value in param_dict[model_name].items():
-        _param_sets.append((key, value))
+    _param_sets.extend((key, value) for key, value in param_dict[model_name].items())
 
     return tuple(_param_sets)
 
@@ -80,10 +46,7 @@ def build_all_component_models(generate_profiles):
         for path_parameter, path_value in _params.items():
             _value = path_value["value"]
             if "DataPath" in path_parameter and isinstance(_value, str):
-                session.set_parameter(
-                    os.path.join(generate_profiles, path_value["value"])
-                )
-
+                session.set_parameter(os.path.join(generate_profiles, _value))
     return session
 
 

@@ -1,3 +1,4 @@
+exclude: '^tests|^benchmarks'
 repos:
   - repo: https://github.com/hakancelik96/unimport
     rev: 0.9.4
