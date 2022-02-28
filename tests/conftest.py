@@ -17,9 +17,7 @@ PROFILES_DIR = os.path.join(
     "mat_profile_files",
 )
 
-MODELS_DIR = os.path.join(
-    pathlib.Path(__file__).parents[1], "power_balance", "models"
-)
+MODELS_DIR = os.path.join(pathlib.Path(__file__).parents[1], "power_balance", "models")
 
 
 def _model_list():

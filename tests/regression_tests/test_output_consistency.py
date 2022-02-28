@@ -40,7 +40,7 @@ def plot_comparison(
     plt.plot(baseline_data["time"], _tol_pos, "r--")
     plt.plot(baseline_data["time"], _tol_neg, "r--")
     plt.xlabel("Time/s")
-    plt.ylabel("Δ " + _title_label + "/W")
+    plt.ylabel(f"Δ {_title_label}/W")
     plt.title(f"Plot Comparing Current {_title_label} Data Output with Expectation")
     plt.savefig(os.path.join(_plot_folder, f"testing_{label.lower()}_diff.png"))
 
@@ -248,4 +248,7 @@ def test_thermal2elec_eff_consistency():
 
     _eff_out = calc_thermal_to_elec_eff(**_args)
 
+    assert _eff_out._num_label == _test_data["efficiency"]._num_label
+    assert _eff_out._denom_label == _test_data["efficiency"]._denom_label
+    assert _eff_out._nums == _test_data["efficiency"]._nums
     assert _eff_out.value() == _test_data["efficiency"].value()
