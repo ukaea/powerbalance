@@ -210,18 +210,19 @@ jobs:
       uses: actions/checkout@v2
     - name: Set up Python
       uses: actions/setup-python@v2
+    - uses: Gr1N/setup-poetry@v7
+    - name: Install Module
+      run: poetry install
     - name: Run MktheAPIDocs
       run: |
-        python -m pip install mktheapidocs
-        mktheapidocs power_balance docs/Reference https://github.com/ukaea/powerbalance/tree/$GITHUB_REF_NAME
+        poetry run python -m pip install mktheapidocs
+        poetry run mktheapidocs power_balance docs/Reference https://github.com/ukaea/powerbalance/tree/$GITHUB_REF_NAME
     - name: Archive API Docs
       uses: actions/upload-artifact@v2
       if: always()
       with:
         name: mktheapidocs
-        path: docs/Reference
-
-    
+        path: docs/Reference  
   run_benchmarks:
     runs-on: ubuntu-latest
     name: Run Benchmarks on main
@@ -318,6 +319,13 @@ jobs:
         with:
           email: action@github.com
           token: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Retrieve API Reference
+        uses: actions/download-artifact@v2
+        with:
+          name: mktheapidocs
+          path: .
+      - name: Append Reference API
+        run: poetry run python docs/append_reference.py
       - name: Deploy Docs
         run: |
           poetry run mkdocs build

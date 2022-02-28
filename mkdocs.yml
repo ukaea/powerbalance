@@ -74,7 +74,7 @@ nav:
   - Development:
       - Overview: API/development.md
       - Poetry: API/poetry.md
-      - Code Coverage: coverage.md
+      - Code Coverage: 'https://codecov.io/gh/ukaea/powerbalance'
       - Plugin Creation: API/plugins.md
       - Benchmarks: '/powerbalance/benchmarks/'
 plugins:
