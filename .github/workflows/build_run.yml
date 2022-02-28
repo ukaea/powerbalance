@@ -201,6 +201,27 @@ jobs:
         with:
           env_vars: OS,PYTHON
           files: coverage.xml
+  mkapi_docs:
+    runs-on: ubuntu-latest
+    name: Create API Reference
+    if: ${{ github.ref_name == 'main' }}
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+    - name: Run MktheAPIDocs
+      run: |
+        python -m pip install mktheapidocs
+        mktheapidocs power_balance docs/Reference https://github.com/ukaea/powerbalance/tree/$GITHUB_REF_NAME
+    - name: Archive API Docs
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: mktheapidocs
+        path: docs/Reference
+
+    
   run_benchmarks:
     runs-on: ubuntu-latest
     name: Run Benchmarks on main

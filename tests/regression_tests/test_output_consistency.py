@@ -66,7 +66,6 @@ def pbm_instance():
 
 
 @pytest.mark.consistency
-# TODO: regression tests for data outputs need to be updated
 def test_output_data(pbm_instance):
     pbm_instance.run_simulation(pbm_instance.testdir)
 
@@ -75,7 +74,7 @@ def test_output_data(pbm_instance):
         "baseline",
         "run_data",
         "data",
-        "baseline_data.h5",
+        "session_data.h5",
     )
 
     _baseline_tomls = glob.glob(

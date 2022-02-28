@@ -5,6 +5,9 @@ Update Regression Test Baseline Files
 import glob
 import os.path
 import pathlib
+import shutil
+import tempfile
+import power_balance.core as pbm_core
 import pickle
 
 import numpy as np
@@ -44,6 +47,20 @@ def update_profiles():
         np.save(array_file, _new_arr)
 
 
+def update_run_data():
+    _run_data_dir = os.path.join(BASELINE_DIR, 'run_data')
+    pbm = pbm_core.PowerBalance(no_browser=True)
+    with tempfile.TemporaryDirectory() as tempd:
+        pbm.run_simulation(tempd)
+        out_dir = glob.glob(os.path.join(tempd, "pbm_results_*"))[0]
+        for dir in os.listdir(out_dir):
+            if dir not in ("data", "parameters"):
+                shutil.rmtree(os.path.join(out_dir, dir))
+        shutil.rmtree(_run_data_dir)
+        shutil.copytree(out_dir, _run_data_dir)
+
+
 if __name__ in "__main__":
     update_pckl_baseline()
     update_profiles()
+    update_run_data()
