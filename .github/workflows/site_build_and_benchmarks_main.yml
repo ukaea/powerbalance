@@ -125,11 +125,12 @@ jobs:
           name: mktheapidocs
           path: reference
       - name: Append Reference API
-        run: poetry run python docs/append_reference.py
-      - name: Deploy Docs
         run: |
           rsync -r reference/docs docs
           rm -rf reference
+          poetry run python docs/append_reference.py
+      - name: Deploy Docs
+        run: |
           poetry run mkdocs build
           git checkout gh-pages
           rsync -r site/* .
