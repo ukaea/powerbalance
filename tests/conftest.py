@@ -18,7 +18,7 @@ PROFILES_DIR = os.path.join(
 )
 
 MODELS_DIR = os.path.join(
-    pathlib.Path(os.path.dirname(__file__)).parents[1], "power_balance", "models"
+    pathlib.Path(__file__).parents[1], "power_balance", "models"
 )
 
 
@@ -26,7 +26,7 @@ def _model_list():
     # Loads input_parameter_ranges.json
     param_dict = toml.load(
         os.path.join(
-            pathlib.Path(os.path.dirname(__file__)).parent,
+            pathlib.Path(__file__).parent,
             "input_parameter_ranges.toml",
         )
     )
@@ -47,9 +47,9 @@ def _model_list():
             for param, range in _model_dict.items()
         )
 
-        return tuple(*_range_list)
+        return tuple(_range_list)
 
-    return tuple(*_range_list)
+    return tuple(_range_list)
 
 
 MODELS = _model_list()

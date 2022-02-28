@@ -21,7 +21,7 @@ def param_sets(model_name) -> Tuple[Tuple[float, float]]:
     # Loads input_parameter_ranges.json
     param_dict = toml.load(
         os.path.join(
-            pathlib.Path(os.path.dirname(__file__)).parent,
+            pathlib.Path(__file__).parent,
             "input_parameter_ranges.toml",
         )
     )
