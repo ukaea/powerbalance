@@ -1,0 +1,35 @@
+name: Deploy Power Balance Models
+on:
+  push:
+    tags:
+      - "v*"
+permissions:
+  contents: write
+jobs:
+  deploy_ubuntu:
+    name: Deploy Latest Ubuntu Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+            fetch-depth: 0
+      - name: Get Previous tag
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - uses: Gr1N/setup-poetry@v7
+      - name: Install Module
+        run: poetry install
+      - name: Build Module
+        run: poetry build
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          name: Power Balance Models Release ${{ steps.previoustag.outputs.tag }}
+          tag_name: ${{ steps.previoustag.outputs.tag }}
+          files: |
+            dist/*.whl
+            dist/*.gz
