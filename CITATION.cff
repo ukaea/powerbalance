@@ -67,7 +67,7 @@ authors:
     given-names: Timothy
 
 cff-version: "1.2.0"
-date-released: "2022-02-29"
+date-released: "2022-03-01"
 keywords: 
   - "power balance"
   - fusion
@@ -87,7 +87,7 @@ references:
     title: "Negative ion research at the Culham Centre for Fusion Energy (CCFE)"
     type: article
     doi: 10.1088/1367-2630/aa4fa1
-    date: "2016-12-23"
+    date-published: "2016-12-23"
   - authors:
     - family-names: Stewart
       given-names: Samuel
@@ -105,6 +105,8 @@ references:
       orcid: 'https://orcid.org/0000-0003-4820-5227'
     title: PyDelica
   - title: OpenModelica
+    authors:
+      - name: Open Source Modelica Consortium (OSMC)
     repository-code: https://github.com/OpenModelica/OpenModelica
     type: software
     url: https://openmodelica.org
@@ -112,18 +114,29 @@ references:
     repository-code: https://github.com/numpy/numpy
     type: software
     url: https://numpy.org/
+    authors:
+      - name: NumPy Developers
   - title: Pandas
     repository-code: https://github.com/pandas-dev/pandas
     type: software
     url: https://pandas.pydata.org/
+    authors:
+      - name: AQR Capital Management, LLC, Lambda Foundry, Inc.
+      - name: PyData Development Team
+      - name: Open source contributors
   - title: Bokeh
     repository-code: https://github.com/bokeh/bokeh
     type: software
     url: https://bokeh.org/
+    authors:
+      - name: Anaconda, Inc.
+      - name: Bokeh Contributors
   - title: Click
     repository-code: https://github.com/pallets/click
     type: software
     url: https://click.palletsprojects.com/
+    authors:
+      - name: Pallets
   - title: Pydantic
     repository-code: https://github.com/samuelcolvin/pydantic
     type: software
@@ -135,12 +148,19 @@ references:
     repository-code: https://github.com/pallets/jinja/
     type: software
     url: https://jinja.palletsprojects.com/
+    authors:
+      - name: Pallets
   - title: SciPy
     repository-code: https://github.com/scipy/scipy
     type: software
     url: https://scipy.org/
+    authors:
+      - name: SciPy Developers
   - title: Matplotlib
     repository-code: https://github.com/matplotlib/matplotlib
     type: software
     url: https://matplotlib.org/stable
+    authors:
+     - given-names: "John D."
+       family-names: "Hunter"
 
