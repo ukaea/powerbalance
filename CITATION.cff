@@ -95,6 +95,7 @@ references:
     title: Modelling of Radio Frequency Heating and Current Drive Systems for Nuclear Fusion
     type: thesis
   - type: software
+    repository-code: https://gitlab.com/krizar/pydelica
     authors:
     - given-names: Kristian
       family-names: Zarebski
