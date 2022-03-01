@@ -186,7 +186,7 @@ def test_reproducibility():
 
 
 @pytest.mark.consistency
-def test_heating_eff_consistency():
+def test_heating_eff_consistency(generate_profiles):
     _test_data_file = os.path.join(
         pathlib.Path(__file__).parents[1], "baseline", "default_heating2elec_eff.pckl"
     )
@@ -195,10 +195,7 @@ def test_heating_eff_consistency():
 
     _args = _test_data.copy()
     _args["heating_profile"] = os.path.join(
-        pathlib.Path(__file__).parents[2],
-        "power_balance",
-        "profiles",
-        "mat_profile_files",
+        generate_profiles,
         _args["heating_profile"],
     )
 
@@ -220,7 +217,7 @@ def test_heating_eff_consistency():
 
 
 @pytest.mark.consistency
-def test_thermal2elec_eff_consistency():
+def test_thermal2elec_eff_consistency(generate_profiles):
     _test_data_file = os.path.join(
         pathlib.Path(__file__).parents[1], "baseline", "default_thermal2elec_eff.pckl"
     )
@@ -229,17 +226,9 @@ def test_thermal2elec_eff_consistency():
 
     _args = copy.deepcopy(_test_data)
     _args["thermal_in_profile"] = os.path.join(
-        pathlib.Path(__file__).parents[2],
-        "power_balance",
-        "profiles",
-        "mat_profile_files",
+        generate_profiles,
         _args["thermal_in_profile"],
     )
-
-    if not os.path.exists(_args["thermal_in_profile"]):
-        generate_all(
-            os.path.join(pathlib.Path(__file__).parents[1], "power_balance", "profiles")
-        )
 
     del _args["efficiency"]
     del _args["average_generated"]

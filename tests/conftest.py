@@ -60,13 +60,9 @@ def test_directory():
 
 @pytest.fixture(scope="module")
 def generate_profiles():
-    # Checks if profiles_directory exists, creates it if it doesn't
-    # generates .mat profiles within profiles_directory
-    if not glob.glob(os.path.join(PROFILES_DIR, "*.mat")):
-        if not os.path.exists(PROFILES_DIR):
-            os.mkdir(PROFILES_DIR)
-        generate_all(PROFILES_DIR)
-    return PROFILES_DIR
+    with tempfile.TemporaryDirectory() as tempd:
+        generate_all(tempd)
+        yield tempd
 
 
 @pytest.fixture()

@@ -15,9 +15,6 @@ import power_balance.calc.efficiencies as pbm_eff
 import power_balance.profiles as pbm_prof
 
 BASELINE_DIR = os.path.dirname(__file__)
-PROFILES_DIR = os.path.join(
-    pathlib.Path(__file__).parents[2], "power_balance", "profiles", "mat_profile_files"
-)
 
 
 def update_pckl_baseline():
@@ -27,15 +24,17 @@ def update_pckl_baseline():
     )
     eff_funcs = ("calc_heating_to_elec_eff", "calc_thermal_to_elec_eff")
     keys = ("heating_profile", "thermal_in_profile")
-    for pckl_f, func, key in zip(pickle_files, eff_funcs, keys):
-        _data = pickle.load(open(pckl_f, "rb"))
-        _tmp = _data.copy()
-        _tmp[key] = os.path.join(PROFILES_DIR, _tmp[key])
-        del _tmp["efficiency"]
-        del _tmp["average_generated"]
-        del _tmp["average_profile"]
-        _data["efficiency"] = getattr(pbm_eff, func)(**_tmp)
-        pickle.dump(_data, open(pckl_f, "wb"))
+    with tempfile.TemporaryDirectory() as tempd:
+        pbm_prof.generate_all(tempd)
+        for pckl_f, func, key in zip(pickle_files, eff_funcs, keys):
+            _data = pickle.load(open(pckl_f, "rb"))
+            _tmp = _data.copy()
+            _tmp[key] = os.path.join(tempd, _tmp[key])
+            del _tmp["efficiency"]
+            del _tmp["average_generated"]
+            del _tmp["average_profile"]
+            _data["efficiency"] = getattr(pbm_eff, func)(**_tmp)
+            pickle.dump(_data, open(pckl_f, "wb"))
 
 
 def update_profiles():
