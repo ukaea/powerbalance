@@ -1,0 +1,145 @@
+abstract: "A power balance model framework which combines power consumption and generation to assesss the net power production of different tokamak fusion reactor designs"
+authors: 
+  -
+    affiliation: UKAEA
+    family-names: Petrov
+    given-names: Alexander
+    orcid: "https://orcid.org/0000-0003-4820-5227"
+  -
+    affiliation: UKAEA
+    family-names: Zarebski
+    given-names: Kristian
+    orcid: "https://orcid.org/0000-0002-6773-1049"
+  -
+    affiliation: UKAEA
+    family-names: Griffiths
+    given-names: Rhys
+  -
+    affiliation: UKAEA
+    family-names: Wray
+    given-names: Steven
+  -
+    affiliation: UKAEA
+    family-names: Stroud
+    given-names: Tom
+  -
+    affiliation: UKAEA
+    family-names: Abdallah
+    given-names: Mohamad
+  -
+    affiliation: UKAEA
+    family-names: Clements
+    given-names: Chris
+  -
+    affiliation: UKAEA
+    family-names: Owoeye
+    given-names: Taiwo
+  -
+    affiliation: UKAEA
+    family-names: Cannon
+    given-names: Marius
+  - 
+    affiliation: UKAEA
+    family-names: Brewer
+    given-names: Nicholas
+  -
+    affiliation: UKAEA
+    family-names: Acres
+    given-names: Jack
+  -
+    affiliation: UKAEA
+    family-names: Laksharam
+    given-names: Vignesh
+  -
+    family-names: Stewart
+    given-names: Samuel
+  -
+    family-names: Rochford
+    given-names: Katherine
+  -
+    family-names: Gribben
+    given-names: Sophie
+  -
+    family-names: Finlay
+    given-names: Christie
+  -
+    family-names: Jackson
+    given-names: Timothy
+
+cff-version: "1.2.0"
+date-released: "2022-02-29"
+keywords: 
+  - "power balance"
+  - fusion
+  - research
+  - "reactor physics"
+license: LGPL-2.1+
+message: "If you use this software, please cite it using these metadata."
+title: "Power Balance Models"
+commit: "469eaa5570cdc53a0ed91d3af4ce13e7061b2484"
+version: "1.0.1"
+repository-code: "https://github.com/ukaea/powerbalance"
+url: "https://ukaea.github.io/powerbalance/"
+references:
+  - authors:
+    - family-names: McAdams
+      given-names: Roy
+    title: "Negative ion research at the Culham Centre for Fusion Energy (CCFE)"
+    type: article
+    doi: 10.1088/1367-2630/aa4fa1
+    date: "2016-12-23"
+  - authors:
+    - family-names: Stewart
+      given-names: Samuel
+      affiliation: University of Cardiff
+    title: Modelling of Radio Frequency Heating and Current Drive Systems for Nuclear Fusion
+    type: thesis
+  - type: software
+    authors:
+    - given-names: Kristian
+      family-names: Zarebski
+      orcid: 'https://orcid.org/0000-0002-6773-1049'
+    - given-names: Alexander
+      family-names: Petrov
+      orcid: 'https://orcid.org/0000-0003-4820-5227'
+    title: PyDelica
+  - title: OpenModelica
+    repository-code: https://github.com/OpenModelica/OpenModelica
+    type: software
+    url: https://openmodelica.org
+  - title: NumPy
+    repository-code: https://github.com/numpy/numpy
+    type: software
+    url: https://numpy.org/
+  - title: Pandas
+    repository-code: https://github.com/pandas-dev/pandas
+    type: software
+    url: https://pandas.pydata.org/
+  - title: Bokeh
+    repository-code: https://github.com/bokeh/bokeh
+    type: software
+    url: https://bokeh.org/
+  - title: Click
+    repository-code: https://github.com/pallets/click
+    type: software
+    url: https://click.palletsprojects.com/
+  - title: Pydantic
+    repository-code: https://github.com/samuelcolvin/pydantic
+    type: software
+    url: https://pydantic-docs.helpmanual.io/
+    authors:
+      - family-names: Colvin
+        given-names: Samuel
+  - title: Jinja
+    repository-code: https://github.com/pallets/jinja/
+    type: software
+    url: https://jinja.palletsprojects.com/
+  - title: SciPy
+    repository-code: https://github.com/scipy/scipy
+    type: software
+    url: https://scipy.org/
+  - title: Matplotlib
+    repository-code: https://github.com/matplotlib/matplotlib
+    type: software
+    url: https://matplotlib.org/stable
+
