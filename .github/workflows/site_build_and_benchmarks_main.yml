@@ -134,7 +134,7 @@ jobs:
         run: |
           poetry run mkdocs build
           git reset --hard
-          git clean -d -n docs/Reference
+          git clean -d -f docs/Reference
           git checkout gh-pages
           rsync -r site/* .
           rm -rf site
