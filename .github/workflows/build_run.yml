@@ -58,7 +58,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-    needs: [test_module_build, test_modelica_build]
+    needs: [test_modelica_build]
     steps:
       - name: Retrieve Open Modelica model binaries
         uses: actions/download-artifact@v2
@@ -85,7 +85,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: [ '3.8', '3.9', '3.10' ]
-    needs: [test_module_build, test_modelica_build]
+    needs: [test_module_build]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -115,7 +115,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: [ '3.8', '3.9', '3.10' ]
-    needs: [model_run_api]
+    needs: [test_module_build]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -145,7 +145,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: [ '3.8', '3.9', '3.10' ]
-    needs: [model_run_api]
+    needs: [test_module_build]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
