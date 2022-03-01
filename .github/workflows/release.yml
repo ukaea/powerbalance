@@ -18,7 +18,15 @@ jobs:
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
       - name: Set up Python
         uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
       - uses: Gr1N/setup-poetry@v7
+      - name: Check Citation File
+        run: |
+          python3 -m pip install -r <(curl -s https://raw.githubusercontent.com/citation-file-format/citation-file-format/main/requirements.txt)
+          python3 <(curl -s https://raw.githubusercontent.com/citation-file-format/citation-file-format/main/examples/validator.py) \
+            -d ${GITHUB_WORKSPACE}/CITATION.cff \
+            -s <(curl -s https://raw.githubusercontent.com/citation-file-format/citation-file-format/main/schema.json)
       - name: Install Module
         run: poetry install
       - name: Build Module
