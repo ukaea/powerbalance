@@ -40,6 +40,12 @@ and modify the parameter files within the directory. You can then execute a run 
 powerbalance run --param-dir my_project
 ```
 
+## Updating
+Note, if updating your version of `powerbalance` it is strongly recommended that you re-generate the model profiles in case changes have been made which affect them:
+```sh
+powerbalance generate-profiles
+```
+
 ## Acknowledgements
 
 **NINI model** - This model is based on the in-house UKAEA work of D B King and E Surrey, referred to in the following publication:

@@ -3,7 +3,7 @@ primarycoolanttype = "FLiBe"
 ratiotype = 2.5
 secondarycoolanttype = "CO2"
 systempressure = 200
-thermalpowerdatapath = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/ThermalPowerOut.mat"
+thermalpowerdatapath = "/tmp/tmpxkk7ixb0/ThermalPowerOut.mat"
 vacuumtype = "turbo"
 
 [hcdsystem]
@@ -11,8 +11,8 @@ heattoair = 0.2
 useeffvalue = false
 effnini = 0.4
 effrf = 0.5
-nbipowerdatapath = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/NBI_Heat.mat"
-rfpowerdatapath = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/RF_Heat.mat"
+nbipowerdatapath = "/tmp/tmpxkk7ixb0/NBI_Heat.mat"
+rfpowerdatapath = "/tmp/tmpxkk7ixb0/RF_Heat.mat"
 
 [cryogenicpower]
 heattoair = 0.2
@@ -22,14 +22,14 @@ cryotemp_pf = 4
 pfcrmw = 0.00071
 
 [magnetpower]
-currentdatapathcs = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentCS.mat"
-currentdatapathpf1 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF1.mat"
-currentdatapathpf2 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF2.mat"
-currentdatapathpf3 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF3.mat"
-currentdatapathpf4 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF4.mat"
-currentdatapathpf5 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF5.mat"
-currentdatapathpf6 = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentPF6.mat"
-currentdatapathtf = "/home/kristian/Documents/UKAEA/PowerBalance/pbm_gh/power_balance/profiles/mat_profile_files/currentTF.mat"
+currentdatapathcs = "/tmp/tmpxkk7ixb0/currentCS.mat"
+currentdatapathpf1 = "/tmp/tmpxkk7ixb0/currentPF1.mat"
+currentdatapathpf2 = "/tmp/tmpxkk7ixb0/currentPF2.mat"
+currentdatapathpf3 = "/tmp/tmpxkk7ixb0/currentPF3.mat"
+currentdatapathpf4 = "/tmp/tmpxkk7ixb0/currentPF4.mat"
+currentdatapathpf5 = "/tmp/tmpxkk7ixb0/currentPF5.mat"
+currentdatapathpf6 = "/tmp/tmpxkk7ixb0/currentPF6.mat"
+currentdatapathtf = "/tmp/tmpxkk7ixb0/currentTF.mat"
 
 [powergenerated]
 usepowergeneffvalue = false

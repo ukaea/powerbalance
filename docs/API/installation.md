@@ -31,6 +31,12 @@ To install this package you will firstly need to install OpenModelica to your sy
 
 Installation on Mac is not tested and not supported by the Power Balance team, primarily because of the difficulty associated with installing OpenModelica on Mac.
 
+!!! warning "Updating PowerBalance Installation"
+    Note, if updating your version of `powerbalance`, it is strongly recommended that you re-generate the model profiles in case changes have been made which affect them:
+    ```sh
+    powerbalance generate-profiles
+    ```
+
 ## Testing
 You can verify your install is working correctly by either running the default configuration using the `powerbalance` command, or by running the included tests using `pytest`:
 

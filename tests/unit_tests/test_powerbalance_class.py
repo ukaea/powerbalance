@@ -26,7 +26,7 @@ from power_balance.core import PowerBalance
 
 
 @pytest.fixture(scope="module")
-def pbm_instance():
+def pbm_instance(generate_profiles):
     """Initialise an instance of PowerBalance for testing"""
     _config = os.path.join(
         pathlib.Path(os.path.dirname(__file__)).parent, "test_config.toml"
@@ -35,7 +35,7 @@ def pbm_instance():
     logging.getLogger("PowerBalance").setLevel(logging.INFO)
     pbm = PowerBalance(
         parameter_directory="Default",
-        profiles_directory="Default",
+        profiles_directory=generate_profiles,
         modelica_file_dir="Default",
         config=_config,
         no_browser=True,

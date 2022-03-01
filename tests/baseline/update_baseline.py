@@ -48,8 +48,9 @@ def update_profiles():
 
 def update_run_data():
     _run_data_dir = os.path.join(BASELINE_DIR, 'run_data')
-    pbm = pbm_core.PowerBalance(no_browser=True)
     with tempfile.TemporaryDirectory() as tempd:
+        pbm_prof.generate_all(tempd)
+        pbm = pbm_core.PowerBalance(profiles_directory=tempd, no_browser=True)
         pbm.run_simulation(tempd)
         out_dir = glob.glob(os.path.join(tempd, "pbm_results_*"))[0]
         for dir in os.listdir(out_dir):
