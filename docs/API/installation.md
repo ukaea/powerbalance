@@ -24,10 +24,17 @@ pip install power_balance-<version>-py3-none-any.whl
 
 To install this package you will firstly need to install OpenModelica to your system. The module works by either finding the location of an `omc` installation (in the case of UNIX) or using the environment variable `%OPENMODELICAHOME%` in the case of Windows.
 
-!!! warning "Modelica Standard Library version"
-    The Power Balance Models API is not compatible with Modelica Standard Library `>=4.0.0`.
-    Significant changes have been implemented in these versions. Latest known working environment
-    is OpenModelica `1.18.0` with MSL `3.2.3`.
+### Installing OpenModelica Compiler
+
+For Windows users will need to install the complete OpenModelica application using the dedicated installer found on the project [website](https://www.openmodelica.org/download/download-windows).
+
+Linux users only require `omc` and the Modelica Standard Library:
+```sh
+echo "deb https://build.openmodelica.org/apt `lsb_release -cs` stable" | sudo tee /etc/apt/sources.list.d/openmodelica.list
+wget -q http://build.openmodelica.org/apt/openmodelica.asc -O- | sudo apt-key add - 
+sudo apt update
+sudo apt install -y omlib-modelica-3.2.3 omc
+```
 
 Installation on Mac is not tested and not supported by the Power Balance team, primarily because of the difficulty associated with installing OpenModelica on Mac.
 
@@ -36,6 +43,10 @@ Installation on Mac is not tested and not supported by the Power Balance team, p
     ```sh
     powerbalance generate-profiles
     ```
+!!! warning "Modelica Standard Library version"
+    The Power Balance Models API is not compatible with Modelica Standard Library `>=4.0.0`.
+    Significant changes have been implemented in these versions. Latest known working environment
+    is OpenModelica `1.18.0` with MSL `3.2.3`.
 
 ## Testing
 You can verify your install is working correctly by either running the default configuration using the `powerbalance` command, or by running the included tests using `pytest`:
