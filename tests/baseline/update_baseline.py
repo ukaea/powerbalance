@@ -4,7 +4,6 @@ Update Regression Test Baseline Files
 """
 import glob
 import os.path
-import pathlib
 import shutil
 import tempfile
 import power_balance.core as pbm_core

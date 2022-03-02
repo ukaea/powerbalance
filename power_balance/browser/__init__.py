@@ -258,7 +258,7 @@ class PBMBrowser:
 
     def build(self, plasma_scenario: dict) -> None:
         """Build the main webpage for plot display."""
-        _ts_component = self._session_dir.replace("pbm_results", "")
+        _ts_component = os.path.basename(self._session_dir).replace("pbm_results", "")
         _id = _ts_component.replace("_", "")
         _ts_component_ls = _ts_component.split("_")[1:]
         _time_stamp = ":".join(
