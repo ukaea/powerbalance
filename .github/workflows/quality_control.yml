@@ -63,4 +63,4 @@ jobs:
       - name: Install Unimport
         run: python -m pip install unimport
       - name: Check Imports
-        run: unimport --check --diff
+        run: unimport --check --diff --include power_balance
