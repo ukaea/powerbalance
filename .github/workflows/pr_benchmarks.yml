@@ -40,6 +40,7 @@ jobs:
         with:
           name: asv-results-${{ runner.os }}
           path: asv_benchmarks
+          retention-days: 1
   clean_up:
       name: Delete All Artifacts
       runs-on: ubuntu-latest
@@ -47,7 +48,6 @@ jobs:
       needs: [benchmark_diff]
       steps:
       - name: Delete artifacts
-        if: github.event.action == 'delete_all_artifacts'
         uses: christian-korneck/delete-run-artifacts-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

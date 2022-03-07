@@ -91,6 +91,7 @@ jobs:
       with:
         name: mktheapidocs
         path: docs/Reference
+        retention-days: 1
   build_pages:
     runs-on: ubuntu-latest
     name: Build Documentation Site
@@ -154,7 +155,6 @@ jobs:
       needs: [build_pages]
       steps:
       - name: Delete artifacts
-        if: github.event.action == 'delete_all_artifacts'
         uses: christian-korneck/delete-run-artifacts-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
