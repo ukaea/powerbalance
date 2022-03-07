@@ -40,3 +40,17 @@ jobs:
         with:
           name: asv-results-${{ runner.os }}
           path: asv_benchmarks
+  clean_up:
+      name: Delete All Artifacts
+      runs-on: ubuntu-latest
+      if: ${{ always() }}
+      needs: [benchmark_diff]
+      steps:
+      - name: Delete artifacts
+        if: github.event.action == 'delete_all_artifacts'
+        uses: christian-korneck/delete-run-artifacts-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          parent_runid: ${{ github.event.client_payload.parent_runid  }}
+          parent_repo: ${{ github.event.client_payload.parent_repo }}
