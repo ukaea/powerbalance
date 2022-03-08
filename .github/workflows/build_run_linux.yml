@@ -1,4 +1,4 @@
-name: Power Balance Models
+name: Power Balance Models Ubuntu
 on: [push]
 jobs:
   test_modelica_build:
