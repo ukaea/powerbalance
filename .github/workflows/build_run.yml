@@ -69,7 +69,7 @@ jobs:
           path: build
       - name: Retrieve Plasma profiles
         uses: actions/download-artifact@v2
-=        with:
+        with:
           name: om-plasma-profiles
           path: power_balance/profiles/mat_profile_files
       - uses: artemis-beta/setup-openmodelica@v2
