@@ -5,6 +5,7 @@ import pydelica
 import pytest
 
 from power_balance.models import get_local_models
+from power_balance.environment import MODELICA_ENVIRONMENT
 
 TEST_DIR = pathlib.Path(os.path.dirname(__file__)).parent
 
@@ -14,7 +15,7 @@ def test_model_extraction(parameter_obj_norm):
     """Test model dictonary is populated"""
     _demo_model = "Tokamak.Interdependencies"
     _session = pydelica.Session(pydelica.OMLogLevel.NORMAL)
-    _session.use_library("Modelica", "3.2.3")
+    _session.use_libraries(MODELICA_ENVIRONMENT)
     _models = get_local_models(
         model_file_dir=os.path.join(
             pathlib.Path(TEST_DIR).parent, "power_balance", "models"

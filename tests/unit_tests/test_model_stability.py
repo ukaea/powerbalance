@@ -15,6 +15,8 @@ import toml
 from conftest import MODELS, MODELS_DIR
 from pydelica import Session, exception
 
+from power_balance.environment import MODELICA_ENVIRONMENT
+
 
 def param_sets(model_name) -> Tuple[Tuple[float, float]]:
     _param_sets: List[Tuple[str, str]] = []
@@ -35,7 +37,7 @@ def param_sets(model_name) -> Tuple[Tuple[float, float]]:
 def build_all_component_models(generate_profiles):
     # building model instance
     session = Session()
-    session.use_library("Modelica", "3.2.3")
+    session.use_libraries(MODELICA_ENVIRONMENT)
 
     for package_model in MODELS:
         package, model, _, _, _ = package_model
@@ -192,7 +194,7 @@ def test_struct_params(generate_profiles, build_all_component_models):
     Tokamak_MODEL = "Tokamak.Interdependencies"
 
     session = Session()
-    session.use_library("Modelica", "3.2.3")
+    session.use_libraries(MODELICA_ENVIRONMENT)
 
     input_file = os.path.join(MODELS_DIR, "Tokamak.mo")
     test_configs = toml.load(
