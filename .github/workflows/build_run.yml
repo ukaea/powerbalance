@@ -22,9 +22,11 @@ jobs:
         shell: bash
       - name: Archive Modelica Binaries
         uses: actions/upload-artifact@v2
+        if: ${{ github.ref_name == 'main' }}
         with:
           name: om-binaries
           path: build/
+          retention-days: 1
   test_module_build:
     name: Test Module Build (Python${{ matrix.python-version }} ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
@@ -48,9 +50,11 @@ jobs:
           poetry run powerbalance generate-profiles
       - name: Archive Plasma Profiles
         uses: actions/upload-artifact@v2
+        if: ${{ github.ref_name == 'main' }}
         with:
           name: om-plasma-profiles
           path: power_balance/profiles/mat_profile_files/*.mat
+          retention-days: 1
   model_run_om:
     name: Model Run Open Modelica (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
@@ -62,11 +66,13 @@ jobs:
     steps:
       - name: Retrieve Open Modelica model binaries
         uses: actions/download-artifact@v2
+        if: ${{ github.ref_name == 'main' }}
         with:
           name: om-binaries
           path: build
       - name: Retrieve Plasma profiles
         uses: actions/download-artifact@v2
+        if: ${{ github.ref_name == 'main' }}
         with:
           name: om-plasma-profiles
           path: power_balance/profiles/mat_profile_files
@@ -103,10 +109,11 @@ jobs:
           poetry run coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios -k test_run_vanilla
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
-        if: always()
+        if: ${{ github.ref_name == 'main' }}
         with:
           name: coverage-run
           path: coverage_default
+          retention-days: 1
   regression_tests:
     name: Regression Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
@@ -133,10 +140,11 @@ jobs:
           poetry run coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
-        if: always()
+        if: ${{ github.ref_name == 'main' }}
         with:
           name: coverage-regression
           path: coverage_regression
+          retention-days: 1
   unit_tests:
     name: Unit Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
@@ -163,14 +171,15 @@ jobs:
           poetry run coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v2
-        if: always()
+        if: ${{ github.ref_name == 'main' }}
         with:
           name: coverage-unit
           path: coverage_unit
+          retention-days: 1
   collate_coverage:
     name: Collate Coverage
     runs-on: ubuntu-latest
-    if: ${{ always() }}
+    if: ${{ github.ref_name == 'main' }}
     needs: [unit_tests, regression_tests, model_run_api]
     steps:
       - uses: actions/checkout@v2

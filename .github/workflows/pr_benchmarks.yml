@@ -40,3 +40,4 @@ jobs:
         with:
           name: asv-results-${{ runner.os }}
           path: asv_benchmarks
+          retention-days: 1
