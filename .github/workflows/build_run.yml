@@ -22,7 +22,6 @@ jobs:
         shell: bash
       - name: Archive Modelica Binaries
         uses: actions/upload-artifact@v2
-        if: ${{ github.ref_name == 'main' }}
         with:
           name: om-binaries
           path: build/
@@ -50,7 +49,6 @@ jobs:
           poetry run powerbalance generate-profiles
       - name: Archive Plasma Profiles
         uses: actions/upload-artifact@v2
-        if: ${{ github.ref_name == 'main' }}
         with:
           name: om-plasma-profiles
           path: power_balance/profiles/mat_profile_files/*.mat
@@ -66,14 +64,12 @@ jobs:
     steps:
       - name: Retrieve Open Modelica model binaries
         uses: actions/download-artifact@v2
-        if: ${{ github.ref_name == 'main' }}
         with:
           name: om-binaries
           path: build
       - name: Retrieve Plasma profiles
         uses: actions/download-artifact@v2
-        if: ${{ github.ref_name == 'main' }}
-        with:
+=        with:
           name: om-plasma-profiles
           path: power_balance/profiles/mat_profile_files
       - uses: artemis-beta/setup-openmodelica@v2
