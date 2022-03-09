@@ -49,18 +49,19 @@ print(data_frame)
 data frames are very powerful objects, you can apply cuts to them and perform operations on subsets, see the [Pandas documentation](https://pandas.pydata.org/docs/) for details.
 
 ## Creating your own scripts
-The main class used to initialise and run a simulation via the OpenModelica backend within PBM is the `PowerBalance` class.
+The main class used to initialise and run a simulation via the OpenModelica backend within PBM is the `PowerBalance` class. It is recommended that the class be used via a context manager to ensure that model build directories are removed upon completion (this is done automatically when using the CLI).
 
 ```python
 from power_balance.core import PowerBalance
 
 # Initialise the PBM class fetching parameters
 # and models from the default locations
-pbm_instance = PowerBalance()
+# Use context manager to ensure junk collection
+with PowerBalance() as pbm_instance:
 
-# Run the simulation with the configuration
-pbm_instance.run_simulation()
+    # Run the simulation with the configuration
+    pbm_instance.run_simulation()
 
-# Open the plots in the browser window
-pbm_instance.launch_browser()
+    # Open the plots in the browser window
+    pbm_instance.launch_browser()
 ```

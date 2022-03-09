@@ -57,16 +57,16 @@ def pbm_instance(generate_profiles):
         pathlib.Path(os.path.dirname(__file__)).parent, "test_config.toml"
     )
 
-    pbm = power_balance.core.PowerBalance(
+    with power_balance.core.PowerBalance(
         config=_config,
         no_browser=True,
         profiles_directory=generate_profiles
-    )
+    ) as pbm:
 
-    with tempfile.TemporaryDirectory() as tempd:
-        pbm.testdir = tempd
+        with tempfile.TemporaryDirectory() as tempd:
+            pbm.testdir = tempd
 
-        yield pbm
+            yield pbm
 
 
 @pytest.mark.consistency

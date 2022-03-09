@@ -33,17 +33,18 @@ def pbm_instance(generate_profiles):
     )
 
     logging.getLogger("PowerBalance").setLevel(logging.INFO)
-    pbm = PowerBalance(
+
+    with PowerBalance(
         parameter_directory="Default",
         profiles_directory=generate_profiles,
         modelica_file_dir="Default",
         config=_config,
         no_browser=True,
-    )
+    ) as pbm:
 
-    pbm.pydelica_session._log_level = pde_logging.OMLogLevel.NORMAL
+        pbm.pydelica_session._log_level = pde_logging.OMLogLevel.NORMAL
 
-    return pbm
+        yield pbm
 
 
 @pytest.fixture(scope="module")
@@ -166,15 +167,15 @@ def test_sweep_assembly():
         "var_B": [34, 23],
         "var_C": [54, 123, 65, 23],
     }
-    pbm = PowerBalance()
-    with pytest.raises(AssertionError):
-        pbm._assemble_sweep_combos(_test_sweep_dict, 4)
+    with PowerBalance() as pbm:
+        with pytest.raises(AssertionError):
+            pbm._assemble_sweep_combos(_test_sweep_dict, 4)
 
-    _test_sweep_dict.pop("var_B")
+        _test_sweep_dict.pop("var_B")
 
-    _expected = [(10, 54), (23, 123), (34, 65), (45, 23)]
+        _expected = [(10, 54), (23, 123), (34, 65), (45, 23)]
 
-    pbm._assemble_sweep_combos(_test_sweep_dict, 4) == _expected
+        pbm._assemble_sweep_combos(_test_sweep_dict, 4) == _expected
 
 
 @pytest.mark.pbm_class

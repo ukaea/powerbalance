@@ -38,7 +38,7 @@ Jinja2 = "^3.0.3"
 scipy = "^1.7.3"
 click = "^8.0.3"
 pydantic = "^1.9.0"
-pydelica = {git = "https://gitlab.com/krizar/pydelica.git", rev = "develop"}
+pydelica = "^0.4.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

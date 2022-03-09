@@ -36,20 +36,20 @@ def param_sets(model_name) -> Tuple[Tuple[float, float]]:
 @pytest.fixture(scope="module")
 def build_all_component_models(generate_profiles):
     # building model instance
-    session = Session()
-    session.use_libraries(MODELICA_ENVIRONMENT)
+    with Session() as session:
+        session.use_libraries(MODELICA_ENVIRONMENT)
 
-    for package_model in MODELS:
-        package, model, _, _, _ = package_model
-        _model_path = os.path.join(MODELS_DIR, f"{package}.mo")
-        session.build_model(_model_path, f"{package}.{model}")
-        _params = session.get_parameters(f"{package}.{model}")
+        for package_model in MODELS:
+            package, model, _, _, _ = package_model
+            _model_path = os.path.join(MODELS_DIR, f"{package}.mo")
+            session.build_model(_model_path, f"{package}.{model}")
+            _params = session.get_parameters(f"{package}.{model}")
 
-        for path_parameter, path_value in _params.items():
-            _value = path_value["value"]
-            if "DataPath" in path_parameter and isinstance(_value, str):
-                session.set_parameter(os.path.join(generate_profiles, _value))
-    return session
+            for path_parameter, path_value in _params.items():
+                _value = path_value["value"]
+                if "DataPath" in path_parameter and isinstance(_value, str):
+                    session.set_parameter(os.path.join(generate_profiles, _value))
+        yield session
 
 
 # Tests input parameters, from a specified model, within their acceptable range
@@ -193,35 +193,35 @@ def test_inside_parameter_range(
 def test_struct_params(generate_profiles, build_all_component_models):
     Tokamak_MODEL = "Tokamak.Interdependencies"
 
-    session = Session()
-    session.use_libraries(MODELICA_ENVIRONMENT)
+    with Session() as session:
+        session.use_libraries(MODELICA_ENVIRONMENT)
 
-    input_file = os.path.join(MODELS_DIR, "Tokamak.mo")
-    test_configs = toml.load(
-        os.path.join(
-            pathlib.Path(os.path.dirname(__file__)).parent,
-            "test_struct_params_stability.toml",
+        input_file = os.path.join(MODELS_DIR, "Tokamak.mo")
+        test_configs = toml.load(
+            os.path.join(
+                pathlib.Path(os.path.dirname(__file__)).parent,
+                "test_struct_params_stability.toml",
+            )
         )
-    )
 
-    dependent_models = [
-        file_name
-        for file_name in os.listdir(MODELS_DIR)
-        if ".mo" in file_name and file_name != os.path.basename(input_file)
-    ]
+        dependent_models = [
+            file_name
+            for file_name in os.listdir(MODELS_DIR)
+            if ".mo" in file_name and file_name != os.path.basename(input_file)
+        ]
 
-    session.build_model(input_file, Tokamak_MODEL, dependent_models)
+        session.build_model(input_file, Tokamak_MODEL, dependent_models)
 
-    for config_name in test_configs.keys():
-        if config_name in ["Config_1", "Config_3", "Config_6"]:
-            print(f"Test with {config_name}")
+        for config_name in test_configs.keys():
+            if config_name in ["Config_1", "Config_3", "Config_6"]:
+                print(f"Test with {config_name}")
 
-        params = session.get_parameters(Tokamak_MODEL)
+            params = session.get_parameters(Tokamak_MODEL)
 
-        for parameter, value in params.items():
-            if "DataPath" in parameter and isinstance(value["value"], str):
-                session.set_parameter(
-                    parameter, os.path.join(generate_profiles, value["value"])
-                )
+            for parameter, value in params.items():
+                if "DataPath" in parameter and isinstance(value["value"], str):
+                    session.set_parameter(
+                        parameter, os.path.join(generate_profiles, value["value"])
+                    )
 
-        session.simulate(Tokamak_MODEL)
+            session.simulate(Tokamak_MODEL)

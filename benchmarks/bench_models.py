@@ -42,3 +42,6 @@ class ModelBuild:
             self.session.build_model(_model_path, model, extra_models=MODELS)
         else:
             self.session.build_model(_model_path, model)
+
+    def teardown(self, model):
+        self.session._compiler.clear_cache()

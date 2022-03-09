@@ -219,6 +219,21 @@ class PowerBalance:
         self._check_for_model_mods()
         self.read_models_from_directory()
 
+    def clear_cache(self) -> None:
+        """Clear the PyDelica session cache
+
+        As we do not use pydelica.Session as a context manager we need to do
+        the cache clear manually (else risking leaving a lot of temporary
+        directories on Windows)
+        """
+        self.pydelica_session._compiler.clear_cache()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args, **kwargs):
+        self.clear_cache()
+
     def _deduce_profile_max_values(self) -> typing.Dict[str, float]:
         """
         For the current parameter set deduce the maximum values for profiles
