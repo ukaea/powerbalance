@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install OpenModelica libraries
-        run: sudo apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
+        run: apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Compile models
         run: |
           mkdir build
@@ -76,7 +76,7 @@ jobs:
           name: om-plasma-profiles
           path: power_balance/profiles/mat_profile_files
       - name: Install OpenModelica libraries
-        run: sudo apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
+        run: apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Models
         run: |
           cd build
@@ -101,7 +101,7 @@ jobs:
           architecture: x64
       - uses: Gr1N/setup-poetry@v7
       - name: Install OpenModelica libraries
-        run: sudo apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
+        run: apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Models
         run: |
           poetry install
@@ -133,7 +133,7 @@ jobs:
           architecture: x64
       - uses: Gr1N/setup-poetry@v7
       - name: Install OpenModelica libraries
-        run: sudo apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
+        run: apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Regression Tests
         run: |
           poetry install
@@ -165,7 +165,7 @@ jobs:
           architecture: x64
       - uses: Gr1N/setup-poetry@v7
       - name: Install OpenModelica libraries
-        run: sudo apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
+        run: apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Unit Tests
         run: |
           poetry install

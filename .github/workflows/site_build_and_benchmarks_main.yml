@@ -13,7 +13,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Install OpenModelica libraries
-      run: sudo apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
+      run: apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
     - name: Configure Git credentials
       uses: OleksiyRudenko/gha-git-credentials@v2
       with:
