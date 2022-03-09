@@ -1,5 +1,11 @@
 # Change Log
 
+## v1.1.0 - 2022-03-09
+
+* Added support for Windows.
+* Use context manager to ensure removal of temporary files.
+* Compatible with PyDelica v0.4.2
+
 ## v1.0.0 - 2022-02-09
 
 * First full version of Power Balance ready for open sourcing.
