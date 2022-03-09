@@ -2,6 +2,8 @@ name: Benchmarks and Docs
 on: [push]
 jobs:
   run_benchmarks:
+    container:
+      image: openmodelica/openmodelica:v1.18.0-minimal
     runs-on: ubuntu-latest
     name: Run Benchmarks on main
     if: ${{ github.ref_name == 'main' }}
@@ -10,6 +12,8 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name: Install OpenModelica libraries
+      run: apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
     - name: Configure Git credentials
       uses: OleksiyRudenko/gha-git-credentials@v2
       with:
@@ -17,9 +21,6 @@ jobs:
         token: '${{ secrets.GITHUB_TOKEN }}'
     - name: Set up Python
       uses: actions/setup-python@v2
-    - uses: artemis-beta/setup-openmodelica@v2
-      with:
-        msl-version: '3.2.3'
     - name: Setup ASV
       run: |
         python -m pip install asv virtualenv click

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "power_balance"
-version = "1.0.2"
+version = "1.1.0"
 description = "Python interface for the tokamak power balance model"
 authors = [
     "Alexander Petrov <alexander.petrov@ukaea.uk>",
@@ -38,7 +38,7 @@ Jinja2 = "^3.0.3"
 scipy = "^1.7.3"
 click = "^8.0.3"
 pydantic = "^1.9.0"
-pydelica = "^0.1.18"
+pydelica = "^0.4.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

@@ -819,7 +819,7 @@ email = ["email-validator (>=1.0.3)"]
 
 [[package]]
 name = "pydelica"
-version = "0.1.18"
+version = "0.4.2"
 description = "Light-weight serverless API for OpenModelica"
 category = "main"
 optional = false
@@ -1255,7 +1255,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8,<3.11"
-content-hash = "9b5a0f32f5d3fe12f1ec9ba8552bc6c949cf47ae64beba29db2fc531890220a9"
+content-hash = "cd48271b5fc2780c6917f04ff557b21ac04c9cca10ee986d0133d5bb016455df"
 
 [metadata.files]
 anybadge = [
@@ -1981,8 +1981,8 @@ pydantic = [
     {file = "pydantic-1.9.0.tar.gz", hash = "sha256:742645059757a56ecd886faf4ed2441b9c0cd406079c2b4bee51bcc3fbcd510a"},
 ]
 pydelica = [
-    {file = "pydelica-0.1.18-py3-none-any.whl", hash = "sha256:16350f30f6011dd01703cc7f27464803fc9d8275262c24f58da13b6d794fa242"},
-    {file = "pydelica-0.1.18.tar.gz", hash = "sha256:e56e6012869f9405796507202a5991863ae8e8ec2d453f05f6a622d764c5e6cf"},
+    {file = "pydelica-0.4.2-py3-none-any.whl", hash = "sha256:ec205633d8aeb106d967ebd79dcfb4a2024367d3e1a16b44a3e9cadb0ca4dd2c"},
+    {file = "pydelica-0.4.2.tar.gz", hash = "sha256:eff8793c49607daab3e4bd466c1d73ce8c177625547eba6622ec81fe22415d5e"},
 ]
 pyflakes = [
     {file = "pyflakes-2.4.0-py2.py3-none-any.whl", hash = "sha256:3bb3a3f256f4b7968c9c788781e4ff07dce46bdf12339dcda61053375426ee2e"},

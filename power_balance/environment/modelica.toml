@@ -1,0 +1,11 @@
+[Modelica]
+version="3.2.3"
+name="Modelica"
+
+[ModelicaServices]
+version="3.2.3"
+name="ModelicaServices"
+
+[Complex]
+version="3.2.3"
+name="Complex"

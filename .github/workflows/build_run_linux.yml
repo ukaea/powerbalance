@@ -1,7 +1,9 @@
-name: Power Balance Models
+name: Power Balance Models Ubuntu
 on: [push]
 jobs:
   test_modelica_build:
+    container:
+      image: openmodelica/openmodelica:v1.18.0-minimal
     name: Test Modelica Build (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -10,9 +12,8 @@ jobs:
         os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
-      - uses: artemis-beta/setup-openmodelica@v2
-        with:
-          msl-version: '3.2.3'
+      - name: Install OpenModelica libraries
+        run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Compile models
         run: |
           mkdir build
@@ -54,6 +55,8 @@ jobs:
           path: power_balance/profiles/mat_profile_files/*.mat
           retention-days: 1
   model_run_om:
+    container:
+      image: openmodelica/openmodelica:v1.18.0-minimal
     name: Model Run Open Modelica (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -72,14 +75,15 @@ jobs:
         with:
           name: om-plasma-profiles
           path: power_balance/profiles/mat_profile_files
-      - uses: artemis-beta/setup-openmodelica@v2
-        with:
-          msl-version: '3.2.3'
+      - name: Install OpenModelica libraries
+        run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Models
         run: |
           cd build
           for i in $(ls -I "*.h" -I "*.c" -I "*.o" -I "*.json" -I "*.xml" -I "*.makefile" -I "*.mat"); do echo "Running model $i"; chmod +x ./$i; ./$i; done
   model_run_api:
+    container:
+      image: openmodelica/openmodelica:v1.18.0-minimal
     name: Model Run API (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -96,9 +100,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - uses: Gr1N/setup-poetry@v7
-      - uses: artemis-beta/setup-openmodelica@v2
-        with:
-          msl-version: '3.2.3'
+      - name: Install OpenModelica libraries
+        run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Models
         run: |
           poetry install
@@ -111,6 +114,8 @@ jobs:
           path: coverage_default
           retention-days: 1
   regression_tests:
+    container:
+      image: openmodelica/openmodelica:v1.18.0-minimal
     name: Regression Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -127,9 +132,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - uses: Gr1N/setup-poetry@v7
-      - uses: artemis-beta/setup-openmodelica@v2
-        with:
-          msl-version: '3.2.3'
+      - name: Install OpenModelica libraries
+        run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Regression Tests
         run: |
           poetry install
@@ -142,6 +146,8 @@ jobs:
           path: coverage_regression
           retention-days: 1
   unit_tests:
+    container:
+      image: openmodelica/openmodelica:v1.18.0-minimal
     name: Unit Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -158,9 +164,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - uses: Gr1N/setup-poetry@v7
-      - uses: artemis-beta/setup-openmodelica@v2
-        with:
-          msl-version: '3.2.3'
+      - name: Install OpenModelica libraries
+        run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Unit Tests
         run: |
           poetry install

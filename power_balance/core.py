@@ -24,7 +24,6 @@ import glob
 import itertools
 import logging
 import os
-import platform
 import re
 import shutil
 import subprocess
@@ -41,6 +40,7 @@ import toml
 import power_balance
 import power_balance.browser as pbm_browser
 import power_balance.configs as pbm_config
+import power_balance.environment as pbm_env
 import power_balance.exceptions as pbm_exc
 import power_balance.modelica_templating.pfmagnets as pbm_pfmagnet_templates
 import power_balance.models as pbm_models
@@ -157,15 +157,7 @@ class PowerBalance:
         self.power_data: typing.Dict[str, pd.DataFrame] = {}
         self.pydelica_session = pydelica.Session(_pde_ll)
 
-        # PBM only compatible with MSL 3.2.3 at present but library switch
-        # only works with UNIX based OSes
-        if platform.system() != "Windows":
-            self.pydelica_session.use_library("Modelica", "3.2.3")
-        else:
-            self._logger.warning(
-                "Cannot set MSL version explicitly on Windows, "
-                "assuming MSL is version 3.2.3"
-            )
+        self.pydelica_session.use_libraries(pbm_env.MODELICA_ENVIRONMENT)
 
         self.configuration = pbm_config.read_options_from_config(config)
 
@@ -226,6 +218,21 @@ class PowerBalance:
 
         self._check_for_model_mods()
         self.read_models_from_directory()
+
+    def clear_cache(self) -> None:
+        """Clear the PyDelica session cache
+
+        As we do not use pydelica.Session as a context manager we need to do
+        the cache clear manually (else risking leaving a lot of temporary
+        directories on Windows)
+        """
+        self.pydelica_session._compiler.clear_cache()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args, **kwargs):
+        self.clear_cache()
 
     def _deduce_profile_max_values(self) -> typing.Dict[str, float]:
         """

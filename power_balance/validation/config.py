@@ -152,14 +152,15 @@ class ConfigModel(pydantic.BaseModel):
     def check_model_list(cls, values: typing.Dict):
         modelica_file_dir = values["modelica_file_directory"]
 
-        _local_models = list(
-            get_local_models(
-                model_file_dir=modelica_file_dir,
-                names_only=True,
-                session=pydelica.Session(),
-                quiet=True,
+        with pydelica.Session() as pd_session:
+            _local_models = list(
+                get_local_models(
+                    model_file_dir=modelica_file_dir,
+                    names_only=True,
+                    session=pd_session,
+                    quiet=True,
+                )
             )
-        )
 
         for model in values["models"]:
             if model not in _local_models:

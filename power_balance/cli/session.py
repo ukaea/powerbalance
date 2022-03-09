@@ -66,18 +66,18 @@ def pbm_main(
     if _args["from_session"]:
         _check_session_directories(_args)
 
-    pbm_instance = pbm_core.PowerBalance(
+    with pbm_core.PowerBalance(
         config=_args["config"],
         no_browser=_args["no_browser"],
         parameter_directory=_args["param_dir"],
         profiles_directory=_args["profiles_dir"],
         modelica_file_dir=_args["model_dir"],
         print_intro=True,
-    )
-    pbm_instance.run_simulation(_args["outputdir"])
+    ) as pbm_instance:
+        pbm_instance.run_simulation(_args["outputdir"])
 
-    if not no_browser:
-        pbm_instance.launch_browser()
+        if not no_browser:
+            pbm_instance.launch_browser()
 
 
 def _check_session_directories(_args):

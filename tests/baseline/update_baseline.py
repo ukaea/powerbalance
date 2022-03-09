@@ -49,14 +49,14 @@ def update_run_data():
     _run_data_dir = os.path.join(BASELINE_DIR, 'run_data')
     with tempfile.TemporaryDirectory() as tempd:
         pbm_prof.generate_all(tempd)
-        pbm = pbm_core.PowerBalance(profiles_directory=tempd, no_browser=True)
-        pbm.run_simulation(tempd)
-        out_dir = glob.glob(os.path.join(tempd, "pbm_results_*"))[0]
-        for dir in os.listdir(out_dir):
-            if dir not in ("data", "parameters"):
-                shutil.rmtree(os.path.join(out_dir, dir))
-        shutil.rmtree(_run_data_dir)
-        shutil.copytree(out_dir, _run_data_dir)
+        with pbm_core.PowerBalance(profiles_directory=tempd, no_browser=True) as pbm:
+            pbm.run_simulation(tempd)
+            out_dir = glob.glob(os.path.join(tempd, "pbm_results_*"))[0]
+            for dir in os.listdir(out_dir):
+                if dir not in ("data", "parameters"):
+                    shutil.rmtree(os.path.join(out_dir, dir))
+            shutil.rmtree(_run_data_dir)
+            shutil.copytree(out_dir, _run_data_dir)
 
 
 if __name__ in "__main__":

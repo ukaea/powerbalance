@@ -38,13 +38,17 @@ Out[6]:
  'tokamak.interdependencies.ratiotype',
  'tokamak.interdependencies.systempressure',
  ...
+In [7]: p.clear_cache()
 ```
 
 !!! warning "Parameter setting"
     All parameters including those that are protected are listed via `PowerBalance.get_parameters()` for
     the purposes of inspection. Only modifiable parameters can be updated, these are listed by running `PowerBalance.modifiable_parameters()`.
 
-
+!!! warning "PyDelica cache"
+    On Windows temporary directories are not deleted on log out. PyDelica uses these to perform builds and store
+    the model binaries. It is therefore recommended unless using `PowerBalance` as a context manager you should
+    run the `clear_cache` method to wipe these build folders upon completion.
 
 
 
