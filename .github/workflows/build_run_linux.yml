@@ -13,9 +13,8 @@ jobs:
       - uses: artemis-beta/setup-openmodelica@v2
         with:
           msl-version: '3.2.3'
-          libraries: |
-            ModelicaServices@3.2.3
-            Complex@3.2.3
+      - name: Install OpenModelica libraries
+        run: sudo apt -y install omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Compile models
         run: |
           mkdir build
@@ -79,8 +78,8 @@ jobs:
         with:
           msl-version: '3.2.3'
           libraries: |
-            ModelicaServices@3.2.3
-            Complex@3.2.3
+      - name: Install OpenModelica libraries
+        run: sudo apt -y install omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Models
         run: |
           cd build
@@ -105,9 +104,8 @@ jobs:
       - uses: artemis-beta/setup-openmodelica@v2
         with:
           msl-version: '3.2.3'
-          libraries: |
-            ModelicaServices@3.2.3
-            Complex@3.2.3
+      - name: Install OpenModelica libraries
+        run: sudo apt -y install omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Models
         run: |
           poetry install
@@ -139,9 +137,8 @@ jobs:
       - uses: artemis-beta/setup-openmodelica@v2
         with:
           msl-version: '3.2.3'
-          libraries: |
-            ModelicaServices@3.2.3
-            Complex@3.2.3
+      - name: Install OpenModelica libraries
+        run: sudo apt -y install omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Regression Tests
         run: |
           poetry install
@@ -173,9 +170,8 @@ jobs:
       - uses: artemis-beta/setup-openmodelica@v2
         with:
           msl-version: '3.2.3'
-          libraries: |
-            ModelicaServices@3.2.3
-            Complex@3.2.3
+      - name: Install OpenModelica libraries
+        run: sudo apt -y install omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Unit Tests
         run: |
           poetry install
