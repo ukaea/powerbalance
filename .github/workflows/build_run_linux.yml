@@ -179,6 +179,8 @@ jobs:
           retention-days: 1
   collate_coverage:
     name: Collate Coverage
+    container:
+      image: openmodelica/openmodelica:v1.18.0-minimal
     runs-on: ubuntu-latest
     if: ${{ github.ref_name == 'main' }}
     needs: [unit_tests, regression_tests, model_run_api]
@@ -203,6 +205,7 @@ jobs:
           path: coverage
       - name: Combine Coverage
         run: |
+          find . -name "*.pyc" -delete
           python -m pip install coverage
           coverage combine coverage/coverage_*
           coverage xml
