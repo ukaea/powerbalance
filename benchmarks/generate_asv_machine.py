@@ -12,15 +12,16 @@ unify all runners of particular specifications to reduce the issue.
 
 __date__ = "2022-03-11"
 
-import typing
-import click
-import os
-import math
-import re
-import logging
 import json
-import sys
+import logging
+import math
+import os
+import re
 import subprocess
+import sys
+import typing
+
+import click
 
 logging.basicConfig()
 
