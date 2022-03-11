@@ -27,9 +27,11 @@ logging.basicConfig()
 
 @click.command()
 @click.argument("asv_config")
+@click.option("--version", help="Specify configuration schema version", default=1)
 @click.option("--existing", help="Specify existing machine file to append to", default=None)
 def create_machine_config(
     asv_config: str,
+    version: typing.Optional[str] = "1",
     existing: typing.Optional[str] = None) -> None:
     _machine_metadata: typing.Dict[str, typing.Dict[str, str]] = {}
     _logger = logging.getLogger("GenerateASVMachine")
@@ -43,8 +45,9 @@ def create_machine_config(
                             K. Zarebski, UKAEA
 
 
-        Input File   : {existing}
-        Config File  : {asv_config} 
+        Input File      : {existing}
+        Config File     : {asv_config}
+        Schema version  : {version}
 
 ===============================================================================
     """
@@ -127,7 +130,7 @@ def create_machine_config(
     if not _current:
         _new_dat["machine"] = f"gh-machine-group-{len(_machine_metadata)}"
         _machine_metadata[_new_dat["machine"]] = _new_dat
-        _current = _new_dat
+        _current = {_new_dat["machine"]: _new_dat, "version": version}
     
     with open(_expected_machine_file, "w") as out_f:
         _logger.info("Writing current machine session file '%s'", _expected_machine_file)
