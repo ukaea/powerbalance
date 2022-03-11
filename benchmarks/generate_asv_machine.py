@@ -35,6 +35,22 @@ def create_machine_config(
     _logger = logging.getLogger("GenerateASVMachine")
     _logger.setLevel(logging.INFO)
 
+    _intro_str = f"""
+===============================================================================
+
+                Airspeed Velocity Machine Config Generator
+
+                            K. Zarebski, UKAEA
+
+
+        Input File   : {existing}
+        Config File  : {asv_config} 
+
+===============================================================================
+    """
+
+    print(_intro_str)
+
     if existing:
         if not os.path.exists(existing):
             _logger.warning(
@@ -81,10 +97,11 @@ def create_machine_config(
 
     _freq = _asv_machine_data["cpu"].split("@")[1].strip()
 
-    _i_type = re.findall(r"\s(i\d+)\-", _asv_machine_data["cpu"])[0]
-    _series = re.findall(r"\si\d+\-(\d+)", _asv_machine_data["cpu"])[0]
+    _type = _asv_machine_data["cpu"].split("CPU")[0].strip()
+    _series = re.findall(r"\d{4}", _asv_machine_data["cpu"])[0]
+    _type = _type.split(_series)[0].replace("-", "")
     _series = f"{int(math.floor(int(_series)/1000))}XXX"
-    _cpu = f"Intel {_i_type}-{_series} @ {_freq}"
+    _cpu = f"{_type}-{_series} @ {_freq}"
     _n_cpu = _asv_machine_data["num_cpu"]
     _os = re.findall(r"^Linux \d+\.\d+\.\d+", _asv_machine_data["os"])[0]
     _ram = f"{int(math.floor(int(_asv_machine_data['ram'])/1E3))}k"
