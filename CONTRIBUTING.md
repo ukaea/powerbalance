@@ -11,7 +11,7 @@ Poetry can be installed using `pip` or an installer script, further documentatio
 project's [website](https://python-poetry.org/docs/).
 
 `poetry` creates a virtual environment containing specific versions of the prerequisite Python packages. Then, by
-using `poetry run >command<` the developer may run `>command<` inside that virtual environment instead. You can
+using `poetry run <command>` the developer may run `<command>` inside that virtual environment instead. You can
 do `poetry run pip` as well and tamper with the packages inside the environment as well, if needed.
 
 ## Setting up for development on the Power Balance Models :question:
