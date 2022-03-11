@@ -8,6 +8,8 @@ jobs:
     name: Run Benchmarks on main
     if: ${{ github.ref_name == 'main' }}
     steps:
+    - name: Install other requirements
+      run: apt update && apt install -y git
     - name: Checkout Code
       uses: actions/checkout@v2
       with:
