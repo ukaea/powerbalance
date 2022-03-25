@@ -36,7 +36,7 @@ tables = "^3.7.0"
 bokeh = "^2.4.2"
 Jinja2 = "^3.0.3"
 scipy = "^1.7.3"
-click = "^8.0.3"
+click = "^8.0.4"
 pydantic = "^1.9.0"
 pydelica = "^0.4.2"
 
