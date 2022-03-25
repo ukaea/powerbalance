@@ -12,4 +12,4 @@ updates:
       prefix: "pip"
       include: "scope"
     open-pull-requests-limit: 5
-    target-branch: "develop"
+    target-branch: "main"
