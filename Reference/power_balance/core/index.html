@@ -1,0 +1,1680 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Documentation for the Power Balance Models API" name="description"/>
+<link href="https://ukaea.github.io/powerbalance/docs/Reference/power_balance/core/" rel="canonical"/>
+<link href="../../../images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.2.3, mkdocs-material-8.2.7" name="generator"/>
+<title>core - Power Balance Models</title>
+<link href="../../../assets/stylesheets/main.9d5733d3.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
+<meta content="#000000" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="" data-md-color-primary="black" data-md-color-scheme="" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#power_balancecore">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Power Balance Models" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Power Balance Models">
+<img alt="logo" src="../../../images/pbm_logo.png"/>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Power Balance Models
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              core
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ukaea/powerbalance/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Power Balance Models" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Power Balance Models">
+<img alt="logo" src="../../../images/pbm_logo.png"/>
+</a>
+    Power Balance Models
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ukaea/powerbalance/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/installation/">
+        Installation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/getting_started/">
+        Getting Started
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4">
+          Usage
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Usage" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Usage
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/cli/">
+        Command Line Interface
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Configuration" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          Configuration
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/setup_overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/configuration/">
+        Global
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/simulation_opts/">
+        Simulation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/parameters/">
+        Parameters
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/plasma/">
+        Plasma
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3">
+          Model Outputs
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Model Outputs" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+          Model Outputs
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/data_out/">
+        Output Data Directory
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/result_output/">
+        Power Data
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5">
+          API
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="API" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/api_overview/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/validation/">
+        Input Validation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/advanced_api/">
+        Interactive Session
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" id="__nav_5_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_4">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Reference" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_4">
+<span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../utilities/">
+        utilities
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          core
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        core
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#class-powerbalance">
+    Class PowerBalance
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#attributes">
+    Attributes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#methods">
+    Methods
+  </a>
+<nav aria-label="Methods" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add_models">
+    add_models
+  </a>
+<nav aria-label="add_models" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#apply_model_configuration">
+    apply_model_configuration
+  </a>
+<nav aria-label="apply_model_configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_1">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clear_cache">
+    clear_cache
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get_parameters">
+    get_parameters
+  </a>
+<nav aria-label="get_parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_2">
+    Parameters
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returns">
+    Returns
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get_power">
+    get_power
+  </a>
+<nav aria-label="get_power" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_3">
+    Parameters
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returns_1">
+    Returns
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#launch_browser">
+    launch_browser
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#load_parameters">
+    load_parameters
+  </a>
+<nav aria-label="load_parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_4">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modifiable_parameters">
+    modifiable_parameters
+  </a>
+<nav aria-label="modifiable_parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returns_2">
+    Returns
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#plot_results">
+    plot_results
+  </a>
+<nav aria-label="plot_results" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_5">
+    Parameters
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returns_3">
+    Returns
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#read_models_from_directory">
+    read_models_from_directory
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#remove_models">
+    remove_models
+  </a>
+<nav aria-label="remove_models" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_6">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#run_simulation">
+    run_simulation
+  </a>
+<nav aria-label="run_simulation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_7">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#save_configuration">
+    save_configuration
+  </a>
+<nav aria-label="save_configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_8">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#save_parameters">
+    save_parameters
+  </a>
+<nav aria-label="save_parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_9">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#save_profiles">
+    save_profiles
+  </a>
+<nav aria-label="save_profiles" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_10">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#set_model_parameters">
+    set_model_parameters
+  </a>
+<nav aria-label="set_model_parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_11">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#set_parameter_value">
+    set_parameter_value
+  </a>
+<nav aria-label="set_parameter_value" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_12">
+    Parameters
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returns_4">
+    Returns
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update_model_input_paths">
+    update_model_input_paths
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#write_data">
+    write_data
+  </a>
+<nav aria-label="write_data" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_13">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get_plugins">
+    get_plugins
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#save_plugin_displays">
+    save_plugin_displays
+  </a>
+<nav aria-label="save_plugin_displays" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_14">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4_3" id="__nav_5_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_4_3">
+          modelica_templating
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="modelica_templating" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_4_3">
+<span class="md-nav__icon md-icon"></span>
+          modelica_templating
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../modelica_templating/structures/">
+        structures
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../modelica_templating/">
+        modelica_templating
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../modelica_templating/pfmagnets/">
+        pfmagnets
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../models/">
+        models
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../plugins/">
+        plugins
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4_6" id="__nav_5_4_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_4_6">
+          plotting
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="plotting" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_4_6">
+<span class="md-nav__icon md-icon"></span>
+          plotting
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../plotting/common/">
+        common
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../plotting/profile_plotting/">
+        profile_plotting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../plotting/">
+        plotting
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../plotting/result_plotting/">
+        result_plotting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4_7" id="__nav_5_4_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_4_7">
+          calc
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="calc" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_4_7">
+<span class="md-nav__icon md-icon"></span>
+          calc
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../calc/">
+        calc
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../calc/efficiencies/">
+        efficiencies
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4_8" id="__nav_5_4_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_4_8">
+          cli
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="cli" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_4_8">
+<span class="md-nav__icon md-icon"></span>
+          cli
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cli/">
+        cli
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cli/session/">
+        session
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../configs/">
+        configs
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../exceptions/">
+        exceptions
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../profiles/">
+        profiles
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4_12" id="__nav_5_4_12" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_4_12">
+          validation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="validation" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_4_12">
+<span class="md-nav__icon md-icon"></span>
+          validation
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../validation/">
+        validation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../validation/config/">
+        config
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../validation/modelica_simulation_options/">
+        modelica_simulation_options
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6">
+          Models
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Models" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Models
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1" id="__nav_6_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1">
+          Magnets
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Magnets" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_1">
+<span class="md-nav__icon md-icon"></span>
+          Magnets
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/magnet/basemagnet/">
+        Base Magnet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/magnet/tfcoil/">
+        Toroidal Field Coil
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/magnet/pfcoil/">
+        Poloidal Field Coil
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/magnet/magnetpower/">
+        Magnet Power
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_1_5" id="__nav_6_1_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_1_5">
+          Superconductor
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Superconductor" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_6_1_5">
+<span class="md-nav__icon md-icon"></span>
+          Superconductor
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/magnet/supercon_layer/">
+        Superonducting Layer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/magnet/mutual_inductor/">
+        Mutual Inductor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/magnet/supercon_resistive/">
+        Power Law Resistance
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/magnet/preisach_everett/">
+        Hysteresis
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2">
+          Heating and Current Drive
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Heating and Current Drive" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Heating and Current Drive
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/hcd/hcd_system/">
+        H&amp;CD Power
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/hcd/nini/">
+        Neutral Beam Injection (NINI-type)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/hcd/rf_gyrotron/">
+        RF Gyrotron
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/hcd/rf_waveguide/">
+        RF Waveguide
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3">
+          Cryogenics
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Cryogenics" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+          Cryogenics
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/cryo/cryogenic_power/">
+        Cryo Power
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/cryo/convertflowelec/">
+        Cryogenic Power Conversion
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/cryo/turbopump_cryo/">
+        Cryopump
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4">
+          Waste Heat
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Waste Heat" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+          Waste Heat
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/wasteheat/wasteheat_package/">
+        Waste Package
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/wasteheat/wasteheat_system/">
+        Waste System
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/waterdetrit/waterdetrit_package/">
+        Water Detritiation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/airgasdetrit/airgasdetrit_package/">
+        Air Gas Detritiation
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_7" id="__nav_6_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_7">
+          Coolant Detritiation
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Coolant Detritiation" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_7">
+<span class="md-nav__icon md-icon"></span>
+          Coolant Detritiation
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/coolantdetrit/coolantdetrit_package/">
+        Package
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/coolantdetrit/watercoolant/">
+        Water Detritiation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/coolantdetrit/gascoolant/">
+        Gas Detritiation
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/blanketdetrit/power/">
+        Blanket Detritiation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/turbopump/pumps/">
+        Turbopump
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modelica/powergen/equations/">
+        Power Generation
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_7">
+          Development
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Development" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/development/">
+        Overview
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/poetry/">
+        Poetry
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://codecov.io/gh/ukaea/powerbalance">
+        Code Coverage
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../API/plugins/">
+        Plugin Creation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="/powerbalance/benchmarks/">
+        Benchmarks
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#class-powerbalance">
+    Class PowerBalance
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#attributes">
+    Attributes
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#methods">
+    Methods
+  </a>
+<nav aria-label="Methods" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add_models">
+    add_models
+  </a>
+<nav aria-label="add_models" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#apply_model_configuration">
+    apply_model_configuration
+  </a>
+<nav aria-label="apply_model_configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_1">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clear_cache">
+    clear_cache
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get_parameters">
+    get_parameters
+  </a>
+<nav aria-label="get_parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_2">
+    Parameters
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returns">
+    Returns
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get_power">
+    get_power
+  </a>
+<nav aria-label="get_power" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_3">
+    Parameters
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returns_1">
+    Returns
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#launch_browser">
+    launch_browser
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#load_parameters">
+    load_parameters
+  </a>
+<nav aria-label="load_parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_4">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modifiable_parameters">
+    modifiable_parameters
+  </a>
+<nav aria-label="modifiable_parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returns_2">
+    Returns
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#plot_results">
+    plot_results
+  </a>
+<nav aria-label="plot_results" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_5">
+    Parameters
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returns_3">
+    Returns
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#read_models_from_directory">
+    read_models_from_directory
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#remove_models">
+    remove_models
+  </a>
+<nav aria-label="remove_models" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_6">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#run_simulation">
+    run_simulation
+  </a>
+<nav aria-label="run_simulation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_7">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#save_configuration">
+    save_configuration
+  </a>
+<nav aria-label="save_configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_8">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#save_parameters">
+    save_parameters
+  </a>
+<nav aria-label="save_parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_9">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#save_profiles">
+    save_profiles
+  </a>
+<nav aria-label="save_profiles" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_10">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#set_model_parameters">
+    set_model_parameters
+  </a>
+<nav aria-label="set_model_parameters" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_11">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#set_parameter_value">
+    set_parameter_value
+  </a>
+<nav aria-label="set_parameter_value" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_12">
+    Parameters
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#returns_4">
+    Returns
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#update_model_input_paths">
+    update_model_input_paths
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#write_data">
+    write_data
+  </a>
+<nav aria-label="write_data" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_13">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get_plugins">
+    get_plugins
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#save_plugin_displays">
+    save_plugin_displays
+  </a>
+<nav aria-label="save_plugin_displays" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parameters_14">
+    Parameters
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/ukaea/powerbalance/edit/master/docs/Reference/power_balance/core.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1 id="power_balancecore">power_balance.core<a class="headerlink" href="#power_balancecore" title="Permanent link">#</a></h1>
+<p>Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L0">power_balance/core.py</a></p>
+<h2 id="class-powerbalance">Class <strong>PowerBalance</strong><a class="headerlink" href="#class-powerbalance" title="Permanent link">#</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="n">PowerBalance</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'/home/runner/work/powerbalance/powerbalance/power_balance/configs/default_config.toml'</span><span class="p">,</span> <span class="n">no_browser</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">modelica_file_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'Default'</span><span class="p">,</span> <span class="n">profiles_directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'Default'</span><span class="p">,</span> <span class="n">parameter_directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'Default'</span><span class="p">,</span> <span class="n">print_intro</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L96">power_balance/core.py</a></p>
+<p>Main Power Balance class for running the Modelica models contained within the 'models' submodule. This class handles compiling and running, as well as the setting of parameter values.</p>
+<h2 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">#</a></h2>
+<ul>
+<li>
+<p><code>power_data</code>: <code>Dict[str, pd.DataFrame]</code>, <code>typing.</code></p>
+<p>power data stored after a simulation run (else None)</p>
+</li>
+<li>
+<p><code>configuration</code>: <code>Dict[str, typing.Any]</code>, <code>typing.</code></p>
+<p>current configuration options as dictionary</p>
+</li>
+</ul>
+<h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">#</a></h2>
+<h4 id="add_models">add_models<a class="headerlink" href="#add_models" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">add_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L629">power_balance/core.py</a></p>
+<p>Read model(s) from a given OM file and add to simulation list.</p>
+<h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>model_path</code>: <code>str</code></p>
+<p>file address of the modelica file containing the models</p>
+</li>
+<li>
+<p><code>model_names</code>: <code>typing.List</code>, default <code>None</code></p>
+<p>list of models to import by name, by default all</p>
+</li>
+</ul>
+<h4 id="apply_model_configuration">apply_model_configuration<a class="headerlink" href="#apply_model_configuration" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">apply_model_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L772">power_balance/core.py</a></p>
+<p>Applies the configuration within the configuration options provided.</p>
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>model_name</code>: <code>str</code></p>
+<p>name of model to apply configuration to</p>
+</li>
+</ul>
+<h4 id="clear_cache">clear_cache<a class="headerlink" href="#clear_cache" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">clear_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L222">power_balance/core.py</a></p>
+<p>Clear the PyDelica session cache
+As we do not use pydelica.Session as a context manager we need to do the cache clear manually (else risking leaving a lot of temporary directories on Windows)</p>
+<h4 id="get_parameters">get_parameters<a class="headerlink" href="#get_parameters" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">get_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">include_undefined</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L810">power_balance/core.py</a></p>
+<p>Retrieve all model parameters including those that cannot be modified</p>
+<h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>model</code>: <code>str</code>, default <code>None</code></p>
+<p>name of model to retrieve parameters from, by default first compiled</p>
+</li>
+<li>
+<p><code>include_undefined</code>: <code>bool</code>, default <code>False</code></p>
+<p>include parameters with a value of 'None', by default False</p>
+</li>
+</ul>
+<h5 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>typing.Any</code></p>
+<p>a dictionary of the model parameters and their values</p>
+</li>
+</ul>
+<h4 id="get_power">get_power<a class="headerlink" href="#get_power" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">get_power</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L1107">power_balance/core.py</a></p>
+<p>Retrieve the power results from a Modelica model after simulation</p>
+<h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>model_name</code>: <code>str</code></p>
+<p>name of the Modelica model</p>
+</li>
+</ul>
+<h5 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>pandas.core.frame.DataFrame</code></p>
+<p>dataframe containing the power values for each of the subsystems</p>
+</li>
+</ul>
+<h4 id="launch_browser">launch_browser<a class="headerlink" href="#launch_browser" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">launch_browser</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L1533">power_balance/core.py</a></p>
+<p>Opens local web browser to view result plots</p>
+<h4 id="load_parameters">load_parameters<a class="headerlink" href="#load_parameters" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">load_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L1088">power_balance/core.py</a></p>
+<p>Load parameters from a given directory specifying which file is the simulation options file</p>
+<h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>directory</code>: <code>str</code></p>
+<p>directory containing all parameter TOML files</p>
+</li>
+</ul>
+<h4 id="modifiable_parameters">modifiable_parameters<a class="headerlink" href="#modifiable_parameters" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">modifiable_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L800">power_balance/core.py</a></p>
+<p>Get a list of parameters that can be modified by the user</p>
+<h5 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>typing.List</code></p>
+<p>list of parameters which can be modified</p>
+</li>
+</ul>
+<h4 id="plot_results">plot_results<a class="headerlink" href="#plot_results" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">plot_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L1447">power_balance/core.py</a></p>
+<p>Create all plots images for all power variables.</p>
+<h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>output_directory</code>: <code>str</code></p>
+<p>directory to save created images.</p>
+</li>
+</ul>
+<h5 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>typing.List</code></p>
+<p>list of output plot file names</p>
+</li>
+</ul>
+<h4 id="read_models_from_directory">read_models_from_directory<a class="headerlink" href="#read_models_from_directory" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">read_models_from_directory</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L354">power_balance/core.py</a></p>
+<p>Read all Modelica '.mo' files from the directory given
+Reads the models from the directory given within the configuration this directory is changed to a temporary directory if any templating of the Modelica models is required (e.g. addition of PF magnets)</p>
+<h4 id="remove_models">remove_models<a class="headerlink" href="#remove_models" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">remove_models</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L681">power_balance/core.py</a></p>
+<p>Remove models from the <code>power_balance.PowerBalance</code> instance so they are not run during simulation</p>
+<h5 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>model_names</code>: <code>typing.List</code></p>
+<p>list of names of models to remove</p>
+</li>
+</ul>
+<h4 id="run_simulation">run_simulation<a class="headerlink" href="#run_simulation" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">run_simulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">''</span><span class="p">,</span> <span class="n">sweep_dict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L1261">power_balance/core.py</a></p>
+<p>Acts as a driver for the back end functions handling the interface with OpenModelica</p>
+<h5 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>output_directory</code>: <code>str</code>, default ````</p>
+<p>directory for output files</p>
+</li>
+<li>
+<p><code>sweep_dict</code>: <code>typing.Optional</code>, default <code>None</code></p>
+<p>perform sweep for the given parameters using a dictionary containing range information, by default None (no sweep)</p>
+</li>
+</ul>
+<h4 id="save_configuration">save_configuration<a class="headerlink" href="#save_configuration" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">save_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L1057">power_balance/core.py</a></p>
+<p>Save configuration for the session so it can be loaded later</p>
+<h5 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>output_directory</code>: <code>str</code></p>
+<p>directory to save the config folder to</p>
+</li>
+</ul>
+<h4 id="save_parameters">save_parameters<a class="headerlink" href="#save_parameters" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">save_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L1046">power_balance/core.py</a></p>
+<p>Save parameters for the session so they can be loaded later</p>
+<h5 id="parameters_9">Parameters<a class="headerlink" href="#parameters_9" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>output_directory</code>: <code>str</code></p>
+<p>directory to save the parameter sets to</p>
+</li>
+</ul>
+<h4 id="save_profiles">save_profiles<a class="headerlink" href="#save_profiles" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">save_profiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L1070">power_balance/core.py</a></p>
+<p>Save profiles for the session so they can be loaded later</p>
+<h5 id="parameters_10">Parameters<a class="headerlink" href="#parameters_10" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>output_directory</code>: <code>str</code></p>
+<p>directory to save the profile folder to</p>
+</li>
+</ul>
+<h4 id="set_model_parameters">set_model_parameters<a class="headerlink" href="#set_model_parameters" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">set_model_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">allow_param_failure</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L993">power_balance/core.py</a></p>
+<p>Read parameters from the parameter set object within the API and then assign them to the given Modelica System</p>
+<h5 id="parameters_11">Parameters<a class="headerlink" href="#parameters_11" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>model_name</code>: <code>str</code></p>
+<p>the name of the model</p>
+</li>
+<li>
+<p><code>allow_param_failure</code>: <code>bool</code>, default <code>False</code></p>
+<p>whether or not a failed parameter search during assignment throws an exception, by default False</p>
+</li>
+</ul>
+<h4 id="set_parameter_value">set_parameter_value<a class="headerlink" href="#set_parameter_value" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">set_parameter_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L736">power_balance/core.py</a></p>
+<p>typing.Tuple a parameter within the parameter set to a given value.</p>
+<h5 id="parameters_12">Parameters<a class="headerlink" href="#parameters_12" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>parameter_name</code>: <code>str</code></p>
+<p>name of the parameter to be modified</p>
+</li>
+<li>
+<p><code>value</code>: <code>typing.Any</code></p>
+<p>new value to assign to that parameter</p>
+</li>
+</ul>
+<h5 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>typing.Any</code></p>
+<p>the value read from the parameter after it has been set</p>
+</li>
+</ul>
+<h4 id="update_model_input_paths">update_model_input_paths<a class="headerlink" href="#update_model_input_paths" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">update_model_input_paths</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L753">power_balance/core.py</a></p>
+<p>Replace all variables defined as 'Path' variables with an absolute path in order to correctly read in the required inputs.</p>
+<h4 id="write_data">write_data<a class="headerlink" href="#write_data" title="Permanent link">#</a></h4>
+<p><div class="highlight"><pre><span></span><code><span class="n">write_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L1501">power_balance/core.py</a></p>
+<p>Write the resulting data frames to a HDF5 file which allows inclusion of various key metadata alongside the datasets</p>
+<h5 id="parameters_13">Parameters<a class="headerlink" href="#parameters_13" title="Permanent link">#</a></h5>
+<ul>
+<li>
+<p><code>output_directory</code>: <code>str</code></p>
+<p>location to write output data files</p>
+</li>
+</ul>
+<h2 id="get_plugins">get_plugins<a class="headerlink" href="#get_plugins" title="Permanent link">#</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="n">get_plugins</span><span class="p">(</span><span class="n">plugin_order_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L64">power_balance/core.py</a></p>
+<h2 id="save_plugin_displays">save_plugin_displays<a class="headerlink" href="#save_plugin_displays" title="Permanent link">#</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="n">save_plugin_displays</span><span class="p">(</span><span class="n">output_directory</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+Source: <a href="https://github.com/ukaea/powerbalance/tree/main/power_balance/core.py#L79">power_balance/core.py</a></p>
+<p>Save the plugin display files so they can be loaded later</p>
+<h3 id="parameters_14">Parameters<a class="headerlink" href="#parameters_14" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p><code>output_directory</code>: <code>str</code></p>
+<p>directory to save the display folder to</p>
+</li>
+</ul>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 1, 2022</span>
+</small>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: utilities" class="md-footer__link md-footer__link--prev" href="../utilities/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              utilities
+            </div>
+</div>
+</a>
+<a aria-label="Next: structures" class="md-footer__link md-footer__link--next" href="../modelica_templating/structures/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Next
+              </span>
+              structures
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.5e67fbfe.min.js"}</script>
+<script src="../../../assets/javascripts/bundle.e87a5f81.min.js"></script>
+<script src="../../../javascript/config.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/mermaid@8.6.4/dist/mermaid.min.js"></script>
+</body>
+</html>
