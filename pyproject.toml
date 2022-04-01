@@ -67,7 +67,7 @@ typed-ast = "^1.5.2"
 types-Jinja2 = "^2.11.9"
 mkdocs-click = "^0.5.0"
 pre-commit = "^2.17.0"
-unimport = "^0.9.4"
+unimport = "^0.9.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
