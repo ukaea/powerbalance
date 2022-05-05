@@ -240,7 +240,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     //
     // ==================== Defining Structural Parameters =======================
     parameter Boolean useSuperconModel = true "STRUCTURAL_PARAMETER";
-    parameter Boolean isPSUeffValue = false "STRUCTURAL PARAMETER";
+    parameter Boolean isPSUeffValue = false "STRUCTURAL_PARAMETER";
     parameter Boolean isMagnetTFSuperconCoil = false "STRUCTURAL_PARAMETER";
     parameter Boolean isMagnetTFSuperconFeeder = false "STRUCTURAL_PARAMETER";
     parameter Boolean isMagnetPF1SuperconCoil = false "STRUCTURAL_PARAMETER";
