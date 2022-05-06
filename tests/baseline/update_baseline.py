@@ -4,13 +4,13 @@ Update Regression Test Baseline Files
 """
 import glob
 import os.path
+import pickle
 import shutil
 import tempfile
-import power_balance.core as pbm_core
-import pickle
 
 import numpy as np
 import power_balance.calc.efficiencies as pbm_eff
+import power_balance.core as pbm_core
 import power_balance.profiles as pbm_prof
 
 BASELINE_DIR = os.path.dirname(__file__)

@@ -1,12 +1,10 @@
 import os
 import pathlib
-import py
 
 import pydelica
 import pytest
-
-from power_balance.models import get_local_models
 from power_balance.environment import MODELICA_ENVIRONMENT
+from power_balance.models import get_local_models
 
 TEST_DIR = pathlib.Path(os.path.dirname(__file__)).parent
 
