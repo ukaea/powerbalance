@@ -66,7 +66,7 @@ types-toml = "^0.10.6"
 typed-ast = "^1.5.3"
 types-Jinja2 = "^2.11.9"
 mkdocs-click = "^0.7.0"
-pre-commit = "^2.18.1"
+pre-commit = "^2.19.0"
 unimport = "^0.9.6"
 
 [build-system]
