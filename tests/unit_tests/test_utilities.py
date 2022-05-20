@@ -1,11 +1,8 @@
 import deepdiff
 import pytest
 
-from power_balance.utilities import (
-    convert_to_value,
-    expand_dictionary,
-    flatten_dictionary,
-)
+from power_balance.utilities import (convert_to_value, expand_dictionary,
+                                     flatten_dictionary)
 
 
 @pytest.mark.utilities

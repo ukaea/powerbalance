@@ -3,6 +3,7 @@ import pathlib
 
 import pydelica
 import pytest
+
 from power_balance.environment import MODELICA_ENVIRONMENT
 from power_balance.models import get_local_models
 
