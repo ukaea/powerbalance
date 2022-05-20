@@ -204,7 +204,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "deepdiff"
-version = "5.8.0"
+version = "5.8.1"
 description = "Deep Difference and Search of any Python object/data."
 category = "dev"
 optional = false
@@ -1275,7 +1275,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8,<3.11"
-content-hash = "bd325dd7c1c0e21cdcf9167f143269890a656a7a6ff4431a8c2c0a9e1a0e8d07"
+content-hash = "455a226b314262989c3c4e1f5306187b9eb3f3fea2a23e7da8bd87622bf3f9bf"
 
 [metadata.files]
 anybadge = [
@@ -1389,8 +1389,8 @@ cycler = [
     {file = "cycler-0.11.0.tar.gz", hash = "sha256:9c87405839a19696e837b3b818fed3f5f69f16f1eec1a1ad77e043dcea9c772f"},
 ]
 deepdiff = [
-    {file = "deepdiff-5.8.0-py3-none-any.whl", hash = "sha256:6b71714a6a5fb4cd6ab74c97f53303029118f96128082422342a9129a5f25c8f"},
-    {file = "deepdiff-5.8.0.tar.gz", hash = "sha256:7e641c0cd6429c9e1b64a07b8f7713382a5626afe18c72bcafa8a4343c05c701"},
+    {file = "deepdiff-5.8.1-py3-none-any.whl", hash = "sha256:e9aea49733f34fab9a0897038d8f26f9d94a97db1790f1b814cced89e9e0d2b7"},
+    {file = "deepdiff-5.8.1.tar.gz", hash = "sha256:8d4eb2c4e6cbc80b811266419cb71dd95a157094a3947ccf937a94d44943c7b8"},
 ]
 defusedxml = [
     {file = "defusedxml-0.7.1-py2.py3-none-any.whl", hash = "sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61"},
