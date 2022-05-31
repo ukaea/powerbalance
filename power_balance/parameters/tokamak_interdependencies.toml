@@ -41,6 +41,28 @@ OutputStreamRateCol_2 = 0.0001803333333333333 # Outlet flowrate from column 2 (k
 OutputStreamRateCol_3 = 5.555555555555556e-05 # Outlet flowrate from column 3 (kg/s)
 OutputStreamRateCol_4 = 0.0001411944444444444 # Outlet flowrate from column 4 (kg/s)
 
+# ====================== WASTE HEAT POWER ============================== #
+[wasteheatpower.wasteHeatCryo]
+# dimensions of the cryogenic plant room, metres
+Height = 3.0
+Length = 120.0
+SystemEfficiency = 0.8
+Width = 45.0
+
+[wasteheatpower.wasteHeatHCD]
+# dimensions of the HCD plant room, metres
+Height = 70.0
+Length = 120.0
+SystemEfficiency = 0.8
+Width = 100.0
+
+[wasteheatpower.WasteHeatMagnets]
+# dimensions of the magnet power converters room, metres
+Height = 3.0
+Length = 150.0
+SystemEfficiency = 0.8
+Width = 30.0
+
 # ========================== MAGNET POWER ================================== #
 #                                                                            #
 #   Parameters                                                               #
