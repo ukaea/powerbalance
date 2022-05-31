@@ -39,7 +39,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     assert(__cryoTemp_TF > 0 and __cryoTemp_TF <= 130, "---> Assertion Error in [CryogenicPower], variable [cryoTemp_TF = "+String(__cryoTemp_TF)+"] outside of acceptable range!", AssertionLevel.error);
     assert(__cryoTemp_PF >= 4 and __cryoTemp_PF <= 20, "---> Assertion Warning in [CryogenicPower], variable [cryoTemp_PF = "+String(__cryoTemp_PF)+"] outside of reasonable range!", AssertionLevel.warning);
     assert(__cryoTemp_PF > 0 and __cryoTemp_PF <= 130, "---> Assertion Error in [CryogenicPower], variable [cryoTemp_PF = "+String(__cryoTemp_PF)+"] outside of acceptable range!", AssertionLevel.error);
-    assert(__PFcrMW > 0 and __PFcrMW <= 0.5, "---> Assertion Warning in [CryogenicPower], variable [PFcrMW = "+String(__PFcrMW)+"] outside of reasonable range!", AssertionLevel.warning);
+    assert(__PFcrMW >= 0.0001 and __PFcrMW <= 0.5, "---> Assertion Warning in [CryogenicPower], variable [PFcrMW = "+String(__PFcrMW)+"] outside of reasonable range!", AssertionLevel.warning);
     assert(__PFcrMW > 0 and __PFcrMW <= 10, "---> Assertion Error in [CryogenicPower], variable [PFcrMW = "+String(__PFcrMW)+"] outside of acceptable range!", AssertionLevel.error);
   equation
     // Totals
