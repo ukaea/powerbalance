@@ -1,7 +1,6 @@
 # ========================== HCDSystem =================================== #
 
 [HCDSystem]
-__HeatToAir = [[0.0, 1.0], [0.2]]
 "negativeIonNeutralInjector.__beamEnergy" = [[0.0001, 100_000.0], [1]]
 "negativeIonNeutralInjector.__efficiencyNeutralization" = [[0.0, 1.0], [0.58]]
 "negativeIonNeutralInjector.__NBIThermalPowerMaxMW" = [[0.0001, 500.0], [109]]
@@ -9,7 +8,6 @@ __HeatToAir = [[0.0, 1.0], [0.2]]
 # ========================== CryogenicPower =================================== #
 
 [CryogenicPower]
-__HeatToAir = [[0.0, 1.0], [0.2]]
 __cryoFlow_HydrogenFreezing = [[0.0001, 10.0], [3.5]]
 __cryoTemp_TF = [[0.0001, 130.0], [20]]
 __cryoTemp_PF = [[0.0001, 130.0], [4]]
@@ -25,19 +23,7 @@ __PFcrMW = [[0.0001, 10.0], [0.0007]]
 
 # ========================== WasteHeatPower =================================== #
 
-[WasteHeatPower]
-"wasteHeatCryo.__Height" = [[0.0, 50.0], [3]]
-"wasteHeatCryo.__Length" = [[0.0, 200.0], [120]]
-"wasteHeatCryo.__SystemEfficiency" = [[0.0001, 1.0], [0.8]]
-"wasteHeatCryo.__Width" = [[0.0, 200.0], [45]]
-"wasteHeatHCD.__Height" = [[0.0, 50.0], [70]]
-"wasteHeatHCD.__Length" = [[0.0, 200.0], [120]]
-"wasteHeatHCD.__SystemEfficiency" = [[0.0001, 1.0], [0.8]]
-"wasteHeatHCD.__Width" = [[0.0, 200.0], [100]]
-"wasteHeatMagnets.__Height" = [[0.0, 50.0], [3]]
-"wasteHeatMagnets.__Length" = [[0.0, 200.0], [150]]
-"wasteHeatMagnets.__SystemEfficiency" = [[0.0001, 1.0], [0.8]]
-"wasteHeatMagnets.__Width" = [[0.0, 200.0], [30]]
+# TODO #
 
 # ========================== MagnetPower =================================== #
 
