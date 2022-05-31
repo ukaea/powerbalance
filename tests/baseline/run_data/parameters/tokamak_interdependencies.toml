@@ -3,31 +3,33 @@ primarycoolanttype = "FLiBe"
 ratiotype = 2.5
 secondarycoolanttype = "CO2"
 systempressure = 200
-thermalpowerdatapath = "ThermalPowerOut.mat"
+thermalpowerdatapath = "/tmp/tmpxkk7ixb0/ThermalPowerOut.mat"
 vacuumtype = "turbo"
 
 [hcdsystem]
+heattoair = 0.2
 useeffvalue = false
 effnini = 0.4
 effrf = 0.5
-nbipowerdatapath = "NBI_Heat.mat"
-rfpowerdatapath = "RF_Heat.mat"
+nbipowerdatapath = "/tmp/tmpxkk7ixb0/NBI_Heat.mat"
+rfpowerdatapath = "/tmp/tmpxkk7ixb0/RF_Heat.mat"
 
 [cryogenicpower]
+heattoair = 0.2
 cryoflow_hydrogenfreezing = 3.5
 cryotemp_tf = 4
 cryotemp_pf = 4
 pfcrmw = 0.00071
 
 [magnetpower]
-currentdatapathcs = "currentCS.mat"
-currentdatapathpf1 = "currentPF1.mat"
-currentdatapathpf2 = "currentPF2.mat"
-currentdatapathpf3 = "currentPF3.mat"
-currentdatapathpf4 = "currentPF4.mat"
-currentdatapathpf5 = "currentPF5.mat"
-currentdatapathpf6 = "currentPF6.mat"
-currentdatapathtf = "currentTF.mat"
+currentdatapathcs = "/tmp/tmpxkk7ixb0/currentCS.mat"
+currentdatapathpf1 = "/tmp/tmpxkk7ixb0/currentPF1.mat"
+currentdatapathpf2 = "/tmp/tmpxkk7ixb0/currentPF2.mat"
+currentdatapathpf3 = "/tmp/tmpxkk7ixb0/currentPF3.mat"
+currentdatapathpf4 = "/tmp/tmpxkk7ixb0/currentPF4.mat"
+currentdatapathpf5 = "/tmp/tmpxkk7ixb0/currentPF5.mat"
+currentdatapathpf6 = "/tmp/tmpxkk7ixb0/currentPF6.mat"
+currentdatapathtf = "/tmp/tmpxkk7ixb0/currentTF.mat"
 
 [powergenerated]
 usepowergeneffvalue = false
@@ -47,6 +49,27 @@ outputstreamratecol_1 = 8.638888888888889e-5
 outputstreamratecol_2 = 0.0001803333333333333
 outputstreamratecol_3 = 5.555555555555556e-5
 outputstreamratecol_4 = 0.0001411944444444444
+
+[wasteheatpower.wasteheatcryo]
+height = 3.0
+length = 120.0
+systemefficiency = 0.8
+width = 45.0
+stoptime = 60.0
+
+[wasteheatpower.wasteheathcd]
+height = 70.0
+length = 120.0
+systemefficiency = 0.8
+width = 100.0
+stoptime = 60.0
+
+[wasteheatpower.wasteheatmagnets]
+height = 3.0
+length = 150.0
+systemefficiency = 0.8
+width = 30.0
+stoptime = 60.0
 
 [magnetpower.magnetpf1]
 numcoils = 1
