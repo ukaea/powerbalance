@@ -17,9 +17,6 @@ and may or may not make physical sense. It is up to the user to verify that all 
     Modelica.Blocks.Interfaces.RealOutput P_amb(unit = "W") "Heat dissipated to air (W)" annotation(
       Placement(visible = true, transformation(extent = {{100, 10}, {120, 30}}, rotation = 0), iconTransformation(extent = {{100, 10}, {120, 30}}, rotation = 0)));
     //
-    // Specified Parameters
-    parameter Real __HeatToAir(unit = "1") = 0.20 "Fraction of waste heat to air; this needs a revisit together with the waste heat model";
-    //
     // Variables
     SI.Power ElecPowerConsumed "Power consumption of all cyogenics (W)";
     //
@@ -36,7 +33,6 @@ and may or may not make physical sense. It is up to the user to verify that all 
     //
   initial equation
     // Input Parameter Assertions
-    assert(__HeatToAir >= 0 and __HeatToAir <= 1, "---> Assertion Error in [CryogenicPower], variable [HeatToAir = "+String(__HeatToAir)+"] outside of acceptable range!", AssertionLevel.error);
     assert(__cryoFlow_HydrogenFreezing >= 2 and __cryoFlow_HydrogenFreezing <= 7, "---> Assertion Warning in [CryogenicPower], variable [cryoFlow_HydrogenFreezing = "+String(__cryoFlow_HydrogenFreezing)+"] outside of reasonable range!", AssertionLevel.warning);
     assert(__cryoFlow_HydrogenFreezing > 0 and __cryoFlow_HydrogenFreezing <=10, "---> Assertion Error in [CryogenicPower], variable [cryoFlow_HydrogenFreezing = "+String(__cryoFlow_HydrogenFreezing)+"] outside of acceptable range!", AssertionLevel.error);
     assert(__cryoTemp_TF >= 4 and __cryoTemp_TF <= 20, "---> Assertion Warning in [CryogenicPower], variable [cryoTemp_TF = "+String(__cryoTemp_TF)+"] outside of reasonable range!", AssertionLevel.warning);
@@ -48,7 +44,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
   equation
     // Totals
     ElecPowerConsumed = currentLeads.ElecPower_CurrentLeads + tfCoils.ElecPower_TF + pfCoils.ElecPower_PF + cryoDistConversion.elecPower + cryoDistN2Conversion.elecPower + fuelMatterInjection.ElecPower_FuelMatterInjection "Sum of all power loads";
-    P_amb = __HeatToAir * (ElecPowerConsumed + CD.Load_Total + Magnetheat_PF + Magnetheat_TF + CD.NitrogenLoadInput_Total) "Heat to the hot sink is the sum of input work and heat from cold sink";
+    P_amb = ElecPowerConsumed + CD.Load_Total + Magnetheat_PF + Magnetheat_TF + CD.NitrogenLoadInput_Total "Heat to the hot sink is the sum of input work and heat from cold sink";
     //
   end CryogenicPower;
 
