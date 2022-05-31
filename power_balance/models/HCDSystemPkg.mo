@@ -7,7 +7,6 @@ and may or may not make physical sense. It is up to the user to verify that all 
     import SI = Modelica.SIunits;
     //
     // Parameters
-    parameter Real __HeatToAir = 0.2 "Percentage of waste heat to air";
     parameter String __RFPowerDataPath = "RF_Heat.mat" "Input profile of thermal power contained within plasma over time. Full data path required for running inside OMEdit";
     parameter String __NBIPowerDataPath = "NBI_Heat.mat" "input profile of thermal power contained within plasma over time. Must use full data path if running inside OMEdit";
     parameter Boolean __useEffValue = false "Set to true to use an efficiency value, set to false to use the existing models";
@@ -23,12 +22,11 @@ and may or may not make physical sense. It is up to the user to verify that all 
     //
   initial equation
     // Input Parameter Asssertions
-    assert(__HeatToAir >= 0 and __HeatToAir <= 1, "---> Assertion Error in [HCDSystem], input parameter [HeatToAir = " + String(__HeatToAir) + "] outside of acceptable range", level = AssertionLevel.error);
     assert(__effNINI >= 0 and __effNINI <= 1, "---> Assertion Error in [HCDSystem], input parameter [effNINI = " + String(__effNINI) + "] outside of acceptable range", level = AssertionLevel.error);
     assert(__effRF >= 0 and __effRF <= 1, "---> Assertion Error in [HCDSystem], input parameter [effRF = " + String(__effRF) + "] outside of acceptable range", level = AssertionLevel.error);
     //
   equation
-    P_amb = __HeatToAir * (if __useEffValue then (ElecPowerConsumed - negativeIonNeutralInjector.NBIThermalPower - gyrotronSystem.RFThermalPower) else (ElecPowerConsumed - gyrotronSystem.RFThermalPower - negativeIonNeutralInjector.NBIThermalPower));
+    P_amb = if __useEffValue then (ElecPowerConsumed - negativeIonNeutralInjector.NBIThermalPower - gyrotronSystem.RFThermalPower) else (ElecPowerConsumed - gyrotronSystem.RFThermalPower - negativeIonNeutralInjector.NBIThermalPower);
     NBIElectricalPowerIn = if __useEffValue then negativeIonNeutralInjector.NBIThermalPower / __effNINI else negativeIonNeutralInjector.powerIn;
     RFElectricalPowerIn = if __useEffValue then gyrotronSystem.RFThermalPower / __effRF else gyrotronSystem.powerIn;
     ElecPowerConsumed = RFElectricalPowerIn + NBIElectricalPowerIn "Calculates the total electrical power required for H&CD";

@@ -11,8 +11,6 @@ ThermalPower = 1000 # Unit in MW. Used for profile generation when available.
                     # Keyword, do not change or remove
 # ============================= HCD SYSTEM ================================= #
 [hcdsystem]
-HeatToAir = 0.20 # fraction of HCD power loss that ends up in
-                 # the waste heat system
 useEffValue = false
 effNINI = 0.4
 effRF = 0.5
@@ -24,7 +22,6 @@ NBIThermalPowerMaxMW = 109
 
 # ========================== CRYOGENIC POWER =============================== #
 [cryogenicpower]
-HeatToAir = 0.20 # fraction of HCD power loss that ends up in the waste heat system
 cryoFlow_HydrogenFreezing = 3.5 # cryogenic mass flow rate for freezing hydrogen for fuel matter injection (g/s)
 cryoTemp_TF = 4 # temperature of the TF coolant (K)
 cryoTemp_PF = 4 # temperature of the PF coolant (K) (might have to be split)
