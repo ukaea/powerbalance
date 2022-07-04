@@ -25,7 +25,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
         Placement(visible = true, transformation(origin = {22, 22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     HCDSystemPkg.HCDSystem hcdsystem annotation(
         Placement(visible = true, transformation(origin = {-16, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    WasteHeat.WasteHeatPower wasteheatpower annotation(
+    WasteHeatDB.TotalParasitcLoadWH wasteheatpower (ThermalPower = combiTimeTableThermal.value_max/1e9) annotation(
         Placement(visible = true, transformation(origin = {60, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     WaterDetritiation.WaterDetritPower water_detrit_power(ThermalPower = combiTimeTableThermal.value_max/1e6) annotation(
         Placement(visible = true, transformation(origin = {60, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

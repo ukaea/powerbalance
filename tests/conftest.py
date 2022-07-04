@@ -29,7 +29,6 @@ def _model_list():
     )
 
     _model_list = (
-        ("WasteHeat", "WasteHeatPower"),
         ("CryogenicPlant", "CryogenicPower"),
         ("HCDSystemPkg", "HCDSystem"),
         ("Magnets", "MagnetPower"),
