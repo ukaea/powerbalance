@@ -1,5 +1,7 @@
 # Change Log
 
+* Brand new waste heat model.
+
 ## v1.1.0 - 2022-03-09
 
 * Added support for Windows.
