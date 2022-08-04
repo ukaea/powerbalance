@@ -19,7 +19,7 @@ jobs:
     - name: Install OpenModelica libraries
       run: apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
     - name: Configure Git credentials
-      uses: OleksiyRudenko/gha-git-credentials@v2
+      uses: OleksiyRudenko/gha-git-credentials@v2.1
       with:
         email: action@github.com
         token: '${{ secrets.GITHUB_TOKEN }}'
