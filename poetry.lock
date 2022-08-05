@@ -1199,8 +1199,8 @@ typing-extensions = ">=3.7.4"
 
 [[package]]
 name = "unimport"
-version = "0.9.6"
-description = "A linter, formatter for finding and removing unused import statements."
+version = "0.10.0"
+description = "attr: unimport.constants.DESCRIPTION"
 category = "dev"
 optional = false
 python-versions = ">=3.6"
@@ -1215,7 +1215,7 @@ toml = ">=0.9.0"
 
 [package.extras]
 dev = ["pytest (==6.2.4)", "pytest-cov (==2.12.1)", "semantic-version (==2.8.5)"]
-docs = ["mkdocs (==1.2.1)", "mkdocs-material (==7.1.9)", "mkdocs-markdownextradata-plugin (==0.2.4)", "mkdocs-minify-plugin (==0.4.0)", "mkdocs-git-revision-date-localized-plugin (==0.9.2)"]
+docs = ["mkdocs (==1.3.0)", "mkdocs-material (==8.3.6)", "mkdocs-markdownextradata-plugin (==0.2.5)", "mkdocs-minify-plugin (==0.5.0)", "mkdocs-git-revision-date-localized-plugin (==1.0.1)"]
 
 [[package]]
 name = "urllib3"
@@ -1290,7 +1290,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8,<3.11"
-content-hash = "c870e2fbb9e280e20a948f325c7e6ada0db394406036169d47836cd917cda1bd"
+content-hash = "dd2c9764fdaa5d05ab916957abc7dffbf83210d4e2e91c987f4d73a5810f5284"
 
 [metadata.files]
 anybadge = [
@@ -2313,7 +2313,7 @@ typing-inspect = [
     {file = "typing_inspect-0.7.1.tar.gz", hash = "sha256:047d4097d9b17f46531bf6f014356111a1b6fb821a24fe7ac909853ca2a782aa"},
 ]
 unimport = [
-    {file = "unimport-0.9.6.tar.gz", hash = "sha256:c5198f3330c028815f99f124829acc1eee7df37d61ccb3aef20333cc8dff7155"},
+    {file = "unimport-0.10.0.tar.gz", hash = "sha256:df9e6f05452155550e039565dd494d5ddec4a4fffe29deed92735320d5cd91ca"},
 ]
 urllib3 = [
     {file = "urllib3-1.26.9-py2.py3-none-any.whl", hash = "sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14"},
