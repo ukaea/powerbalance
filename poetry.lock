@@ -1,10 +1,10 @@
 [[package]]
 name = "anybadge"
-version = "1.9.0"
+version = "1.11.1"
 description = "Simple, flexible badge generator for project badges."
 category = "dev"
 optional = false
-python-versions = "*"
+python-versions = ">=3.7"
 
 [package.dependencies]
 packaging = "*"
@@ -1289,12 +1289,12 @@ docs = ["rst.linker (>=1.9)", "jaraco.packaging (>=9)", "sphinx"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8,<3.11"
-content-hash = "2c7aae7e65c1268425370ac0f8f5cd7c0bda356064502cfca41bd928d4b645dd"
+content-hash = "bdd37cfd3bcc322234fb67c5c66175ddf2a4617354239217d6458a184080489c"
 
 [metadata.files]
 anybadge = [
-    {file = "anybadge-1.9.0-py2.py3-none-any.whl", hash = "sha256:5f4d9dc81d1b816b688ed937cb94276fcb2a2dee46fbc03bab0f25a8b9f59251"},
-    {file = "anybadge-1.9.0.tar.gz", hash = "sha256:98cf380d284946c5c48ae00a3fe52ce8723880b88eb30fc0808610845034db3c"},
+    {file = "anybadge-1.11.1-py3-none-any.whl", hash = "sha256:7a8fb98a09a6e145c5e93f17595a0704cd57fbd7b57ee3428dececc4265bb3f8"},
+    {file = "anybadge-1.11.1.tar.gz", hash = "sha256:f50570f4389d6f0c200a57974ddefc4de74bd7a851ed112f2858ce1068dc644f"},
 ]
 astroid = [
     {file = "astroid-2.11.6-py3-none-any.whl", hash = "sha256:ba33a82a9a9c06a5ceed98180c5aab16e29c285b828d94696bf32d6015ea82a9"},
