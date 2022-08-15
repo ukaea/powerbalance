@@ -1,6 +1,6 @@
 [[package]]
 name = "anybadge"
-version = "1.11.1"
+version = "1.12.0"
 description = "Simple, flexible badge generator for project badges."
 category = "dev"
 optional = false
@@ -394,10 +394,10 @@ optional = false
 python-versions = ">=3.6.1,<4.0"
 
 [package.extras]
-pipfile_deprecated_finder = ["pipreqs", "requirementslib"]
-requirements_deprecated_finder = ["pipreqs", "pip-api"]
-colors = ["colorama (>=0.4.3,<0.5.0)"]
 plugins = ["setuptools"]
+colors = ["colorama (>=0.4.3,<0.5.0)"]
+requirements_deprecated_finder = ["pip-api", "pipreqs"]
+pipfile_deprecated_finder = ["requirementslib", "pipreqs"]
 
 [[package]]
 name = "jinja2"
@@ -835,8 +835,8 @@ python-versions = ">=3.6.1"
 typing-extensions = ">=3.7.4.3"
 
 [package.extras]
-dotenv = ["python-dotenv (>=0.10.4)"]
 email = ["email-validator (>=1.0.3)"]
+dotenv = ["python-dotenv (>=0.10.4)"]
 
 [[package]]
 name = "pydelica"
@@ -1040,8 +1040,8 @@ packaging = ">=20.0"
 tomli = ">=1.0.0"
 
 [package.extras]
-test = ["pytest (>=6.2)", "virtualenv (>20)"]
 toml = ["setuptools (>=42)"]
+test = ["virtualenv (>20)", "pytest (>=6.2)"]
 
 [[package]]
 name = "six"
@@ -1289,12 +1289,12 @@ docs = ["rst.linker (>=1.9)", "jaraco.packaging (>=9)", "sphinx"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8,<3.11"
-content-hash = "bdd37cfd3bcc322234fb67c5c66175ddf2a4617354239217d6458a184080489c"
+content-hash = "570591c8147e409668d655b8f39ae35e2201fa064dd54f64f52f8a076d310db5"
 
 [metadata.files]
 anybadge = [
-    {file = "anybadge-1.11.1-py3-none-any.whl", hash = "sha256:7a8fb98a09a6e145c5e93f17595a0704cd57fbd7b57ee3428dececc4265bb3f8"},
-    {file = "anybadge-1.11.1.tar.gz", hash = "sha256:f50570f4389d6f0c200a57974ddefc4de74bd7a851ed112f2858ce1068dc644f"},
+    {file = "anybadge-1.12.0-py3-none-any.whl", hash = "sha256:aff26ebb79e138e72f282070bf115de7d98e5868137f68223e3ca759c7f64e22"},
+    {file = "anybadge-1.12.0.tar.gz", hash = "sha256:eddc26c39535d49ce58c0fb035c33e22e452f15c31471c0646bc2379378b4ecd"},
 ]
 astroid = [
     {file = "astroid-2.11.6-py3-none-any.whl", hash = "sha256:ba33a82a9a9c06a5ceed98180c5aab16e29c285b828d94696bf32d6015ea82a9"},
