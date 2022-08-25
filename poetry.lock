@@ -1,6 +1,6 @@
 [[package]]
 name = "anybadge"
-version = "1.11.1"
+version = "1.14.0"
 description = "Simple, flexible badge generator for project badges."
 category = "dev"
 optional = false
@@ -1289,12 +1289,12 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8,<3.11"
-content-hash = "83a2a7c09deff408fa12d54e1102bc9798939b0ccf711dbecf3508d98dcedc6c"
+content-hash = "b8671c93b7377278254708e913551c394969737cbffa19304be57482cf6296bf"
 
 [metadata.files]
 anybadge = [
-    {file = "anybadge-1.11.1-py3-none-any.whl", hash = "sha256:7a8fb98a09a6e145c5e93f17595a0704cd57fbd7b57ee3428dececc4265bb3f8"},
-    {file = "anybadge-1.11.1.tar.gz", hash = "sha256:f50570f4389d6f0c200a57974ddefc4de74bd7a851ed112f2858ce1068dc644f"},
+    {file = "anybadge-1.14.0-py3-none-any.whl", hash = "sha256:8711a7f7f45317c62a460f14084f005ba665cbebdf2a94e7df53bc3ab35df4c9"},
+    {file = "anybadge-1.14.0.tar.gz", hash = "sha256:47f06e0a6320d3e5eac55c712dc0bab71b9ed85353c591d448653c5a0740783f"},
 ]
 astroid = [
     {file = "astroid-2.11.6-py3-none-any.whl", hash = "sha256:ba33a82a9a9c06a5ceed98180c5aab16e29c285b828d94696bf32d6015ea82a9"},
