@@ -1199,8 +1199,8 @@ typing-extensions = ">=3.7.4"
 
 [[package]]
 name = "unimport"
-version = "0.10.0"
-description = "attr: unimport.constants.DESCRIPTION"
+version = "0.11.1"
+description = "attr: unimport.__description__"
 category = "dev"
 optional = false
 python-versions = ">=3.6"
@@ -1289,7 +1289,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8,<3.11"
-content-hash = "329496cd35c3ed10c9d093f273cae25e49b1c0ec09421c5cc187824107146712"
+content-hash = "104a9aaaeef3c8d2449191f6a4f19a3372e880748773fd287664c05487993168"
 
 [metadata.files]
 anybadge = [
@@ -2337,7 +2337,7 @@ typing-inspect = [
     {file = "typing_inspect-0.7.1.tar.gz", hash = "sha256:047d4097d9b17f46531bf6f014356111a1b6fb821a24fe7ac909853ca2a782aa"},
 ]
 unimport = [
-    {file = "unimport-0.10.0.tar.gz", hash = "sha256:df9e6f05452155550e039565dd494d5ddec4a4fffe29deed92735320d5cd91ca"},
+    {file = "unimport-0.11.1.tar.gz", hash = "sha256:c9c7a5f8950bc75bbd6d829d9e20623dc8a23d301fac0f72a462514a7f758d01"},
 ]
 urllib3 = [
     {file = "urllib3-1.26.9-py2.py3-none-any.whl", hash = "sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14"},
