@@ -3,7 +3,7 @@ on: [push]
 jobs:
   test_modelica_build:
     container:
-      image: openmodelica/openmodelica:v1.18.0-minimal
+      image: openmodelica/openmodelica:v1.19.2-minimal
     name: Test Modelica Build (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
