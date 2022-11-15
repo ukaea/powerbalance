@@ -12,6 +12,10 @@ jobs:
         os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
+      - name: Set OM Repo to be Hirsute (to allow apt install of OM 3.2.3)
+        run: |
+          rm /etc/apt/sources.list.d/openmodelica.list
+          for deb in deb deb-src; do echo "$deb http://build.openmodelica.org/apt hirsute -cs` stable"; done | tee /etc/apt/sources.list.d/openmodelica.list
       - name: Install OpenModelica libraries
         run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Compile models
