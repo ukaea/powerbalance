@@ -8,7 +8,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
-      - uses: Gr1N/setup-poetry@v7
+      - name: Install Poetry
+        run: python -m pip install poetry
       - name: Run Mypy
         run: |
           poetry install 

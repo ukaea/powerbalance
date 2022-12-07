@@ -83,7 +83,8 @@ jobs:
       uses: actions/checkout@v2
     - name: Set up Python
       uses: actions/setup-python@v2
-    - uses: Gr1N/setup-poetry@v7
+    - name: Install Poetry
+      run: python -m pip install poetry
     - name: Install Module
       run: poetry install
     - name: Run MktheAPIDocs
@@ -116,7 +117,8 @@ jobs:
           fi          
       - name: Set up Python
         uses: actions/setup-python@v2
-      - uses: Gr1N/setup-poetry@v7
+      - name: Install Poetry
+        run: python -m pip install poetry
       - name: Install virtual environment
         run: poetry install
       - name: Configure Git credentials
