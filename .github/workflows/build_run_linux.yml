@@ -133,8 +133,8 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
-     - name: Install Poetry
-       run: python -m pip install poetry
+      - name: Install Poetry
+        run: python -m pip install poetry
       - name: Install OpenModelica libraries
         run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Regression Tests
