@@ -17,11 +17,10 @@ jobs:
         id: previoustag
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
-      - name: Install Poetry
-        run: python -m pip install poetry
+          python-version: '3.10'
+      - uses: Gr1N/setup-poetry@v8
       - name: Check Citation File
         run: |
           python3 -m pip install -r <(curl -s https://raw.githubusercontent.com/citation-file-format/citation-file-format/main/requirements.txt)
