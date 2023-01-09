@@ -849,7 +849,7 @@ virtualenv = ">=20.0.8"
 
 [[package]]
 name = "prettytable"
-version = "3.5.0"
+version = "3.6.0"
 description = "A simple Python library for easily displaying tabular data in a visually appealing ASCII table format"
 category = "main"
 optional = false
@@ -1376,7 +1376,7 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8,<3.11"
-content-hash = "4f0494a4fa36289436fc6a7af5678dc934428f7bb26560380e1721cb1163cda6"
+content-hash = "3720d8385c0e8e569865dc63d309c552075a3dd8a98cca54d1ef0b62287a3ab7"
 
 [metadata.files]
 anybadge = [
@@ -2303,8 +2303,8 @@ pre-commit = [
     {file = "pre_commit-2.20.0.tar.gz", hash = "sha256:a978dac7bc9ec0bcee55c18a277d553b0f419d259dadb4b9418ff2d00eb43959"},
 ]
 prettytable = [
-    {file = "prettytable-3.5.0-py3-none-any.whl", hash = "sha256:fe391c3b545800028edf5dbb6a5360893feb398367fcc1cf8d7a5b29ce5c59a1"},
-    {file = "prettytable-3.5.0.tar.gz", hash = "sha256:52f682ba4efe29dccb38ff0fe5bac8a23007d0780ff92a8b85af64bc4fc74d72"},
+    {file = "prettytable-3.6.0-py3-none-any.whl", hash = "sha256:3b767129491767a3a5108e6f305cbaa650f8020a7db5dfe994a2df7ef7bad0fe"},
+    {file = "prettytable-3.6.0.tar.gz", hash = "sha256:2e0026af955b4ea67b22122f310b90eae890738c08cb0458693a49b6221530ac"},
 ]
 py-cpuinfo = [
     {file = "py-cpuinfo-9.0.0.tar.gz", hash = "sha256:3cdbbf3fac90dc6f118bfd64384f309edeadd902d7c8fb17f02ffa1fc3f49690"},
