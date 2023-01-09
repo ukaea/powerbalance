@@ -11,7 +11,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install OpenModelica libraries
         run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Compile models
@@ -36,13 +36,15 @@ jobs:
         os: [ubuntu-latest]
         python-version: [ '3.8', '3.9', '3.10' ]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - uses: Gr1N/setup-poetry@v8
+        with:
+          poetry-version: "1.2.2"
       - name: Build Module
         run: |
           poetry install
@@ -93,13 +95,15 @@ jobs:
         python-version: [ '3.8', '3.9', '3.10' ]
     needs: [test_module_build]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - uses: Gr1N/setup-poetry@v8
+        with:
+          poetry-version: "1.2.2"
       - name: Install OpenModelica libraries
         run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Models
@@ -125,13 +129,15 @@ jobs:
         python-version: [ '3.8', '3.9', '3.10' ]
     needs: [test_module_build]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - uses: Gr1N/setup-poetry@v8
+        with:
+          poetry-version: "1.2.2"
       - name: Install OpenModelica libraries
         run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Regression Tests
@@ -157,13 +163,15 @@ jobs:
         python-version: [ '3.8', '3.9', '3.10' ]
     needs: [test_module_build]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - uses: Gr1N/setup-poetry@v8
+        with:
+          poetry-version: "1.2.2"
       - name: Install OpenModelica libraries
         run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Unit Tests
@@ -185,9 +193,9 @@ jobs:
     if: ${{ github.ref_name == 'main' }}
     needs: [unit_tests, regression_tests, model_run_api]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
       - name: Retrieve Unit Test Coverage
         uses: actions/download-artifact@v2
         with:

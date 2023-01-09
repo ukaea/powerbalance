@@ -13,7 +13,7 @@ jobs:
     - name: Install other requirements
       run: apt update && apt install -y git
     - name: Checkout Code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
     - name: Install OpenModelica libraries
@@ -24,7 +24,7 @@ jobs:
         email: action@github.com
         token: '${{ secrets.GITHUB_TOKEN }}'
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
     - name: Setup ASV
       run: |
         python -m pip install asv virtualenv click
@@ -80,9 +80,9 @@ jobs:
     name: Create API Reference
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
     - name: Install Poetry
       run: python -m pip install poetry
     - name: Install Module
@@ -104,7 +104,7 @@ jobs:
     needs: [run_benchmarks, mkapi_docs]
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Fetch Latest
@@ -116,7 +116,7 @@ jobs:
             git checkout ${GITHUB_REF_NAME}
           fi          
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
       - name: Install Poetry
         run: python -m pip install poetry
       - name: Install virtual environment

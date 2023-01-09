@@ -10,7 +10,7 @@ jobs:
     name: Deploy Latest Ubuntu Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
             fetch-depth: 0
       - name: Get Previous tag
@@ -21,6 +21,8 @@ jobs:
         with:
           python-version: '3.10'
       - uses: Gr1N/setup-poetry@v8
+        with:
+          poetry-version: "1.2.2"
       - name: Check Citation File
         run: |
           python3 -m pip install -r <(curl -s https://raw.githubusercontent.com/citation-file-format/citation-file-format/main/requirements.txt)
