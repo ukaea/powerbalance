@@ -193,7 +193,7 @@ jobs:
     name: Collate Coverage
     container:
       image: openmodelica/openmodelica:v1.18.0-minimal
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     if: ${{ github.ref_name == 'main' }}
     needs: [unit_tests, regression_tests, model_run_api]
     steps:
