@@ -11,7 +11,7 @@
 
 # Power Balance Models
 
-[![DOI](https://zenodo.org/badge/450553622.svg)](https://zenodo.org/badge/latestdoi/450553622) [![Power Balance Models Ubuntu](https://github.com/ukaea/powerbalance/actions/workflows/build_run_linux.yml/badge.svg)](https://github.com/ukaea/powerbalance/actions/workflows/build_run_linux.yml) [![codecov](https://codecov.io/gh/ukaea/powerbalance/branch/main/graph/badge.svg?token=F0YNULL1U7)](https://codecov.io/gh/ukaea/powerbalance) [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![DOI](https://zenodo.org/badge/450553622.svg)](https://zenodo.org/badge/latestdoi/450553622) [![Power Balance Models Ubuntu](https://github.com/ukaea/powerbalance/actions/workflows/build_run_linux.yml/badge.svg)](https://github.com/ukaea/powerbalance/actions/workflows/build_run_linux.yml) [![codecov](https://codecov.io/gh/ukaea/powerbalance/branch/main/graph/badge.svg?token=F0YNULL1U7)](https://codecov.io/gh/ukaea/powerbalance) [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit) [![Python Versions](https://img.shields.io/badge/python-3.8%20|%203.9%20|%203.10-blue)]() [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 A power balance model which combines power consumption and power generation data to assess the net power production of different designs for a tokamak power plant.
 
