@@ -15,7 +15,7 @@ jobs:
       - name: Set OM Repo to be Hirsute (to allow apt install of OM 3.2.3)
         run: |
           rm /etc/apt/sources.list.d/openmodelica.list
-          for deb in deb deb-src; do echo "$deb http://build.openmodelica.org/apt hirsute -cs` stable"; done | tee /etc/apt/sources.list.d/openmodelica.list
+          for deb in deb deb-src; do echo "$`deb http://build.openmodelica.org/apt hirsute -cs` stable"; done | tee /etc/apt/sources.list.d/openmodelica.list
       - name: Install OpenModelica libraries
         run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Compile models
@@ -106,8 +106,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - uses: Gr1N/setup-poetry@v8
-        with:
-          poetry-version: "1.2.2"
       - name: Install OpenModelica libraries
         run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Models
@@ -140,8 +138,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - uses: Gr1N/setup-poetry@v8
-        with:
-          poetry-version: "1.2.2"
       - name: Install OpenModelica libraries
         run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Regression Tests
@@ -174,8 +170,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - uses: Gr1N/setup-poetry@v8
-        with:
-          poetry-version: "1.2.2"
       - name: Install OpenModelica libraries
         run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Run Unit Tests
@@ -200,6 +194,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
+      - uses: Gr1N/setup-poetry@v8
       - name: Retrieve Unit Test Coverage
         uses: actions/download-artifact@v2
         with:
@@ -218,10 +213,10 @@ jobs:
       - name: Combine Coverage
         run: |
           find . -name "*.pyc" -delete
-          python -m pip install coverage
-          coverage combine coverage/coverage_*
-          coverage xml
-          coverage report
+          poetry install
+          poetry run coverage combine coverage/coverage_*
+          poetry run coverage xml
+          poetry run coverage report
       - uses: codecov/codecov-action@v2
         with:
           env_vars: OS,PYTHON
