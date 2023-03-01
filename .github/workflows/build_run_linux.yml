@@ -205,6 +205,7 @@ jobs:
       - name: Combine Coverage
         run: |
           find . -name "*.pyc" -delete
+          poetry run pip install coverage
           poetry run coverage combine coverage/coverage_*
           poetry run coverage xml
           poetry run coverage report
