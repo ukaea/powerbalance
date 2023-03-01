@@ -207,8 +207,8 @@ jobs:
           find . -name "*.pyc" -delete
           poetry run pip install coverage
           poetry run coverage combine coverage/coverage_*
-          poetry run coverage xml
-          poetry run coverage report
+          poetry run coverage xml -i
+          poetry run coverage report -i
       - uses: codecov/codecov-action@v2
         with:
           env_vars: OS,PYTHON
