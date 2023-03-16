@@ -78,7 +78,7 @@ class ProfilePlotBuilder:
         """
         return self._plots
 
-    def _create_plots(self) -> Dict[str, Dict[str, figure]]:
+    def _create_plots(self) -> Dict[str, figure]:
         """Generate plots for non-sweep case.
 
         Returns
@@ -127,7 +127,7 @@ class ProfilePlotBuilder:
         _plots = self._create_plots()
         _components: Tuple[str, Any] = components(
             gridplot(
-                list(_plots.values()),
+                list(_plots.values()),  # type: ignore
                 ncols=2,
                 width=666,
                 height=400,

@@ -12,6 +12,7 @@ __date__ = "2021-06-08"
 import glob
 import os
 import pathlib
+from typing import Optional
 
 import click
 
@@ -99,7 +100,9 @@ def new(output_dir: str) -> None:
 @click.argument("input_mat_file")
 @click.option("--head", help="display head n rows", default=None, type=int)
 @click.option("--tail", help="display tail n rows", default=None, type=int)
-def view_profile(input_mat_file: str = "", head: int = None, tail: int = None) -> None:
+def view_profile(
+    input_mat_file: str = "", head: Optional[int] = None, tail: Optional[int] = None
+) -> None:
     """View a profile within a '.mat' file"""
     _data_frame = pbm_prof.read_profile_to_df(input_mat_file)
 

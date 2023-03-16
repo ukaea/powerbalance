@@ -31,6 +31,7 @@ __date__ = "2021-06-08"
 
 import os
 import typing
+from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -48,10 +49,10 @@ _time_range_default = (10, 20, 40, 50)
 
 
 def gen_thermalpowerout_profile(
-    stop_time: int = None,
-    time_step: float = None,
-    time_range: typing.Tuple[float, ...] = None,
-    max_power: float = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[float] = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    max_power: Optional[float] = None,
     label: str = "",
     output_directory: str = DEFAULT_PROFILES_DIR,
 ) -> np.ndarray:
@@ -122,10 +123,10 @@ def gen_thermalpowerout_profile(
 
 
 def gen_nbiheat_profile(
-    stop_time: int = None,
-    time_step: float = None,
-    time_range: typing.Tuple[float, ...] = None,
-    max_power: float = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[float] = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    max_power: Optional[float] = None,
     label: str = "",
     output_directory: str = DEFAULT_PROFILES_DIR,
 ) -> np.ndarray:
@@ -305,10 +306,10 @@ def gen_nbiheat_profile(
 
 
 def gen_rfheat_profile(
-    stop_time: int = None,
-    time_step: float = None,
-    time_range: typing.Tuple[float, ...] = None,
-    max_power: float = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[float] = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    max_power: Optional[float] = None,
     label: str = "",
     output_directory: str = DEFAULT_PROFILES_DIR,
 ) -> np.ndarray:
@@ -482,10 +483,10 @@ def gen_rfheat_profile(
 
 
 def gen_tfcoil_current_profile(
-    stop_time: int = None,
-    time_step: float = None,
-    time_range: typing.Tuple[float, ...] = None,
-    max_current: float = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[float] = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    max_current: Optional[float] = None,
     label: str = "",
     output_directory: str = DEFAULT_PROFILES_DIR,
 ) -> np.ndarray:
@@ -558,10 +559,10 @@ def gen_tfcoil_current_profile(
 
 
 def gen_cscoil_current_profile(
-    stop_time: int = None,
-    time_step: float = None,
-    time_range: typing.Tuple[float, ...] = None,
-    max_current: float = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[float] = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    max_current: Optional[float] = None,
     label: str = "",
     output_directory: str = DEFAULT_PROFILES_DIR,
 ) -> np.ndarray:
@@ -643,10 +644,10 @@ def gen_cscoil_current_profile(
 
 
 def gen_pf1coil_current_profile(
-    stop_time: int = None,
-    time_step: float = None,
-    time_range: typing.Tuple[float, ...] = None,
-    max_current: float = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[float] = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    max_current: Optional[float] = None,
     label: str = "",
     output_directory: str = DEFAULT_PROFILES_DIR,
 ) -> np.ndarray:
@@ -733,10 +734,10 @@ def gen_pf1coil_current_profile(
 
 
 def gen_pf2coil_current_profile(
-    stop_time: int = None,
-    time_step: float = None,
-    time_range: typing.Tuple[float, ...] = None,
-    max_current: float = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[float] = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    max_current: Optional[float] = None,
     label: str = "",
     output_directory: str = DEFAULT_PROFILES_DIR,
 ) -> np.ndarray:
@@ -823,10 +824,10 @@ def gen_pf2coil_current_profile(
 
 
 def gen_pf3coil_current_profile(
-    stop_time: int = None,
-    time_step: float = None,
-    time_range: typing.Tuple[float, ...] = None,
-    max_current: float = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[float] = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    max_current: Optional[float] = None,
     label: str = "",
     output_directory: str = DEFAULT_PROFILES_DIR,
 ) -> np.ndarray:
@@ -912,10 +913,10 @@ def gen_pf3coil_current_profile(
 
 
 def gen_pf4coil_current_profile(
-    stop_time: int = None,
-    time_step: float = None,
-    time_range: typing.Tuple[float, ...] = None,
-    max_current: float = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[float] = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    max_current: Optional[float] = None,
     label: str = "",
     output_directory: str = DEFAULT_PROFILES_DIR,
 ) -> np.ndarray:
@@ -1001,10 +1002,10 @@ def gen_pf4coil_current_profile(
 
 
 def gen_pf5coil_current_profile(
-    stop_time: int = None,
-    time_step: float = None,
-    time_range: typing.Tuple[float, ...] = None,
-    max_current: float = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[float] = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    max_current: Optional[float] = None,
     label: str = "",
     output_directory: str = DEFAULT_PROFILES_DIR,
 ) -> np.ndarray:
@@ -1090,10 +1091,10 @@ def gen_pf5coil_current_profile(
 
 
 def gen_pf6coil_current_profile(
-    stop_time: int = None,
-    time_step: float = None,
-    time_range: typing.Tuple[float, ...] = None,
-    max_current: float = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[float] = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    max_current: Optional[float] = None,
     label: str = "",
     output_directory: str = DEFAULT_PROFILES_DIR,
 ) -> np.ndarray:
@@ -1181,9 +1182,9 @@ def gen_pf6coil_current_profile(
 
 def generate_all(
     output_directory: str,
-    time_range: typing.Tuple[float, ...] = None,
-    stop_time: int = None,
-    time_step: int = None,
+    time_range: Optional[typing.Tuple[float, ...]] = None,
+    stop_time: Optional[int] = None,
+    time_step: Optional[int] = None,
     max_values: typing.Optional[typing.Dict] = None,
 ) -> None:
     """Generate all the current profiles in the given directory using

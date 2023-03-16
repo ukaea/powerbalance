@@ -126,7 +126,7 @@ class OutputPlotBuilder:
                 for c_id in _sweep_plots[model]:
                     _components = components(
                         gridplot(
-                            list(_sweep_plots[model][c_id].values()),
+                            list(_sweep_plots[model][c_id].values()),  # type: ignore
                             ncols=2,
                             width=666,
                             height=400,
@@ -141,7 +141,7 @@ class OutputPlotBuilder:
             for model in self._data:
                 _components = components(
                     gridplot(
-                        list(_plots[model].values()),
+                        list(_plots[model].values()),  # type: ignore
                         ncols=2,
                         width=666,
                         height=400,

@@ -8,7 +8,7 @@ Contains assorted utility functions used within the Power Balance API
 
 __date__ = "2021-06-08"
 
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 
 def convert_to_value(value_str: Any) -> Any:
@@ -48,8 +48,8 @@ def convert_to_value(value_str: Any) -> Any:
 
 def flatten_dictionary(
     input_dict: Dict[str, Any],
-    output_dict: Dict[str, Any] = None,
-    parent_key: str = None,
+    output_dict: Optional[Dict[str, Any]] = None,
+    parent_key: Optional[str] = None,
     separator: str = ".",
 ) -> Dict[str, Any]:
     """Convert a dictionary of dictionaries into a single level dictionary
@@ -87,7 +87,9 @@ def flatten_dictionary(
 
 
 def expand_dictionary(
-    input_dict: Dict[str, Any], output_dict: Dict[str, Any] = None, separator: str = "."
+    input_dict: Dict[str, Any],
+    output_dict: Optional[Dict[str, Any]] = None,
+    separator: str = ".",
 ) -> Dict[str, Any]:
     """Convert a single level dictionary with keys containing a separator into
     a nested dictionary.

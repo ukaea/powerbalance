@@ -29,6 +29,7 @@ import shutil
 import subprocess
 import tempfile
 import typing
+from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -61,7 +62,9 @@ config_default = os.path.join(
 MATLAB_FILE_GLOB = "*.mat"
 
 
-def get_plugins(plugin_order_list: typing.List[str] = None) -> typing.Tuple[str, ...]:
+def get_plugins(
+    plugin_order_list: Optional[typing.List[str]] = None,
+) -> typing.Tuple[str, ...]:
     _plugins = pbm_plugin.get_plugin_listing()
 
     if plugin_order_list is None:
@@ -598,7 +601,9 @@ class PowerBalance:
         _profile_files = glob.glob(os.path.join(_profile_dir, MATLAB_FILE_GLOB))
         _swappable_profile_files = [i for i in _profile_files if "sweep" in i]
 
-        _swappable_profile_dict = {}
+        _swappable_profile_dict: typing.Dict[
+            str, typing.List[typing.Dict[str, typing.Any]]
+        ] = {}
 
         if _swappable_profile_files:
             for file_name in _swappable_profile_files:
@@ -626,7 +631,9 @@ class PowerBalance:
 
         return _swappable_profile_dict
 
-    def add_models(self, model_path: str, model_names: typing.List[str] = None) -> None:
+    def add_models(
+        self, model_path: str, model_names: Optional[typing.List[str]] = None
+    ) -> None:
         """Read model(s) from a given OM file and add to simulation list.
 
         Parameters
@@ -808,7 +815,7 @@ class PowerBalance:
         return list(self._parameter_set.keys())
 
     def get_parameters(
-        self, model: str = None, include_undefined: bool = False
+        self, model: Optional[str] = None, include_undefined: bool = False
     ) -> typing.Any:
         """Retrieve all model parameters including those that cannot be modified
 
@@ -1188,7 +1195,7 @@ class PowerBalance:
         return _df
 
     def _run_models(
-        self, sweep_dict_args: typing.Dict = None
+        self, sweep_dict_args: Optional[typing.Dict] = None
     ) -> typing.Dict[str, pd.DataFrame]:
         """Run simulation for all models, if the session is a parameter sweep
         append each iteration to the current dataframe
@@ -1305,7 +1312,6 @@ class PowerBalance:
                     continue
 
                 for i in range(_n_vals):
-
                     _output_dfs = self._run_models()
 
                     self._sweep_on_profiles(i, _output_dfs, model)
