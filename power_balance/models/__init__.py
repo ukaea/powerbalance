@@ -15,7 +15,7 @@ import logging
 import os
 import pathlib
 import re
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import pydelica
 
@@ -61,9 +61,9 @@ def extract_models_from_file(
     input_file: str,
     profile_dir: str,
     original_model_dir: str,
-    parameter_set: power_balance.parameters.PBMParameterSet = None,
-    session: pydelica.Session = None,
-    model_name_list: List[str] = None,
+    parameter_set: Optional[power_balance.parameters.PBMParameterSet] = None,
+    session: Optional[pydelica.Session] = None,
+    model_name_list: Optional[List[str]] = None,
     names_only: bool = False,
     quiet: bool = False,
 ) -> Dict[str, Model]:
@@ -202,7 +202,6 @@ def extract_models_from_file(
                     # Only compile the model if either no model list is given
                     # or the model name is present within the given list
                     if not model_name_list or _name in model_name_list:
-
                         _dependency_files = [
                             os.path.join(os.path.dirname(input_file), dependency)
                             for dependency in dependent_models
@@ -257,10 +256,10 @@ def extract_models_from_file(
 
 def get_local_models(
     model_file_dir: str,
-    parameter_set: power_balance.parameters.PBMParameterSet = None,
-    session: pydelica.Session = None,
+    parameter_set: Optional[power_balance.parameters.PBMParameterSet] = None,
+    session: Optional[pydelica.Session] = None,
     profile_dir: str = "",
-    model_name_list: List[str] = None,
+    model_name_list: Optional[List[str]] = None,
     names_only: bool = False,
     quiet: bool = False,
 ) -> Dict[str, Model]:

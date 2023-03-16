@@ -28,6 +28,7 @@ import shutil
 import tempfile
 import typing
 from collections.abc import MutableMapping
+from typing import Optional
 
 import pydantic
 import pydelica
@@ -217,7 +218,7 @@ class PBMParameterSet(MutableMapping):
         return self._parameters.values()
 
     def get_simulation_options(
-        self, param_names: typing.Union[str, typing.List[str]] = None
+        self, param_names: Optional[typing.Union[str, typing.List[str]]] = None
     ) -> typing.Any:
         """Retrieve simulation options from the parameter set
 
@@ -239,7 +240,7 @@ class PBMParameterSet(MutableMapping):
         return self._simopts
 
     def get_plasma_scenario(
-        self, param_names: typing.Union[str, typing.List[str]] = None
+        self, param_names: Optional[typing.Union[str, typing.List[str]]] = None
     ) -> typing.Any:
         """Retrieve timings from the plasma scenario set
 
@@ -463,7 +464,7 @@ class PBMParameterSet(MutableMapping):
             self._parameters[_label] = value["value"]
 
     def _retrieve_parameter(
-        self, param_name: str, new_val: typing.Any = None
+        self, param_name: str, new_val: Optional[typing.Any] = None
     ) -> typing.Any:
         """Retrieve a parameter from the set and if a new value is specified
         set the parameter to that value.
