@@ -162,20 +162,20 @@ msgpack = "*"
 
 [[package]]
 name = "bokeh"
-version = "3.0.3"
+version = "3.1.0"
 description = "Interactive plots and applications in the browser from Python"
 category = "main"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "bokeh-3.0.3-py3-none-any.whl", hash = "sha256:d30e4f6220efc824c5da0dcb58138abed0e6a2d524c942409c8ca1098031e374"},
-    {file = "bokeh-3.0.3.tar.gz", hash = "sha256:1c28471ef5e6110ba5bed513137fd26054ebc4454bc768650eaeefc53b898a8a"},
+    {file = "bokeh-3.1.0-py3-none-any.whl", hash = "sha256:9d38ed3b130e1e043447694934c02deb1ae4adfeda1136b8b8eaed9cb26de11c"},
+    {file = "bokeh-3.1.0.tar.gz", hash = "sha256:9047dfe50a671b5e19ca588fd90a8e6bff197114a5dbd6a59cc2678942c27887"},
 ]
 
 [package.dependencies]
 contourpy = ">=1"
 Jinja2 = ">=2.9"
-numpy = ">=1.11.3"
+numpy = ">=1.16"
 packaging = ">=16.8"
 pandas = ">=1.2"
 pillow = ">=7.1.0"
@@ -2948,4 +2948,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8,<3.11"
-content-hash = "e7e9b8ce9cb50e8c89c94d685bd6906420ec26f7f74d7c2b7bab2dce8016dbc7"
+content-hash = "4b36e5acabcbbcbb062877f2de31c908f9c7bcf683271231e2c35db638d6a5d9"
