@@ -3,7 +3,7 @@ on: [push]
 jobs:
   test_modelica_build:
     container:
-      image: openmodelica/openmodelica:v1.19.2-minimal
+      image: openmodelica/openmodelica:v1.20.0-minimal
     name: Test Modelica Build (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -15,7 +15,7 @@ jobs:
       - name: Set OM Repo to be Hirsute (to allow apt install of OM 3.2.3)
         run: |
           rm /etc/apt/sources.list.d/openmodelica.list
-          for deb in deb deb-src; do echo "$`deb http://build.openmodelica.org/apt hirsute -cs` stable"; done | tee /etc/apt/sources.list.d/openmodelica.list
+          for deb in deb deb-src; do echo "`deb http://build.openmodelica.org/apt hirsute -cs` stable"; done | tee /etc/apt/sources.list.d/openmodelica.list
       - name: Install OpenModelica libraries
         run: apt update && apt -y install omlib-modelica-3.2.3 omlib-modelicaservices-3.2.3 omlib-complex-3.2.3
       - name: Compile models
@@ -62,7 +62,7 @@ jobs:
           retention-days: 1
   model_run_om:
     container:
-      image: openmodelica/openmodelica:v1.18.0-minimal
+      image: openmodelica/openmodelica:v1.20.0-minimal
     name: Model Run Open Modelica (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -89,7 +89,7 @@ jobs:
           for i in $(ls -I "*.h" -I "*.c" -I "*.o" -I "*.json" -I "*.xml" -I "*.makefile" -I "*.mat"); do echo "Running model $i"; chmod +x ./$i; ./$i; done
   model_run_api:
     container:
-      image: openmodelica/openmodelica:v1.18.0-minimal
+      image: openmodelica/openmodelica:v1.20.0-minimal
     name: Model Run API (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -121,7 +121,7 @@ jobs:
           retention-days: 1
   regression_tests:
     container:
-      image: openmodelica/openmodelica:v1.18.0-minimal
+      image: openmodelica/openmodelica:v1.20.0-minimal
     name: Regression Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -153,7 +153,7 @@ jobs:
           retention-days: 1
   unit_tests:
     container:
-      image: openmodelica/openmodelica:v1.18.0-minimal
+      image: openmodelica/openmodelica:v1.20.0-minimal
     name: Unit Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -186,7 +186,7 @@ jobs:
   collate_coverage:
     name: Collate Coverage
     container:
-      image: openmodelica/openmodelica:v1.18.0-minimal
+      image: openmodelica/openmodelica:v1.20.0-minimal
     runs-on: ubuntu-20.04
     if: ${{ github.ref_name == 'main' }}
     needs: [unit_tests, regression_tests, model_run_api]
