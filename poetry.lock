@@ -2736,13 +2736,14 @@ typing-extensions = ">=3.7.4"
 
 [[package]]
 name = "unimport"
-version = "0.11.3"
-description = "A linter, formatter for finding and removing unused import statements."
+version = "0.16.0"
+description = "The ultimate linter and formatter for removing unused import statements in your code."
 category = "dev"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "unimport-0.11.3.tar.gz", hash = "sha256:4182639dca2de4e9671f9bb3d1f5ee50d88047414ba5db007b53ef77bf321672"},
+    {file = "unimport-0.16.0-py3-none-any.whl", hash = "sha256:91881750b76ef673de3899623b215b47b66671f73d5b94e8b06f5a3942ab5f52"},
+    {file = "unimport-0.16.0.tar.gz", hash = "sha256:cc0c407c33ee680adb4bbea250a41b7b693e3d74916fef1c119040b277249190"},
 ]
 
 [package.dependencies]
@@ -2754,8 +2755,8 @@ pathspec = {version = ">=0.10.1,<1", markers = "python_version >= \"3.7\""}
 toml = ">=0.9.0,<1"
 
 [package.extras]
-dev = ["pytest (==6.2.4)", "pytest-cov (==2.12.1)", "semantic-version (==2.8.5)"]
-docs = ["mkdocs (==1.3.0)", "mkdocs-git-revision-date-localized-plugin (==1.0.1)", "mkdocs-markdownextradata-plugin (==0.2.5)", "mkdocs-material (==8.3.6)", "mkdocs-minify-plugin (==0.5.0)"]
+docs = ["mike (==1.1.2)", "mkdocs (==1.4.2)", "mkdocs-git-revision-date-localized-plugin (==1.1.0)", "mkdocs-markdownextradata-plugin (==0.2.5)", "mkdocs-material (==8.5.11)", "mkdocs-minify-plugin (==0.6.2)"]
+test = ["pytest (==6.2.4)", "pytest (==7.2.0)", "pytest-cov (==4.0.0)", "semantic-version (==2.10.0)"]
 
 [[package]]
 name = "urllib3"
@@ -2953,4 +2954,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8,<3.11"
-content-hash = "676db939fa0c482b340c52aba075cf7e1b18033baf378c85bec89334f347c468"
+content-hash = "f63d23473bcda9fb7179a782b6c72bda9e1277cfc607dfa7969a152a19bce0ec"
