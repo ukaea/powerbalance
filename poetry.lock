@@ -144,14 +144,14 @@ msgpack = "*"
 
 [[package]]
 name = "bokeh"
-version = "3.1.0"
+version = "3.1.1"
 description = "Interactive plots and applications in the browser from Python"
 category = "main"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "bokeh-3.1.0-py3-none-any.whl", hash = "sha256:9d38ed3b130e1e043447694934c02deb1ae4adfeda1136b8b8eaed9cb26de11c"},
-    {file = "bokeh-3.1.0.tar.gz", hash = "sha256:9047dfe50a671b5e19ca588fd90a8e6bff197114a5dbd6a59cc2678942c27887"},
+    {file = "bokeh-3.1.1-py3-none-any.whl", hash = "sha256:a542a076ce326f81bf6d226355458572d39fe8fc9b547eab9728a2f1d71e4bdb"},
+    {file = "bokeh-3.1.1.tar.gz", hash = "sha256:ba0fc6bae4352d307541293256dee930a42d0acf92e760c72dc0e7397c3a28e9"},
 ]
 
 [package.dependencies]
@@ -2935,4 +2935,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8,<3.11"
-content-hash = "a6bdad973e50a3bebb95c1ce90be6c413354955aa0e6d1341239defb37f0e317"
+content-hash = "fb22ceb81db1a46a93b5b1b7a7f47f39e2e9e5dd91b59e2c0adacc016440588e"
