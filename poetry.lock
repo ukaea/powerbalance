@@ -1294,13 +1294,13 @@ pytz = "*"
 
 [[package]]
 name = "mkdocs-material"
-version = "9.1.16"
+version = "9.1.19"
 description = "Documentation that simply works"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "mkdocs_material-9.1.16-py3-none-any.whl", hash = "sha256:f9e62558a6b01ffac314423cbc223d970c25fbc78999860226245b64e64d6751"},
-    {file = "mkdocs_material-9.1.16.tar.gz", hash = "sha256:1021bfea20f00a9423530c8c2ae9be3c78b80f5a527b3f822e6de3d872e5ab79"},
+    {file = "mkdocs_material-9.1.19-py3-none-any.whl", hash = "sha256:fb0a149294b319aedf36983919d8c40c9e566db21ead16258e20ebd2e6c0961c"},
+    {file = "mkdocs_material-9.1.19.tar.gz", hash = "sha256:73b94b08c765e92a80645aac58d6a741fc5f587deec2b715489c714827b15a6f"},
 ]
 
 [package.dependencies]
@@ -2824,4 +2824,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8,<3.11"
-content-hash = "b7715dae3ce41fb3cf5d0f19d86b08f075e0c9ed0433fc025c0508de2548398d"
+content-hash = "27978fcbd0f4fc4de8f429fb2999fe464279b1c6ab2ae57c7a237d87f816cf44"
