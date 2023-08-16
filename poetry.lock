@@ -1330,24 +1330,25 @@ files = [
 
 [[package]]
 name = "mkdocs-mermaid2-plugin"
-version = "0.6.0"
+version = "1.0.8"
 description = "A MkDocs plugin for including mermaid graphs in markdown sources"
 optional = false
-python-versions = ">=3.5"
+python-versions = ">=3.6"
 files = [
-    {file = "mkdocs-mermaid2-plugin-0.6.0.tar.gz", hash = "sha256:99cca6db7c6b4a954a701dcb6b507191bc32a7b0b47eacf2885c1bacf77d1af1"},
-    {file = "mkdocs_mermaid2_plugin-0.6.0-py3-none-any.whl", hash = "sha256:ffbe8a7daa7ed718cb800c44c5ce4c0ff413caebf7b8b63d9c4a998dfd78a64d"},
+    {file = "mkdocs-mermaid2-plugin-1.0.8.tar.gz", hash = "sha256:aafab50e036a4c7db4f425ed7f4f37655a259c629d932d526d81becb5a9ba563"},
+    {file = "mkdocs_mermaid2_plugin-1.0.8-py3-none-any.whl", hash = "sha256:774793de2ea38d12398922ab3cd90c6d0303866785bfc681309a1088817176c9"},
 ]
 
 [package.dependencies]
 beautifulsoup4 = ">=4.6.3"
 jsbeautifier = "*"
 mkdocs = ">=1.0.4"
-mkdocs-material = "*"
 pymdown-extensions = ">=8.0"
-pyyaml = "*"
 requests = "*"
 setuptools = ">=18.5"
+
+[package.extras]
+test = ["mkdocs-material"]
 
 [[package]]
 name = "msgpack"
@@ -2827,4 +2828,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8,<3.11"
-content-hash = "53e7e51153987ff31f8cbc68410b7c3af18c49b0113ba364d69b6c87660f6065"
+content-hash = "53c30b61464df3de0ea6218b64c19ad70f3d3c7ca921f18636f7b4e89b79e195"
