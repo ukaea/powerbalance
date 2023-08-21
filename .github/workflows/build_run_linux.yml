@@ -209,7 +209,9 @@ jobs:
           poetry run coverage combine coverage/coverage_*
           poetry run coverage xml -i
           poetry run coverage report -i
+        continue-on-error: true
       - uses: codecov/codecov-action@v2
         with:
           env_vars: OS,PYTHON
           files: coverage.xml
+        continue-on-error: true
