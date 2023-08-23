@@ -12,7 +12,10 @@ __date__ = "2021-06-08"
 import glob
 import os
 import pathlib
-from typing import Optional
+from typing import Optional, List
+import shutil
+import tempfile
+import subprocess
 
 import click
 
@@ -31,6 +34,23 @@ def powerbalance():
     """Power Balance Models CLI for running models,
     as well as generating and viewing profiles.
     """
+
+@click.command("install-msl")
+def install_modelica_libraries() -> None:
+    """Installs MSL 3.2.3 if not installed"""
+    _omc_binary: str = shutil.which("omc")
+    if not _omc_binary:
+        raise FileNotFoundError("Could not find OMC binary")
+
+    with tempfile.NamedTemporaryFile("w", suffix=".mos") as out_script:
+        _lines: List[str] = [
+            "updatePackageIndex();getErrorString();",
+            'getAvailablePackageVersions(Modelica, "");getErrorString();',
+            'installPackage(Modelica, "3.2.3", exactMatch=true);getErrorString();'
+        ]
+        out_script.writelines(_lines)
+        out_script.seek(0)
+        subprocess.Popen([_omc_binary, out_script.name], shell=False).wait()
 
 
 @click.command()
@@ -155,6 +175,7 @@ powerbalance.add_command(view_profile)
 powerbalance.add_command(generate_profiles)
 powerbalance.add_command(view_results)
 powerbalance.add_command(plugins)
+powerbalance.add_command(install_modelica_libraries)
 pbm_plugin.add_plugin_commands(powerbalance)
 
 if __name__ in "__main__":

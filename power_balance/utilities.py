@@ -8,6 +8,7 @@ Contains assorted utility functions used within the Power Balance API
 
 
 import contextlib
+
 __date__ = "2021-06-08"
 
 from typing import Any, Dict, Optional
