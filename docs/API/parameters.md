@@ -26,7 +26,6 @@ ThermalPower = 1000            # Default value 1 GW
 # ========================== HCD SYSTEM ================================ #
 [hcdsystem]
 RFEfficiency = 0.4
-HeatToAir = 0.20
 
 [hcdsystem.negativeIonNeutralInjector]
 beamEnergy = 1
@@ -35,7 +34,6 @@ NBIThermalPowerMaxMW = 109
 
 # ======================= CRYOGENIC POWER ============================== #
 [cryogenicpower]
-HeatToAir = 0.20
 cryoFlow_HydrogenFreezing = 3.5
 cryoTemp_TF = 20
 cryoTemp_PF = 4
@@ -50,25 +48,6 @@ OutputStreamRateCol_1 = 8.638888888888889e-05
 OutputStreamRateCol_2 = 0.0001803333333333333
 OutputStreamRateCol_3 = 5.555555555555556e-05
 OutputStreamRateCol_4 = 0.0001411944444444444
-
-# ====================== WASTE HEAT POWER ============================== #
-[wasteheatpower.wasteHeatCryo]
-Height = 3.0
-Length = 120.0
-SystemEfficiency = 0.8
-Width = 45.0
-
-[wasteheatpower.wasteHeatHCD]
-Height = 70.0
-Length = 120.0
-SystemEfficiency = 0.8
-Width = 100.0
-
-[wasteheatpower.WasteHeatMagnets]
-Height = 3.0
-Length = 150.0
-SystemEfficiency = 0.8
-Width = 30.0
 
 # ========================== MAGNET POWER ============================== #
 [magnetpower.magnetPF1]

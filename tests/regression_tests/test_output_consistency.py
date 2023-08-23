@@ -96,7 +96,7 @@ def test_output_data(pbm_instance):
 
     _test_file = os.path.join(
         pbm_instance.testdir,
-        "pbm_results_{}".format(pbm_instance._time_stamp),
+        f"pbm_results_{pbm_instance._time_stamp}",
         "data",
         "session_data.h5",
     )
@@ -105,8 +105,7 @@ def test_output_data(pbm_instance):
 
     if _baseline.shape != _test.shape:
         raise AssertionError(
-            "Shape of dataframe did not match expectation: "
-            "{} vs {}".format(_test.shape, _baseline.shape)
+            f"Shape of dataframe did not match expectation: {_test.shape} vs {_baseline.shape}"
         )
 
     _rtol = 1e-1
