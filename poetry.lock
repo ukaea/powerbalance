@@ -32,20 +32,41 @@ wrapt = {version = ">=1.11,<2", markers = "python_version < \"3.11\""}
 
 [[package]]
 name = "asv"
-version = "0.5.1"
+version = "0.6.0"
 description = "Airspeed Velocity: A simple Python history benchmarking tool"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+python-versions = ">=3.7"
 files = [
-    {file = "asv-0.5.1.tar.gz", hash = "sha256:805fc3cc46c0bcf3e7baeaa16a12e4b92f1276c25490db4cb80fc541afa52bfc"},
+    {file = "asv-0.6.0.tar.gz", hash = "sha256:9afce3008094209b7e87b7b880bc6b8f2da303fdc6dd665c7be9f1057ecd5753"},
 ]
 
 [package.dependencies]
-six = ">=1.4"
+asv-runner = ">=v0.0.9"
+colorama = {version = "*", markers = "os_name == \"nt\""}
+json5 = "*"
+pympler = {version = "*", markers = "platform_python_implementation != \"PyPy\""}
+pyyaml = {version = "*", markers = "platform_python_implementation != \"PyPy\""}
+tabulate = "*"
 
 [package.extras]
-hg = ["python-hglib (>=1.5)"]
-testing = ["feedparser", "filelock", "numpy", "pip", "pytest (>=4.4.0)", "pytest (>=4.4.0,<5.0)", "pytest-faulthandler", "pytest-faulthandler (<2.0)", "pytest-rerunfailures (>=8.0)", "pytest-rerunfailures (>=8.0,<9.0)", "pytest-timeout", "pytest-xdist", "python-hglib", "scipy", "selenium", "setuptools", "six", "virtualenv (>=1.7)", "wheel"]
+dev = ["isort (>=5.11.5)", "ruff"]
+doc = ["sphinx", "sphinx_bootstrap_theme"]
+hg = ["python-hglib"]
+test = ["feedparser", "filelock", "numpy", "pytest", "pytest-rerunfailures", "pytest-rerunfailures (>=10.0)", "pytest-timeout", "pytest-xdist", "python-hglib", "rpy2", "scipy", "selenium", "virtualenv"]
+
+[[package]]
+name = "asv-runner"
+version = "0.0.9"
+description = "Core Python benchmark code for ASV"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "asv_runner-0.0.9-py3-none-any.whl", hash = "sha256:ef655b451fbe6805b7981ded72d8ac38a8158fa37c770140e1bc6e992e96e5bb"},
+    {file = "asv_runner-0.0.9.tar.gz", hash = "sha256:4531cf5677bb19e5bd91d9789378b057037bd17e0d9043621b7ede9eaac88f97"},
+]
+
+[package.extras]
+docs = ["furo", "myst-parser (>=2)", "sphinx", "sphinx-autobuild", "sphinx-autodoc2 (>=0.4.2)", "sphinx-contributors", "sphinx-copybutton", "sphinx-design", "sphinxcontrib-spelling"]
 
 [[package]]
 name = "babel"
@@ -853,6 +874,20 @@ files = [
 [package.dependencies]
 editorconfig = ">=0.12.2"
 six = ">=1.13.0"
+
+[[package]]
+name = "json5"
+version = "0.9.14"
+description = "A Python implementation of the JSON5 data format."
+optional = false
+python-versions = "*"
+files = [
+    {file = "json5-0.9.14-py2.py3-none-any.whl", hash = "sha256:740c7f1b9e584a468dbb2939d8d458db3427f2c93ae2139d05f47e453eae964f"},
+    {file = "json5-0.9.14.tar.gz", hash = "sha256:9ed66c3a6ca3510a976a9ef9b8c0787de24802724ab1860bc0153c7fdd589b02"},
+]
+
+[package.extras]
+dev = ["hypothesis"]
 
 [[package]]
 name = "kiwisolver"
@@ -2157,6 +2192,17 @@ markdown = ">=3.2"
 pyyaml = "*"
 
 [[package]]
+name = "pympler"
+version = "1.0.1"
+description = "A development tool to measure, monitor and analyze the memory behavior of Python objects."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "Pympler-1.0.1-py3-none-any.whl", hash = "sha256:d260dda9ae781e1eab6ea15bacb84015849833ba5555f141d2d9b7b7473b307d"},
+    {file = "Pympler-1.0.1.tar.gz", hash = "sha256:993f1a3599ca3f4fcd7160c7545ad06310c9e12f70174ae7ae8d4e25f6c5d3fa"},
+]
+
+[[package]]
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -2608,6 +2654,20 @@ py-cpuinfo = "*"
 doc = ["ipython", "numpydoc", "sphinx (>=1.1)", "sphinx-rtd-theme"]
 
 [[package]]
+name = "tabulate"
+version = "0.9.0"
+description = "Pretty-print tabular data"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "tabulate-0.9.0-py3-none-any.whl", hash = "sha256:024ca478df22e9340661486f85298cff5f6dcdba14f3813e8830015b9ed1948f"},
+    {file = "tabulate-0.9.0.tar.gz", hash = "sha256:0095b12bf5966de529c0feb1fa08671671b3368eec77d7ef7ab114be2c068b3c"},
+]
+
+[package.extras]
+widechars = ["wcwidth"]
+
+[[package]]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -3017,4 +3077,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8,<3.11"
-content-hash = "86ea6fcb5b9c3f67e73d3edfd5216afbc8261fbb38900d1d82b7835ffb57554b"
+content-hash = "5b2d9150aa43c82c09d61f28dc5fa92f70a1abac7a9152200ec9357e80776a73"
