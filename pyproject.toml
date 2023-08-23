@@ -59,7 +59,7 @@ types-toml = "^0.10.8"
 typed-ast = "^1.5.4"
 types-Jinja2 = "^2.11.9"
 pre-commit = "^3.3.3"
-unimport = "^0.16.0"
+unimport = "^1.0.0"
 pytest = "^7.4.0"
 
 [tool.poetry.group.docs.dependencies]
