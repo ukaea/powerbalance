@@ -74,7 +74,7 @@ def test_parameter_set(pbm_run: PowerBalance):
 
     _xml_file = glob.glob(
         os.path.join(
-            os.path.dirname(pbm_run.pydelica_session._binaries[pbm_run.model_example]),
+            os.path.dirname(pbm_run.pydelica_session.get_binary_location(pbm_run.model_example)),
             "*_init.xml",
         )
     )[0]
@@ -84,7 +84,7 @@ def test_parameter_set(pbm_run: PowerBalance):
 
     # Need to manually write the parameters as this usually only happens when
     # the PyDelica method 'simulate' is called
-    pbm_run.pydelica_session._model_parameters[pbm_run.model_example].write_params()
+    pbm_run.pydelica_session.get_parameters(pbm_run.model_example).write_params()
 
     with open(_xml_file) as xml_f:
         _lines = xml_f.readlines()

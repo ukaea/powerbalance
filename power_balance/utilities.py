@@ -6,6 +6,8 @@
 Contains assorted utility functions used within the Power Balance API
 """
 
+
+import contextlib
 __date__ = "2021-06-08"
 
 from typing import Any, Dict, Optional
@@ -18,28 +20,17 @@ def convert_to_value(value_str: Any) -> Any:
         return value_str
 
     if not isinstance(value_str, str):
-        try:
+        with contextlib.suppress(AttributeError):
             value_str.keys()
             return {k: convert_to_value(v) for k, v in value_str.items()}
-        except AttributeError:
-            pass
-        try:
+        with contextlib.suppress(TypeError):
             iter(value_str)
             return type(value_str)([convert_to_value(i) for i in value_str])
-        except TypeError:
-            pass
-
     if isinstance(value_str, str) and "." in value_str:
-        try:
+        with contextlib.suppress(ValueError):
             return float(value_str)
-        except ValueError:
-            pass
-
-    try:
+    with contextlib.suppress(ValueError):
         return int(value_str)
-    except ValueError:
-        pass
-
     if isinstance(value_str, str) and value_str.lower() in ["true", "false"]:
         return bool(value_str)
 

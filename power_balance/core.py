@@ -33,7 +33,7 @@ from typing import Optional
 
 import numpy as np
 import pandas as pd
-import pkg_resources
+import importlib.metadata
 import pydantic
 import pydelica
 import toml
@@ -244,16 +244,12 @@ class PowerBalance:
         Using the current parameter set the maximum values are obtained, these
         then being used during the generation of the default profiles
         """
+        _max_current_prefixes = [f"pf{i}" for i in range(1, 7)]
         _max_val_mappings = {
             "thermal": "thermalpower",
             "tf": "tf.maxcurrent",
             "cs": "cs.maxcurrent",
-        }
-        _max_current_prefixes = [f"pf{i}" for i in range(1, 7)]
-        _max_val_mappings.update(
-            {prefix: f"{prefix}.maxcurrent" for prefix in _max_current_prefixes}
-        )
-
+        } | {prefix: f"{prefix}.maxcurrent" for prefix in _max_current_prefixes}
         return {
             key: next(
                 (
@@ -397,8 +393,7 @@ class PowerBalance:
         _mod_file_dir = self.configuration["modelica_file_directory"]
         if not os.path.exists(_mod_file_dir):
             raise FileNotFoundError(
-                "The Modelica Files input directory '{}' "
-                "does not exist".format(_mod_file_dir)
+                f"The Modelica Files input directory '{_mod_file_dir}' does not exist"
             )
 
         if "structural_params_file" in self.configuration:
@@ -465,8 +460,7 @@ class PowerBalance:
             address of input configuration file
         """
         if "models" in self.configuration:
-            _models_list = "- "
-            _models_list += "\n\t -                  ".join(
+            _models_list = "- " + "\n\t -                  ".join(
                 self.configuration["models"]
             )
         else:
@@ -487,7 +481,7 @@ class PowerBalance:
 ===============================================================================
 
                         Power Balance Model v{version}
-            (with OpenModelica v{om_version} and PyDelica v{pyd_version})
+            (with OpenModelica {om_version} and PyDelica v{pyd_version})
 
                     Tokamak Power Infrastructure Simulation
 
@@ -509,7 +503,7 @@ class PowerBalance:
         """.format(
             time=self._time_now_str,
             om_version=self._om_version,
-            pyd_version=pkg_resources.get_distribution("pydelica").version,
+            pyd_version=importlib.metadata.version("pydelica"),
             version=power_balance.__version__,
             model_dir=self.configuration["modelica_file_directory"],
             profile_dir=self.configuration["profiles_directory"],
@@ -521,7 +515,7 @@ class PowerBalance:
             plasma=self.configuration["plasma_scenario_file"],
             models=_models_list,
             sweep=_sweep,
-            mode="Browser" if not self._no_browser else "Terminal Only",
+            mode="Terminal Only" if self._no_browser else "Browser",
             plugins=", ".join(self._plugins) if self._plugins else "None",
         )
         print(_intro_str)
@@ -651,9 +645,7 @@ class PowerBalance:
             If the API fails to identify any models within the given file
         """
         if not os.path.exists(model_path):
-            raise FileNotFoundError(
-                "Could not find Modelica file '{}'".format(model_path)
-            )
+            raise FileNotFoundError(f"Could not find Modelica file '{model_path}'")
 
         _models = pbm_models.extract_models_from_file(
             model_path,
@@ -666,8 +658,7 @@ class PowerBalance:
 
         if not _models:
             raise AssertionError(
-                "File '{}' does not contain a recognised Modelica"
-                " model".format(model_path)
+                f"File '{model_path}' does not contain a recognised Modelica model"
             )
 
         self._models_list.update(_models)
@@ -790,7 +781,7 @@ class PowerBalance:
         _simulation_options = self._parameter_set.get_simulation_options()
 
         _opt_strs = [
-            "{}={}".format(parameter, value)
+            f"{parameter}={value}"
             for parameter, value in _simulation_options.items()
         ]
 
@@ -866,7 +857,7 @@ class PowerBalance:
             if not self._models_list[model].binary_folder:
                 continue
             try:
-                _var = "{}.{}".format(model.lower(), parameter_search_str.lower())
+                _var = f"{model.lower()}.{parameter_search_str.lower()}"
                 _param = self._parameter_set.get_parameter(_var)
 
                 _modelica_var_key = self._find_modelica_variable(
@@ -877,12 +868,8 @@ class PowerBalance:
 
                 if str(_modelica_var_value).lower() != str(_param).lower():
                     raise pbm_exc.TranslationError(
-                        "Modelica internal parameter value does not "
-                        "match that of API{}: {} != {}".format(
-                            parameter_search_str.lower(),
-                            _modelica_var_value,
-                            _param,
-                        )
+                        "Modelica internal parameter value does not match that of API"
+                        f"{parameter_search_str.lower()}: {_modelica_var_value} != {_param}"
                     )
                 self._logger.debug(
                     "Modelica vs API:%s: %s == %s",
@@ -941,12 +928,8 @@ class PowerBalance:
                     # this means the setting of parameters is wrong
                     if str(_modelica_var_value).lower() != str(_param).lower():
                         raise pbm_exc.TranslationError(
-                            "Modelica internal parameter value does not "
-                            "match that of API:{}: {} != {}".format(
-                                parameter_search_str.lower(),
-                                _modelica_var_value,
-                                _param,
-                            )
+                            "Modelica internal parameter value does not match that of API"
+                            f":{parameter_search_str.lower()}: {_modelica_var_value} != {_param}"
                         )
                     self._logger.debug(
                         "Modelica vs API:%s: %s == %s",
@@ -987,15 +970,26 @@ class PowerBalance:
         _param_str_ls: typing.List[str] = parameter_name.split(".")
         _param_str_ls[-1] = "__" + _param_str_ls[-1]
         _param_str: str = ".".join(i for i in _param_str_ls if i)
-        _param_str = _param_str.replace(model_name.lower() + ".", "")
+        _param_str = _param_str.replace(f"{model_name.lower()}.", "")
+        _param_str_alt = _param_str.replace(f"{model_name.replace('.', '_').lower()}.", "")
 
         for var in self.pydelica_session.get_parameters(model_name):
-            if var.lower() == _param_str.lower():
+            print(var.lower(), _param_str.lower())
+            if var.lower().strip() in [_param_str.lower().strip(), _param_str_alt.lower().strip()]:
                 return var
 
         raise AssertionError(
             "Could not find a variable within Modelica matching" f" '{_param_str}'"
         )
+
+    def _get_model_entry(self, model_name: str, listing: typing.List[str]) -> str:
+        _key = model_name
+        if _key not in listing:
+            if (_key := _key.replace(".", "_")) not in listing:
+                raise AssertionError(
+                    f"Could not find model '{model_name}'," " in listings"
+                )
+        return _key
 
     def set_model_parameters(
         self, model_name: str, allow_param_failure: bool = False
@@ -1033,7 +1027,7 @@ class PowerBalance:
 
             _value = self._parameter_set.get_parameter(parameter)
 
-            _parameter = parameter.replace(model_name.lower() + ".", "")
+            _parameter = parameter.replace(f"{model_name.lower()}.", "")
 
             _modelica_param_addr = self._find_modelica_variable(model_name, _parameter)
 
@@ -1107,7 +1101,7 @@ class PowerBalance:
             if the given directory does not exist
         """
         if not os.path.exists(directory):
-            raise FileNotFoundError("Location '{}' does not exist.".format(directory))
+            raise FileNotFoundError(f"Location '{directory}' does not exist.")
 
         self._parameter_set.load_from_directory(directory)
 
@@ -1130,21 +1124,21 @@ class PowerBalance:
             if the model solution variables do not match the expected form
         """
 
-        if model_name not in self.pydelica_session.get_solutions():
-            raise AssertionError(
-                "Failed to retrieve solutions for model '{}', "
-                "available solutions are: {}".format(
-                    model_name,
-                    list(self.pydelica_session.get_solutions().keys()),
-                )
+        try:
+            _solution_key = self._get_model_entry(
+                model_name, _solutions := self.pydelica_session.get_solutions()
             )
+        except AssertionError as e:
+            raise AssertionError(
+                f"Failed to retrieve solutions for model '{model_name}', "
+                f"available solutions are: {list(_solutions.keys())}"
+            ) from e
 
-        _solution = self.pydelica_session.get_solutions()[model_name]
+        _solution = _solutions[_solution_key]
 
         if not isinstance(_solution, pd.DataFrame):
             raise TypeError(
-                "Expected DataFrame for model solutions"
-                " but got {}".format(type(_solution))
+                "Expected DataFrame for model solutions" f" but got {type(_solution)}"
             )
 
         _elec_con_columns = [
@@ -1167,11 +1161,11 @@ class PowerBalance:
                 ):
                     _submodels = self._models_list[model_name].submodels
                     col_name = _submodels[col_name].split(".")[-1]
-            except IndexError:
+            except IndexError as e:
                 raise AssertionError(
                     "Expected model solutions to be in the form 'model.variable'",
-                    " but got: {}".format(sol),
-                )
+                    f" but got: {sol}",
+                ) from e
             _df[col_name.lower()] = _solution[sol]
 
         _net_power = -_df.loc[:, _df.columns != "time"].sum(1)
@@ -1357,9 +1351,8 @@ class PowerBalance:
         for var_val_list in sweep_dict.values():
             if len(var_val_list) != var_len:
                 raise AssertionError(
-                    "For sweep of type 'set' all parameter statements"
-                    " must have the same number of elements: "
-                    "{} != {}".format(len(var_val_list), var_len)
+                    "For sweep of type 'set' all parameter statements "
+                    f"must have the same number of elements: {len(var_val_list)} != {var_len}"
                 )
 
         return [(value[i] for value in sweep_dict.values()) for i in range(var_len)]
@@ -1392,7 +1385,7 @@ class PowerBalance:
             _dict_combo = dict(zip(sweep_dict.keys(), combo))
             self._logger.info(
                 "Running Combination:\n\t- %s",
-                "\n\t- ".join("{}={}".format(k, v) for k, v in _dict_combo.items()),
+                "\n\t- ".join(f"{k}={v}" for k, v in _dict_combo.items()),
             )
 
             # typing.Tuple parameters in the parameter set to values for this sweep
@@ -1418,7 +1411,7 @@ class PowerBalance:
             directory to write output files to
         """
         _session_directory = os.path.join(
-            output_directory, "pbm_results_{}".format(self._time_stamp)
+            output_directory, f"pbm_results_{self._time_stamp}"
         )
 
         if not os.path.exists(_session_directory):
@@ -1485,9 +1478,7 @@ class PowerBalance:
                     continue
                 _file_name = os.path.join(
                     _plot_dir,
-                    "{}_{}.jpg".format(
-                        dataset.replace(".", "_"), variable.replace(".", "_")
-                    ),
+                    f'{dataset.replace(".", "_")}_{variable.replace(".", "_")}.jpg',
                 )
 
                 _data = _data_frame[variable]
@@ -1540,7 +1531,7 @@ class PowerBalance:
         """Opens local web browser to view result plots"""
         self._logger.info("Initialising Plot Display")
         _browser = pbm_browser.PBMBrowser(
-            os.path.join(self._output_dir, "pbm_results_{}".format(self._time_stamp))
+            os.path.join(self._output_dir, f"pbm_results_{self._time_stamp}")
         )
         _browser.build(self._plasma_scenario)
         _browser.launch()

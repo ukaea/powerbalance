@@ -12,7 +12,7 @@ constructed using Modelica for power generation and consumption systems.
 import os.path
 import pathlib
 
-import pkg_resources
+import importlib.metadata
 import toml
 
 __author__ = "UKAEA"
@@ -32,7 +32,7 @@ __contact__ = "alexander.petrov@ukaea.uk"
 __status__ = "Release"
 
 try:
-    __version__ = pkg_resources.get_distribution("power_balance").version
+    __version__ = importlib.metadata.version("power_balance")
 except pkg_resources.DistributionNotFound:
     _metadata = os.path.join(
         pathlib.Path(os.path.dirname(__file__)).parents[1], "pyproject.toml"
