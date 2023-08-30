@@ -1,4 +1,4 @@
-FROM openmodelica/openmodelica:v1.18.0-ompython
+FROM openmodelica/openmodelica:v1.21.0-ompython
 ARG msl_version=3.2.3
 RUN echo "installPackage(Modelica, \"${msl_version}\");"  >> install.mos
 RUN omc install.mos

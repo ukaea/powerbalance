@@ -9,8 +9,6 @@ The purpose of this model is to extract the waste heat from the air. It does thi
 The settable user input values for this model are given, alongside their default values:
 
 - Waste power from other models (1000 W)
-- Height of room 
-- Length of room 
 - Width of room 
 - Efficiency of Waste Heat system (0.8)
 - simulation stop time (60 s)
