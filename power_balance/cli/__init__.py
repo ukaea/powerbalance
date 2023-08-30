@@ -12,10 +12,10 @@ __date__ = "2021-06-08"
 import glob
 import os
 import pathlib
-from typing import Optional, List
 import shutil
-import tempfile
 import subprocess
+import tempfile
+from typing import List, Optional
 
 import click
 
@@ -35,6 +35,7 @@ def powerbalance():
     as well as generating and viewing profiles.
     """
 
+
 @click.command("install-msl")
 def install_modelica_libraries() -> None:
     """Installs MSL 3.2.3 if not installed"""
@@ -46,7 +47,7 @@ def install_modelica_libraries() -> None:
         _lines: List[str] = [
             "updatePackageIndex();getErrorString();",
             'getAvailablePackageVersions(Modelica, "");getErrorString();',
-            'installPackage(Modelica, "3.2.3", exactMatch=true);getErrorString();'
+            'installPackage(Modelica, "3.2.3", exactMatch=true);getErrorString();',
         ]
         out_script.writelines(_lines)
         out_script.seek(0)

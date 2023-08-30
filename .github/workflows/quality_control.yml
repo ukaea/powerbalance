@@ -15,7 +15,7 @@ jobs:
       - name: Run Mypy
         run: |
           poetry install 
-          poetry run mypy power_balance/
+          poetry run mypy --check-untyped-defs power_balance/
   modelica_syntax_validation:
     name: Modelica Syntax Checking
     runs-on: ubuntu-latest
