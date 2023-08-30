@@ -80,6 +80,7 @@ jobs:
       - name: Run Models
         run: |
           cd build
+          chmod +x ./Tokamak_Interdependencies
           ./Tokamak_Interdependencies
   model_run_api:
     container:
