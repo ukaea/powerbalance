@@ -77,8 +77,8 @@ keywords:
 license: LGPL-2.1+
 message: "If you use this software, please cite it using these metadata."
 title: "Power Balance Models"
-commit: "56067cf8297e90689484fc7c6429880e788c534c"
-version: "1.1.0"
+commit: "1c95e51eb6deeb7c4d629223044ddabfddfab857"
+version: "1.2.0"
 repository-code: "https://github.com/ukaea/powerbalance"
 url: "https://ukaea.github.io/powerbalance/"
 references:
