@@ -13,3 +13,7 @@ updates:
       include: "scope"
     open-pull-requests-limit: 5
     target-branch: "main"
+    ignore:
+      - dependency-name: "pydantic"
+        # For Express, ignore all Dependabot updates for version 4 and 5
+        versions: ["2.x"]
