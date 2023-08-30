@@ -81,6 +81,7 @@ jobs:
         run: |
           cd build
           chmod +x ./Tokamak_Interdependencies
+          ln -s ../power_balance/profiles/mat_profile_files/* .
           ./Tokamak_Interdependencies
   model_run_api:
     container:
