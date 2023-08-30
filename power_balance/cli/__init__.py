@@ -39,7 +39,7 @@ def powerbalance():
 @click.command("install-msl")
 def install_modelica_libraries() -> None:
     """Installs MSL 3.2.3 if not installed"""
-    _omc_binary: str = shutil.which("omc")
+    _omc_binary: Optional[str] = shutil.which("omc")
     if not _omc_binary:
         raise FileNotFoundError("Could not find OMC binary")
 
