@@ -9,10 +9,10 @@ different Tokamak fusion reactor designs. Simulations are created via models
 constructed using Modelica for power generation and consumption systems.
 """
 
+import importlib.metadata
 import os.path
 import pathlib
 
-import importlib.metadata
 import toml
 
 __author__ = "UKAEA"
@@ -33,7 +33,7 @@ __status__ = "Release"
 
 try:
     __version__ = importlib.metadata.version("power_balance")
-except pkg_resources.DistributionNotFound:
+except importlib.metadata.PackageNotFoundError:
     _metadata = os.path.join(
         pathlib.Path(os.path.dirname(__file__)).parents[1], "pyproject.toml"
     )

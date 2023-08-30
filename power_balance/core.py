@@ -21,6 +21,7 @@ __date__ = "2021-06-10"
 
 import datetime
 import glob
+import importlib.metadata
 import itertools
 import logging
 import os
@@ -33,7 +34,6 @@ from typing import Optional
 
 import numpy as np
 import pandas as pd
-import importlib.metadata
 import pydantic
 import pydelica
 import toml
@@ -781,8 +781,7 @@ class PowerBalance:
         _simulation_options = self._parameter_set.get_simulation_options()
 
         _opt_strs = [
-            f"{parameter}={value}"
-            for parameter, value in _simulation_options.items()
+            f"{parameter}={value}" for parameter, value in _simulation_options.items()
         ]
 
         self._logger.debug(
@@ -971,11 +970,16 @@ class PowerBalance:
         _param_str_ls[-1] = "__" + _param_str_ls[-1]
         _param_str: str = ".".join(i for i in _param_str_ls if i)
         _param_str = _param_str.replace(f"{model_name.lower()}.", "")
-        _param_str_alt = _param_str.replace(f"{model_name.replace('.', '_').lower()}.", "")
+        _param_str_alt = _param_str.replace(
+            f"{model_name.replace('.', '_').lower()}.", ""
+        )
 
         for var in self.pydelica_session.get_parameters(model_name):
             print(var.lower(), _param_str.lower())
-            if var.lower().strip() in [_param_str.lower().strip(), _param_str_alt.lower().strip()]:
+            if var.lower().strip() in [
+                _param_str.lower().strip(),
+                _param_str_alt.lower().strip(),
+            ]:
                 return var
 
         raise AssertionError(
