@@ -1505,18 +1505,18 @@ min-versions = ["babel (==2.9.0)", "click (==7.0)", "colorama (==0.4)", "ghp-imp
 
 [[package]]
 name = "mkdocs-click"
-version = "0.8.0"
+version = "0.8.1"
 description = "An MkDocs extension to generate documentation for Click command line applications"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "mkdocs_click-0.8.0-py3-none-any.whl", hash = "sha256:f9c26d4abd505bca4113d1529d03d1ae709a68a82fc364db289634788d029353"},
-    {file = "mkdocs_click-0.8.0.tar.gz", hash = "sha256:965f38231eb04d8c980406c5ab4becf7303ef3ffc68fdb29be91927eff1adfbe"},
+    {file = "mkdocs_click-0.8.1-py3-none-any.whl", hash = "sha256:a100ff938be63911f86465a1c21d29a669a7c51932b700fdb3daa90d13b61ee4"},
+    {file = "mkdocs_click-0.8.1.tar.gz", hash = "sha256:0a88cce04870c5d70ff63138e2418219c3c4119cc928a59c66b76eb5214edba6"},
 ]
 
 [package.dependencies]
-click = ">=8.1,<9.0"
-markdown = "==3.*"
+click = ">=8.1"
+markdown = ">=3.3"
 
 [[package]]
 name = "mkdocs-coverage"
@@ -3176,4 +3176,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9,<3.12"
-content-hash = "81f53165fc61f316dfd1aa7b3d10c6ef56f0c9eed938c5ff10bc84310a231e13"
+content-hash = "4dccadb8e0d19f3635869d942135b5b4927ae50817b466c9087ac8731d66547c"
