@@ -1591,13 +1591,13 @@ files = [
 
 [[package]]
 name = "mkdocs-mermaid2-plugin"
-version = "1.1.0"
+version = "1.1.1"
 description = "A MkDocs plugin for including mermaid graphs in markdown sources"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "mkdocs-mermaid2-plugin-1.1.0.tar.gz", hash = "sha256:56d8137c87ac3ecc5c8f668e8167be433f2414381e261fcec8af86833f059dd0"},
-    {file = "mkdocs_mermaid2_plugin-1.1.0-py3-none-any.whl", hash = "sha256:37e62c89d60124f2bec273e8bf47af0f27a55996313d2e6ef80d7accd10b3282"},
+    {file = "mkdocs-mermaid2-plugin-1.1.1.tar.gz", hash = "sha256:bea5f3cbe6cb76bad21b81e49a01e074427ed466666c5d404e62fe8698bc2d7c"},
+    {file = "mkdocs_mermaid2_plugin-1.1.1-py3-none-any.whl", hash = "sha256:4e25876b59d1e151ca33a467207b346404b4a246f4f24af5e44c32408e175882"},
 ]
 
 [package.dependencies]
@@ -3176,4 +3176,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9,<3.12"
-content-hash = "f269f6d850112621e61b5b4542d2e7414f6e625e4972b4a78cf8db0b2a25c089"
+content-hash = "e5c85dc90a7db546bcdfe8e9c155a0e0ce154eed998d77e3665a304b1bb37d81"
