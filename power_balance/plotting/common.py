@@ -127,7 +127,7 @@ def plot_to_image(
         file format, by default "jpeg"
     """
     plt.figure()
-    plt.plot(x_array, y_array) # type: ignore
+    plt.plot(x_array, y_array)  # type: ignore
     plt.grid()
     plt.xlabel(x_label)
     plt.ylabel(y_label)
