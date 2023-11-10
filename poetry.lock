@@ -222,13 +222,13 @@ py-cpuinfo = "*"
 
 [[package]]
 name = "bokeh"
-version = "3.3.0"
+version = "3.3.1"
 description = "Interactive plots and applications in the browser from Python"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "bokeh-3.3.0-py3-none-any.whl", hash = "sha256:65e36824c99fd46530c559263c6d14eabed6945370cd3beffc2eeedb62d6db6d"},
-    {file = "bokeh-3.3.0.tar.gz", hash = "sha256:cdbe268f842c139ba8fa0fb43c0c55c172c8215ec5a69a2629482c63c9d4039c"},
+    {file = "bokeh-3.3.1-py3-none-any.whl", hash = "sha256:783fb503d80306fb1e3c06e9c775d98675bf9e07514a776d7109178798e85683"},
+    {file = "bokeh-3.3.1.tar.gz", hash = "sha256:2a7b3702d7e9f03ef4cd801b02b7380196c70cff2773859bcb84fa565218955c"},
 ]
 
 [package.dependencies]
@@ -2987,4 +2987,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9,<3.12"
-content-hash = "f1183b29d74efaa316930f9732250a8d7a7dc22fcad2979eff3e4856130a12c0"
+content-hash = "eb5d51b0c44e05691d7fee551d3a0298a8347f706c149e287e8a4f53a2db8db7"
