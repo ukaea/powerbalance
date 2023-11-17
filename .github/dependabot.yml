@@ -16,4 +16,4 @@ updates:
     ignore:
       - dependency-name: "pydantic"
         # For Express, ignore all Dependabot updates for version 4 and 5
-        versions: ["2.x"]
+        versions: ["2.*"]
