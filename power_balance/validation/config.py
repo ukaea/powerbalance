@@ -152,7 +152,7 @@ class ConfigModel(pydantic.BaseModel):
 
     @pydantic.model_validator(mode="after")
     def check_model_list(self):
-        modelica_file_dir = self.modelica_file_directory
+        modelica_file_dir = str(self.modelica_file_directory)
 
         with pydelica.Session() as pd_session:
             _local_models = list(
