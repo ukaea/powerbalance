@@ -77,21 +77,21 @@ class ConfigModel(pydantic.BaseModel):
     simulation_options_file: str = pydantic.Field(
         ...,
         title="Simulation Options File",
-        regex=NOT_A_PATH_REGEX,
+        pattern=NOT_A_PATH_REGEX,
         description="Identifier for the simulation options "
         "file in the parameters directory",
     )
     plasma_scenario_file: str = pydantic.Field(
         ...,
         title="Plasma Scenario File",
-        regex=NOT_A_PATH_REGEX,
+        pattern=NOT_A_PATH_REGEX,
         description="Identifier for the plasma scenario options "
         "file in the parameters directory",
     )
     structural_params_file: str = pydantic.Field(
         ...,
         title="Structural Parameters File",
-        regex=NOT_A_PATH_REGEX,
+        pattern=NOT_A_PATH_REGEX,
         description="Identifier for the structural parameters "
         "file in the parameters directory",
     )
@@ -105,8 +105,10 @@ class ConfigModel(pydantic.BaseModel):
         title="Sweep Definitions",
         description="Dictionary containing sweep values for parameters",
     )
+    model_config = pbm_check.MODEL_CONFIG
 
-    @pydantic.root_validator(pre=True)
+    @pydantic.model_validator(mode="before")
+    @classmethod
     def replace_default(cls, values: typing.Dict):
         if values.get("modelica_file_directory") == "Default":
             modelica_file_dir = os.path.join(
@@ -129,7 +131,7 @@ class ConfigModel(pydantic.BaseModel):
 
         return values
 
-    @pydantic.validator("sweep")
+    @pydantic.field_validator("sweep")
     def check_sweep(cls, values: typing.Dict[str, typing.Any]):
         if not values:
             return values
@@ -148,9 +150,9 @@ class ConfigModel(pydantic.BaseModel):
 
         return values
 
-    @pydantic.root_validator(skip_on_failure=True)
-    def check_model_list(cls, values: typing.Dict):
-        modelica_file_dir = values["modelica_file_directory"]
+    @pydantic.model_validator(mode="after")
+    def check_model_list(self):
+        modelica_file_dir = str(self.modelica_file_directory)
 
         with pydelica.Session() as pd_session:
             _local_models = list(
@@ -162,31 +164,29 @@ class ConfigModel(pydantic.BaseModel):
                 )
             )
 
-        for model in values["models"]:
+        for model in self.models:
             if model not in _local_models:
                 raise AssertionError(f"Model '{model}' not recognised")
 
-        return values
+        return self
 
     # 'dummy' validators which act as post-validation tidy up methods
-    @pydantic.root_validator(skip_on_failure=True)
-    def prepare_key_values(cls, values: typing.Dict):
+    @pydantic.model_validator(mode="after")
+    def prepare_key_values(self):
         """Remove keys from sweep if not required"""
-        if "sweep" in values:
-            if values["sweep"]:
-                values["sweep"] = flatten_dictionary(values["sweep"])
+        if hasattr(self, "sweep"):
+            if self.sweep:
+                self.sweep = flatten_dictionary(self.sweep)
             else:
-                del values["sweep"]
-                values.pop("sweep_mode", None)
-        return values
+                delattr(self, "sweep")
+                if hasattr(self, "sweep_mode"):
+                    delattr(self, "sweep_mode")
+        return self
 
-    @pydantic.root_validator(skip_on_failure=True)
-    def posix_to_str(cls, values: typing.Dict):
+    @pydantic.model_validator(mode="after")
+    def posix_to_str(self):
         """Convert PosixPaths back to strings before continuing"""
-        for key, value in values.items():
+        for key, value in self.__dict__.items():
             if isinstance(value, pathlib.PosixPath):
-                values[key] = str(value)
-        return values
-
-    class Config(pbm_check.ModelConfig):
-        pass
+                setattr(self, key, str(value))
+        return self

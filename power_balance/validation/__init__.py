@@ -16,11 +16,12 @@ Submodules
     modelica_simulation_options - validation of modelica simulation option files
 
 """
+import pydantic
 
-
-class ModelConfig:
-    title = "PowerBalanceModelInputs"
-    extra = "forbid"
-    validate_all = True
-    use_enum_values = True
-    anystr_strip_whitespace = True
+MODEL_CONFIG = pydantic.ConfigDict(
+    title="PowerBalanceModelInputs",
+    extra="forbid",
+    validate_default=True,
+    use_enum_values=True,
+    str_strip_whitespace=True,
+)
