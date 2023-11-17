@@ -69,7 +69,7 @@ class SimOptsModel(pydantic.BaseModel):
     )
     model_config = pbm_check.MODEL_CONFIG
 
-    @pydantic.model_validator(mode='after')
+    @pydantic.model_validator(mode="after")
     def check_time_vals(self):
         _start: int = self.startTime
         _stop: int = self.stopTime
@@ -87,7 +87,6 @@ class SimOptsModel(pydantic.BaseModel):
         return self
 
 
-
 class PlasmaScenario(pydantic.BaseModel):
     plasma_ramp_up_start: FromZeroInt = pydantic.Field(
         ...,
@@ -102,7 +101,7 @@ class PlasmaScenario(pydantic.BaseModel):
     )
     model_config = pbm_check.MODEL_CONFIG
 
-    @pydantic.model_validator(mode='after')
+    @pydantic.model_validator(mode="after")
     def check_profile_vals(self):
         _prus: float = self.plasma_ramp_up_start
         _pfts: float = self.plasma_flat_top_start

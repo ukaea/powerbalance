@@ -18,11 +18,10 @@ Submodules
 """
 import pydantic
 
-
 MODEL_CONFIG = pydantic.ConfigDict(
     title="PowerBalanceModelInputs",
     extra="forbid",
     validate_default=True,
     use_enum_values=True,
-    str_strip_whitespace=True
+    str_strip_whitespace=True,
 )

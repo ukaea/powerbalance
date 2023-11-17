@@ -107,7 +107,7 @@ class ConfigModel(pydantic.BaseModel):
     )
     model_config = pbm_check.MODEL_CONFIG
 
-    @pydantic.model_validator(mode='before')
+    @pydantic.model_validator(mode="before")
     @classmethod
     def replace_default(cls, values: typing.Dict):
         if values.get("modelica_file_directory") == "Default":
@@ -150,7 +150,7 @@ class ConfigModel(pydantic.BaseModel):
 
         return values
 
-    @pydantic.model_validator(mode='after')
+    @pydantic.model_validator(mode="after")
     def check_model_list(self):
         modelica_file_dir = self.modelica_file_directory
 
@@ -171,7 +171,7 @@ class ConfigModel(pydantic.BaseModel):
         return self
 
     # 'dummy' validators which act as post-validation tidy up methods
-    @pydantic.model_validator(mode='after')
+    @pydantic.model_validator(mode="after")
     def prepare_key_values(self):
         """Remove keys from sweep if not required"""
         if hasattr(self, "sweep"):
@@ -183,7 +183,7 @@ class ConfigModel(pydantic.BaseModel):
                     delattr(self, "sweep_mode")
         return self
 
-    @pydantic.model_validator(mode='after')
+    @pydantic.model_validator(mode="after")
     def posix_to_str(self):
         """Convert PosixPaths back to strings before continuing"""
         for key, value in self.__dict__.items():
