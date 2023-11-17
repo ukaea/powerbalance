@@ -44,19 +44,11 @@ class Solver(str, enum.Enum):
     QSS = "qss"
 
 
-class FromUnityInt(pydantic.ConstrainedInt):
-    ge = 1
-    strict = True
+FromUnityInt = typing.Annotated[int, pydantic.Field(gt=1, strict=True)]
 
+FromZeroInt = typing.Annotated[int, pydantic.Field(ge=0, strict=True)]
 
-class FromZeroInt(pydantic.ConstrainedInt):
-    ge = 0
-    strict = True
-
-
-class SmallestFloat(pydantic.ConstrainedFloat):
-    ge = 1e-36
-    strict = True
+SmallestFloat = typing.Annotated[float, pydantic.Field(ge=1e-36, strict=True)]
 
 
 class SimOptsModel(pydantic.BaseModel):
@@ -75,12 +67,13 @@ class SimOptsModel(pydantic.BaseModel):
     tolerance: SmallestFloat = pydantic.Field(
         ..., title="Tolerance", description="Tolerance for solutions in OM simulation"
     )
+    model_config = pbm_check.MODEL_CONFIG
 
-    @pydantic.root_validator(skip_on_failure=True)
-    def check_time_vals(cls, values: typing.Dict):
-        _start: int = values["startTime"]
-        _stop: int = values["stopTime"]
-        _step: float = values["stepSize"]
+    @pydantic.model_validator(mode='after')
+    def check_time_vals(self):
+        _start: int = self.startTime
+        _stop: int = self.stopTime
+        _step: float = self.stepSize
 
         if _start > _stop:
             raise AssertionError(
@@ -91,10 +84,8 @@ class SimOptsModel(pydantic.BaseModel):
                 f"Step size must be less than stop time : {_step} !< {_stop}"
             )
 
-        return values
+        return self
 
-    class Config(pbm_check.ModelConfig):
-        pass
 
 
 class PlasmaScenario(pydantic.BaseModel):
@@ -109,14 +100,14 @@ class PlasmaScenario(pydantic.BaseModel):
     plasma_ramp_down_end: FromZeroInt = pydantic.Field(
         ..., title="Plasma Ramp-Down End"
     )
+    model_config = pbm_check.MODEL_CONFIG
 
-    @pydantic.root_validator(skip_on_failure=True)
-    def check_profile_vals(cls, values: typing.Dict):
-        _prus: float = values["plasma_ramp_up_start"]
-        _pfts: float = values["plasma_flat_top_start"]
-        _pfte: float = values["plasma_flat_top_end"]
-        _prde: float = values["plasma_ramp_down_end"]
-
+    @pydantic.model_validator(mode='after')
+    def check_profile_vals(self):
+        _prus: float = self.plasma_ramp_up_start
+        _pfts: float = self.plasma_flat_top_start
+        _pfte: float = self.plasma_flat_top_end
+        _prde: float = self.plasma_ramp_down_end
         _conditions = [_prus < _pfts, _pfts < _pfte, _pfte < _prde]
 
         if not all(_conditions):
@@ -125,7 +116,4 @@ class PlasmaScenario(pydantic.BaseModel):
                 f"got times {_prus}, {_pfts}, {_pfte}, {_prde}"
             )
 
-        return values
-
-    class Config(pbm_check.ModelConfig):
-        pass
+        return self

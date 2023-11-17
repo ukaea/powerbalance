@@ -207,7 +207,7 @@ class PowerBalance:
 
         try:
             _validation = pbm_valid.ConfigModel(**self.configuration)
-            self.configuration = _validation.dict()
+            self.configuration = _validation.model_dump()
         except pydantic.ValidationError as e:
             raise pbm_exc.ValidationError(e.json(), "session config") from e
 
