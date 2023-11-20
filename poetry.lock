@@ -2978,13 +2978,13 @@ typing-extensions = ">=3.7.4"
 
 [[package]]
 name = "unimport"
-version = "1.0.0"
+version = "1.0.1"
 description = "The ultimate linter and formatter for removing unused import statements in your code."
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "unimport-1.0.0-py3-none-any.whl", hash = "sha256:7fe121ef4bd0358246adb0b962800f2edba31e681370c063afc56d62ebf370ae"},
-    {file = "unimport-1.0.0.tar.gz", hash = "sha256:c2c3a13a7a7eeefd2b4fb4eb99440a6a872a3f5139d505f2f3fbf03c97b57b1e"},
+    {file = "unimport-1.0.1-py3-none-any.whl", hash = "sha256:314086a36200bcee3d3f62a86018824563e8638c3fb36ca629f4c502d96d5c82"},
+    {file = "unimport-1.0.1.tar.gz", hash = "sha256:3cb0e718bb113184f3db9d032b0408b9169728b393fb92fd46be21ad12c06ab4"},
 ]
 
 [package.dependencies]
@@ -3111,4 +3111,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9,<3.13"
-content-hash = "c79e2b8f1670e52ceac5767e54faaed4f0320a8098fa47861d4b77e850473b59"
+content-hash = "83b375812ec3b02ec1b82195a65b42d2ac97e3237dc43e84ada0c571f3ddb1dc"
