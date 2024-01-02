@@ -2978,23 +2978,26 @@ typing-extensions = ">=3.7.4"
 
 [[package]]
 name = "unimport"
-version = "1.0.1"
+version = "1.2.1"
 description = "The ultimate linter and formatter for removing unused import statements in your code."
 optional = false
-python-versions = ">=3.6"
+python-versions = "<3.13,>=3.8"
 files = [
-    {file = "unimport-1.0.1-py3-none-any.whl", hash = "sha256:314086a36200bcee3d3f62a86018824563e8638c3fb36ca629f4c502d96d5c82"},
-    {file = "unimport-1.0.1.tar.gz", hash = "sha256:3cb0e718bb113184f3db9d032b0408b9169728b393fb92fd46be21ad12c06ab4"},
+    {file = "unimport-1.2.1-py3-none-any.whl", hash = "sha256:915f5c09137d35e9dd15a55f00c5888201f45747c3db992d8b5de715c8b04dde"},
+    {file = "unimport-1.2.1.tar.gz", hash = "sha256:e0c8f854acb6322d609243a4ec864a5961f81d976e28383b0cafd36a3385aa12"},
 ]
 
 [package.dependencies]
-libcst = {version = ">=0.3.7,<1", markers = "python_version >= \"3.9\""}
-pathspec = {version = ">=0.10.1,<1", markers = "python_version >= \"3.7\""}
+libcst = [
+    {version = ">=0.3.7,<=1.1.0", markers = "python_version == \"3.10\" or python_version == \"3.9\""},
+    {version = ">=0.4.10,<=1.1.0", markers = "python_version >= \"3.11\""},
+]
+pathspec = ">=0.10.1,<1"
 toml = ">=0.9.0,<1"
 
 [package.extras]
-docs = ["mike (==1.1.2)", "mkdocs (==1.4.3)", "mkdocs-git-revision-date-localized-plugin (==1.2.0)", "mkdocs-markdownextradata-plugin (==0.2.5)", "mkdocs-material (==9.1.18)", "mkdocs-minify-plugin (==0.6.4)"]
-test = ["pytest (==6.2.4)", "pytest (==7.4.0)", "pytest-cov (==4.0.0)", "pytest-cov (==4.1.0)", "semantic-version (==2.10.0)"]
+docs = ["mike (==2.0.0)", "mkdocs (==1.5.3)", "mkdocs-git-revision-date-localized-plugin (==1.2.1)", "mkdocs-markdownextradata-plugin (==0.2.5)", "mkdocs-material (==9.4.9)", "mkdocs-minify-plugin (==0.7.1)"]
+test = ["pytest (==7.4.3)", "pytest-cov (==4.1.0)", "semantic-version (==2.10.0)"]
 
 [[package]]
 name = "urllib3"
@@ -3111,4 +3114,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9,<3.13"
-content-hash = "3212a15abc7982a2c2bf77989f56cc5df68b82149e73ba97647524b3da955193"
+content-hash = "1f4841cc814386b672946adacc322dcf3e1aae832314ce517daa87322daf1ed0"
