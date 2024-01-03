@@ -26,7 +26,6 @@ keywords = [
 
 [tool.poetry.dependencies]
 python = "^3.9,<3.13"
-pandas = "^1.5.3"
 matplotlib = "^3.8.2"
 prettytable = "^3.9.0"
 html2text = "^2020.1.16"
@@ -38,7 +37,8 @@ scipy = "^1.11.4"
 click = "^8.1.7"
 pydantic = "^2.5.3"
 bokeh = "^3.3.2"
-pydelica = "^0.4.6"
+pydelica = "^0.5.0"
+pandas = "^2.1.4"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.1.0"
