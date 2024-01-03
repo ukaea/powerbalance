@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.3.0 - 2023-01-03
+
+* Added support for Python3.12 using Pandas v2
+
 ## v1.2.0 - 2023-08-30
 * Added support for OpenModelica v1.21.0 and Python 3.11
 * Brand new waste heat model.
