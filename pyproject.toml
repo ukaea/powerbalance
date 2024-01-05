@@ -41,7 +41,7 @@ pydelica = "^0.5.0"
 pandas = "^2.1.4"
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^6.1.0"
+flake8 = "^7.0.0"
 pylint = "^3.0.3"
 readability-lxml = "^0.8.1"
 coverage = "^7.4"
