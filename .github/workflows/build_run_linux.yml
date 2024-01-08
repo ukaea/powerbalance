@@ -35,7 +35,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-23.10]
-        python-version: [ '3.11', '3.9', '3.10' ]
+        python-version: [ '3.12', '3.11', '3.9', '3.10' ]
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
@@ -92,7 +92,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-23.10]
-        python-version: [ '3.11', '3.9', '3.10' ]
+        python-version: [ '3.12', '3.11', '3.9', '3.10' ]
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v3
@@ -124,7 +124,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-23.10]
-        python-version: [ '3.11', '3.9', '3.10' ]
+        python-version: [ '3.12', '3.11', '3.9', '3.10' ]
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v3
@@ -156,7 +156,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-23.10]
-        python-version: [ '3.11', '3.9', '3.10' ]
+        python-version: [ '3.12', '3.11', '3.9', '3.10' ]
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v3
