@@ -3,7 +3,7 @@ on: [push]
 jobs:
   test_modelica_build:
     container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
+      image: openmodelica/openmodelica:v1.22.1-ompython
     name: Test Modelica Build (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -58,7 +58,7 @@ jobs:
           retention-days: 1
   model_run_om:
     container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
+      image: openmodelica/openmodelica:v1.22.1-ompython
     name: Model Run Open Modelica (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -85,7 +85,7 @@ jobs:
           ./Tokamak_Interdependencies
   model_run_api:
     container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
+      image: openmodelica/openmodelica:v1.22.1-ompython
     name: Model Run API (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -117,7 +117,7 @@ jobs:
           retention-days: 1
   regression_tests:
     container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
+      image: openmodelica/openmodelica:v1.22.1-ompython
     name: Regression Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -149,7 +149,7 @@ jobs:
           retention-days: 1
   unit_tests:
     container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
+      image: openmodelica/openmodelica:v1.22.1-ompython
     name: Unit Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
