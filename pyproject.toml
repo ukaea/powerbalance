@@ -36,7 +36,7 @@ Jinja2 = "^3.0.3"
 scipy = "^1.11.4"
 click = "^8.1.7"
 pydantic = "^2.5.3"
-bokeh = "^3.3.2"
+bokeh = "^3.3.3"
 pydelica = "^0.5.0"
 pandas = "^2.1.4"
 
