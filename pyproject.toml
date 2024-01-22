@@ -38,7 +38,7 @@ click = "^8.1.7"
 pydantic = "^2.5.3"
 bokeh = "^3.3.3"
 pydelica = "^0.5.0"
-pandas = "^2.1.4"
+pandas = "^2.2.0"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.0.0"
