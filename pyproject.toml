@@ -64,7 +64,7 @@ pytest = "^7.4.4"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5.2"
-mkdocs-material = "^9.5.4"
+mkdocs-material = "^9.5.5"
 mkdocs-coverage = "^1.0.0"
 pymdown-extensions = "^10.7"
 mkdocs-mermaid2-plugin = "^1.1.1"
