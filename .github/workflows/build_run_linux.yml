@@ -34,7 +34,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-23.10]
+        os: [ubuntu-latest]
         python-version: [ '3.12', '3.11', '3.9', '3.10' ]
     steps:
       - uses: actions/checkout@v3
@@ -64,7 +64,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-23.10]
+        os: [ubuntu-latest]
     needs: [test_modelica_build]
     steps:
       - name: Retrieve Open Modelica model binaries
@@ -91,7 +91,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-23.10]
+        os: [ubuntu-latest]
         python-version: [ '3.12', '3.11', '3.9', '3.10' ]
     needs: [test_module_build]
     steps:
@@ -123,7 +123,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-23.10]
+        os: [ubuntu-latest]
         python-version: [ '3.12', '3.11', '3.9', '3.10' ]
     needs: [test_module_build]
     steps:
@@ -155,7 +155,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-23.10]
+        os: [ubuntu-latest]
         python-version: [ '3.12', '3.11', '3.9', '3.10' ]
     needs: [test_module_build]
     steps:
