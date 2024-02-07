@@ -61,11 +61,13 @@ def _output_plot_title(model_name: str, var_name: str) -> str:
     _title = "{}: {} {}".format(
         model_name.replace("_", " "),
         _title,
-        ""
-        if "Net Power Balance" in _title
-        or "Generated Power" in _title
-        or "Total Parasitic Load" in _title
-        else "Consumption",
+        (
+            ""
+            if "Net Power Balance" in _title
+            or "Generated Power" in _title
+            or "Total Parasitic Load" in _title
+            else "Consumption"
+        ),
     ).title()
 
     return _title

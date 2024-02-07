@@ -141,25 +141,25 @@ class PBMBrowser:
                 os.path.exists(rf_profile)
                 and max(sio.loadmat(rf_profile)["data"][:, 1]) != 0.0
             ):
-                _efficiencies[_root_model][
-                    "RF to Electric"
-                ] = pbm_effs.calc_heating_to_elec_eff(
-                    os.path.join(self._session_dir, "profiles", "RF_Heat.mat"),
-                    self._data["tokamak_interdependencies"]["time"],
-                    self._data["tokamak_interdependencies"]["hcdsystem"],
-                    plasma_scenario,
+                _efficiencies[_root_model]["RF to Electric"] = (
+                    pbm_effs.calc_heating_to_elec_eff(
+                        os.path.join(self._session_dir, "profiles", "RF_Heat.mat"),
+                        self._data["tokamak_interdependencies"]["time"],
+                        self._data["tokamak_interdependencies"]["hcdsystem"],
+                        plasma_scenario,
+                    )
                 )
             if (
                 os.path.exists(nbi_profile)
                 and max(sio.loadmat(nbi_profile)["data"][:, 1]) != 0.0
             ):
-                _efficiencies[_root_model][
-                    "NBI to Electric"
-                ] = pbm_effs.calc_heating_to_elec_eff(
-                    os.path.join(self._session_dir, "profiles", "NBI_Heat.mat"),
-                    self._data["tokamak_interdependencies"]["time"],
-                    self._data["tokamak_interdependencies"]["hcdsystem"],
-                    plasma_scenario,
+                _efficiencies[_root_model]["NBI to Electric"] = (
+                    pbm_effs.calc_heating_to_elec_eff(
+                        os.path.join(self._session_dir, "profiles", "NBI_Heat.mat"),
+                        self._data["tokamak_interdependencies"]["time"],
+                        self._data["tokamak_interdependencies"]["hcdsystem"],
+                        plasma_scenario,
+                    )
                 )
 
         return _efficiencies
