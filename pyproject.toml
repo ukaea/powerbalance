@@ -27,7 +27,7 @@ keywords = [
 [tool.poetry.dependencies]
 python = "^3.9,<3.13"
 matplotlib = "^3.8.3"
-prettytable = "^3.9.0"
+prettytable = "^3.10.0"
 html2text = "^2020.1.16"
 numpy = "^1.26.4"
 toml = "^0.10.2"
