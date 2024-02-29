@@ -826,12 +826,12 @@ test = ["black", "coverage[toml]", "ddt (>=1.1.1,!=1.4.3)", "mock", "mypy", "pre
 
 [[package]]
 name = "html2text"
-version = "2024.2.25"
+version = "2024.2.26"
 description = "Turn HTML into equivalent Markdown-structured text."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "html2text-2024.2.25.tar.gz", hash = "sha256:a197e7acaba5b5e46ff9f132b6fbeb89428c9155b5a971d7d9c343ebeb1019d3"},
+    {file = "html2text-2024.2.26.tar.gz", hash = "sha256:05f8e367d15aaabc96415376776cdd11afd5127a77fce6e36afc60c563ca2c32"},
 ]
 
 [[package]]
@@ -3187,4 +3187,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9,<3.13"
-content-hash = "ae57bd0bf2b55720f3d299ec9f4b691519a9a25f4ecf2550840ceaa83894f277"
+content-hash = "3f1f2cd8d9d5be2016b8e44e0fc1328168d8d9fc237f2fec7785b52b9de7b894"
