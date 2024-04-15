@@ -2219,13 +2219,13 @@ typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
 
 [[package]]
 name = "pydelica"
-version = "0.5.0"
+version = "0.5.1"
 description = "Light-weight serverless API for OpenModelica"
 optional = false
-python-versions = ">=3.9,<3.13"
+python-versions = "<3.13,>=3.9"
 files = [
-    {file = "pydelica-0.5.0-py3-none-any.whl", hash = "sha256:48c7249ddbea93bc8656338d359d49ab65daf41a99b5efe43f6cffde9298bb20"},
-    {file = "pydelica-0.5.0.tar.gz", hash = "sha256:69713a62debd0376942999f525cca00a1381df41336c4d6fe612f8dfad6f067f"},
+    {file = "pydelica-0.5.1-py3-none-any.whl", hash = "sha256:915039a28115a107dc01cd6561101ed1b6a70a2cbf6cb9baf856562b563dc5b9"},
+    {file = "pydelica-0.5.1.tar.gz", hash = "sha256:48a46870794065129fae96a47191c20801b570b8a4b876a105db9ff5d902ba28"},
 ]
 
 [package.dependencies]
@@ -3187,4 +3187,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9,<3.13"
-content-hash = "e80d36e8a2af243b598940224c7b65f7ec8a690a049b074e02c83579b3127369"
+content-hash = "c707cc923da6bc116c993bbb7653ca4aca750b699f172678a4feceb3e002331e"
