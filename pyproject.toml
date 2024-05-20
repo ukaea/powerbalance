@@ -42,7 +42,7 @@ pandas = "^2.2.2"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.0.0"
-pylint = "^3.1.0"
+pylint = "^3.2.1"
 readability-lxml = "^0.8.1"
 coverage = "^7.5"
 bandit = "^1.7.8"
