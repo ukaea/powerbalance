@@ -60,7 +60,7 @@ typed-ast = "^1.5.4"
 types-Jinja2 = "^2.11.9"
 pre-commit = "^3.7.1"
 unimport = "^1.2.1"
-pytest = "^8.2.1"
+pytest = "^8.2.2"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.6.0"
