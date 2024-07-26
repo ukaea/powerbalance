@@ -487,7 +487,5 @@ and may or may not make physical sense. It is up to the user to verify that all 
       annotation(
         Icon(graphics = {Rectangle(origin = {0, -1}, fillColor = {76, 76, 76}, fillPattern = FillPattern.Solid, extent = {{-100, 99}, {100, -99}})}));
     end pfcon;
-    annotation(
-      uses(Modelica(version = "3.2.3")));
   end RF;
 end HCDSystemPkg;
