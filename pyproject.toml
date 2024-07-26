@@ -81,6 +81,10 @@ powerbalance = 'power_balance.cli:powerbalance'
 [tool.ruff]
 lint.extend-select = ["C901"]
 lint.mccabe.max-complexity = 11
+exclude = [
+  "tests",
+  "benchmarks"
+]
 
 [tool.pytest.ini_options]
 addopts = "-p no:warnings"
