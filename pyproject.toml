@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "power_balance"
-version = "1.3.0"
+version = "1.4.0"
 description = "Python interface for the tokamak power balance model"
 authors = [
     "Alexander Petrov <alexander.petrov@ukaea.uk>",
