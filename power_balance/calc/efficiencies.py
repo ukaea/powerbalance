@@ -12,6 +12,7 @@ Functions
 calc_thermal_to_elec_eff - calculates efficiency of power_generated/thermal_power_in
 
 """
+
 import os
 
 import numpy as np

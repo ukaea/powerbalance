@@ -65,8 +65,7 @@ class PBMBrowser:
         return {
             os.path.splitext(os.path.basename(i))[0]
             .replace("plugin_", "")
-            .replace("_", " "): open(i)
-            .read()
+            .replace("_", " "): open(i).read()
             for i in _display_files
         }
 

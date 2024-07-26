@@ -41,8 +41,6 @@ pydelica = "^0.5.1"
 pandas = "^2.2.2"
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^7.1.0"
-pylint = "^3.2.5"
 readability-lxml = "^0.8.1"
 coverage = "^7.5"
 bandit = "^1.7.9"
@@ -61,6 +59,7 @@ types-Jinja2 = "^2.11.9"
 pre-commit = "^3.7.1"
 unimport = "^1.2.1"
 pytest = "^8.2.2"
+ruff = "^0.5.5"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.6.0"
@@ -78,3 +77,30 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 powerbalance = 'power_balance.cli:powerbalance'
+
+[tool.ruff]
+lint.extend-select = ["C901"]
+lint.mccabe.max-complexity = 11
+
+[tool.pytest.ini_options]
+addopts = "-p no:warnings"
+markers = [
+    "profile_gen: marker applied to profile generation tests",
+    "pbm_class: marker applied to PowerBalance class tests",
+    "consistency: marker applied to output regression tests",
+    "utilities: marker applied to utilities tests",
+    "pbm_model_list: marker applied to model list tests",
+    "model_stability: marker applied to model stability tests",
+    "parameters: parameter set class tests",
+    "plugins: tests related to PBM plugins",
+    "dormant: tests which are currently ignored due to ongoing development",
+    "validation: tests relating to the validation of config files",
+    "cli: tests relating to the command line interface",
+    "exceptions: test custom exceptions can be raised",
+    "scenarios: test run particular scenarios",
+    "plotting: tests for plotting functions",
+    "modelica_templating: tests for modelica script templating"
+]
+testpaths = [
+    "tests"
+]
