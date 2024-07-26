@@ -21,7 +21,6 @@ repos:
     hooks:
       - id: check_pdb_hook
         pass_filenames: false
-
   - repo: https://github.com/PyCQA/bandit.git
     rev: 1.7.9
     hooks:
