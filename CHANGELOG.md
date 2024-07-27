@@ -1,5 +1,8 @@
 # Change Log
 
+## v1.4.0 - 2024-07-27
+* Switched to Modelica Standard Library v4.0.0
+* Ensured compatibility with Modelica 1.23.1
 ## v1.3.0 - 2023-01-03
 
 * Added support for Python3.12 using Pandas v2
