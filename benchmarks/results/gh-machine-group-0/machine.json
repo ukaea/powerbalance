@@ -1,9 +1,0 @@
-{
-    "arch": "x86_64",
-    "cpu": "Intel(R) Xeon(R)-2XXX @ 2.40GHz",
-    "machine": "gh-machine-group-0",
-    "num_cpu": "2",
-    "os": "Linux 5.11.0",
-    "ram": "7114k",
-    "version": 1
-}
