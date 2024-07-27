@@ -1,23 +1,7 @@
 exclude: '^tests|^benchmarks|^docs'
 repos:
-  - repo: https://github.com/hakancelikdev/unimport
-    rev: 0.9.4
-    hooks:
-      - id: unimport
-        args:
-          ['--remove', '--check', '--include-star-import']
-  - repo: https://github.com/pycqa/isort
-    rev: 5.10.1
-    hooks:
-      - id: isort
-        name: isort (python)
-        args: ["--profile", "black"]
-  - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 23.11.0
-    hooks:
-      - id: black
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.6.0
     hooks:
       - id: check-toml
       - id: check-merge-conflict
@@ -26,18 +10,19 @@ repos:
       - id: no-commit-to-branch
         args: [--branch, main]
       - id: check-added-large-files
-
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.7.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.4
     hooks:
-      - id: mypy
-        args: []
-        additional_dependencies:
-          - types-PyYAML==6.0.1
-          - types-requests==2.26.3
-          - types-setuptools==57.4.5
-          - types-Jinja2>=2.11.9
-          - types-toml>=0.10.3
-          - typed-ast>=1.5.2
-          - types-pkg-resources>=0.1.3
-          - pydantic>=2.0.0
+      - id: ruff
+        args: [ --fix, --exit-non-zero-on-fix, "--ignore=C901" ]
+      - id: ruff-format
+  - repo: https://github.com/conorfalvey/check_pdb_hook
+    rev: 0.0.9
+    hooks:
+      - id: check_pdb_hook
+        pass_filenames: false
+  - repo: https://github.com/PyCQA/bandit.git
+    rev: 1.7.9
+    hooks:
+    -   id: bandit
+        args: [-lll, --recursive, clumper]

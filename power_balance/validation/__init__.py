@@ -11,11 +11,12 @@ Contents
 
 Submodules
 ----------
-    
+
     config - validation of API configuration files
     modelica_simulation_options - validation of modelica simulation option files
 
 """
+
 import pydantic
 
 MODEL_CONFIG = pydantic.ConfigDict(

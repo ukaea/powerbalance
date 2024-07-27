@@ -1,8 +1,8 @@
 ## Supported Environments
+
 Power Balance Models (PBM) has been confirmed to work on:
 
-- Ubuntu 20.04 - 21.10
-- Windows 7 SP1*
+- Ubuntu 22.04 - 24.04
 - Windows 10*
 
 \* using Python for Windows and CMD.
@@ -10,12 +10,13 @@ Power Balance Models (PBM) has been confirmed to work on:
 The PBM is not tested on Mac systems.
 The software requires:
 
-- Python `>= 3.8.6`. Recommended version is `3.9.9`, which you can download from the bottom of the page [here](https://www.python.org/downloads/release/python-399/));
-- OpenModelica `>= 1.14.4`. Recommended version is `1.17.0`, which you can download from [here (Windows)](https://build.openmodelica.org/omc/builds/windows/releases/1.17/0/) or [here (Unix)](https://build.openmodelica.org/omc/builds/linux/releases/1.17.0/) (instructions in https://www.openmodelica.org/download/download-linux). Installation on Mac (not stable) can be found [here](https://www.openmodelica.org/download/download-mac);
+- Python `>= 3.8.6`. Recommended version is `3.11.9`, which you can download from the bottom of the page [here](https://www.python.org/downloads/release/python-3119/));
+- OpenModelica `>= 1.20`. Recommended version is `1.23.1`, which you can download from [here (Windows)](https://build.openmodelica.org/omc/builds/windows/releases/1.23/1/) or [here (Unix)](https://build.openmodelica.org/omc/builds/linux/releases/1.23.1/) (instructions in <https://www.openmodelica.org/download/download-linux>). Installation on Mac (not stable) can be found [here](https://www.openmodelica.org/download/download-mac);
 
 It is recommended you run the software from within a virtual environment system such as [PyEnv](https://github.com/pyenv/pyenv) or the built-in `venv` module, this ensures there is no interference with your system python installation. Alternatively you can install it under the current user.
 
 ## Installation for UNIX and Windows
+
 Downloads are available [here](https://github.com/ukaea/powerbalance/releases). You can install the package using `pip` on the wheels file:
 
 ```bash
@@ -28,13 +29,7 @@ To install this package you will firstly need to install OpenModelica to your sy
 
 For Windows users will need to install the complete OpenModelica application using the dedicated installer found on the project [website](https://www.openmodelica.org/download/download-windows).
 
-Linux users only require `omc` and the Modelica Standard Library:
-```sh
-echo "deb https://build.openmodelica.org/apt `lsb_release -cs` stable" | sudo tee /etc/apt/sources.list.d/openmodelica.list
-wget -q http://build.openmodelica.org/apt/openmodelica.asc -O- | sudo apt-key add - 
-sudo apt update
-sudo apt install -y omlib-modelica-3.2.3 omc
-```
+Linux users only require `omc` and the Modelica Standard Library, see [here](https://openmodelica.org/download/download-linux/).
 
 Installation on Mac is not tested and not supported by the Power Balance team, primarily because of the difficulty associated with installing OpenModelica on Mac.
 
@@ -44,11 +39,12 @@ Installation on Mac is not tested and not supported by the Power Balance team, p
     powerbalance generate-profiles
     ```
 !!! warning "Modelica Standard Library version"
-    The Power Balance Models API is not compatible with Modelica Standard Library `>=4.0.0`.
+    The Power Balance Models API is not compatible with Modelica Standard Library `<4.0.0`.
     Significant changes have been implemented in these versions. Latest known working environment
-    is OpenModelica `1.18.0` with MSL `3.2.3`.
+    is OpenModelica `1.23.1` with MSL `4.0.0`.
 
 ## Testing
+
 You can verify your install is working correctly by either running the default configuration using the `powerbalance` command, or by running the included tests using `pytest`:
 
 ```bash

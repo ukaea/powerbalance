@@ -8,7 +8,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 "
   model PowerGenCaseByCase
     //
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     //  parameter String PrimaryCoolantType = CoolantDetrit.CoolantDetritCaseByCase.__PrimaryCoolantType;
     parameter String PrimaryCoolantType = "He_C";
     parameter String SecondaryCoolantType = "CO2";
@@ -54,7 +54,8 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
   partial model BasePowerGen
     //
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
+    import NonSI = Modelica.Units.NonSI;
     //
     parameter String thermalPowerData;
     //
@@ -63,7 +64,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     Modelica.Blocks.Sources.CombiTimeTable combiTimeTable1D(fileName = thermalPowerData, tableOnFile = true, tableName = "data");
     //
     SI.Power ThermalPower = combiTimeTable1D.y[1] "Total high grade heat. Equated to thermal power in to primary coolant loop";
-    parameter SI.Conversions.NonSIunits.Temperature_degC outletTemp "Outlet temperature start point (C)";
+    parameter NonSI.Temperature_degC outletTemp "Outlet temperature start point (C)";
     //
     // Setting parameter strings for if statements
     parameter String SecondaryCoolantType = "";
@@ -128,21 +129,21 @@ and may or may not make physical sense. It is up to the user to verify that all 
     constant Real e_H2O_200(unit = "1");
     //
     // Reference temperatures
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_CO2_1_5_min;
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_CO2_2_min;
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_CO2_2_5_min;
+    constant NonSI.Temperature_degC refTemp_CO2_1_5_min;
+    constant NonSI.Temperature_degC refTemp_CO2_2_min;
+    constant NonSI.Temperature_degC refTemp_CO2_2_5_min;
     //
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_H2O_50_min;
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_H2O_90_min;
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_H2O_200_min;
+    constant NonSI.Temperature_degC refTemp_H2O_50_min;
+    constant NonSI.Temperature_degC refTemp_H2O_90_min;
+    constant NonSI.Temperature_degC refTemp_H2O_200_min;
     //
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_CO2_1_5_max;
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_CO2_2_max;
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_CO2_2_5_max;
+    constant NonSI.Temperature_degC refTemp_CO2_1_5_max;
+    constant NonSI.Temperature_degC refTemp_CO2_2_max;
+    constant NonSI.Temperature_degC refTemp_CO2_2_5_max;
     //
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_H2O_50_max;
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_H2O_90_max;
-    constant SI.Conversions.NonSIunits.Temperature_degC refTemp_H2O_200_max;
+    constant NonSI.Temperature_degC refTemp_H2O_50_max;
+    constant NonSI.Temperature_degC refTemp_H2O_90_max;
+    constant NonSI.Temperature_degC refTemp_H2O_200_max;
     //
   equation
     // Efficiencies

@@ -38,7 +38,7 @@ def powerbalance():
 
 @click.command("install-msl")
 def install_modelica_libraries() -> None:
-    """Installs MSL 3.2.3 if not installed"""
+    """Installs MSL 4.0.0 if not installed"""
     _omc_binary: Optional[str] = shutil.which("omc")
     if not _omc_binary:
         raise FileNotFoundError("Could not find OMC binary")
@@ -47,7 +47,7 @@ def install_modelica_libraries() -> None:
         _lines: List[str] = [
             "updatePackageIndex();getErrorString();",
             'getAvailablePackageVersions(Modelica, "");getErrorString();',
-            'installPackage(Modelica, "3.2.3", exactMatch=true);getErrorString();',
+            'installPackage(Modelica, "4.0.0", exactMatch=true);getErrorString();',
         ]
         out_script.writelines(_lines)
         out_script.seek(0)

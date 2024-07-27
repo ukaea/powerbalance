@@ -3,20 +3,20 @@ on: [push]
 jobs:
   test_modelica_build:
     container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
+      image: openmodelica/openmodelica:v1.23.1-ompython
     name: Test Modelica Build (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04]
+        os: [ubuntu-24.04]
     steps:
       - uses: actions/checkout@v3
       - name: Compile models
         run: |
           mkdir build
           cd build
-          echo "installPackage(Modelica, \"3.2.3+maint.om\", exactMatch=true)" >> install.mos
+          echo "installPackage(Modelica, \"4.0.0\", exactMatch=true)" >> install.mos
           ln -s ${GITHUB_WORKSPACE}/power_balance/models/*.mo .
           omc install.mos 
           omc -s $(ls *.mo) Modelica +i=Tokamak.Interdependencies
@@ -31,20 +31,17 @@ jobs:
   test_module_build:
     name: Test Module Build (Python${{ matrix.python-version }} ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
+    container:
+      image: openmodelica/openmodelica:v1.23.1-ompython
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04]
-        python-version: [ '3.11', '3.9', '3.10' ]
+        os: [ubuntu-24.04]
+        python-version: [ '3.11', '3.10', '3.12' ]
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture: x64
       - name: Install Poetry
-        run: python -m pip install poetry
+        run: python3 -m pip install poetry
       - name: Build Module
         run: |
           poetry install
@@ -58,13 +55,13 @@ jobs:
           retention-days: 1
   model_run_om:
     container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
+      image: openmodelica/openmodelica:v1.23.1-ompython
     name: Model Run Open Modelica (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04]
+        os: [ubuntu-24.04]
     needs: [test_modelica_build]
     steps:
       - name: Retrieve Open Modelica model binaries
@@ -85,24 +82,19 @@ jobs:
           ./Tokamak_Interdependencies
   model_run_api:
     container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
+      image: openmodelica/openmodelica:v1.23.1-ompython
     name: Model Run API (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04]
-        python-version: [ '3.11', '3.9', '3.10' ]
+        os: [ubuntu-24.04]
+        python-version: [ '3.11', '3.10', '3.12' ]
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture: x64
       - name: Install Poetry
-        run: python -m pip install poetry
+        run: python3 -m pip install poetry
       - name: Run Models
         run: |
           poetry install
@@ -117,24 +109,19 @@ jobs:
           retention-days: 1
   regression_tests:
     container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
+      image: openmodelica/openmodelica:v1.23.1-ompython
     name: Regression Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04]
-        python-version: [ '3.11', '3.9', '3.10' ]
+        os: [ubuntu-24.04]
+        python-version: [ '3.11', '3.10', '3.12' ]
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture: x64
       - name: Install Poetry
-        run: python -m pip install poetry
+        run: python3 -m pip install poetry
       - name: Run Regression Tests
         run: |
           poetry install
@@ -155,18 +142,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04]
-        python-version: [ '3.11', '3.9', '3.10' ]
+        os: [ubuntu-24.04]
+        python-version: [ '3.11', '3.10', '3.12' ]
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture: x64
       - name: Install Poetry
-        run: python -m pip install poetry
+        run: python3 -m pip install poetry
       - name: Run Unit Tests
         run: |
           poetry install
@@ -186,10 +168,8 @@ jobs:
     needs: [unit_tests, regression_tests, model_run_api]
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
       - name: Install Poetry
-        run: python -m pip install poetry
+        run: python3 -m pip install poetry
       - name: Retrieve Unit Test Coverage
         uses: actions/download-artifact@v3
         with:
