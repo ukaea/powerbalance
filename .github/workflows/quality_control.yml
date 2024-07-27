@@ -5,11 +5,11 @@ jobs:
     name: Mypy Type Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
       - name: Install Poetry
         run: python -m pip install poetry
       - name: Run Mypy
@@ -20,7 +20,7 @@ jobs:
     name: Modelica Syntax Checking
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Run Modelica Code Check
         run: |
           git clone https://github.com/modelica-tools/ModelicaSyntaxChecker.git
@@ -30,40 +30,29 @@ jobs:
     name: Bandit Security Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: jpetrucciani/bandit-check@master
         with: 
           bandit_flags: '-c bandit.yml'
           path: power_balance
-
-  import_sort:
-    name: Run Python Import Order Check
+  ruff:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-      - name: Check Imports
-        uses: isort/isort-action@master
+      - uses: actions/checkout@v4
+      - uses: chartboost/ruff-action@v1
+
+  ruff_linter:
+    name: Run Ruff Python Linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v5
         with:
-          configuration: '--check-only --diff --profile black'
-
-  black_linter:
-    name: Run Black Python Linter
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Check Code with Black
-        uses: psf/black@stable
-        with:
-          src: power_balance
-
-  unused_imports:
-    name: Run Unused Python Import Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-      - name: Install Unimport
-        run: python -m pip install unimport
-      - name: Check Imports
-        run: unimport --check --diff --include power_balance
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff
+      - name: Run Ruff
+        run: ruff check --output-format=github .

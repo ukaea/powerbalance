@@ -26,7 +26,7 @@ def pbm_main(
     model_dir: str = "Default",
     profiles_dir: str = "Default",
     from_session: Optional[str] = "",
-    **kwargs
+    **kwargs,
 ) -> None:
     """Runs a Power Balance Models session
 
@@ -83,8 +83,9 @@ def pbm_main(
 def _check_session_directories(_args):
     if not os.path.exists(_args["from_session"]):
         raise FileNotFoundError(
-            "Cannot run Power Balance from '{}',"
-            " directory not found.".format(_args["from_session"])
+            "Cannot run Power Balance from '{}'," " directory not found.".format(
+                _args["from_session"]
+            )
         )
     if not os.path.exists(os.path.join(_args["from_session"], "parameters")):
         raise FileNotFoundError(

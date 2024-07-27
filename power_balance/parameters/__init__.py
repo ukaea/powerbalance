@@ -313,8 +313,9 @@ class PBMParameterSet(MutableMapping):
 
         if not os.path.exists(_simulation_options):
             raise FileNotFoundError(
-                "Failed to open simulation options file"
-                " '{}'".format(_simulation_options)
+                "Failed to open simulation options file" " '{}'".format(
+                    _simulation_options
+                )
             )
 
         _dict = toml.load(_simulation_options)

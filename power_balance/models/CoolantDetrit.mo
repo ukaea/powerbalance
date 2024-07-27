@@ -3,7 +3,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
   model CoolantDetritCaseByCase
     //
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     parameter Real ThermalPower(unit = "MW") "Total high grade thermal power, MW";
     parameter String PrimaryCoolantType;
     SI.Power ElecPowerConsumed;
@@ -40,7 +40,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
   model TritiumBreedingRate
       // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real ThermalPower(unit = "MW") "Total high grade thermal power (MW)";
     //
     // Specified Paramters
@@ -67,7 +67,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
   model TritiumPermeation
     //
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     parameter Real ThermalPower(unit = "MW") "Total high grade thermal power (MW)";
     //
     // Parameters
@@ -101,7 +101,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model WaterCoolantPower
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real tritiumPermeationRate(unit = "mol/s") "Tritium permeation rate (mol/s)";
       //
       // Instantiating models
@@ -121,7 +121,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model WaterSplitStream
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real tritiumPermeationRate(unit = "mol/s") "Permeation rate (mol/sec), imported from TritiumPermeation model (mol/s)";
       //
       // Parameters
@@ -159,7 +159,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model WaterHeating
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real splitStreamMassFlow(unit = "kg/s") "Imported from WaterSplitStream";
       //
       // Parameters
@@ -183,7 +183,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model GasCompression
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real waterColumnMassFlow(unit = "kg/s") "Imported from ElectrolysisEnergy";
       //
       // Parameters
@@ -210,7 +210,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
       // Using a catalyst recombination drier technology, which converts the tritium to water and removes in a subsequent adsorbent bed. This model is for a CO2 non-carrier coolant. As stream is a primary coolant, no additional heating prior to the reactor is expected. This model also assumes no ehat integration is present.
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real tritiumPermeationRate(unit = "mol/s") "Imported from TritiumPermeation (mol/s)";
       //
       // Parameters
@@ -241,7 +241,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
       // Using a catalyst recombination drier technology, which converts the tritium to water and removes in a subsequent adsorbent bed. This model is for a CO2 carrier coolant. As stream is a primary coolant, no additional heating prior to the reactor is expected (as is the case in AirGasDetrit).
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real tritiumPermeationRate(unit = "mol/s") "Imported from TritiumPermeation (mol/s)";
       //
       // Parameters
@@ -272,7 +272,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
       // Using a catalyst recombination drier technology, which converts the tritium to water and removes in a subsequent adsorbent bed. This model is for a He non-carrier coolant. As stream is a primary coolant, no additional heating prior to the reactor is expected (as is the case in AirGasDetrit).
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real tritiumPermeationRate(unit = "mol/s") "Imported from TritiumPermeation (mol/s)";
       //
       // Parameters
@@ -303,7 +303,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
       // Using a catalyst recombination drier technology, which converts the tritium to water and removes in a subsequent adsorbent bed. This model is for a He carrier coolant. As stream is a primary coolant, no additional heating prior to the reactor is expected (as is the case in AirGasDetrit).
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real tritiumPermeationRate(unit = "mol/s") "Imported from TritiumPermeation (mol/s)";
       //
       // Parameters
@@ -333,7 +333,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model SplitStreamFlow
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real permeationRate(unit = "mol/s") "Permeation rate (mol/sec)";
       Real gasDensity(unit = "kg/m3") "Gas density, imported from parent model depending on gas selected (kg/m3)";
       Real coolantMolWeight(unit = "g/mol") "Gas coolant molecular weight (g/mol)";
@@ -371,7 +371,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
       // Recompression after the detrit before rejoining the main coolant loop.
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real coolantMassFlow(unit = "kg/s") "Mass flow of gas coolant (kg/s), from SplitStreamFlow model";
       Real coolantMolWeight(unit = "g/mol") "Molecular weight of gas dependent on coolant selected (g/mol)";
       Real ratioCpCv(unit = "1") "Cp/Cv ratio at inlet conditions for gas coolant, set by model type";
@@ -401,7 +401,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model GasCoolantCompRegenGas
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real totalRegenBedHeating(unit = "kW") "Energy regquired to vaoporise adsorbed water and heat adsorber bed, imported from GasCoolantRegenBedHeating";
       Real adsorbentTempOperating(unit = "K") "Adsorbent bed operating temperature (K), imported from GasCoolantRegenBedHeating";
       Real adsorbentTempRegen(unit = "K") "Adsorbent bed temperature for regneration (K), imported from GasCoolantRegenBedHeating";
@@ -452,7 +452,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model GasCoolantRegenBedHeating
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real gasCoolantVolFlow(unit = "Nm3/h") "Volumetric flowrate of air (Nm3/hr), imported from AirGasFlowrate";
       //
       // Specified Parameters
@@ -500,7 +500,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model LiPb_Power
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real tritiumBreedRate(unit = "mol/s") "Imported from TritiumBreedingRate";
       //
       // Parameters
@@ -528,7 +528,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model FliBe_Power
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real tritiumBreedRate(unit = "mol/s") "Imported from TritiumBreedingRate";
       //
       // Parameters
@@ -555,7 +555,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
     model HeStreamCalc
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real tritiumBreedRate(unit = "mol/s") "As calculated in TritiumBreedingRate";
       Real coolantMolWeight(unit = "g/mol") "Molecular weight of coolant dependant on selected coolant (g/mol)";
       Real coolantMassFlow(unit = "kg/s") "Assumed coolant flowrate (kg/sec)";
@@ -578,7 +578,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model HeGasComp
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real heMassFlow(unit = "kg/s") "Mass flow of air (kg/s), from AirGasFlowrate model";
       //
       // Parameters
@@ -602,7 +602,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model CoolantPumping
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real coolantMassFlow(unit = "kg/s");
       Real coolantDensity(unit = "kg/m3");
       //
@@ -622,7 +622,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model LossOfHeat
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real heMassFlow(unit = "kg/s") "Imported from HeStreamCalc (kg/s)";
       //
       // Parameters
@@ -639,7 +639,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model GetterRegenHeating
       //
       // Imported Parameters
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       Real heMassFlow(unit = "kg/s") "Helium mass flow rate (kg/s), imported from HeStreamCalc";
       //
       // Specified Parameters

@@ -9,7 +9,7 @@
 package Magnets "DISCLAIMER: Parameter values (particularly the ones in the input toml files) do not represent a suitable design point, 
 and may or may not make physical sense. It is up to the user to verify that all parameters are correct."
   partial model BaseMagnet "A partial model to act as a platform on which specialized magnet systems can be built."
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     //
     // =============================== Define Outputs ============================
     Modelica.Blocks.Interfaces.RealInput i_in(unit = "A") "Real current input" annotation(
@@ -179,13 +179,12 @@ and may or may not make physical sense. It is up to the user to verify that all 
     annotation(
       defaultComponentName = "MagnetCoil",
       Diagram(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics = {Rectangle(origin = {48, 53}, lineColor = {255, 170, 0}, fillColor = {255, 255, 191}, pattern = LinePattern.Dash, lineThickness = 1, extent = {{-64, 27}, {42, -73}}, radius = 5), Rectangle(origin = {-52, 47}, lineColor = {255, 0, 255}, fillColor = {255, 213, 224}, pattern = LinePattern.Dash, lineThickness = 1, extent = {{-26, 33}, {28, -33}}, radius = 5), Rectangle(origin = {-65.2337, -20.2972}, lineColor = {85, 255, 0}, fillColor = {220, 255, 201}, pattern = LinePattern.Dash, lineThickness = 1, extent = {{-28.7663, 21.9174}, {26.465, -21.9174}}, radius = 5), Text(origin = {-50, 86}, extent = {{-16, 4}, {16, -4}}, textString = "Feeder"), Text(origin = {-50, -46}, extent = {{-16, 4}, {16, -4}}, textString = "Power Supply"), Text(origin = {58, 86}, extent = {{-16, 4}, {16, -4}}, textString = "Coil"), Polygon(origin = {0, -120}, lineColor = {160, 160, 164}, fillColor = {160, 160, 164}, fillPattern = FillPattern.Solid, points = {{-134, 63}, {-124, 60}, {-134, 57}, {-134, 63}}), Line(origin = {-3.17759, -119.461}, points = {{-150, 60}, {-125, 60}}, color = {160, 160, 164}), Polygon(origin = {4, -22}, lineColor = {160, 160, 164}, fillColor = {160, 160, 164}, fillPattern = FillPattern.Solid, points = {{141, -57}, {151, -60}, {141, -63}, {141, -57}}), Line(origin = {-1.2193, -22.6656}, points = {{125, -60}, {150, -60}}, color = {160, 160, 164}, thickness = 0.5), Text(origin = {-8, -26}, lineColor = {160, 160, 164}, extent = {{128, -56}, {148, -41}}, textString = "Power"), Text(origin = {2, -122}, lineColor = {160, 160, 164}, extent = {{-150, 63}, {-133, 78}}, textString = "i"), Polygon(origin = {0, -120}, lineColor = {160, 160, 164}, fillColor = {160, 160, 164}, fillPattern = FillPattern.Solid, points = {{-134, 63}, {-124, 60}, {-134, 57}, {-134, 63}}), Line(origin = {-3.17759, -119.459}, points = {{-150, 60}, {-125, 60}}, color = {160, 160, 164}, thickness = 0.5), Polygon(origin = {284, -14}, lineColor = {160, 160, 164}, fillColor = {160, 160, 164}, fillPattern = FillPattern.Solid, points = {{-134, 63}, {-124, 60}, {-134, 57}, {-134, 63}}), Line(origin = {274.655, -13.8252}, points = {{-150, 60}, {-125, 60}}, color = {160, 160, 164}, thickness = 0.5), Text(origin = {2, -122}, lineColor = {160, 160, 164}, extent = {{-150, 63}, {-133, 78}}, textString = "i"), Text(origin = {290, -12}, lineColor = {160, 160, 164}, extent = {{-150, 63}, {-133, 78}}, textString = "Heat")}),
-      Icon(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics = {Line(points = {{-30, 100}, {-90, 100}}, color = {0, 0, 255}), Line(points = {{-30, -100}, {-90, -100}}, color = {0, 0, 255}), Line(points = {{0, 80}, {-100, 80}}, color = {0, 0, 255}, pattern = LinePattern.Dash), Line(points = {{-100, 80}, {-100, -80}}, color = {0, 0, 255}, pattern = LinePattern.Dash), Line(points = {{0, -80}, {-100, -80}}, color = {0, 0, 255}, pattern = LinePattern.Dash), Line(points = {{100, 80}, {0, 80}}, color = {255, 127, 0}, pattern = LinePattern.Dash), Line(points = {{100, -80}, {0, -80}}, color = {255, 127, 0}, pattern = LinePattern.Dash), Line(points = {{100, 80}, {100, -80}}, color = {255, 127, 0}, pattern = LinePattern.Dash), Ellipse(lineColor = {255, 127, 0}, extent = {{-4, -34}, {64, 34}}, endAngle = 360), Line(points = {{30, -100}, {30, -34}}, color = {255, 127, 0}), Line(points = {{18, 0}, {42, 0}}, color = {255, 127, 0}), Line(points = {{42, 10}, {42, -12}}, color = {255, 127, 0}), Line(points = {{30, 34}, {30, 100}}, color = {255, 127, 0}), Line(points = {{30, 100}, {90, 100}}, color = {255, 127, 0}), Line(points = {{30, -100}, {90, -100}}, color = {255, 127, 0}), Text(lineColor = {0, 0, 255}, extent = {{-150, 150}, {150, 110}}, textString = "%name"), Line(points = {{18, 10}, {18, -12}}, color = {255, 127, 0}), Line(points = {{-110, 30}, {-110, -30}}, color = {0, 0, 255}), Polygon(lineColor = {0, 0, 255}, fillColor = {0, 0, 255}, fillPattern = FillPattern.Solid, points = {{-110, -30}, {-104, -10}, {-116, -10}, {-110, -30}}), Line(points = {{110, 32}, {110, -28}}, color = {255, 128, 0}), Polygon(lineColor = {255, 128, 0}, fillColor = {255, 128, 0}, fillPattern = FillPattern.Solid, points = {{110, -28}, {116, -8}, {104, -8}, {110, -28}}), Rectangle(lineColor = {255, 128, 0}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{72, 28}, {88, -24}}), Line(points = {{80, 28}, {80, 100}}, color = {255, 128, 0}), Line(points = {{80, -24}, {80, -100}}, color = {255, 128, 0}), Line(origin = {-23, 45}, rotation = 270, points = {{-15, -7}, {-14, -1}, {-7, 7}, {7, 7}, {14, -1}, {15, -7}}, color = {0, 0, 255}, smooth = Smooth.Bezier), Line(origin = {-23, 15}, rotation = 270, points = {{-15, -7}, {-14, -1}, {-7, 7}, {7, 7}, {14, -1}, {15, -7}}, color = {0, 0, 255}, smooth = Smooth.Bezier), Line(origin = {-23, -15}, rotation = 270, points = {{-15, -7}, {-14, -1}, {-7, 7}, {7, 7}, {14, -1}, {15, -7}}, color = {0, 0, 255}, smooth = Smooth.Bezier), Line(origin = {-23, -45}, rotation = 270, points = {{-15, -7}, {-14, -1}, {-7, 7}, {7, 7}, {14, -1}, {15, -7}}, color = {0, 0, 255}, smooth = Smooth.Bezier), Line(points = {{-30, 60}, {-30, 100}}, color = {28, 108, 200}), Line(points = {{-30, -100}, {-30, -60}}, color = {28, 108, 200})}),
-      uses(Modelica(version = "3.2.3")));
+      Icon(coordinateSystem(preserveAspectRatio = false, initialScale = 0.1), graphics = {Line(points = {{-30, 100}, {-90, 100}}, color = {0, 0, 255}), Line(points = {{-30, -100}, {-90, -100}}, color = {0, 0, 255}), Line(points = {{0, 80}, {-100, 80}}, color = {0, 0, 255}, pattern = LinePattern.Dash), Line(points = {{-100, 80}, {-100, -80}}, color = {0, 0, 255}, pattern = LinePattern.Dash), Line(points = {{0, -80}, {-100, -80}}, color = {0, 0, 255}, pattern = LinePattern.Dash), Line(points = {{100, 80}, {0, 80}}, color = {255, 127, 0}, pattern = LinePattern.Dash), Line(points = {{100, -80}, {0, -80}}, color = {255, 127, 0}, pattern = LinePattern.Dash), Line(points = {{100, 80}, {100, -80}}, color = {255, 127, 0}, pattern = LinePattern.Dash), Ellipse(lineColor = {255, 127, 0}, extent = {{-4, -34}, {64, 34}}, endAngle = 360), Line(points = {{30, -100}, {30, -34}}, color = {255, 127, 0}), Line(points = {{18, 0}, {42, 0}}, color = {255, 127, 0}), Line(points = {{42, 10}, {42, -12}}, color = {255, 127, 0}), Line(points = {{30, 34}, {30, 100}}, color = {255, 127, 0}), Line(points = {{30, 100}, {90, 100}}, color = {255, 127, 0}), Line(points = {{30, -100}, {90, -100}}, color = {255, 127, 0}), Text(lineColor = {0, 0, 255}, extent = {{-150, 150}, {150, 110}}, textString = "%name"), Line(points = {{18, 10}, {18, -12}}, color = {255, 127, 0}), Line(points = {{-110, 30}, {-110, -30}}, color = {0, 0, 255}), Polygon(lineColor = {0, 0, 255}, fillColor = {0, 0, 255}, fillPattern = FillPattern.Solid, points = {{-110, -30}, {-104, -10}, {-116, -10}, {-110, -30}}), Line(points = {{110, 32}, {110, -28}}, color = {255, 128, 0}), Polygon(lineColor = {255, 128, 0}, fillColor = {255, 128, 0}, fillPattern = FillPattern.Solid, points = {{110, -28}, {116, -8}, {104, -8}, {110, -28}}), Rectangle(lineColor = {255, 128, 0}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{72, 28}, {88, -24}}), Line(points = {{80, 28}, {80, 100}}, color = {255, 128, 0}), Line(points = {{80, -24}, {80, -100}}, color = {255, 128, 0}), Line(origin = {-23, 45}, rotation = 270, points = {{-15, -7}, {-14, -1}, {-7, 7}, {7, 7}, {14, -1}, {15, -7}}, color = {0, 0, 255}, smooth = Smooth.Bezier), Line(origin = {-23, 15}, rotation = 270, points = {{-15, -7}, {-14, -1}, {-7, 7}, {7, 7}, {14, -1}, {15, -7}}, color = {0, 0, 255}, smooth = Smooth.Bezier), Line(origin = {-23, -15}, rotation = 270, points = {{-15, -7}, {-14, -1}, {-7, 7}, {7, 7}, {14, -1}, {15, -7}}, color = {0, 0, 255}, smooth = Smooth.Bezier), Line(origin = {-23, -45}, rotation = 270, points = {{-15, -7}, {-14, -1}, {-7, 7}, {7, 7}, {14, -1}, {15, -7}}, color = {0, 0, 255}, smooth = Smooth.Bezier), Line(points = {{-30, 60}, {-30, 100}}, color = {28, 108, 200}), Line(points = {{-30, -100}, {-30, -60}}, color = {28, 108, 200})}));
   end BaseMagnet;
 
   model TF_Magnet "A specialized magnet model for a TF coil system."
     //
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     extends Magnets.BaseMagnet(
       __Rjoint = __numCoils * __JpTurn * __nTurn * (if isSuperconCoil then __Rjoint_Supercon else __Rjoint_Resistive),
       __numCoils = 18,
@@ -209,7 +208,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
   end TF_Magnet;
 
   model PF_Magnet "A specialized magnet model for a PF coil system"
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     extends Magnets.BaseMagnet(
       __Rcoil = 1e-32,
       __Rjoint = 1e-9,
@@ -359,7 +358,6 @@ and may or may not make physical sense. It is up to the user to verify that all 
     assert(Hflow_tot >= 0, "---> Assertion Error in [MagnetPower], variable [Hflow_tot = " + String(Hflow_tot) + "] outside cannot be negative!", level = AssertionLevel.error);
     assert(Hflow_tot <= 3e6, "---> Assertion Warning in [MagnetPower], variable [Hflow_tot = " + String(Hflow_tot) + "] outside outside of reasonable range!", level = AssertionLevel.warning);
     annotation(
-      uses(Modelica(version = "3.2.3")),
       Diagram(coordinateSystem(extent = {{-200, -200}, {200, 200}})),
       Icon(coordinateSystem(extent = {{-200, -200}, {200, 200}})));
   end MagnetPower;
@@ -368,7 +366,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     class SuperconLayer "A model that can simulate a single superconducting tape or strand"
       //
       // EXTENDS
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       // OUTPUTS
       Modelica.Blocks.Interfaces.RealOutput LossPower(unit = "W");
       // PARAMETERS
@@ -428,7 +426,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     class MutualInductor "Implementation of two basic inductors together with a mutual inductance between them"
       //
       // IMPORTS
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       // PARAMETERS
       parameter SI.Inductance L1(start = 1) "Upper inductance";
       parameter SI.Inductance L2(start = 1) "Lower inductance";
@@ -465,7 +463,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     model SuperconResistive "Resistive model of a superconductor's I-V relationship, employing a macroscopic power law."
       //
       // EXTENDS
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       extends Modelica.Electrical.Analog.Interfaces.OnePort;
       // OUTPUTS
       output SI.Power LossPower "Ohmic losses in the component";
@@ -489,13 +487,12 @@ and may or may not make physical sense. It is up to the user to verify that all 
       //
       annotation(
         Diagram(coordinateSystem(initialScale = 0.1), graphics = {Line(points = {{-110, 20}, {-85, 20}}, color = {160, 160, 164}), Polygon(lineColor = {160, 160, 164}, fillColor = {160, 160, 164}, fillPattern = FillPattern.Solid, points = {{-95, 23}, {-85, 20}, {-95, 17}, {-95, 23}}), Line(points = {{90, 20}, {115, 20}}, color = {160, 160, 164}), Line(points = {{-125, 0}, {-115, 0}}, color = {160, 160, 164}), Line(points = {{-120, -5}, {-120, 5}}, color = {160, 160, 164}), Text(lineColor = {160, 160, 164}, extent = {{-110, 25}, {-90, 45}}, textString = "i"), Polygon(lineColor = {160, 160, 164}, fillColor = {160, 160, 164}, fillPattern = FillPattern.Solid, points = {{105, 23}, {115, 20}, {105, 17}, {105, 23}}), Line(points = {{115, 0}, {125, 0}}, color = {160, 160, 164}), Text(lineColor = {160, 160, 164}, extent = {{90, 45}, {110, 25}}, textString = "i")}),
-        uses(Modelica(version = "3.2.3")),
         Icon(graphics = {Text(lineColor = {0, 0, 255}, extent = {{-150, 90}, {150, 50}}, textString = "%name"), Line(origin = {-85, 0}, points = {{15, 0}, {-15, 0}}, color = {0, 0, 255}), Line(origin = {85, 0}, points = {{15, 0}, {-15, 0}}, color = {0, 0, 255}), Text(origin = {-40, -32}, lineColor = {0, 0, 255}, extent = {{40, 0}, {40, -22}}, textString = "superconductor", fontName = "Calibri"), Rectangle(lineColor = {0, 0, 255}, extent = {{-70, 30}, {70, -30}}), Line(origin = {0.336538, 0}, points = {{0, 0}, {1, 6}, {8, 14}, {22, 14}, {29, 6}, {30, 0}}, color = {0, 0, 255}, smooth = Smooth.Bezier), Line(origin = {0.336538, 0}, points = {{-60, 0}, {-59, 6}, {-52, 14}, {-38, 14}, {-31, 6}, {-30, 0}}, color = {0, 0, 255}, smooth = Smooth.Bezier), Line(origin = {0.336538, 0}, points = {{30, 0}, {31, 6}, {38, 14}, {52, 14}, {59, 6}, {60, 0}}, color = {0, 0, 255}, smooth = Smooth.Bezier), Line(origin = {0.336538, 0}, points = {{-30, 0}, {-29, 6}, {-22, 14}, {-8, 14}, {-1, 6}, {0, 0}}, color = {0, 0, 255}, smooth = Smooth.Bezier)}, coordinateSystem(initialScale = 0.1)));
     end SuperconResistive;
 
     model ResistorDescaled
       extends Modelica.Electrical.Analog.Interfaces.OnePort;
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       parameter SI.Resistance R(start = 1) "Resistance";
       parameter Real numTapes = 1 "Descaled number of tapes";
       SI.Current i_local = i / numTapes "Descaled current";
@@ -547,7 +544,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
         // EXTENDS
         extends Modelica.Electrical.Analog.Interfaces.OnePort;
         import Modelica.Constants.eps;
-        import SI = Modelica.SIunits;
+        import SI = Modelica.Units.SI;
         import Modelica.Constants.pi;
         // OUTPUTS
         output SI.Power LossPower "Power lost in the hysteresis";
@@ -569,7 +566,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
         SI.Current i_local "Descaled current";
         //
       protected
-        final parameter Real mu0 = mat.K * Modelica.Constants.mue_0;
+        final parameter Real mu0 = mat.K * Modelica.Constants.mu_0;
         Magnets.MagneticFluxPerMetre J "Polarisation";
         SI.Current hmax(start = 0, min = 0) "maximum value of h";
         Real MagRel = 0 "Removing this breaks the code";
@@ -715,7 +712,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
       record HTS_EverettParameter
         extends Modelica.Icons.Record;
-        import SI = Modelica.SIunits;
+        import SI = Modelica.Units.SI;
         parameter SI.Current Hsat = 35 "Hysteresis region between -Hsat .. Hsat";
         parameter Real M(final unit = "1") = 0.00077 "Related to saturation value of magnetization";
         parameter Real r(final unit = "1") = 0 "Proportion of the straight region in the vicinity of Hc";
@@ -723,7 +720,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
         parameter Real p1(final unit = "1/A") = 0.22 "Sharpness of major loop near saturation";
         parameter Real p2(final unit = "1/A") = 0.3 "Sharpness of major loop near saturation";
         parameter SI.Current Hc = 11.3 "Major loop coercivity";
-        parameter Real K(final unit = "1") = 1 "Slope in saturation region mue_0*K";
+        parameter Real K(final unit = "1") = 1 "Slope in saturation region mu_0*K";
         parameter SI.Conductivity sigma = 1 "Electrical conductivity of material";
       end HTS_EverettParameter;
     end Data;
@@ -766,8 +763,8 @@ and may or may not make physical sense. It is up to the user to verify that all 
         */
         //
         extends Modelica.Icons.Function;
-        import SI = Modelica.SIunits;
-        import mu_0 = Modelica.Constants.mue_0;
+        import SI = Modelica.Units.SI;
+        import mu_0 = Modelica.Constants.mu_0;
         input SI.Current x;
         input SI.Current i;
         input Data.HTS_EverettParameter p;
@@ -822,7 +819,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
         //
         extends Modelica.Icons.Function;
         import Modelica.Constants.pi;
-        import SI = Modelica.SIunits;
+        import SI = Modelica.Units.SI;
         input SI.Current a_;
         input SI.Current b_;
         input Data.HTS_EverettParameter p;
@@ -861,8 +858,6 @@ and may or may not make physical sense. It is up to the user to verify that all 
     equation
 
     end Utility;
-    annotation(
-      uses(Modelica(version = "3.2.3")));
   end Superconductor;
 
   type ResistancePerMetre = Real(final quantity = "Resistance Per Metre", final unit = "Ohm/m");
@@ -904,7 +899,6 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
   end CS_Magnet;
   annotation(
-    Diagram(coordinateSystem(initialScale = 0.1)),
-    uses(Modelica(version = "3.2.3")));
+    Diagram(coordinateSystem(initialScale = 0.1)));
 //<jinja>{% endraw %}
 end Magnets;

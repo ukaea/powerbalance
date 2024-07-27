@@ -3,7 +3,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
   model Power_CarrierBreeder
     //
     // Imported Variables
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     parameter Real ThermalPower(unit = "MW") "Total high grade thermal power (MW)";
     //
     // Instantiating models
@@ -33,7 +33,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
   model Power_NonCarrier
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real ThermalPower(unit = "MW") "Total high grade thermal power (MW)";
     String PrimaryCoolantType;
     //
@@ -74,7 +74,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
   model TritiumBreedingRate
     //
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real ThermalPower(unit = "MW") "Total high grade thermal power (MW)";
     //
      // Specified Paramters
@@ -109,7 +109,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     final constant Real pi = 2 * Modelica.Math.asin(1.0);
     //
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real ThermalPower(unit = "MW") "Total high grade thermal power, MW";
     //
     // Specified Parameters
@@ -153,7 +153,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
   model HeGasCompression
     //
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real HeMassFlow(unit = "kg/s") "Helium mass flowrate (kg/s)";
     //
     // Specified Parameters
@@ -183,7 +183,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
   model ExchangerHeatLoss
     //
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real HeMassFlow(unit = "kg/s") "Helium Mass flowrate (kg/s), from HeStreamCalc";
     //
     // Specified Parameters
@@ -204,7 +204,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
   model GetterBedRegenHeating
     //
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real tritiumMassFlow(unit = "g/s") "Tritium flow rate (g/s), imported from TritiumBreedingRate";
     //
     // Specified Parameters
@@ -232,7 +232,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
   model GetterRegenGasCompression
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real tritiumMassFlow(unit = "g/s") "Tritium mass flow (g/s), imported from TritiumBreedingRate ";
     //
     // Specified Parameters

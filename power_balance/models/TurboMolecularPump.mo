@@ -2,7 +2,7 @@ package VacuumPump "DISCLAIMER: Parameter values (particularly the ones in the i
 and may or may not make physical sense. It is up to the user to verify that all parameters are correct."
   model VacuumPumpPower
     //
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     //
     // Instantiating models
     Pump_Turbo turboPump(thermalPowerOut = thermalPowerData) if vacuumType == "turbo";
@@ -38,7 +38,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
   partial model BaseTurboPump
     //
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     //
     // Data Import - Required funtion to import .mat file containing power profile
     import Modelica.Blocks.Sources.CombiTimeTable;
@@ -119,7 +119,8 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
   model CryoPump "A model to simulate a cryopump operation"
     //
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
+    import NonSI = Modelica.Units.NonSI;
     //
     // Parameters
     parameter SI.Temperature gasTemperature = 873 "Assumption of gas SI.Temperature being 873K";
@@ -154,8 +155,8 @@ and may or may not make physical sense. It is up to the user to verify that all 
     SI.MolarFlowRate Tritium_99percentFlow "Tritium at a flow rate of 99%";
     SI.MolarFlowRate cryopumpTrap "Trapped by a cryo pump (mol/s)";
     SI.MolarFlowRate injectedComponentFlow "Injected component mole flow, (mol/s)";
-    SI.Conversions.NonSIunits.MassFlowRate_gps DeuteriumMassFlow "Mass flow rate of D2 ";
-    SI.Conversions.NonSIunits.MassFlowRate_gps TritiumMassFlow "Mass flow rate of T2";
+    NonSI.MassFlowRate_gps DeuteriumMassFlow "Mass flow rate of D2 ";
+    NonSI.MassFlowRate_gps TritiumMassFlow "Mass flow rate of T2";
     SI.Temperature tempChange_Deuterium "Change in temperature in Deutrium (K)";
     SI.Temperature tempChange_Tritium "Change in temperature in Tritium (K)";
     SI.Power Cp_energyChange_Deuterium "Energy change specific heat in Deutrium (J/s)";

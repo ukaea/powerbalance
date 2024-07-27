@@ -2,7 +2,7 @@ package CryogenicPlant "DISCLAIMER: Parameter values (particularly the ones in t
 and may or may not make physical sense. It is up to the user to verify that all parameters are correct."
   model CryogenicPower "Model of the power loads of the cryogenic plant"
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     parameter Real __cryoFlow_HydrogenFreezing(unit = "g/s") = 1;
     parameter Real __cryoTemp_TF(unit = "K") = 4.2;
     parameter Real __cryoTemp_PF(unit = "K") = 4.2;   
@@ -53,7 +53,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     // For a coolingPower load at some cryogenic temperature it estimates the electrical load using the Carnot Efficiency and a Figure of Merit (FOM) for a system. Inefficiencies expressed as a percent of the Carnot Efficiency.
     //
     // Imported Parameters NOTE: LEAVE AS 0, THESE GET OVERWRITTEN WHEN CALLED BY A MODEL
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real cryoTemp(unit = "K") = 0 "Cryogenic temperature required by model (K)";
     Real cryoPower(unit = "W") = 0 "Cryogenic duty requirements from model, if using cryogenic power conversion (W)";
     Real cryoFlow(unit = "g/s") = 0 "Import cryogenic flowrate, if using cryogenic flow conversion (g/s)";
@@ -105,7 +105,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
   model CurrentLeads
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real Magnet_HFlow(unit = "g/s") "Imported from Magnet Model";
     //
     // Specified Parameters
@@ -130,7 +130,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
   model TFCoils
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real MagnetHeat_TF(unit = "W");
     SI.Temperature cryoTemp_TF = 4.2 "TF coils cryogenic temperature (K)";
     //
@@ -158,7 +158,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
   model PFCoils
     // Cooling PF coils
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     SI.Power MagnetHeat_PF;
     SI.Temperature cryoTemp_PF = 4.2 "PF coil cryogenic temperature (K)";
     Real PFcrMW = 0 "????PF conduction and radiation losses????";
@@ -187,7 +187,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
   model FuelMatterInjection
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real cryoFlow_FuelMatterInjection(unit = "g/s") = 3.5 "Cryogenic mass flow rate for the load (g/s), from Pellet Injection on JT60SA www.jt60sa.org/pdfs/cdr/10-3.5_Cryogenic_System.pdf";
     // Specified Parameters
     parameter SI.Temperature cryoTemp_HydrogenFreezing = 4 "Cryogenic temperature of Hydrogen Freezing";
@@ -212,7 +212,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
   model Cryodistillation "A model for cryodistillation power consumption"
     //
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     //
     // Constant Definitions
     constant SI.SpecificHeatCapacity GH_Cp = 12504 "Specific heat of gaseous hydrogen";
@@ -314,7 +314,4 @@ and may or may not make physical sense. It is up to the user to verify that all 
     assert(Load_Total >= 0, "---> Assertion Error in [Cryodistillation], variable [Load_Total = " + String(Load_Total) + "] cannot be negative!", level = AssertionLevel.error);
     assert(Load_Total <= 1e5, "---> Assertion Warning in [Cryodistillation], variable [Load_Total = " + String(Load_Total) + "] outside of reasonable range!", level = AssertionLevel.warning);
   end Cryodistillation;
-
-  annotation(
-    uses(Modelica(version = "3.2.3")));
 end CryogenicPlant;

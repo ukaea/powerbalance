@@ -3,7 +3,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
 model WaterDetritPower
   //
-  import SI = Modelica.SIunits;
+  import SI = Modelica.Units.SI;
   //
   parameter Real ThermalPower(unit = "MW") "Total high grade thermal power, MW";
   //
@@ -49,7 +49,7 @@ end WaterDetritPower;
   model WaterHeating
     //
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real ThermalPower(unit = "MW") "Total high grade thermal power, MW";
     //
     // Parameters
@@ -81,7 +81,7 @@ end WaterDetritPower;
   model GasCompression
     //
     // Imported Parameters
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     Real waterColumnMassFlow(unit = "kg/s") "Imported from ElectrolysisEnergy";
     //
     // Parameters

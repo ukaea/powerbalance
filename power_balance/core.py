@@ -549,9 +549,7 @@ class PowerBalance:
 
 {}{}
 -------------------------------------------------------------------------------
-            """.format(
-            _sweep_param_str, _sweep_profile_str
-        )
+            """.format(_sweep_param_str, _sweep_profile_str)
         self._logger.info(_sweep_str)
 
     def _param_sweep_print(self) -> None:
@@ -585,9 +583,7 @@ class PowerBalance:
 
 {}{}
 -------------------------------------------------------------------------------
-            """.format(
-            _sweep_param_str, _sweep_profile_str
-        )
+            """.format(_sweep_param_str, _sweep_profile_str)
         self._logger.info(_sweep_str)
 
     def _check_for_profile_sweep(self):

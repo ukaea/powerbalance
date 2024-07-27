@@ -6,7 +6,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     parameter String __RatioType = "2.5" "1.5/2/2.5. STRUCTURAL_PARAMETER";
     parameter String __SystemPressure = "200" "bar: 50/90/200. STRUCTURAL_PARAMETER";
     parameter String __VacuumType = "turbo" "'cryo'/'turbo', STRUCTURAL_PARAMETER";
-    parameter Real __ThermalPower "Total high grade thermal power, MW; overwritten by profile peak";
+    parameter Real __ThermalPower = 0.0 "Total high grade thermal power, MW; overwritten by profile peak";
     parameter String __ThermalPowerDataPath  = "ThermalPowerOut.mat";
     //
     Utilities.CombiTimeTable combiTimeTableThermal(fileName = __ThermalPowerDataPath, smoothness = Modelica.Blocks.Types.Smoothness.ContinuousDerivative, tableName = "data", tableOnFile = true);

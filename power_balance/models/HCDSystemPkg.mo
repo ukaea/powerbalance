@@ -4,7 +4,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     //
     Modelica.Blocks.Interfaces.RealOutput P_amb(unit = "W") "Heat dissipated to air" annotation(
       Placement(visible = true, transformation(extent = {{100, 8}, {120, 28}}, rotation = 0), iconTransformation(extent = {{100, 8}, {120, 28}}, rotation = 0)));
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     //
     // Parameters
     parameter String __RFPowerDataPath = "RF_Heat.mat" "Input profile of thermal power contained within plasma over time. Full data path required for running inside OMEdit";
@@ -42,8 +42,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     assert(P_amb <= 5e7, "---> Assertion Warning in [HCDSystem], variable [P_amb = " + String(P_amb) + "] outside of reasonable range!", level = AssertionLevel.warning);
     annotation(
       Diagram(coordinateSystem(initialScale = 0.1)),
-      Icon(coordinateSystem(extent = {{-200, -200}, {200, 200}})),
-      uses(Modelica(version = "3.2.3")));
+      Icon(coordinateSystem(extent = {{-200, -200}, {200, 200}})));
   end HCDSystem;
 
   model NINI "This model is based on the in-house UKAEA work of D B King and E Surrey, referred to in the following publication:
@@ -53,7 +52,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     (R McAdams et al 2016 New J. Phys. 18 125013)
     
     "
-    import SI = Modelica.SIunits;
+    import SI = Modelica.Units.SI;
     //
     parameter String dataPath "Input profile of thermal power contained within plasma over time. Must use full data path if running inside OMEdit";
     parameter Real __beamEnergy(unit = "MV") = 1 "NBI accelerator grid voltage (MV)";
@@ -215,7 +214,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
   
   "
     model GyrotronSystem "Model of Heating and Current Drive using a gyrotron"
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       RF.PSU_ACDC psu_ACDC annotation(
         Placement(visible = true, transformation(origin = {-65, 7}, extent = {{-19, -19}, {19, 19}}, rotation = 0)));
       RF.Gyrotron gyrotron(Cryo_temp(displayUnit = "K"), Room_temp(displayUnit = "K"), Temp(displayUnit = "K")) annotation(
@@ -239,7 +238,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     end GyrotronSystem;
 
     model PSU_ACDC
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       RF.pfcon pfcon1 annotation(
         Placement(visible = true, transformation(origin = {-92, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       RF.pfcon pfcon2 annotation(
@@ -261,7 +260,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
     end PSU_ACDC;
 
     model Gyrotron "Model to estimate the Efficieny of Gyrotron. Based on the default values for voltage (V_k), radius(r_k), cathode-anode spacing(d_ak), cathode pitch angle (theta_k) and annular thickness (t) obtained from the design of 170GHz 1.5MW gyrotron by Kalaria Kartikeyan"
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       import MATH = Modelica.Math;
       RF.pfcon pfcon1 annotation(
         Placement(visible = true, transformation(origin = {-94, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -281,7 +280,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
       parameter SI.Radius r_k = 0.06786 "Cathode radius (m)";
       parameter SI.Length d_ak = 0.011159 "Cathode-anode spacing (m)";
       parameter SI.Length t = 0.00218 "Annular thickness (m)";
-      parameter SI.Temp_K Temp = 2470 "Min temperature for emission (K)";
+      parameter SI.Temperature Temp = 2470 "Min temperature for emission (K)";
       //
       SI.Length r "Distance from conical tip to emitting surface (m)";
       SI.ElectricFieldStrength E_k "Electric field strength at cathode surface (V/m)";
@@ -316,8 +315,8 @@ and may or may not make physical sense. It is up to the user to verify that all 
       parameter SI.Resistance R_joint = 2.5e-9 "Joint resistance (Ohm)";
       parameter SI.Length l_coil_Acc = 0.434 "Accelerating coil length (m)";
       parameter SI.Length l_coil_MIG = 0.025 "MIG coil length (m)";
-      parameter SI.Temp_K Cryo_temp = 4.5 "Cryogenics temperature (K)";
-      parameter SI.Temp_K Room_temp = 300 "Room temperature (K)";
+      parameter SI.Temperature Cryo_temp = 4.5 "Cryogenics temperature (K)";
+      parameter SI.Temperature Room_temp = 300 "Room temperature (K)";
       parameter Real Cryo_FOM = 0.4 "Figure of merit for thermal power estimation";
       //
       SI.Current I_Coil_Acc "Accelerating coil current (A)";
@@ -408,7 +407,7 @@ and may or may not make physical sense. It is up to the user to verify that all 
 
     model WaveGuide "Model for the efficiency of Waveguide network where the RF power will pass through quasi-optical, mirror-based mitre joints, chemical vapour deopsition windows (CVD). The RF power travelling to the plasma will experience wall losses in the tokamak. Mode converter converts from hybrid mode to gaussian mode which is fed to the launcher. Losses in each stage are estimated to calculate the Waveguide efficiency."
       // Custom model validation for Waveguide WG45 using default values 7mitre bends, 100m length, 45mm diamter and 110GHz frequency
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       import MATH = Modelica.Math;
       pfcon pfcon1 annotation(
         Placement(visible = true, transformation(origin = {-92, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -482,13 +481,11 @@ and may or may not make physical sense. It is up to the user to verify that all 
     end WaveGuide;
 
     connector pfcon
-      import SI = Modelica.SIunits;
+      import SI = Modelica.Units.SI;
       SI.Power p;
       //
       annotation(
         Icon(graphics = {Rectangle(origin = {0, -1}, fillColor = {76, 76, 76}, fillPattern = FillPattern.Solid, extent = {{-100, 99}, {100, -99}})}));
     end pfcon;
-    annotation(
-      uses(Modelica(version = "3.2.3")));
   end RF;
 end HCDSystemPkg;
