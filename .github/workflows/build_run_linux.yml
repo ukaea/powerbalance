@@ -31,6 +31,8 @@ jobs:
   test_module_build:
     name: Test Module Build (Python${{ matrix.python-version }} ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
+    container:
+      image: openmodelica/openmodelica:v1.23.1-ompython
     strategy:
       fail-fast: false
       matrix:
