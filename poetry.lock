@@ -2228,18 +2228,19 @@ typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
 
 [[package]]
 name = "pydelica"
-version = "0.5.1"
+version = "0.6.0"
 description = "Light-weight serverless API for OpenModelica"
 optional = false
 python-versions = "<3.13,>=3.9"
 files = [
-    {file = "pydelica-0.5.1-py3-none-any.whl", hash = "sha256:915039a28115a107dc01cd6561101ed1b6a70a2cbf6cb9baf856562b563dc5b9"},
-    {file = "pydelica-0.5.1.tar.gz", hash = "sha256:48a46870794065129fae96a47191c20801b570b8a4b876a105db9ff5d902ba28"},
+    {file = "pydelica-0.6.0-py3-none-any.whl", hash = "sha256:4660bd85df3b9ede87e3d6da83829990a344afa3e095b638873076fb18f4d025"},
+    {file = "pydelica-0.6.0.tar.gz", hash = "sha256:fcafe405d473c9051b6645f81804b1c3225a1d1d460083465e731291e9c2c94f"},
 ]
 
 [package.dependencies]
 defusedxml = ">=0.7.1,<0.8.0"
 pandas = ">=2.0,<3.0"
+pydantic = ">=2.7.0,<3.0.0"
 
 [[package]]
 name = "pygments"
@@ -3191,4 +3192,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9,<3.13"
-content-hash = "8c6a6196ad71f9a028b25807785aaf714d7fb46eb55f295afd0c94c6a313e2ea"
+content-hash = "8b4726eb296c7146abb5c517be0819dfe0990d10f6b996f6c8afc1a02a8487af"
