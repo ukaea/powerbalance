@@ -13,7 +13,7 @@ jobs:
     - name: Install other requirements
       run: apt update && apt install -y git
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
     - name: Install OpenModelica libraries
