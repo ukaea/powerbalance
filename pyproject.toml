@@ -66,7 +66,7 @@ mkdocs = "^1.6.0"
 mkdocs-material = "^9.5.28"
 mkdocs-coverage = "^1.1.0"
 pymdown-extensions = "^10.8"
-mkdocs-mermaid2-plugin = "^1.1.1"
+mkdocs-mermaid2-plugin = "^1.2.1"
 mkdocs-click = "^0.8.1"
 mkdocs-git-revision-date-localized-plugin = "^1.2.6"
 

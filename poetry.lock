@@ -1628,13 +1628,13 @@ files = [
 
 [[package]]
 name = "mkdocs-mermaid2-plugin"
-version = "1.1.1"
+version = "1.2.1"
 description = "A MkDocs plugin for including mermaid graphs in markdown sources"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.8"
 files = [
-    {file = "mkdocs-mermaid2-plugin-1.1.1.tar.gz", hash = "sha256:bea5f3cbe6cb76bad21b81e49a01e074427ed466666c5d404e62fe8698bc2d7c"},
-    {file = "mkdocs_mermaid2_plugin-1.1.1-py3-none-any.whl", hash = "sha256:4e25876b59d1e151ca33a467207b346404b4a246f4f24af5e44c32408e175882"},
+    {file = "mkdocs_mermaid2_plugin-1.2.1-py3-none-any.whl", hash = "sha256:22d2cf2c6867d4959a5e0903da2dde78d74581fc0b107b791bc4c7ceb9ce9741"},
+    {file = "mkdocs_mermaid2_plugin-1.2.1.tar.gz", hash = "sha256:9c7694c73a65905ac1578f966e5c193325c4d5a5bc1836727e74ac9f99d0e921"},
 ]
 
 [package.dependencies]
@@ -1646,7 +1646,7 @@ requests = "*"
 setuptools = ">=18.5"
 
 [package.extras]
-test = ["mkdocs-material"]
+test = ["mkdocs-macros-test", "mkdocs-material", "packaging", "requests-html"]
 
 [[package]]
 name = "msgpack"
@@ -3371,4 +3371,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9,<3.13"
-content-hash = "e0c5e56c93ee3c0a019a410e2ef951f252fc02dc75c5a99f3de1f132413c8a95"
+content-hash = "a9c6edfabf725f0a9c4f5837df0e860d8c84734d24e36cc1122d2d52f6534e0c"
