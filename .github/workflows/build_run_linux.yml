@@ -25,7 +25,7 @@ jobs:
       - name: Archive Modelica Binaries
         uses: actions/upload-artifact@v4
         with:
-          name: om-binaries-${{ github.workflow }}-${{ github.ref }}
+          name: om-binaries-${{ github.run_id }}
           path: build/
           retention-days: 1
   test_module_build:
@@ -50,7 +50,7 @@ jobs:
       - name: Archive Plasma Profiles
         uses: actions/upload-artifact@v4
         with:
-          name: om-plasma-profiles-${{ github.workflow }}-${{ github.ref }}
+          name: om-plasma-profiles-${{ github.run_id }}
           path: power_balance/profiles/mat_profile_files/*.mat
           retention-days: 1
   model_run_om:
@@ -67,12 +67,12 @@ jobs:
       - name: Retrieve Open Modelica model binaries
         uses: actions/download-artifact@v4
         with:
-          name: om-binaries-${{ github.workflow }}-${{ github.ref }}
+          name: om-binaries-${{ github.run_id }}
           path: build
       - name: Retrieve Plasma profiles
         uses: actions/download-artifact@v4
         with:
-          name: om-plasma-profiles-${{ github.workflow }}-${{ github.ref }}
+          name: om-plasma-profiles-${{ github.run_id }}
           path: power_balance/profiles/mat_profile_files
       - name: Run Models
         run: |
