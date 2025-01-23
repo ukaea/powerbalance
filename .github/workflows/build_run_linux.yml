@@ -25,7 +25,7 @@ jobs:
       - name: Archive Modelica Binaries
         uses: actions/upload-artifact@v4
         with:
-          name: om-binaries-${{ github.run_id }}
+          name: om-binaries-${{ github.run_id }}-${{ matrix.os }}
           path: build/
           retention-days: 1
   test_module_build:
@@ -37,9 +37,13 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04]
-        python-version: [ '3.11', '3.10', '3.12' ]
+        python-version: [ '3.11', '3.10', '3.12', '3.13' ]
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Python {{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "{{ matrix.python-version }}"
       - name: Install Poetry
         run: python3 -m pip install poetry
       - name: Build Module
@@ -49,8 +53,9 @@ jobs:
           poetry run powerbalance generate-profiles
       - name: Archive Plasma Profiles
         uses: actions/upload-artifact@v4
+        if: ${{ matrix.python-version == '3.12' }}
         with:
-          name: om-plasma-profiles-${{ github.run_id }}
+          name: om-plasma-profiles-${{ github.run_id }}-${{ matrix.os }}
           path: power_balance/profiles/mat_profile_files/*.mat
           retention-days: 1
   model_run_om:
@@ -67,12 +72,12 @@ jobs:
       - name: Retrieve Open Modelica model binaries
         uses: actions/download-artifact@v4
         with:
-          name: om-binaries-${{ github.run_id }}
+          name: om-binaries-${{ github.run_id }}-${{ matrix.os }}
           path: build
       - name: Retrieve Plasma profiles
         uses: actions/download-artifact@v4
         with:
-          name: om-plasma-profiles-${{ github.run_id }}
+          name: om-plasma-profiles-${{ github.run_id }}-${{ matrix.os }}
           path: power_balance/profiles/mat_profile_files
       - name: Run Models
         run: |
@@ -93,6 +98,10 @@ jobs:
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Python {{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "{{ matrix.python-version }}"
       - name: Install Poetry
         run: python3 -m pip install poetry
       - name: Run Models
@@ -120,6 +129,10 @@ jobs:
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Python {{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: "{{ matrix.python-version }}"
       - name: Install Poetry
         run: python3 -m pip install poetry
       - name: Run Regression Tests
