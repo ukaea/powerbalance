@@ -57,6 +57,7 @@ jobs:
       - name: Build Module
         run: |
           python -m pip install -r requirements.txt
+          python -m pip install .
           powerbalance generate-profiles
       - name: Archive Plasma Profiles
         uses: actions/upload-artifact@v4
