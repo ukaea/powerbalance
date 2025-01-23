@@ -1,5 +1,12 @@
 name: Power Balance Models Ubuntu
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test_modelica_build:
     container:
@@ -25,33 +32,46 @@ jobs:
       - name: Archive Modelica Binaries
         uses: actions/upload-artifact@v4
         with:
-          name: om-binaries-${{ github.run_id }}
+          name: om-binaries-${{ github.run_id }}-${{ matrix.os }}
           path: build/
           retention-days: 1
   test_module_build:
     name: Test Module Build (Python${{ matrix.python-version }} ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
-    container:
-      image: openmodelica/openmodelica:v1.23.1-ompython
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04]
-        python-version: [ '3.11', '3.10', '3.12' ]
+        python-version: [ '3.11', '3.12', '3.13' ]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Poetry
-        run: python3 -m pip install poetry
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Poetry and Export Requirements
+        run: |
+          python3 -m pip install poetry
+          poetry self add poetry-plugin-export
+          poetry export -f requirements.txt --with dev -o requirements.txt --all-extras
       - name: Build Module
         run: |
-          poetry install
-          poetry build
-          poetry run powerbalance generate-profiles
+          python -m pip install -r requirements.txt
+          python -m pip install .
+          powerbalance generate-profiles
       - name: Archive Plasma Profiles
         uses: actions/upload-artifact@v4
+        if: ${{ matrix.python-version == '3.12' }}
         with:
-          name: om-plasma-profiles-${{ github.run_id }}
+          name: om-plasma-profiles-${{ github.run_id }}-${{ matrix.os }}
           path: power_balance/profiles/mat_profile_files/*.mat
+          retention-days: 1
+      - name: Archive Requirements File
+        uses: actions/upload-artifact@v4
+        if: ${{ matrix.python-version == '3.12' }}
+        with:
+          name: requirements-${{ matrix.os }}
+          path: requirements.txt
           retention-days: 1
   model_run_om:
     container:
@@ -67,12 +87,12 @@ jobs:
       - name: Retrieve Open Modelica model binaries
         uses: actions/download-artifact@v4
         with:
-          name: om-binaries-${{ github.run_id }}
+          name: om-binaries-${{ github.run_id }}-${{ matrix.os }}
           path: build
       - name: Retrieve Plasma profiles
         uses: actions/download-artifact@v4
         with:
-          name: om-plasma-profiles-${{ github.run_id }}
+          name: om-plasma-profiles-${{ github.run_id }}-${{ matrix.os }}
           path: power_balance/profiles/mat_profile_files
       - name: Run Models
         run: |
@@ -81,25 +101,37 @@ jobs:
           ln -s ../power_balance/profiles/mat_profile_files/* .
           ./Tokamak_Interdependencies
   model_run_api:
-    container:
-      image: openmodelica/openmodelica:v1.23.1-ompython
     name: Model Run API (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04]
-        python-version: [ '3.11', '3.10', '3.12' ]
+        python-version: [ '3.11', '3.12', '3.13' ]
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Poetry
-        run: python3 -m pip install poetry
+      - name: Install OpenModelica
+        run: |
+          echo "deb https://build.openmodelica.org/omc/builds/linux/releases/1.23.1/ bionic release" | sudo tee /etc/apt/sources.list.d/openmodelica.list
+          sudo curl -fsSL http://build.openmodelica.org/apt/openmodelica.asc | sudo gpg --dearmor -o /usr/share/keyrings/openmodelica-keyring.gpg
+          sudo apt update
+          sudo apt install -y omc
+      - name: Retrieve Requirements File
+        uses: actions/download-artifact@v4
+        with:
+          name: requirements-${{ matrix.os }}
+          path: requirements.txt
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Run Models
         run: |
-          poetry install
-          poetry run powerbalance install-msl
-          poetry run coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios
+          python -m pip install -r requirements.txt
+          python -m pip install .
+          powerbalance install-msl
+          python -m coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
         if: ${{ github.ref_name == 'main' }}
@@ -108,25 +140,37 @@ jobs:
           path: coverage_default
           retention-days: 1
   regression_tests:
-    container:
-      image: openmodelica/openmodelica:v1.23.1-ompython
     name: Regression Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04]
-        python-version: [ '3.11', '3.10', '3.12' ]
+        python-version: [ '3.11', '3.12', '3.13' ]
     needs: [test_module_build]
     steps:
+      - name: Install OpenModelica
+        run: |
+          echo "deb https://build.openmodelica.org/omc/builds/linux/releases/1.23.1/ bionic release" | sudo tee /etc/apt/sources.list.d/openmodelica.list
+          sudo curl -fsSL http://build.openmodelica.org/apt/openmodelica.asc | sudo gpg --dearmor -o /usr/share/keyrings/openmodelica-keyring.gpg
+          sudo apt update
+          sudo apt install -y omc
       - uses: actions/checkout@v4
-      - name: Install Poetry
-        run: python3 -m pip install poetry
+      - name: Retrieve Requirements File
+        uses: actions/download-artifact@v4
+        with:
+          name: requirements-${{ matrix.os }}
+          path: requirements.txt
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Run Regression Tests
         run: |
-          poetry install
-          poetry run powerbalance install-msl
-          poetry run coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
+          python -m pip install -r requirements.txt
+          python -m pip install .
+          powerbalance install-msl
+          python -m coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
         if: ${{ github.ref_name == 'main' }}
@@ -135,25 +179,37 @@ jobs:
           path: coverage_regression
           retention-days: 1
   unit_tests:
-    container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
     name: Unit Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04]
-        python-version: [ '3.11', '3.10', '3.12' ]
+        python-version: [ '3.11', '3.12', '3.13' ]
     needs: [test_module_build]
     steps:
-      - uses: actions/checkout@v4
-      - name: Install Poetry
-        run: python3 -m pip install poetry
-      - name: Run Unit Tests
+      - name: Install OpenModelica
         run: |
-          poetry install
-          poetry run powerbalance install-msl
-          poetry run coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
+          echo "deb https://build.openmodelica.org/omc/builds/linux/releases/1.23.1/ bionic release" | sudo tee /etc/apt/sources.list.d/openmodelica.list
+          sudo curl -fsSL http://build.openmodelica.org/apt/openmodelica.asc | sudo gpg --dearmor -o /usr/share/keyrings/openmodelica-keyring.gpg
+          sudo apt update
+          sudo apt install -y omc
+      - uses: actions/checkout@v4
+      - name: Retrieve Requirements File
+        uses: actions/download-artifact@v4
+        with:
+          name: requirements-${{ matrix.os }}
+          path: requirements.txt
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run Regression Tests
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install .
+          powerbalance install-msl
+          python -m coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
         if: ${{ github.ref_name == 'main' }}
