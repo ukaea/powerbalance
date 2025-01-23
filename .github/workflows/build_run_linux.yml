@@ -47,23 +47,32 @@ jobs:
         python-version: [ '3.11', '3.12', '3.13' ]
     steps:
       - uses: actions/checkout@v4
+      - name: Install Poetry and Export Requirements
+        run: |
+          python3 -m pip install poetry
+          poetry self add poetry-plugin-export
+          poetry export -f requirements.txt --with dev -o requirements.txt --all-extras
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install Poetry
-        run: python3 -m pip install poetry
       - name: Build Module
         run: |
-          poetry install
-          poetry build
-          poetry run powerbalance generate-profiles
+          python -m pip install -r requirements.txt
+          powerbalance generate-profiles
       - name: Archive Plasma Profiles
         uses: actions/upload-artifact@v4
         if: ${{ matrix.python-version == '3.12' }}
         with:
           name: om-plasma-profiles-${{ github.run_id }}-${{ matrix.os }}
           path: power_balance/profiles/mat_profile_files/*.mat
+          retention-days: 1
+      - name: Archive Requirements File
+        uses: actions/upload-artifact@v4
+        if: ${{ matrix.python-version == '3.12' }}
+        with:
+          name: requirements-${{ matrix.os }}
+          path: requirements.txt
           retention-days: 1
   model_run_om:
     container:
@@ -105,17 +114,21 @@ jobs:
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v4
+      - name: Retrieve Requirements File
+        uses: actions/download-artifact@v4
+        with:
+          name: requirements-${{ matrix.os }}
+          path: requirements.txt
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install Poetry
-        run: python3 -m pip install poetry
       - name: Run Models
         run: |
-          poetry install
-          poetry run powerbalance install-msl
-          poetry run coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios
+          python -m pip install -r requirements.txt
+          python -m pip install .
+          powerbalance install-msl
+          python -m coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
         if: ${{ github.ref_name == 'main' }}
@@ -136,17 +149,21 @@ jobs:
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v4
+      - name: Retrieve Requirements File
+        uses: actions/download-artifact@v4
+        with:
+          name: requirements-${{ matrix.os }}
+          path: requirements.txt
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install Poetry
-        run: python3 -m pip install poetry
       - name: Run Regression Tests
         run: |
-          poetry install
-          poetry run powerbalance install-msl
-          poetry run coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
+          python -m pip install -r requirements.txt
+          python -m pip install .
+          powerbalance install-msl
+          python -m coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
         if: ${{ github.ref_name == 'main' }}
@@ -167,17 +184,21 @@ jobs:
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v4
+      - name: Retrieve Requirements File
+        uses: actions/download-artifact@v4
+        with:
+          name: requirements-${{ matrix.os }}
+          path: requirements.txt
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install Poetry
-        run: python3 -m pip install poetry
-      - name: Run Unit Tests
+      - name: Run Regression Tests
         run: |
-          poetry install
-          poetry run powerbalance install-msl
-          poetry run coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
+          python -m pip install -r requirements.txt
+          python -m pip install .
+          powerbalance install-msl
+          python -m coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
         if: ${{ github.ref_name == 'main' }}
