@@ -42,7 +42,7 @@ pandas = "^2.2.2"
 
 [tool.poetry.group.dev.dependencies]
 readability-lxml = "^0.8.1"
-coverage = "^7.6"
+coverage = "^7.8"
 bandit = "^1.7.9"
 anybadge = "^1.14.0"
 pyinstrument = "^4.6.2"
