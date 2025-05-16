@@ -37,7 +37,7 @@ scipy = "^1.13.1"
 click = "^8.1.7"
 pydantic = "^2.8.2"
 bokeh = "^3.4.2"
-pydelica = "<0.6.0"
+pydelica = "<0.7.0"
 pandas = "^2.2.2"
 
 [tool.poetry.group.dev.dependencies]

@@ -2495,19 +2495,20 @@ typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
 
 [[package]]
 name = "pydelica"
-version = "0.5.1"
+version = "0.6.1"
 description = "Light-weight serverless API for OpenModelica"
 optional = false
-python-versions = "<3.13,>=3.9"
+python-versions = "<3.14,>=3.9"
 groups = ["main"]
 files = [
-    {file = "pydelica-0.5.1-py3-none-any.whl", hash = "sha256:915039a28115a107dc01cd6561101ed1b6a70a2cbf6cb9baf856562b563dc5b9"},
-    {file = "pydelica-0.5.1.tar.gz", hash = "sha256:48a46870794065129fae96a47191c20801b570b8a4b876a105db9ff5d902ba28"},
+    {file = "pydelica-0.6.1-py3-none-any.whl", hash = "sha256:02aa0979564badd5887bcb99b3b04bfda34cb5df666a9a8c36af70df98c31dec"},
+    {file = "pydelica-0.6.1.tar.gz", hash = "sha256:6b3685c538650385c3fdd76ee8dec91232d8f37b082a54720492e92320561090"},
 ]
 
 [package.dependencies]
 defusedxml = ">=0.7.1,<0.8.0"
 pandas = ">=2.0,<3.0"
+pydantic = ">=2.7.0,<3.0.0"
 
 [[package]]
 name = "pygments"
@@ -3536,4 +3537,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.9,<3.13"
-content-hash = "6e3c757c582a8cd48441d5d0263bfd591a9eee09d188adf5a50af7c957f8a6e6"
+content-hash = "5e85962aadec0fbd20a8b5a8fe49a45b2f55452e670ae7ddcdb20ec317a904c1"
