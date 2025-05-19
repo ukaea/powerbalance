@@ -2,222 +2,178 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/advanced_api/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/api_overview/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/cli/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/configuration/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/data_out/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/development/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/getting_started/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/installation/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/parameters/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/plasma/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/plugins/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://ukaea.github.io/powerbalance/docs/API/poetry/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/result_output/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/setup_overview/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/simulation_opts/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/troubleshooting/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
+    </url>
+    <url>
+         <loc>https://ukaea.github.io/powerbalance/docs/API/uv/</loc>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/API/validation/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/airgasdetrit/airgasdetrit_package/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/blanketdetrit/power/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/coolantdetrit/coolantdetrit_package/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/coolantdetrit/gascoolant/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/coolantdetrit/watercoolant/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/cryo/convertflowelec/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/cryo/cryogenic_power/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/cryo/turbopump_cryo/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/hcd/hcd_system/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/hcd/nini/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/hcd/rf_gyrotron/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/hcd/rf_waveguide/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/magnet/basemagnet/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/magnet/magnetpower/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/magnet/mutual_inductor/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/magnet/pfcoil/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/magnet/preisach_everett/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/magnet/supercon_layer/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/magnet/supercon_resistive/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/magnet/tfcoil/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/powergen/equations/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/turbopump/pumps/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/wasteheat/wasteheat_package/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/wasteheat/wasteheat_system/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/modelica/waterdetrit/waterdetrit_package/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
     <url>
          <loc>https://ukaea.github.io/powerbalance/docs/coverage/</loc>
-         <lastmod>2024-07-27</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-05-19</lastmod>
     </url>
 </urlset>
