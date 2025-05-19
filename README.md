@@ -11,7 +11,7 @@
 
 # Power Balance Models
 
-[![DOI](https://zenodo.org/badge/450553622.svg)](https://zenodo.org/badge/latestdoi/450553622) [![Power Balance Models Ubuntu](https://github.com/ukaea/powerbalance/actions/workflows/build_run_linux.yml/badge.svg)](https://github.com/ukaea/powerbalance/actions/workflows/build_run_linux.yml) [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit) [![Python Versions](https://img.shields.io/badge/python-3.10%20|%203.11%20|%203.12|%203.13-blue)]() [![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![DOI](https://zenodo.org/badge/450553622.svg)](https://zenodo.org/badge/latestdoi/450553622) [![Power Balance Models Ubuntu](https://github.com/ukaea/powerbalance/actions/workflows/build_run_linux.yml/badge.svg)](https://github.com/ukaea/powerbalance/actions/workflows/build_run_linux.yml) [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit) [![Python Versions](https://img.shields.io/badge/python-3.10%20|%203.11%20|%203.12%20|%203.13-blue)]() [![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 A power balance model which combines power consumption and power generation data to assess the net power production of different designs for a tokamak power plant.
 
