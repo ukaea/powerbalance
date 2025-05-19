@@ -145,8 +145,8 @@ import os
 shutil.move('dist', os.path.join('{build_dir}', 'dist'))"""
 
     _build_cmds = [
-        "python -mpip install poetry",
-        "PIP_NO_BUILD_ISOLATION=false poetry build",
+        "python -mpip install uv",
+        "PIP_NO_BUILD_ISOLATION=false uv build",
         f'python -c "{_py_script}"',
     ]
 

@@ -1,22 +1,22 @@
 # Contributing to Power Balance Models
 
-## Python Poetry :closed_book:
+## UV :closed_book:
 
-As mentioned in the [README](./README.md) for this repository, it is strongly recommended that you use Poetry for
-development. The included `pyproject.toml` and `poetry.lock` files ensure that those using the tool are running
+As mentioned in the [README](./README.md) for this repository, it is strongly recommended that you use UV for
+development. The included `pyproject.toml` and `uv.lock` files ensure that those using the tool are running
 the `power_balance` module in an identical manner. Before any releases are made this provides the fastest and easiest
 way to get started.
 
-Poetry can be installed using `pip` or an installer script, further documentation for the tool is available on the
-project's [website](https://python-poetry.org/docs/).
+UV can be installed using `pip` or an installer script, further documentation for the tool is available on the
+project's [website](https://docs.astral.sh/uv/).
 
-`poetry` creates a virtual environment containing specific versions of the prerequisite Python packages. Then, by
-using `poetry run <command>` the developer may run `<command>` inside that virtual environment instead. You can
-do `poetry run pip` as well and tamper with the packages inside the environment as well, if needed.
+`uv` creates a virtual environment containing specific versions of the prerequisite Python packages. Then, by
+using `uv run <command>` the developer may run `<command>` inside that virtual environment instead. You can
+do `uv pip` as well and tamper with the packages inside the environment as well, if needed.
 
 ## Setting up for development on the Power Balance Models :question:
 
-1. Make sure you have installed `poetry` (see above), OpenModelica (v1.16.2 advised), Git, and obviously Python (v3.8
+1. Make sure you have installed `uv` (see above), OpenModelica (v1.16.2 advised), Git, and obviously Python (v3.8
    advised).
 
 2. Clone the repository to a folder of your choosing on your PC. Make sure that the absolute path to that folder does
@@ -28,17 +28,17 @@ do `poetry run pip` as well and tamper with the packages inside the environment 
 
    Spaces may cause issues with running the program in development mode.
 
-3. While inside the local repository, perform `poetry install`.
+3. While inside the local repository, perform `uv venv`.
 
-4. If the above step completes without errors, you will then be able to type in `poetry run powerbalance`, and if the
+4. If the above step completes without errors, you will then be able to type in `uv run powerbalance`, and if the
    installation is successful you will be met with a help text and a list of commands.
 
-5. Perform a test run to ensure that everything is running as intended: `poetry run powerbalance run`
+5. Perform a test run to ensure that everything is running as intended: `uv run powerbalance run`
 
 If there are any errors you do not understand or are unable to solve, make sure to open an issue.
 
 ## Setting up the git pre-hooks :hook:
-This repository contains a configuration for the `pre-commit` git hook setup tool. It is strongly recommended that you install these hooks to ensure your commits pass quality control before you push them to GitHub. `pre-commit` is already available within the poetry virtual environment, the hooks are installed by running:
+This repository contains a configuration for the `pre-commit` git hook setup tool. It is strongly recommended that you install these hooks to ensure your commits pass quality control before you push them to GitHub. `pre-commit` is already available within the uv virtual environment, the hooks are installed by running:
 ```sh
 pre-commit install
 ```

@@ -2,7 +2,7 @@
 
 Contributions to the Power Balance Models (PBM) project can be broken down into model development and API development. Both should be performed under git version control with changes being committed to a personal development branch, and any conflicts being resolved before merging into the main `develop` branch takes place. 
 
-It is recommended you develop and test PBM using Poetry, instructions on how to install and run the project this way are given [here](poetry.md).
+It is recommended you develop and test PBM using UV, instructions on how to install and run the project this way are given [here](uv.md).
 
 The terms "backend" and "frontend" are used to refer to the OpenModelica and Python code respectively.
 
@@ -20,7 +20,7 @@ A unit/regression test for each new feature should be added to the `tests` direc
 
 The code should be documented sensibly. As a tip, imagine you are returning to the code after a year, what comments would help you remember how to use your code?
 
-Try to use typing in your functions. Not only does this improve readability, but if you run `poetry run mypy` it will tell you if the object type a function is returning matches your expectation. An example typed function would be:
+Try to use typing in your functions. Not only does this improve readability, but if you run `uv run mypy` it will tell you if the object type a function is returning matches your expectation. An example typed function would be:
 
 ``` python
 from typing import Dict
@@ -131,7 +131,7 @@ PBM where possible keeps to a strict following of the semantic versioning standa
     Note versions prior to `v1.0.0` may follow a looser standard.
 
 ## Using Git Prehooks
-It is strongly recommended that the pre-commit git hooks be installed to catch any issues with code quality, file size and merge conflict remnants. In order to install the git hooks within the repository install `pre-commit` via pip (this is already present if using `poetry` to develop), and run:
+It is strongly recommended that the pre-commit git hooks be installed to catch any issues with code quality, file size and merge conflict remnants. In order to install the git hooks within the repository install `pre-commit` via pip (this is already present if using `uv` to develop), and run:
 ```sh
 pre-commit install
 ```

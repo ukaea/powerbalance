@@ -1,10 +1,13 @@
-[tool.poetry]
+[project]
 name = "power_balance"
-version = "1.4.0"
+version = "1.5.0"
 description = "Python interface for the tokamak power balance model"
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+
 authors = [
-    "Alexander Petrov <alexander.petrov@ukaea.uk>",
-    "Kristian Zarebski <kristian.zarebski@ukaea.uk>",
+    { name = "Alexander Petrov", email = "alexander.petrov@ukaea.uk" },
+    { name ="Kristian Zarebski", email = "kristian.zarebski@ukaea.uk" },
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -24,59 +27,59 @@ keywords = [
     "research"
 ]
 
-[tool.poetry.dependencies]
-python = "^3.9,<3.13"
-matplotlib = "^3.9.1"
-prettytable = "^3.10.0"
-html2text = "^2024.2.26"
-numpy = "<2"
-toml = "^0.10.2"
-tables = "^3.9.2"
-Jinja2 = "^3.1.6"
-scipy = "^1.13.1"
-click = "^8.1.7"
-pydantic = "^2.8.2"
-bokeh = "^3.4.2"
-pydelica = "<0.7.0"
-pandas = "^2.2.2"
 
-[tool.poetry.group.dev.dependencies]
-readability-lxml = "^0.8.1"
-coverage = "^7.6"
-bandit = "^1.7.9"
-anybadge = "^1.14.0"
-pyinstrument = "^4.6.2"
-asv = "^0.6.3"
-virtualenv = "^20.31.2"
-PyYAML = "^6.0"
-deepdiff = "^8.5.0"
-mypy = "^1.11"
-types-PyYAML = "^6.0.12"
-types-toml = "^0.10.8"
-typed-ast = "^1.5.4"
-types-Jinja2 = "^2.11.9"
-pre-commit = "^3.8.0"
-unimport = "^1.2.1"
-pytest = "^8.2.2"
-ruff = "^0.5.5"
-types-setuptools = "^75.1.0.20240917"
+dependencies = [
+    "bokeh>=3.7.3",
+    "click>=8.2.0",
+    "html2text>=2025.4.15",
+    "jinja2>=3.1.6",
+    "matplotlib>=3.10.3",
+    "numpy>=2.2.6",
+    "pandas>=2.2.3",
+    "prettytable>=3.16.0",
+    "pydantic>=2.11.4",
+    "pydelica>=0.6.2",
+    "scipy>=1.15.3",
+    "toml>=0.10.2",
+]
 
-[tool.poetry.group.docs.dependencies]
-mkdocs = "^1.6.0"
-mkdocs-material = "^9.5.28"
-mkdocs-coverage = "^1.1.0"
-pymdown-extensions = "^10.15"
-mkdocs-mermaid2-plugin = "^1.1.1"
-mkdocs-click = "^0.8.1"
-mkdocs-git-revision-date-localized-plugin = "^1.2.6"
+[project.scripts]
+powerbalance = 'power_balance.cli:powerbalance'
 
+[dependency-groups]
+dev = [
+    "anybadge>=1.16.0",
+    "asv>=0.6.4",
+    "bandit>=1.8.3",
+    "coverage>=7.8.0",
+    "deepdiff>=8.5.0",
+    "mypy>=1.15.0",
+    "pre-commit>=4.2.0",
+    "pyinstrument>=5.0.1",
+    "pytest>=8.3.5",
+    "pyyaml>=6.0.2",
+    "readability-lxml>=0.8.4.1",
+    "ruff>=0.11.10",
+    "types-jinja2>=2.11.9",
+    "types-pyyaml>=6.0.12.20250516",
+    "types-setuptools>=80.7.0.20250516",
+    "types-toml>=0.10.8.20240310",
+    "virtualenv>=20.31.2",
+]
+docs = [
+    "mkdocs>=1.6.1",
+    "mkdocs-click>=0.9.0",
+    "mkdocs-coverage>=1.1.0",
+    "mkdocs-git-revision-date-localized-plugin>=1.4.5",
+    "mkdocs-material>=9.6.14",
+    "mkdocs-mermaid2-plugin>=1.2.1",
+    "pymdown-extensions>=10.15",
+]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.poetry.scripts]
-powerbalance = 'power_balance.cli:powerbalance'
 
 [tool.ruff]
 lint.extend-select = ["C901"]
