@@ -43,7 +43,7 @@ jobs:
       - name: Install UV
         run: python3 -m pip install uv
       - name: Build Module
-        run: uv run -p {{ matrix.python-version }} powerbalance generate-profiles
+        run: uv run -p ${{ matrix.python-version }} powerbalance generate-profiles
       - name: Archive Plasma Profiles
         uses: actions/upload-artifact@v4
         with:
@@ -94,8 +94,8 @@ jobs:
         run: python3 -m pip install uv
       - name: Run Models
         run: |
-          uv run -p {{ matrix.python-version }} powerbalance install-msl
-          uv run -p {{ matrix.python-version }} coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios
+          uv run -p ${{ matrix.python-version }} powerbalance install-msl
+          uv run -p ${{ matrix.python-version }} coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
         if: ${{ github.ref_name == 'main' }}
@@ -120,8 +120,8 @@ jobs:
         run: python3 -m pip install uv
       - name: Run Regression Tests
         run: |
-          uv run -p {{ matrix.python-version }} powerbalance install-msl
-          uv run -p {{ matrix.python-version }} coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
+          uv run -p ${{ matrix.python-version }} powerbalance install-msl
+          uv run -p ${{ matrix.python-version }} coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
         if: ${{ github.ref_name == 'main' }}
@@ -146,8 +146,8 @@ jobs:
         run: python3 -m pip install uv
       - name: Run Unit Tests
         run: |
-          uv run -p {{ matrix.python-version }} powerbalance install-msl
-          uv run -p {{ matrix.python-version }} coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
+          uv run -p ${{ matrix.python-version }} powerbalance install-msl
+          uv run -p ${{ matrix.python-version }} coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
         if: ${{ github.ref_name == 'main' }}
