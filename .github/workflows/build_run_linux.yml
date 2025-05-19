@@ -10,6 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04]
+        python-version: ['3.13']
     steps:
       - uses: actions/checkout@v4
       - name: Compile models
@@ -59,6 +60,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04]
+        python-version: ['3.13']
     needs: [test_modelica_build]
     steps:
       - name: Retrieve Open Modelica model binaries
