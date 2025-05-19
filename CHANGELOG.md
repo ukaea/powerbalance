@@ -1,27 +1,28 @@
 # Change Log
-## v1.5.0 - 2025-05-19
+## [v1.5.0](https://github.com/ukaea/powerbalance/releases/tag/v1.5.0) - 2025-05-19
 * Switched to UV for project development.
 * Support Python3.13 with Numpy v2.
 * Switch to fixed Pydelica >=0.6.2 for C runtime parameters.
 
-## v1.4.0 - 2024-07-27
+## [v1.4.0](https://github.com/ukaea/powerbalance/releases/tag/v1.4.0) - 2024-07-27
 * Switched to Modelica Standard Library v4.0.0
 * Ensured compatibility with Modelica 1.23.1
-## v1.3.0 - 2023-01-03
+
+## [v1.3.0](https://github.com/ukaea/powerbalance/releases/tag/v1.3.0) - 2023-01-03
 
 * Added support for Python3.12 using Pandas v2
 
-## v1.2.0 - 2023-08-30
+## [v1.2.0](https://github.com/ukaea/powerbalance/releases/tag/v1.2.0) - 2023-08-30
 * Added support for OpenModelica v1.21.0 and Python 3.11
 * Brand new waste heat model.
 
-## v1.1.0 - 2022-03-09
+## [v1.1.0](https://github.com/ukaea/powerbalance/releases/tag/v1.1.0) - 2022-03-09
 
 * Added support for Windows.
 * Use context manager to ensure removal of temporary files.
 * Compatible with PyDelica v0.4.2
 
-## v1.0.0 - 2022-02-09
+## [v1.0.0](https://github.com/ukaea/powerbalance/releases/tag/v1.1.0) - 2022-02-09
 
 * First full version of Power Balance ready for open sourcing.
 * Fixed bug in Modelica file parsing.
