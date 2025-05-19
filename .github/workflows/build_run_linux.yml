@@ -3,7 +3,7 @@ on: [push]
 jobs:
   test_modelica_build:
     container:
-      image: openmodelica/openmodelica:v1.23.1-ompython
+      image: openmodelica/openmodelica:v1.25.0-ompython
     name: Test Modelica Build (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -25,14 +25,14 @@ jobs:
       - name: Archive Modelica Binaries
         uses: actions/upload-artifact@v4
         with:
-          name: om-binaries-${{ github.run_id }}
+          name: om-binaries-${{ github.run_id }}-${{ matrix.python-version }}
           path: build/
           retention-days: 1
   test_module_build:
     name: Test Module Build (Python${{ matrix.python-version }} ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     container:
-      image: openmodelica/openmodelica:v1.23.1-ompython
+      image: openmodelica/openmodelica:v1.25.0-ompython
     strategy:
       fail-fast: false
       matrix:
@@ -40,22 +40,19 @@ jobs:
         python-version: [ '3.11', '3.10', '3.12' ]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Poetry
-        run: python3 -m pip install poetry
+      - name: Install UV
+        run: python3 -m pip install uv
       - name: Build Module
-        run: |
-          poetry install
-          poetry build
-          poetry run powerbalance generate-profiles
+        run: uv run -p ${{ matrix.python-version }} powerbalance generate-profiles
       - name: Archive Plasma Profiles
         uses: actions/upload-artifact@v4
         with:
-          name: om-plasma-profiles-${{ github.run_id }}
+          name: om-plasma-profiles-${{ github.run_id }}-${{ matrix.python-version }}
           path: power_balance/profiles/mat_profile_files/*.mat
           retention-days: 1
   model_run_om:
     container:
-      image: openmodelica/openmodelica:v1.23.1-ompython
+      image: openmodelica/openmodelica:v1.25.0-ompython
     name: Model Run Open Modelica (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -67,12 +64,12 @@ jobs:
       - name: Retrieve Open Modelica model binaries
         uses: actions/download-artifact@v4
         with:
-          name: om-binaries-${{ github.run_id }}
+          name: om-binaries-${{ github.run_id }}-${{ matrix.python-version }}
           path: build
       - name: Retrieve Plasma profiles
         uses: actions/download-artifact@v4
         with:
-          name: om-plasma-profiles-${{ github.run_id }}
+          name: om-plasma-profiles-${{ github.run_id }}-${{ matrix.python-version }}
           path: power_balance/profiles/mat_profile_files
       - name: Run Models
         run: |
@@ -82,24 +79,23 @@ jobs:
           ./Tokamak_Interdependencies
   model_run_api:
     container:
-      image: openmodelica/openmodelica:v1.23.1-ompython
+      image: openmodelica/openmodelica:v1.25.0-ompython
     name: Model Run API (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04]
-        python-version: [ '3.11', '3.10', '3.12' ]
+        python-version: [ '3.10', '3.12', '3.13' ]
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Poetry
-        run: python3 -m pip install poetry
+      - name: Install UV
+        run: python3 -m pip install uv
       - name: Run Models
         run: |
-          poetry install
-          poetry run powerbalance install-msl
-          poetry run coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios
+          uv run -p ${{ matrix.python-version }} powerbalance install-msl
+          uv run -p ${{ matrix.python-version }} coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
         if: ${{ github.ref_name == 'main' }}
@@ -109,24 +105,23 @@ jobs:
           retention-days: 1
   regression_tests:
     container:
-      image: openmodelica/openmodelica:v1.23.1-ompython
+      image: openmodelica/openmodelica:v1.25.0-ompython
     name: Regression Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04]
-        python-version: [ '3.11', '3.10', '3.12' ]
+        python-version: [ '3.13', '3.10', '3.12' ]
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Poetry
-        run: python3 -m pip install poetry
+      - name: Install UV
+        run: python3 -m pip install uv
       - name: Run Regression Tests
         run: |
-          poetry install
-          poetry run powerbalance install-msl
-          poetry run coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
+          uv run -p ${{ matrix.python-version }} powerbalance install-msl
+          uv run -p ${{ matrix.python-version }} coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
         if: ${{ github.ref_name == 'main' }}
@@ -136,27 +131,26 @@ jobs:
           retention-days: 1
   unit_tests:
     container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
+      image: openmodelica/openmodelica:v1.25.0-ompython
     name: Unit Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-24.04]
-        python-version: [ '3.11', '3.10', '3.12' ]
+        python-version: [ '3.13', '3.10', '3.12' ]
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Poetry
-        run: python3 -m pip install poetry
+      - name: Install UV
+        run: python3 -m pip install uv
       - name: Run Unit Tests
         run: |
-          poetry install
-          poetry run powerbalance install-msl
-          poetry run coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
+          uv run -p ${{ matrix.python-version }} powerbalance install-msl
+          uv run -p ${{ matrix.python-version }} coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
-        if: ${{ github.ref_name == 'main' }}
+        if: ${{ github.ref_name == 'main' && matrix.python-version == '3.13' }}
         with:
           name: coverage-unit
           path: coverage_unit
@@ -168,8 +162,8 @@ jobs:
     needs: [unit_tests, regression_tests, model_run_api]
     steps:
       - uses: actions/checkout@v4
-      - name: Install Poetry
-        run: python3 -m pip install poetry
+      - name: Install UV
+        run: python3 -m pip install uv
       - name: Retrieve Unit Test Coverage
         uses: actions/download-artifact@v4
         with:
@@ -188,10 +182,10 @@ jobs:
       - name: Combine Coverage
         run: |
           find . -name "*.pyc" -delete
-          poetry run pip install coverage
-          poetry run coverage combine coverage/coverage_*
-          poetry run coverage xml -i
-          poetry run coverage report -i
+          uv run pip install coverage
+          uv run coverage combine coverage/coverage_*
+          uv run coverage xml -i
+          uv run coverage report -i
         continue-on-error: true
       - uses: codecov/codecov-action@v5
         with:

@@ -1,4 +1,8 @@
 # Change Log
+## v1.5.0 - 2025-05-19
+* Switched to UV for project development.
+* Support Python3.13 with Numpy v2.
+* Switch to fixed Pydelica >=0.6.2 for C runtime parameters.
 
 ## v1.4.0 - 2024-07-27
 * Switched to Modelica Standard Library v4.0.0

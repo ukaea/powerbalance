@@ -19,9 +19,9 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-      - name: Install Poetry
-        run: python -m pip install poetry
+          python-version: '3.13'
+      - name: Install UV
+        run: python -m pip install uv
       - name: Check Citation File
         run: |
           python3 -m pip install -r <(curl -s https://raw.githubusercontent.com/citation-file-format/citation-file-format/main/requirements.txt)
@@ -29,9 +29,9 @@ jobs:
             -d ${GITHUB_WORKSPACE}/CITATION.cff \
             -s <(curl -s https://raw.githubusercontent.com/citation-file-format/citation-file-format/main/schema.json)
       - name: Install Module
-        run: poetry install
+        run: uv venv
       - name: Build Module
-        run: poetry build
+        run: uv build
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:

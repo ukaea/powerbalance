@@ -7,9 +7,9 @@ usually fixed by installing it manually beforehand:
 ```bash
 pip install numpy
 ```
-if you are using Poetry make sure to run this command within the virtual environment:
+if you are using UV make sure to run this command within the virtual environment:
 ```bash
-poetry run pip install numpy
+uv pip install numpy
 ```
 
 ## PyTables build
@@ -17,21 +17,22 @@ Releases of PyTables for the latest version of Python are often not yet availabl
 ```bash
 pip install <path-to-wheels-file>
 ```
-or if using Poetry:
+or if using UV:
 ```bash
-poetry run pip install <path-to-wheels-file>
+uv pip install <path-to-wheels-file>
 ```
 
-## Command `poetry` is not recognised
-If you are using Poetry and the command `poetry` is not recognised after installation make sure the location of your poetry installation is added to the PATH environment variable. To find your local installation run:
+## Command `uv` is not recognised
+If you are using UV and the command `uv` is not recognised after installation make sure the location of your UV installation is added to the PATH environment variable. To find your local installation run:
 ```bash
-python -m poetry shell
+python -m uv run which uv
+
 ```
 and note the location given during the initialisation.
 
-For example in the case of the prefix `C:\Users\<user>\AppData\Local\pypoetry` on Windows, poetry was found in `C:\Users\<user>\AppData\Local\Packages\PythonSoftwareFoundation.<python_version_string>\LocalCache\local-packages\Python<version-num>\Scripts` and this location is added to the PATH variable as described [here](https://helpdeskgeek.com/windows-10/add-windows-path-environment-variable/) or temporarily by running:
+For example in the case of the prefix `C:\Users\<user>\AppData\Local\` on Windows, UV was found in `C:\Users\<user>\AppData\Local\Packages\PythonSoftwareFoundation.<python_version_string>\LocalCache\local-packages\Python<version-num>\Scripts` and this location is added to the PATH variable as described [here](https://helpdeskgeek.com/windows-10/add-windows-path-environment-variable/) or temporarily by running:
 ```bash
-set "PATH=%PATH%;<location-of-poetry.exe>"
+set "PATH=%PATH%;<location-of-uv.exe>"
 ```
 
 ## Command `powerbalance` is not recognised
