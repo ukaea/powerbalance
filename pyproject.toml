@@ -40,6 +40,7 @@ dependencies = [
     "pydantic>=2.11.4",
     "pydelica>=0.6.2",
     "scipy>=1.15.3",
+    "tables>=3.10.1",
     "toml>=0.10.2",
 ]
 
