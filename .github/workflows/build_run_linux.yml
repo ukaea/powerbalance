@@ -25,7 +25,7 @@ jobs:
       - name: Archive Modelica Binaries
         uses: actions/upload-artifact@v4
         with:
-          name: om-binaries-${{ github.run_id }}
+          name: om-binaries-${{ github.run_id }}-${{ matrix.python-version }}
           path: build/
           retention-days: 1
   test_module_build:
@@ -47,7 +47,7 @@ jobs:
       - name: Archive Plasma Profiles
         uses: actions/upload-artifact@v4
         with:
-          name: om-plasma-profiles-${{ github.run_id }}
+          name: om-plasma-profiles-${{ github.run_id }}-${{ matrix.python-version }}
           path: power_balance/profiles/mat_profile_files/*.mat
           retention-days: 1
   model_run_om:
@@ -64,12 +64,12 @@ jobs:
       - name: Retrieve Open Modelica model binaries
         uses: actions/download-artifact@v4
         with:
-          name: om-binaries-${{ github.run_id }}
+          name: om-binaries-${{ github.run_id }}-${{ matrix.python-version }}
           path: build
       - name: Retrieve Plasma profiles
         uses: actions/download-artifact@v4
         with:
-          name: om-plasma-profiles-${{ github.run_id }}
+          name: om-plasma-profiles-${{ github.run_id }}-${{ matrix.python-version }}
           path: power_balance/profiles/mat_profile_files
       - name: Run Models
         run: |
@@ -131,7 +131,7 @@ jobs:
           retention-days: 1
   unit_tests:
     container:
-      image: openmodelica/openmodelica:v1.21.0-ompython
+      image: openmodelica/openmodelica:v1.25.0-ompython
     name: Unit Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
@@ -150,7 +150,7 @@ jobs:
           uv run -p ${{ matrix.python-version }} coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
-        if: ${{ github.ref_name == 'main' }}
+        if: ${{ github.ref_name == 'main' && matrix.python-version == '3.13' }}
         with:
           name: coverage-unit
           path: coverage_unit
