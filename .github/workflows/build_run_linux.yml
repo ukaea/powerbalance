@@ -98,7 +98,7 @@ jobs:
           uv run -p ${{ matrix.python-version }} coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
-        if: ${{ github.ref_name == 'main' }}
+        if: ${{ github.ref_name == 'main' && matrix.python-version == '3.13' }}
         with:
           name: coverage-run
           path: coverage_default
@@ -124,7 +124,7 @@ jobs:
           uv run -p ${{ matrix.python-version }} coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
-        if: ${{ github.ref_name == 'main' }}
+        if: ${{ github.ref_name == 'main' && matrix.python-version == '3.13' }}
         with:
           name: coverage-regression
           path: coverage_regression
