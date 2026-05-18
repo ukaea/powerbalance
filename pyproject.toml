@@ -52,13 +52,13 @@ dev = [
   "types-toml>=0.10.8.20260518",
 ]
 docs = [
-  "mkdocs>=1.6.1",
   "mkdocs-click>=0.9.0",
   "mkdocs-coverage>=1.1.0",
   "mkdocs-git-revision-date-localized-plugin>=1.4.5",
   "mkdocs-material>=9.6.14",
   "mkdocs-mermaid2-plugin>=1.2.1",
   "pymdown-extensions>=10.15",
+  "zensical>=0.0.42",
 ]
 
 [build-system]
