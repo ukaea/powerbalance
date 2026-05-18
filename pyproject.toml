@@ -42,6 +42,7 @@ powerbalance = 'power_balance.cli:powerbalance'
 
 [dependency-groups]
 dev = [
+  "coverage>=7.14.0",
   "deepdiff>=9.1.0",
   "pytest>=9.0.3",
   "pyyaml>=6.0.3",
