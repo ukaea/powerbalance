@@ -1,47 +1,40 @@
 [project]
 name = "power_balance"
-version = "1.5.0"
+version = "1.5.1"
 description = "Python interface for the tokamak power balance model"
 readme = "README.md"
-requires-python = ">=3.10,<3.14"
+requires-python = ">=3.10,<3.15"
 
 authors = [
-    { name = "Alexander Petrov", email = "alexander.petrov@ukaea.uk" },
-    { name ="Kristian Zarebski", email = "kristian.zarebski@ukaea.uk" },
+  { name = "Alexander Petrov", email = "alexander.petrov@ukaea.uk" },
+  { name = "Kristian Zarebski", email = "kristian.zarebski@ukaea.uk" },
 ]
 classifiers = [
-    "Development Status :: 5 - Production/Stable",
-    "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",
-    "Natural Language :: English",
-    "Operating System :: Unix",
-    "Programming Language :: Other",
-    "Programming Language :: Python :: 3",
-    "Topic :: Scientific/Engineering :: Physics",
-    "Typing :: Typed"
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: GNU Lesser General Public License v2 or later (LGPLv2+)",
+  "Natural Language :: English",
+  "Operating System :: Unix",
+  "Programming Language :: Other",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Physics",
+  "Typing :: Typed",
 ]
-keywords = [
-    "tokamak",
-    "reactor physics",
-    "fusion",
-    "research"
-]
-
-
+keywords = ["tokamak", "reactor physics", "fusion", "research"]
 dependencies = [
-    "bokeh>=3.7.3",
-    "click>=8.2.0",
-    "html2text>=2025.4.15",
-    "jinja2>=3.1.6",
-    "matplotlib>=3.10.3",
-    "numpy>=2.2.6",
-    "pandas>=2.2.3",
-    "prettytable>=3.16.0",
-    "pydantic>=2.11.4",
-    "pydelica>=0.6.2",
-    "scipy>=1.15.3",
-    "tables>=3.10.1",
-    "toml>=0.10.2",
+  "bokeh>=3.9.0",
+  "click>=8.4.0",
+  "html2text>=2025.4.15",
+  "jinja2>=3.1.6",
+  "matplotlib>=3.10.9",
+  "numpy>=2.2.6",
+  "pandas>=2.3.3",
+  "prettytable>=3.17.0",
+  "pydantic>=2.13.4",
+  "pydelica>=0.6.3",
+  "scipy>=1.15.3",
+  "tables>=3.10.1",
+  "toml>=0.10.2",
 ]
 
 [project.scripts]
@@ -49,32 +42,22 @@ powerbalance = 'power_balance.cli:powerbalance'
 
 [dependency-groups]
 dev = [
-    "anybadge>=1.16.0",
-    "asv>=0.6.4",
-    "bandit>=1.8.3",
-    "coverage>=7.8.0",
-    "deepdiff>=8.5.0",
-    "mypy>=1.15.0",
-    "pre-commit>=4.2.0",
-    "pyinstrument>=5.0.1",
-    "pytest>=8.3.5",
-    "pyyaml>=6.0.2",
-    "readability-lxml>=0.8.4.1",
-    "ruff>=0.11.10",
-    "types-jinja2>=2.11.9",
-    "types-pyyaml>=6.0.12.20250516",
-    "types-setuptools>=80.7.0.20250516",
-    "types-toml>=0.10.8.20240310",
-    "virtualenv>=20.31.2",
+  "deepdiff>=9.1.0",
+  "pytest>=9.0.3",
+  "pyyaml>=6.0.3",
+  "ruff>=0.15.13",
+  "types-jinja2>=2.11.9",
+  "types-setuptools>=82.0.0.20260518",
+  "types-toml>=0.10.8.20260518",
 ]
 docs = [
-    "mkdocs>=1.6.1",
-    "mkdocs-click>=0.9.0",
-    "mkdocs-coverage>=1.1.0",
-    "mkdocs-git-revision-date-localized-plugin>=1.4.5",
-    "mkdocs-material>=9.6.14",
-    "mkdocs-mermaid2-plugin>=1.2.1",
-    "pymdown-extensions>=10.15",
+  "mkdocs>=1.6.1",
+  "mkdocs-click>=0.9.0",
+  "mkdocs-coverage>=1.1.0",
+  "mkdocs-git-revision-date-localized-plugin>=1.4.5",
+  "mkdocs-material>=9.6.14",
+  "mkdocs-mermaid2-plugin>=1.2.1",
+  "pymdown-extensions>=10.15",
 ]
 
 [build-system]
@@ -85,30 +68,25 @@ build-backend = "hatchling.build"
 [tool.ruff]
 lint.extend-select = ["C901"]
 lint.mccabe.max-complexity = 11
-exclude = [
-  "tests",
-  "benchmarks"
-]
+exclude = ["tests", "benchmarks"]
 
 [tool.pytest.ini_options]
 addopts = "-p no:warnings"
 markers = [
-    "profile_gen: marker applied to profile generation tests",
-    "pbm_class: marker applied to PowerBalance class tests",
-    "consistency: marker applied to output regression tests",
-    "utilities: marker applied to utilities tests",
-    "pbm_model_list: marker applied to model list tests",
-    "model_stability: marker applied to model stability tests",
-    "parameters: parameter set class tests",
-    "plugins: tests related to PBM plugins",
-    "dormant: tests which are currently ignored due to ongoing development",
-    "validation: tests relating to the validation of config files",
-    "cli: tests relating to the command line interface",
-    "exceptions: test custom exceptions can be raised",
-    "scenarios: test run particular scenarios",
-    "plotting: tests for plotting functions",
-    "modelica_templating: tests for modelica script templating"
+  "profile_gen: marker applied to profile generation tests",
+  "pbm_class: marker applied to PowerBalance class tests",
+  "consistency: marker applied to output regression tests",
+  "utilities: marker applied to utilities tests",
+  "pbm_model_list: marker applied to model list tests",
+  "model_stability: marker applied to model stability tests",
+  "parameters: parameter set class tests",
+  "plugins: tests related to PBM plugins",
+  "dormant: tests which are currently ignored due to ongoing development",
+  "validation: tests relating to the validation of config files",
+  "cli: tests relating to the command line interface",
+  "exceptions: test custom exceptions can be raised",
+  "scenarios: test run particular scenarios",
+  "plotting: tests for plotting functions",
+  "modelica_templating: tests for modelica script templating",
 ]
-testpaths = [
-    "tests"
-]
+testpaths = ["tests"]
