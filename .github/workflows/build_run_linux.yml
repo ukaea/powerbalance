@@ -3,16 +3,16 @@ on: [push]
 jobs:
   test_modelica_build:
     container:
-      image: openmodelica/openmodelica:v1.25.0-ompython
+      image: openmodelica/openmodelica:v1.26.7-ompython
     name: Test Modelica Build (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04]
-        python-version: ['3.13']
+        os: [ubuntu-latest]
+        python-version: ['3.14']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Compile models
         run: |
           mkdir build
@@ -24,7 +24,7 @@ jobs:
           make -f Tokamak_Interdependencies.makefile
         shell: bash
       - name: Archive Modelica Binaries
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: om-binaries-${{ github.run_id }}-${{ matrix.python-version }}
           path: build/
@@ -33,43 +33,43 @@ jobs:
     name: Test Module Build (Python${{ matrix.python-version }} ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     container:
-      image: openmodelica/openmodelica:v1.25.0-ompython
+      image: openmodelica/openmodelica:v1.26.7-ompython
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04]
-        python-version: [ '3.12', '3.10', '3.13' ]
+        os: [ubuntu-latest]
+        python-version: ['3.12', '3.10', '3.14']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install UV
         run: python3 -m pip install uv
       - name: Build Module
         run: uv run -p ${{ matrix.python-version }} powerbalance generate-profiles
       - name: Archive Plasma Profiles
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: om-plasma-profiles-${{ github.run_id }}-${{ matrix.python-version }}
           path: power_balance/profiles/mat_profile_files/*.mat
           retention-days: 1
   model_run_om:
     container:
-      image: openmodelica/openmodelica:v1.25.0-ompython
+      image: openmodelica/openmodelica:v1.26.7-ompython
     name: Model Run Open Modelica (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04]
-        python-version: ['3.13']
+        os: [ubuntu-latest]
+        python-version: ['3.14']
     needs: [test_modelica_build]
     steps:
       - name: Retrieve Open Modelica model binaries
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: om-binaries-${{ github.run_id }}-${{ matrix.python-version }}
           path: build
       - name: Retrieve Plasma profiles
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: om-plasma-profiles-${{ github.run_id }}-${{ matrix.python-version }}
           path: power_balance/profiles/mat_profile_files
@@ -81,14 +81,14 @@ jobs:
           ./Tokamak_Interdependencies
   model_run_api:
     container:
-      image: openmodelica/openmodelica:v1.25.0-ompython
+      image: openmodelica/openmodelica:v1.26.7-ompython
     name: Model Run API (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04]
-        python-version: [ '3.10', '3.12', '3.13' ]
+        os: [ubuntu-latest]
+        python-version: ['3.10', '3.12', '3.14']
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v4
@@ -99,8 +99,8 @@ jobs:
           uv run -p ${{ matrix.python-version }} powerbalance install-msl
           uv run -p ${{ matrix.python-version }} coverage run --source=power_balance --data-file=coverage_default -m pytest tests/scenarios
       - name: Archive Run Coverage
-        uses: actions/upload-artifact@v4
-        if: ${{ github.ref_name == 'main' && matrix.python-version == '3.13' }}
+        uses: actions/upload-artifact@v7
+        if: ${{ github.ref_name == 'main' && matrix.python-version == '3.14' }}
         with:
           name: coverage-run
           path: coverage_default
@@ -113,8 +113,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04]
-        python-version: [ '3.13', '3.10', '3.12' ]
+        os: [ubuntu-latest]
+        python-version: ['3.14', '3.10', '3.12']
     needs: [test_module_build]
     steps:
       - uses: actions/checkout@v4
@@ -125,25 +125,25 @@ jobs:
           uv run -p ${{ matrix.python-version }} powerbalance install-msl
           uv run -p ${{ matrix.python-version }} coverage run --source=power_balance --data-file=coverage_regression -m pytest tests/regression_tests
       - name: Archive Run Coverage
-        uses: actions/upload-artifact@v4
-        if: ${{ github.ref_name == 'main' && matrix.python-version == '3.13' }}
+        uses: actions/upload-artifact@v7
+        if: ${{ github.ref_name == 'main' && matrix.python-version == '3.14' }}
         with:
           name: coverage-regression
           path: coverage_regression
           retention-days: 1
   unit_tests:
     container:
-      image: openmodelica/openmodelica:v1.25.0-ompython
+      image: openmodelica/openmodelica:v1.26.7-ompython
     name: Unit Tests (${{ matrix.os }} Python${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-24.04]
-        python-version: [ '3.13', '3.10', '3.12' ]
+        os: [ubuntu-latest]
+        python-version: ['3.14', '3.10', '3.12']
     needs: [test_module_build]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install UV
         run: python3 -m pip install uv
       - name: Run Unit Tests
@@ -152,7 +152,7 @@ jobs:
           uv run -p ${{ matrix.python-version }} coverage run --data-file=coverage_unit --source=power_balance -m pytest tests/unit_tests
       - name: Archive Run Coverage
         uses: actions/upload-artifact@v4
-        if: ${{ github.ref_name == 'main' && matrix.python-version == '3.13' }}
+        if: ${{ github.ref_name == 'main' && matrix.python-version == '3.14' }}
         with:
           name: coverage-unit
           path: coverage_unit
@@ -163,21 +163,21 @@ jobs:
     if: ${{ github.ref_name == 'main' }}
     needs: [unit_tests, regression_tests, model_run_api]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install UV
         run: python3 -m pip install uv
       - name: Retrieve Unit Test Coverage
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: coverage-unit
           path: coverage
       - name: Retrieve Regression Test Coverage
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: coverage-regression
           path: coverage
       - name: Retrieve PBM Run Coverage
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: coverage-run
           path: coverage
