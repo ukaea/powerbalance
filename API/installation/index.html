@@ -2234,15 +2234,15 @@
 <h2 id="supported-environments">Supported Environments<a class="headerlink" href="#supported-environments" title="Permanent link">#</a></h2>
 <p>Power Balance Models (PBM) has been confirmed to work on:</p>
 <ul>
-<li>Ubuntu 22.04 - 25.04</li>
-<li>Windows 10*</li>
+<li>Ubuntu 22.04 - 26.04</li>
+<li>Windows 11*</li>
 </ul>
 <p>* using Python for Windows and CMD.</p>
 <p>The PBM is not tested on Mac systems.
 The software requires:</p>
 <ul>
-<li>Python <code>&gt;= 3.10</code>. Recommended version is <code>3.13.3</code>, which you can download from the bottom of the page <a href="https://www.python.org/downloads/release/python-3119/">here</a>);</li>
-<li>OpenModelica <code>&gt;= 1.25</code>. Recommended version is <code>1.25.0</code>, which you can download from <a href="https://build.openmodelica.org/omc/builds/windows/releases/1.23/1/">here (Windows)</a> or <a href="https://build.openmodelica.org/omc/builds/linux/releases/1.23.1/">here (Unix)</a> (instructions in <a href="https://www.openmodelica.org/download/download-linux">https://www.openmodelica.org/download/download-linux</a>). Installation on Mac (not stable) can be found <a href="https://www.openmodelica.org/download/download-mac">here</a>;</li>
+<li>Python <code>&gt;= 3.10</code>. Recommended version is <code>3.14.3</code>, which you can download from the bottom of the page <a href="https://www.python.org/downloads/release/python-3119/">here</a>);</li>
+<li>OpenModelica <code>&gt;= 1.26</code>. Recommended version is <code>1.26.7</code> (<code>1.26.3</code> for Windows), which you can download from <a href="https://build.openmodelica.org/omc/builds/windows/releases/1.26/3/">here (Windows)</a> or <a href="https://build.openmodelica.org/omc/builds/linux/releases/1.26.7/">here (Unix)</a> (instructions in <a href="https://www.openmodelica.org/download/download-linux">https://www.openmodelica.org/download/download-linux</a>). Installation on Mac (not stable) can be found <a href="https://www.openmodelica.org/download/download-mac">here</a>;</li>
 </ul>
 <p>It is recommended you run the software from within a virtual environment system such as <a href="https://github.com/pyenv/pyenv">PyEnv</a> or the built-in <code>venv</code> module, this ensures there is no interference with your system python installation. Alternatively you can install it under the current user.</p>
 <h2 id="installation-for-unix-and-windows">Installation for UNIX and Windows<a class="headerlink" href="#installation-for-unix-and-windows" title="Permanent link">#</a></h2>
@@ -2256,16 +2256,16 @@ The software requires:</p>
 <p>Installation on Mac is not tested and not supported by the Power Balance team, primarily because of the difficulty associated with installing OpenModelica on Mac.</p>
 <div class="admonition warning">
 <p class="admonition-title">Updating PowerBalance Installation</p>
-<p>Note, if updating your version of <code>powerbalance</code>, it is strongly recommended that you re-generate the model profiles in case changes have been made which affect them:
-<div class="highlight"><pre><span></span><code>powerbalance<span class="w"> </span>generate-profiles
-</code></pre></div></p>
 </div>
+<p>Note, if updating your version of <code>powerbalance</code>, it is strongly recommended that you re-generate the model profiles in case changes have been made which affect them:
+<code>sh
+    powerbalance generate-profiles</code></p>
 <div class="admonition warning">
 <p class="admonition-title">Modelica Standard Library version</p>
+</div>
 <p>The Power Balance Models API is not compatible with Modelica Standard Library <code>&lt;4.0.0</code>.
 Significant changes have been implemented in these versions. Latest known working environment
 is OpenModelica <code>1.25.0</code> with MSL <code>4.0.0</code>.</p>
-</div>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">#</a></h2>
 <p>You can verify your install is working correctly by either running the default configuration using the <code>powerbalance</code> command, or by running the included tests using <code>pytest</code>:</p>
 <div class="highlight"><pre><span></span><code>pytest<span class="w"> </span>-s<span class="w"> </span>tests/
