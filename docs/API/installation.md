@@ -2,16 +2,16 @@
 
 Power Balance Models (PBM) has been confirmed to work on:
 
-- Ubuntu 22.04 - 25.04
-- Windows 10*
+- Ubuntu 22.04 - 26.04
+- Windows 11\*
 
 \* using Python for Windows and CMD.
 
 The PBM is not tested on Mac systems.
 The software requires:
 
-- Python `>= 3.10`. Recommended version is `3.13.3`, which you can download from the bottom of the page [here](https://www.python.org/downloads/release/python-3119/));
-- OpenModelica `>= 1.25`. Recommended version is `1.25.0`, which you can download from [here (Windows)](https://build.openmodelica.org/omc/builds/windows/releases/1.23/1/) or [here (Unix)](https://build.openmodelica.org/omc/builds/linux/releases/1.23.1/) (instructions in <https://www.openmodelica.org/download/download-linux>). Installation on Mac (not stable) can be found [here](https://www.openmodelica.org/download/download-mac);
+- Python `>= 3.10`. Recommended version is `3.14.3`, which you can download from the bottom of the page [here](https://www.python.org/downloads/release/python-3119/));
+- OpenModelica `>= 1.26`. Recommended version is `1.26.7` (`1.26.3` for Windows), which you can download from [here (Windows)](https://build.openmodelica.org/omc/builds/windows/releases/1.26/3/) or [here (Unix)](https://build.openmodelica.org/omc/builds/linux/releases/1.26.7/) (instructions in <https://www.openmodelica.org/download/download-linux>). Installation on Mac (not stable) can be found [here](https://www.openmodelica.org/download/download-mac);
 
 It is recommended you run the software from within a virtual environment system such as [PyEnv](https://github.com/pyenv/pyenv) or the built-in `venv` module, this ensures there is no interference with your system python installation. Alternatively you can install it under the current user.
 
@@ -34,14 +34,14 @@ Linux users only require `omc` and the Modelica Standard Library, see [here](htt
 Installation on Mac is not tested and not supported by the Power Balance team, primarily because of the difficulty associated with installing OpenModelica on Mac.
 
 !!! warning "Updating PowerBalance Installation"
-    Note, if updating your version of `powerbalance`, it is strongly recommended that you re-generate the model profiles in case changes have been made which affect them:
-    ```sh
+Note, if updating your version of `powerbalance`, it is strongly recommended that you re-generate the model profiles in case changes have been made which affect them:
+`sh
     powerbalance generate-profiles
-    ```
+    `
 !!! warning "Modelica Standard Library version"
-    The Power Balance Models API is not compatible with Modelica Standard Library `<4.0.0`.
-    Significant changes have been implemented in these versions. Latest known working environment
-    is OpenModelica `1.25.0` with MSL `4.0.0`.
+The Power Balance Models API is not compatible with Modelica Standard Library `<4.0.0`.
+Significant changes have been implemented in these versions. Latest known working environment
+is OpenModelica `1.25.0` with MSL `4.0.0`.
 
 ## Testing
 
