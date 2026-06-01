@@ -68,7 +68,7 @@ authors:
     given-names: Timothy
 
 cff-version: "1.2.0"
-date-released: "2024-07-27"
+date-released: "2026-06-01"
 keywords: 
   - "power balance"
   - fusion
@@ -77,8 +77,8 @@ keywords:
 license: LGPL-2.1+
 message: "If you use this software, please cite it using these metadata."
 title: "Power Balance Models"
-commit: "f1cb7e19d2ba67895919eb34efcd48b208a5626e"
-version: "1.5.1"
+commit: "a6595cac3a62eae1beb99a6fec980df9b100f161"
+version: "1.5.2"
 repository-code: "https://github.com/ukaea/powerbalance"
 url: "https://ukaea.github.io/powerbalance/"
 references:

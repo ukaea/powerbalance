@@ -1,5 +1,9 @@
 # Change Log
 
+## [v1.5.2](https://github.com/ukaea/powerbalance/releases/tag/v1.5.2) - 2026-06-01
+
+- Removed `polyfill.io` as security vulnerability for results page generation.
+
 ## [v1.5.1](https://github.com/ukaea/powerbalance/releases/tag/v1.5.1) - 2026-05-18
 
 - Added support for Python 3.14
